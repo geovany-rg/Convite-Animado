@@ -23,7 +23,7 @@ const CONFIG = {
     horario: "13:00",
 
     local:
-        "Local com piscina — Uso infantil liberado com acompanhamento de responsável",
+        "Uso infantil liberado com acompanhamento de responsável",
 
     link:
         "https://maps.app.goo.gl/SGfxecVLVifhaA4a7",
@@ -47,11 +47,26 @@ const mergulho =
 const oceano =
     document.getElementById("oceano");
 
-const bauTesouro =
-    document.getElementById("bau-tesouro");
+const bauSecao =
+    document.getElementById("bau-secao");
+
+const cartaSecao =
+    document.getElementById("carta-secao");
 
 const presentes =
     document.getElementById("presentes");
+
+const fundoMar =
+    document.getElementById("fundo-mar");
+
+const conchaFinal =
+    document.getElementById("concha-final");
+
+const btnMergulhar =
+    document.getElementById("btn-mergulhar");
+
+const bauTesouro =
+    document.getElementById("bau-tesouro");
 
 const conchaConvite =
     document.getElementById("concha-convite");
@@ -69,13 +84,19 @@ const fecharDownload =
     document.getElementById("fechar-download");
 
 const cartaModalConteudo =
-    document.getElementById("carta-modal-conteudo");
+    document.getElementById(
+        "carta-modal-conteudo"
+    );
 
 const downloadConvite =
-    document.getElementById("download-convite");
+    document.getElementById(
+        "download-convite"
+    );
 
 const mensagemDownload =
-    document.getElementById("mensagem-download");
+    document.getElementById(
+        "mensagem-download"
+    );
 
 
 /* =========================================================
@@ -108,10 +129,11 @@ function irPara(secao) {
 function esperar(tempo) {
 
     return new Promise(
-        resolve => setTimeout(
-            resolve,
-            tempo
-        )
+        resolve =>
+            setTimeout(
+                resolve,
+                tempo
+            )
     );
 
 }
@@ -128,10 +150,12 @@ function carregarDadosDaFesta() {
             "[data-convite]"
         );
 
+
     campos.forEach(campo => {
 
         const tipo =
             campo.dataset.convite;
+
 
         if (
             Object.prototype.hasOwnProperty.call(
@@ -151,39 +175,82 @@ function carregarDadosDaFesta() {
 
 
 /* =========================================================
-   REMOVER TRANSIÇÃO DE MERGULHO
+   PEIXES
+   Todos devem nadar ESQUERDA → DIREITA.
 ========================================================= */
 
-/*
-    O botão antigo "Mergulhar" não será mais utilizado
-    para controlar a navegação.
+function corrigirDirecaoPeixes() {
 
-    O usuário pode simplesmente rolar a página.
-
-    Isso evita travamentos e problemas em celulares
-    mais simples.
-*/
-
-function desativarMergulho() {
-
-    const botao =
-        document.getElementById(
-            "btn-mergulhar"
+    const peixes =
+        document.querySelectorAll(
+            ".peixe, " +
+            ".peixe-profundo, " +
+            ".cardume span"
         );
 
-    if (!botao) {
-        return;
-    }
 
-    botao.disabled = true;
+    peixes.forEach(peixe => {
 
-    botao.style.display = "none";
+        peixe.style.transform =
+            "scaleX(-1)";
+
+    });
 
 }
 
 
 /* =========================================================
-   CARTA DA SOPHIA
+   BAÚ DO TESOURO
+========================================================= */
+
+async function abrirBau() {
+
+    if (!bauTesouro) {
+        return;
+    }
+
+
+    if (bauAberto) {
+
+        abrirCarta();
+
+        return;
+
+    }
+
+
+    bauAberto = true;
+
+
+    bauTesouro.classList.add(
+        "bau-aberto"
+    );
+
+
+    const fechadura =
+        bauTesouro.querySelector(
+            ".bau-fechadura"
+        );
+
+
+    if (fechadura) {
+
+        fechadura.textContent =
+            "✨";
+
+    }
+
+
+    await esperar(700);
+
+
+    abrirCarta();
+
+}
+
+
+/* =========================================================
+   CARTA
 ========================================================= */
 
 function criarCartaModal() {
@@ -215,7 +282,6 @@ function criarCartaModal() {
                     🌊 ✨ 🌊
                 </div>
 
-
                 <div class="texto-carta">
 
                     <p>
@@ -239,9 +305,6 @@ function criarCartaModal() {
 
                 <div class="dados-festa">
 
-
-                    <!-- LOCAL -->
-
                     <div class="dado-festa">
 
                         <span class="icone-dado">
@@ -254,24 +317,18 @@ function criarCartaModal() {
                                 LOCAL
                             </strong>
 
-                            <span>
-                                ${CONFIG.local}
-                            </span>
-
                             <a
                                 href="${CONFIG.link}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Ver localização
+                                ${CONFIG.local}
                             </a>
 
                         </div>
 
                     </div>
 
-
-                    <!-- DATA -->
 
                     <div class="dado-festa">
 
@@ -294,8 +351,6 @@ function criarCartaModal() {
                     </div>
 
 
-                    <!-- HORÁRIO -->
-
                     <div class="dado-festa">
 
                         <span class="icone-dado">
@@ -316,8 +371,6 @@ function criarCartaModal() {
 
                     </div>
 
-
-                    <!-- MAPA -->
 
                     <div class="dado-festa">
 
@@ -393,17 +446,12 @@ function abrirCarta() {
 
 
     /*
-        Impede apenas a rolagem do fundo enquanto
-        a carta está aberta.
+        Não usamos overflow:hidden
+        no body.
+
+        Isso evita que celulares fiquem
+        presos ou travados ao fechar a carta.
     */
-
-    document.body.classList.add(
-        "modal-aberto"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
 
 }
 
@@ -430,89 +478,12 @@ function fecharCartaModal() {
     );
 
 
-    document.body.classList.remove(
-        "modal-aberto"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-
     /*
-        NÃO manda automaticamente para outra seção.
+        Não força nenhuma rolagem.
 
-        O usuário pode continuar exatamente de onde estava.
+        O usuário continua exatamente
+        de onde estava.
     */
-
-}
-
-
-/* =========================================================
-   BAÚ
-========================================================= */
-
-async function abrirBau() {
-
-    if (!bauTesouro) {
-        return;
-    }
-
-
-    /*
-        Se já abriu anteriormente,
-        apenas mostra a carta novamente.
-    */
-
-    if (bauAberto) {
-
-        abrirCarta();
-
-        return;
-
-    }
-
-
-    bauAberto = true;
-
-
-    /*
-        Animação do baú.
-    */
-
-    bauTesouro.classList.add(
-        "bau-aberto"
-    );
-
-
-    const fechadura =
-        bauTesouro.querySelector(
-            ".bau-fechadura"
-        );
-
-
-    if (fechadura) {
-
-        fechadura.textContent =
-            "✨";
-
-    }
-
-
-    /*
-        Espera a animação terminar.
-    */
-
-    await esperar(750);
-
-
-    /*
-        SOMENTE AGORA a carta aparece.
-
-        Ela não aparece por rolagem.
-    */
-
-    abrirCarta();
 
 }
 
@@ -538,15 +509,6 @@ function abrirModalDownload() {
         "false"
     );
 
-
-    document.body.classList.add(
-        "modal-aberto"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
 }
 
 
@@ -567,20 +529,11 @@ function fecharModalDownload() {
         "true"
     );
 
-
-    document.body.classList.remove(
-        "modal-aberto"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
 }
 
 
 /* =========================================================
-   PREPARAR CONVITE
+   CONCHA FINAL
 ========================================================= */
 
 async function prepararConvite() {
@@ -644,14 +597,6 @@ async function prepararConvite() {
         conchaConvite.classList.remove(
             "concha-processando"
         );
-
-        if (mensagemDownload) {
-
-            mensagemDownload.classList.remove(
-                "ativo"
-            );
-
-        }
 
         return;
 
@@ -729,7 +674,7 @@ function criarImagemConvite() {
 
 
     /* =====================================================
-       FUNDO EM DEGRADÊ SUAVE
+       FUNDO EM DEGRADÊ
     ====================================================== */
 
     const gradiente =
@@ -743,27 +688,31 @@ function criarImagemConvite() {
 
     gradiente.addColorStop(
         0,
-        "#b9f4f8"
+        "#b8f6ff"
     );
 
-    gradiente.addColorStop(
-        0.20,
-        "#75dce9"
-    );
 
     gradiente.addColorStop(
-        0.48,
-        "#35bdd7"
+        0.25,
+        "#6edff2"
     );
 
+
     gradiente.addColorStop(
-        0.72,
-        "#168eb5"
+        0.55,
+        "#29b9d8"
     );
+
+
+    gradiente.addColorStop(
+        0.8,
+        "#087da9"
+    );
+
 
     gradiente.addColorStop(
         1,
-        "#07547f"
+        "#06466e"
     );
 
 
@@ -780,7 +729,7 @@ function criarImagemConvite() {
 
 
     /* =====================================================
-       LUZ DO OCEANO
+       LUZ
     ====================================================== */
 
     const luz =
@@ -789,20 +738,14 @@ function criarImagemConvite() {
             130,
             20,
             largura / 2,
-            130,
+            200,
             650
         );
 
 
     luz.addColorStop(
         0,
-        "rgba(255,255,255,0.58)"
-    );
-
-
-    luz.addColorStop(
-        0.35,
-        "rgba(255,255,255,0.20)"
+        "rgba(255,255,255,0.55)"
     );
 
 
@@ -820,97 +763,67 @@ function criarImagemConvite() {
         0,
         0,
         largura,
-        720
+        750
     );
-
-
-    /* =====================================================
-       RAIOS DE LUZ
-    ====================================================== */
-
-    ctx.save();
-
-
-    ctx.globalAlpha =
-        0.12;
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(120, 0);
-    ctx.lineTo(330, 0);
-    ctx.lineTo(560, 700);
-    ctx.lineTo(390, 700);
-
-    ctx.closePath();
-
-    ctx.fill();
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(650, 0);
-    ctx.lineTo(820, 0);
-    ctx.lineTo(700, 700);
-    ctx.lineTo(540, 700);
-
-    ctx.closePath();
-
-    ctx.fill();
-
-
-    ctx.restore();
 
 
     /* =====================================================
        BOLHAS
     ====================================================== */
 
-    const bolhas = [
+    desenharBolha(
+        ctx,
+        100,
+        180,
+        18
+    );
 
-        [100, 190, 18],
-        [950, 230, 25],
-        [170, 520, 13],
-        [900, 650, 19],
-        [100, 900, 22],
-        [970, 1050, 14],
-        [760, 370, 11],
-        [310, 760, 16]
+    desenharBolha(
+        ctx,
+        940,
+        230,
+        25
+    );
 
-    ];
+    desenharBolha(
+        ctx,
+        180,
+        620,
+        13
+    );
 
+    desenharBolha(
+        ctx,
+        890,
+        720,
+        18
+    );
 
-    bolhas.forEach(
-        bolha => {
+    desenharBolha(
+        ctx,
+        120,
+        1050,
+        22
+    );
 
-            desenharBolha(
-                ctx,
-                bolha[0],
-                bolha[1],
-                bolha[2]
-            );
-
-        }
+    desenharBolha(
+        ctx,
+        970,
+        1120,
+        14
     );
 
 
     /* =====================================================
        PEIXES
+       Espelhados para parecerem nadando
+       corretamente para a direita.
     ====================================================== */
-
-    /*
-        Os peixes foram espelhados para apontarem
-        para a direita.
-    */
 
     desenharEmojiEspelhado(
         ctx,
         "🐟",
-        100,
+        90,
         390,
         60
     );
@@ -962,7 +875,7 @@ function criarImagemConvite() {
     ctx.fillText(
         "O Oceano",
         largura / 2,
-        150
+        170
     );
 
 
@@ -977,7 +890,7 @@ function criarImagemConvite() {
     ctx.fillText(
         "Cor-de-Rosa",
         largura / 2,
-        225
+        240
     );
 
 
@@ -992,7 +905,7 @@ function criarImagemConvite() {
     ctx.fillText(
         "da Sophia",
         largura / 2,
-        290
+        305
     );
 
 
@@ -1004,7 +917,7 @@ function criarImagemConvite() {
         ctx,
         "🧜‍♀️",
         540,
-        405,
+        410,
         120
     );
 
@@ -1017,27 +930,27 @@ function criarImagemConvite() {
         ctx,
         "🐬",
         540,
-        545,
-        95
+        560,
+        100
     );
 
 
     /* =====================================================
-       NOME DA SOPHIA
+       NOME
     ====================================================== */
 
     ctx.fillStyle =
-        "#ff9dcc";
+        "#ffb4d9";
 
 
     ctx.font =
-        "bold 56px Trebuchet MS, Arial, sans-serif";
+        "bold 52px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.nome,
         largura / 2,
-        665
+        690
     );
 
 
@@ -1052,21 +965,21 @@ function criarImagemConvite() {
     ctx.fillText(
         CONFIG.idade,
         largura / 2,
-        710
+        735
     );
 
 
     /* =====================================================
-       CARD DE INFORMAÇÕES
+       CARD
     ====================================================== */
 
-    const cardX = 75;
+    const cardX = 100;
 
-    const cardY = 755;
+    const cardY = 780;
 
-    const cardW = 930;
+    const cardW = 880;
 
-    const cardH = 370;
+    const cardH = 350;
 
 
     desenharRetanguloArredondado(
@@ -1075,13 +988,13 @@ function criarImagemConvite() {
         cardY,
         cardW,
         cardH,
-        38,
-        "rgba(255,255,255,0.17)"
+        35,
+        "rgba(255,255,255,0.18)"
     );
 
 
     ctx.strokeStyle =
-        "rgba(255,255,255,0.42)";
+        "rgba(255,255,255,0.35)";
 
 
     ctx.lineWidth =
@@ -1102,13 +1015,13 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "bold 25px Trebuchet MS, Arial, sans-serif";
+        "bold 26px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "📅 DATA",
-        cardX + 40,
-        cardY + 55
+        cardX + 45,
+        cardY + 60
     );
 
 
@@ -1117,13 +1030,13 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "25px Trebuchet MS, Arial, sans-serif";
+        "26px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.data,
-        cardX + 40,
-        cardY + 93
+        cardX + 45,
+        cardY + 100
     );
 
 
@@ -1134,13 +1047,13 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "bold 25px Trebuchet MS, Arial, sans-serif";
+        "bold 26px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "🕐 HORÁRIO",
-        cardX + 40,
-        cardY + 145
+        cardX + 45,
+        cardY + 155
     );
 
 
@@ -1149,13 +1062,13 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "25px Trebuchet MS, Arial, sans-serif";
+        "26px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.horario,
-        cardX + 40,
-        cardY + 183
+        cardX + 45,
+        cardY + 195
     );
 
 
@@ -1166,20 +1079,15 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "bold 25px Trebuchet MS, Arial, sans-serif";
+        "bold 26px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "📍 LOCAL",
-        cardX + 40,
-        cardY + 235
+        cardX + 45,
+        cardY + 250
     );
 
-
-    /*
-        O texto do local é muito comprido.
-        Será quebrado automaticamente.
-    */
 
     ctx.fillStyle =
         "#ffffff";
@@ -1189,29 +1097,27 @@ function criarImagemConvite() {
         "22px Trebuchet MS, Arial, sans-serif";
 
 
-    const linhasLocal =
+    const localLinhas =
         quebrarTexto(
             ctx,
             CONFIG.local,
-            820
+            cardW - 90
         );
 
 
-    linhasLocal
-        .slice(0, 2)
-        .forEach(
-            (linha, index) => {
+    localLinhas.forEach(
+        (linha, index) => {
 
-                ctx.fillText(
-                    linha,
-                    cardX + 40,
-                    cardY +
-                    273 +
-                    index * 32
-                );
+            ctx.fillText(
+                linha,
+                cardX + 45,
+                cardY +
+                290 +
+                index * 30
+            );
 
-            }
-        );
+        }
+    );
 
 
     /* =====================================================
@@ -1227,13 +1133,13 @@ function criarImagemConvite() {
 
 
     ctx.font =
-        "bold 21px Trebuchet MS, Arial, sans-serif";
+        "bold 20px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "📍 Localização:",
         largura / 2,
-        1170
+        1190
     );
 
 
@@ -1259,8 +1165,8 @@ function criarImagemConvite() {
             ctx.fillText(
                 parte,
                 largura / 2,
-                1205 +
-                index * 26
+                1225 +
+                index * 27
             );
 
         }
@@ -1282,7 +1188,7 @@ function criarImagemConvite() {
     ctx.fillText(
         CONFIG.assinatura,
         largura / 2,
-        1290
+        1300
     );
 
 
@@ -1292,7 +1198,7 @@ function criarImagemConvite() {
 
 
 /* =========================================================
-   BOLHAS
+   BOLHA
 ========================================================= */
 
 function desenharBolha(
@@ -1325,7 +1231,7 @@ function desenharBolha(
 
 
     ctx.strokeStyle =
-        "rgba(255,255,255,0.65)";
+        "rgba(255,255,255,0.6)";
 
 
     ctx.lineWidth =
@@ -1333,29 +1239,6 @@ function desenharBolha(
 
 
     ctx.stroke();
-
-
-    /*
-        Pequeno brilho dentro da bolha.
-    */
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        x - tamanho * 0.3,
-        y - tamanho * 0.3,
-        tamanho * 0.18,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "rgba(255,255,255,0.75)";
-
-
-    ctx.fill();
 
 
     ctx.restore();
@@ -1422,10 +1305,6 @@ function desenharEmojiEspelhado(
         y
     );
 
-
-    /*
-        Espelha horizontalmente o emoji.
-    */
 
     ctx.scale(
         -1,
@@ -1565,8 +1444,7 @@ function quebrarTexto(
     const linhas = [];
 
 
-    let linhaAtual =
-        "";
+    let linhaAtual = "";
 
 
     palavras.forEach(
@@ -1729,7 +1607,7 @@ function baixarConvite() {
 
 
 /* =========================================================
-   LINKS DE PRESENTES
+   PRESENTES
 ========================================================= */
 
 function configurarPresentes() {
@@ -1765,7 +1643,7 @@ function configurarPresentes() {
    ANIMAÇÕES
 ========================================================= */
 
-function prepararAnimacoes() {
+function prepararAnimacaoBau() {
 
     const estilo =
         document.createElement(
@@ -1790,13 +1668,13 @@ function prepararAnimacoes() {
                     rotate(0);
             }
 
-            30% {
+            35% {
                 transform:
                     scale(1.08)
                     rotate(-3deg);
             }
 
-            60% {
+            65% {
                 transform:
                     scale(1.12)
                     rotate(3deg);
@@ -1814,10 +1692,9 @@ function prepararAnimacoes() {
         .concha-processando {
 
             animation:
-                conchaProcessando
-                0.7s
-                ease-in-out
-                infinite alternate !important;
+                conchaProcessando 0.7s
+                ease-in-out infinite alternate
+                !important;
 
         }
 
@@ -1825,26 +1702,34 @@ function prepararAnimacoes() {
         @keyframes conchaProcessando {
 
             from {
-
                 transform:
                     scale(0.95)
                     rotate(-5deg);
-
             }
 
             to {
-
                 transform:
                     scale(1.08)
                     rotate(5deg);
-
             }
 
         }
 
 
-        body.modal-aberto {
-            overflow: hidden;
+        /*
+            Correção dos peixes.
+
+            scaleX(-1) faz com que eles
+            apontem para o lado correto.
+        */
+
+        .peixe,
+        .peixe-profundo,
+        .cardume span {
+
+            transform:
+                scaleX(-1);
+
         }
 
     `;
@@ -1858,7 +1743,7 @@ function prepararAnimacoes() {
 
 
 /* =========================================================
-   ELEMENTOS VISÍVEIS
+   INTERSECTION OBSERVER
 ========================================================= */
 
 function observarElementos() {
@@ -1947,9 +1832,7 @@ function observarSecoes() {
     if (
         !("IntersectionObserver" in window)
     ) {
-
         return;
-
     }
 
 
@@ -1975,7 +1858,7 @@ function observarSecoes() {
 
             },
             {
-                threshold: 0.20
+                threshold: 0.25
             }
         );
 
@@ -2031,15 +1914,6 @@ function configurarFechamentoModais() {
                             "true"
                         );
 
-
-                        document.body.classList.remove(
-                            "modal-aberto"
-                        );
-
-
-                        document.body.style.overflow =
-                            "";
-
                     }
                 );
 
@@ -2050,7 +1924,7 @@ function configurarFechamentoModais() {
 
 
 /* =========================================================
-   TECLA ESC
+   ESC
 ========================================================= */
 
 function configurarTeclaEsc() {
@@ -2062,9 +1936,7 @@ function configurarTeclaEsc() {
             if (
                 evento.key !== "Escape"
             ) {
-
                 return;
-
             }
 
 
@@ -2133,33 +2005,38 @@ function protegerCliqueRapido(
 
 
 /* =========================================================
-   CONFIGURAÇÃO DOS EVENTOS
+   EVENTOS
 ========================================================= */
 
 function configurarEventos() {
 
     /*
-        O antigo botão Mergulhar não controla mais
-        a navegação.
+        Se o botão de mergulho ainda estiver
+        no HTML antigo, ele simplesmente
+        ficará desativado.
+
+        Isso evita a transição problemática
+        no celular.
     */
 
-    desativarMergulho();
+    if (btnMergulhar) {
+
+        btnMergulhar.style.display =
+            "none";
+
+    }
 
 
-    /*
-        BAÚ
-    */
+    /* BAÚ */
 
     protegerCliqueRapido(
         bauTesouro,
         abrirBau,
-        1000
+        900
     );
 
 
-    /*
-        CONCHA
-    */
+    /* CONCHA */
 
     protegerCliqueRapido(
         conchaConvite,
@@ -2168,9 +2045,7 @@ function configurarEventos() {
     );
 
 
-    /*
-        FECHAR CARTA
-    */
+    /* FECHAR CARTA */
 
     if (fecharCarta) {
 
@@ -2182,9 +2057,7 @@ function configurarEventos() {
     }
 
 
-    /*
-        FECHAR DOWNLOAD
-    */
+    /* FECHAR DOWNLOAD */
 
     if (fecharDownload) {
 
@@ -2196,9 +2069,7 @@ function configurarEventos() {
     }
 
 
-    /*
-        DOWNLOAD
-    */
+    /* DOWNLOAD */
 
     if (downloadConvite) {
 
@@ -2210,23 +2081,9 @@ function configurarEventos() {
     }
 
 
-    /*
-        PRESENTES
-    */
-
     configurarPresentes();
 
-
-    /*
-        MODAIS
-    */
-
     configurarFechamentoModais();
-
-
-    /*
-        ESC
-    */
 
     configurarTeclaEsc();
 
@@ -2239,9 +2096,22 @@ function configurarEventos() {
 
 function prepararPagina() {
 
+    carregarDadosDaFesta();
+
+    prepararAnimacaoBau();
+
+    corrigirDirecaoPeixes();
+
+    observarElementos();
+
+    observarSecoes();
+
+    configurarEventos();
+
 
     /*
-        Garante que os modais comecem fechados.
+        Garantimos que os modais
+        comecem fechados.
     */
 
     if (modalCarta) {
@@ -2249,7 +2119,6 @@ function prepararPagina() {
         modalCarta.classList.remove(
             "ativo"
         );
-
 
         modalCarta.setAttribute(
             "aria-hidden",
@@ -2265,43 +2134,12 @@ function prepararPagina() {
             "ativo"
         );
 
-
         modalDownload.setAttribute(
             "aria-hidden",
             "true"
         );
 
     }
-
-
-    /*
-        Carrega dados.
-    */
-
-    carregarDadosDaFesta();
-
-
-    /*
-        Prepara animações.
-    */
-
-    prepararAnimacoes();
-
-
-    /*
-        Observadores.
-    */
-
-    observarElementos();
-
-    observarSecoes();
-
-
-    /*
-        Eventos.
-    */
-
-    configurarEventos();
 
 }
 
@@ -2341,7 +2179,6 @@ console.log(
 console.log(
     "📅 28 de novembro de 2026 — 13:00"
 );
-
 console.log(
     "🏊 Local com piscina — Uso infantil liberado com acompanhamento de responsável"
 );
