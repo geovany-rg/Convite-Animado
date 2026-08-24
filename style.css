@@ -1,1 +1,1186 @@
+/* =========================================================
+   CONVITE SOPHIA EMANUELY
+   PARTE 1 — TELA DE ENTRADA
+   ========================================================= */
 
+
+/* =========================================================
+   1. CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    background: #03152f;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   2. TELA DE ENTRADA
+   ========================================================= */
+
+.entrada {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    min-height: 100svh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(87, 230, 235, 0.30),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 75%,
+            rgba(79, 73, 180, 0.25),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(74, 187, 207, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #063b63 0%,
+            #052f57 27%,
+            #08264d 57%,
+            #071d42 78%,
+            #03152f 100%
+        );
+}
+
+
+/* =========================================================
+   3. LUZ DA SUPERFÍCIE DO OCEANO
+   ========================================================= */
+
+.luz-oceano {
+    position: absolute;
+
+    top: -25%;
+    left: 50%;
+
+    width: 90vw;
+    height: 75vh;
+
+    transform:
+        translateX(-50%)
+        rotate(-4deg);
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent 0%,
+            rgba(175, 255, 255, 0.04) 25%,
+            rgba(210, 255, 255, 0.18) 50%,
+            rgba(175, 255, 255, 0.04) 75%,
+            transparent 100%
+        );
+
+    filter: blur(15px);
+
+    opacity: 0.8;
+
+    pointer-events: none;
+
+    animation: movimentoLuz 8s ease-in-out infinite alternate;
+
+    z-index: -1;
+}
+
+@keyframes movimentoLuz {
+
+    from {
+        transform:
+            translateX(-55%)
+            rotate(-6deg);
+    }
+
+    to {
+        transform:
+            translateX(-45%)
+            rotate(5deg);
+    }
+}
+
+
+/* =========================================================
+   4. PROFUNDIDADE DO OCEANO
+   ========================================================= */
+
+.entrada::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 25%,
+            rgba(0, 10, 35, 0.15) 55%,
+            rgba(0, 5, 25, 0.55) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   5. CONTEÚDO CENTRAL
+   ========================================================= */
+
+.conteudo-entrada {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(92%, 650px);
+
+    padding:
+        40px
+        25px
+        50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   6. PERSONAGEM / SEREIA
+   ========================================================= */
+
+.personagem {
+    position: relative;
+
+    width: 230px;
+    height: 260px;
+
+    margin-bottom: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        flutuarSereia
+        5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes flutuarSereia {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(1deg);
+    }
+}
+
+
+/* =========================================================
+   7. BRILHO ATRÁS DA SEREIA
+   ========================================================= */
+
+.brilho-personagem {
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(121, 244, 255, 0.32),
+            rgba(121, 244, 255, 0.12) 35%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        pulsarBrilho
+        4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes pulsarBrilho {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.08);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   8. SILHUETA TEMPORÁRIA DA SEREIA
+   ========================================================= */
+
+.silhueta-sereia {
+    position: relative;
+
+    width: 100px;
+    height: 210px;
+
+    opacity: 0.85;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(126, 244, 255, 0.45)
+        );
+}
+
+
+/* Cabeça */
+
+.silhueta-sereia::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+    left: 35px;
+
+    width: 32px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 30%,
+            #d9fbff,
+            #83d9e9 65%,
+            #4695b7
+        );
+}
+
+
+/* Corpo */
+
+.silhueta-sereia .corpo {
+    position: absolute;
+
+    top: 38px;
+    left: 40px;
+
+    width: 24px;
+    height: 72px;
+
+    border-radius:
+        45%
+        45%
+        35%
+        35%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6bc9dc,
+            #d0fbff,
+            #5fbfd5
+        );
+
+    transform: rotate(2deg);
+}
+
+
+/* Cauda */
+
+.silhueta-sereia .cauda {
+    position: absolute;
+
+    left: 25px;
+    top: 92px;
+
+    width: 70px;
+    height: 95px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9df4ee,
+            #58cfd4 50%,
+            #377fbe
+        );
+
+    clip-path:
+        polygon(
+            50% 0%,
+            65% 35%,
+            100% 55%,
+            67% 58%,
+            88% 100%,
+            50% 74%,
+            12% 100%,
+            33% 58%,
+            0% 55%,
+            35% 35%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(122, 245, 255, 0.5)
+        );
+}
+
+
+/* =========================================================
+   9. DECORAÇÃO SUPERIOR
+   ========================================================= */
+
+.decoracao-superior {
+    margin-top: 0;
+
+    margin-bottom: 12px;
+
+    font-size: 24px;
+
+    color: #d5ffff;
+
+    text-shadow:
+        0 0 8px rgba(191, 255, 255, 0.9),
+        0 0 18px rgba(95, 228, 255, 0.8);
+
+    animation:
+        brilhoEstrela
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes brilhoEstrela {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   10. NOME
+   ========================================================= */
+
+.nome-aniversariante {
+    position: relative;
+
+    font-size:
+        clamp(
+            2.6rem,
+            8vw,
+            4.8rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(161, 250, 255, 0.65),
+        0 0 25px rgba(83, 214, 234, 0.35);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   11. IDADE
+   ========================================================= */
+
+.idade {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+.idade span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            3.5rem,
+            11vw,
+            5.5rem
+        );
+
+    font-weight: 300;
+
+    line-height: 0.9;
+
+    color: #b8ffff;
+
+    text-shadow:
+        0 0 12px rgba(129, 248, 255, 0.9),
+        0 0 30px rgba(70, 211, 235, 0.55);
+}
+
+.idade small {
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 4px;
+
+    color: rgba(225, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   12. FRASE
+   ========================================================= */
+
+.frase-entrada {
+    max-width: 420px;
+
+    margin-bottom: 30px;
+
+    font-size:
+        clamp(
+            1rem,
+            3.5vw,
+            1.25rem
+        );
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: rgba(230, 255, 255, 0.86);
+}
+
+
+/* =========================================================
+   13. BOTÃO
+   ========================================================= */
+
+.botao-entrada {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    min-width: 245px;
+
+    padding:
+        16px
+        24px;
+
+    border:
+        1px solid
+        rgba(190, 255, 255, 0.55);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98, 221, 224, 0.22),
+            rgba(80, 119, 218, 0.24)
+        );
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 1rem;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px
+        rgba(98, 226, 238, 0.18),
+
+        inset 0 0 15px
+        rgba(202, 255, 255, 0.05);
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.botao-entrada:hover {
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98, 221, 224, 0.35),
+            rgba(80, 119, 218, 0.38)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(105, 239, 255, 0.35);
+}
+
+.botao-entrada:active {
+    transform:
+        scale(0.97);
+}
+
+.icone-botao {
+    font-size: 1.15rem;
+}
+
+.seta-botao {
+    font-family: Arial, sans-serif;
+
+    font-size: 1.25rem;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.botao-entrada:hover .seta-botao {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   14. INDICADOR
+   ========================================================= */
+
+.indicador {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: rgba(206, 249, 255, 0.5);
+}
+
+.indicador-linha {
+    width: 25px;
+    height: 1px;
+
+    background:
+        rgba(200, 255, 255, 0.3);
+}
+
+
+/* =========================================================
+   15. BOLHAS
+   ========================================================= */
+
+.bolhas {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.bolha {
+    position: absolute;
+
+    bottom: -80px;
+
+    display: block;
+
+    border:
+        1px solid
+        rgba(210, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.45),
+            rgba(130, 240, 255, 0.08) 45%,
+            transparent 70%
+        );
+
+    box-shadow:
+        inset 0 0 8px
+        rgba(210, 255, 255, 0.25),
+
+        0 0 8px
+        rgba(140, 244, 255, 0.12);
+
+    animation:
+        subirBolha
+        linear
+        infinite;
+}
+
+.bolha-1 {
+    left: 8%;
+
+    width: 16px;
+    height: 16px;
+
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.bolha-2 {
+    left: 17%;
+
+    width: 8px;
+    height: 8px;
+
+    animation-duration: 7s;
+    animation-delay: 3s;
+}
+
+.bolha-3 {
+    left: 28%;
+
+    width: 23px;
+    height: 23px;
+
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.bolha-4 {
+    left: 39%;
+
+    width: 10px;
+    height: 10px;
+
+    animation-duration: 8s;
+    animation-delay: 4s;
+}
+
+.bolha-5 {
+    left: 51%;
+
+    width: 18px;
+    height: 18px;
+
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.bolha-6 {
+    left: 62%;
+
+    width: 7px;
+    height: 7px;
+
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.bolha-7 {
+    left: 72%;
+
+    width: 26px;
+    height: 26px;
+
+    animation-duration: 13s;
+    animation-delay: 5s;
+}
+
+.bolha-8 {
+    left: 81%;
+
+    width: 11px;
+    height: 11px;
+
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.bolha-9 {
+    left: 91%;
+
+    width: 18px;
+    height: 18px;
+
+    animation-duration: 11s;
+    animation-delay: 6s;
+}
+
+.bolha-10 {
+    left: 46%;
+
+    width: 5px;
+    height: 5px;
+
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+@keyframes subirBolha {
+
+    0% {
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            )
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    50% {
+        transform:
+            translate3d(
+                25px,
+                -50vh,
+                0
+            )
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate3d(
+                -30px,
+                -115vh,
+                0
+            )
+            scale(1.15);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   16. PARTÍCULAS
+   ========================================================= */
+
+.particulas {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.particulas span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #d9ffff;
+
+    box-shadow:
+        0 0 7px
+        rgba(220, 255, 255, 0.9);
+
+    animation:
+        piscarParticula
+        ease-in-out
+        infinite;
+}
+
+.particulas span:nth-child(1) {
+    top: 18%;
+    left: 13%;
+
+    animation-duration: 3s;
+}
+
+.particulas span:nth-child(2) {
+    top: 32%;
+    left: 78%;
+
+    animation-duration: 4s;
+}
+
+.particulas span:nth-child(3) {
+    top: 48%;
+    left: 9%;
+
+    animation-duration: 2.5s;
+}
+
+.particulas span:nth-child(4) {
+    top: 62%;
+    left: 87%;
+
+    animation-duration: 3.5s;
+}
+
+.particulas span:nth-child(5) {
+    top: 73%;
+    left: 25%;
+
+    animation-duration: 4.5s;
+}
+
+.particulas span:nth-child(6) {
+    top: 24%;
+    left: 58%;
+
+    animation-duration: 2.8s;
+}
+
+.particulas span:nth-child(7) {
+    top: 79%;
+    left: 68%;
+
+    animation-duration: 3.8s;
+}
+
+.particulas span:nth-child(8) {
+    top: 43%;
+    left: 93%;
+
+    animation-duration: 2.2s;
+}
+
+.particulas span:nth-child(9) {
+    top: 13%;
+    left: 39%;
+
+    animation-duration: 4.2s;
+}
+
+.particulas span:nth-child(10) {
+    top: 67%;
+    left: 52%;
+
+    animation-duration: 3.1s;
+}
+
+@keyframes piscarParticula {
+
+    0%,
+    100% {
+        opacity: 0.15;
+
+        transform:
+            scale(0.6);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.6);
+    }
+}
+
+
+/* =========================================================
+   17. CORAIS DECORATIVOS
+   ========================================================= */
+
+.coral {
+    position: absolute;
+
+    bottom: -5px;
+
+    font-size:
+        clamp(
+            4rem,
+            12vw,
+            7rem
+        );
+
+    opacity: 0.32;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(60, 230, 235, 0.18)
+        );
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+.coral-esquerda {
+    left: -15px;
+
+    transform:
+        rotate(-8deg);
+}
+
+.coral-direita {
+    right: -15px;
+
+    transform:
+        rotate(8deg)
+        scaleX(-1);
+}
+
+.concha-decorativa {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 2.5rem;
+
+    opacity: 0.35;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255, 190, 235, 0.35)
+        );
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   18. FUTURO MUNDO DO OCEANO
+   ========================================================= */
+
+.mundo-oceano {
+    display: none;
+}
+
+
+/* =========================================================
+   19. RESPONSIVIDADE — CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .conteudo-entrada {
+        padding:
+            25px
+            18px
+            45px;
+    }
+
+    .personagem {
+        width: 190px;
+        height: 220px;
+    }
+
+    .brilho-personagem {
+        width: 180px;
+        height: 180px;
+    }
+
+    .silhueta-sereia {
+        transform: scale(0.88);
+    }
+
+    .nome-aniversariante {
+        letter-spacing: 0;
+
+        text-shadow:
+            0 0 10px
+            rgba(161, 250, 255, 0.6);
+    }
+
+    .frase-entrada {
+        max-width: 330px;
+
+        line-height: 1.6;
+    }
+
+    .botao-entrada {
+        min-width: 225px;
+
+        padding:
+            15px
+            20px;
+    }
+
+    .indicador {
+        font-size: 0.56rem;
+
+        letter-spacing: 1.5px;
+    }
+
+    .coral {
+        opacity: 0.22;
+    }
+
+    .concha-decorativa {
+        bottom: 15px;
+    }
+}
+
+
+/* =========================================================
+   20. CELULARES MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .personagem {
+        width: 160px;
+        height: 190px;
+
+        margin-bottom: 0;
+    }
+
+    .brilho-personagem {
+        width: 150px;
+        height: 150px;
+    }
+
+    .silhueta-sereia {
+        transform: scale(0.75);
+    }
+
+    .nome-aniversariante {
+        font-size: 2.3rem;
+    }
+
+    .idade span {
+        font-size: 3.5rem;
+    }
+
+    .frase-entrada {
+        font-size: 0.92rem;
+    }
+
+    .botao-entrada {
+        min-width: 210px;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================================
+   21. USUÁRIOS QUE PREFEREM MENOS MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
