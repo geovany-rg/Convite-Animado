@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -17,21 +19,39 @@
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
+
     <!-- =====================================================
-         TELA DE ENTRADA
+         PARTE 1 — TELA DE ENTRADA
          ===================================================== -->
 
-    <main class="entrada" id="entrada">
+    <main
+        class="entrada"
+        id="entrada"
+    >
 
-        <!-- Efeito de luz vindo da superfície -->
+
+        <!-- =================================================
+             LUZ DA SUPERFÍCIE
+             ================================================= -->
+
         <div class="luz-oceano"></div>
 
-        <!-- Pequenas partículas brilhantes -->
-        <div class="particulas" aria-hidden="true">
+
+        <!-- =================================================
+             PARTÍCULAS
+             ================================================= -->
+
+        <div
+            class="particulas"
+            aria-hidden="true"
+        >
+
             <span></span>
             <span></span>
             <span></span>
@@ -42,10 +62,18 @@
             <span></span>
             <span></span>
             <span></span>
+
         </div>
 
-        <!-- Bolhas -->
-        <div class="bolhas" aria-hidden="true">
+
+        <!-- =================================================
+             BOLHAS
+             ================================================= -->
+
+        <div
+            class="bolhas"
+            aria-hidden="true"
+        >
 
             <span class="bolha bolha-1"></span>
             <span class="bolha bolha-2"></span>
@@ -67,287 +95,479 @@
 
         <section class="conteudo-entrada">
 
-            <!-- Espaço reservado para a futura sereia -->
-            <div class="personagem" aria-label="Sereia">
+
+            <!-- =================================================
+                 SEREIA TEMPORÁRIA
+                 ================================================= -->
+
+            <div
+                class="personagem"
+                aria-label="Sereia"
+            >
 
                 <div class="brilho-personagem"></div>
 
+
                 <div class="silhueta-sereia">
+
                     <span class="cauda"></span>
+
                     <span class="corpo"></span>
+
                 </div>
 
             </div>
 
 
-            <!-- Pequeno elemento decorativo -->
+            <!-- =================================================
+                 DECORAÇÃO
+                 ================================================= -->
+
             <div class="decoracao-superior">
+
                 ✦
+
             </div>
 
 
-            <!-- Nome -->
+            <!-- =================================================
+                 NOME
+                 ================================================= -->
+
             <h1 class="nome-aniversariante">
+
                 Sophia Emanuely
+
             </h1>
 
 
-            <!-- Idade -->
+            <!-- =================================================
+                 IDADE
+                 ================================================= -->
+
             <div class="idade">
+
                 <span>4</span>
+
                 <small>ANOS</small>
+
             </div>
 
 
-            <!-- Frase -->
+            <!-- =================================================
+                 FRASE DE ENTRADA
+                 ================================================= -->
+
             <p class="frase-entrada">
+
                 Uma pequena aventura está prestes a começar...
+
             </p>
 
 
-            <!-- Botão -->
+            <!-- =================================================
+                 BOTÃO
+                 ================================================= -->
+
             <button
                 class="botao-entrada"
                 id="botaoEntrada"
                 type="button"
             >
-                <span class="icone-botao">🌊</span>
+
+                <span class="icone-botao">
+                    🌊
+                </span>
+
 
                 <span>
                     Entrar na aventura
                 </span>
 
-                <span class="seta-botao">→</span>
+
+                <span class="seta-botao">
+                    →
+                </span>
+
             </button>
 
 
-            <!-- Indicação visual -->
+            <!-- =================================================
+                 INDICADOR
+                 ================================================= -->
+
             <div class="indicador">
+
                 <span class="indicador-linha"></span>
+
 
                 <span>
                     mergulhe para descobrir
                 </span>
 
+
                 <span class="indicador-linha"></span>
+
             </div>
+
 
         </section>
 
 
         <!-- =================================================
-             ELEMENTOS DECORATIVOS DO FUNDO
+             DECORAÇÕES DO FUNDO
              ================================================= -->
 
-        <div class="coral coral-esquerda" aria-hidden="true">
+        <div
+            class="coral coral-esquerda"
+            aria-hidden="true"
+        >
+
             🪸
+
         </div>
 
-        <div class="coral coral-direita" aria-hidden="true">
+
+        <div
+            class="coral coral-direita"
+            aria-hidden="true"
+        >
+
             🪸
+
         </div>
 
-        <div class="concha-decorativa" aria-hidden="true">
+
+        <div
+            class="concha-decorativa"
+            aria-hidden="true"
+        >
+
             🐚
+
         </div>
+
 
     </main>
 
 
+
     <!-- =====================================================
-         FUTURA ÁREA DO CONVITE
-         
-         Ainda não será utilizada.
-         Vamos construir nas próximas etapas.
+         PARTE 2 — OCEANO ENCANTADO
          ===================================================== -->
 
-    <!-- =====================================================
-     PARTE 2 — OCEANO ENCANTADO
-     ===================================================== -->
-
-<section
-    class="mundo-oceano"
-    id="mundoOceano"
-    aria-hidden="true"
->
-
-    <!-- Fundo de luz -->
-    <div class="luz-fundo-oceano"></div>
-
-
-    <!-- Bolhas -->
-    <div class="bolhas-oceano" aria-hidden="true">
-
-        <span class="bolha-oceano bolha-oceano-1"></span>
-        <span class="bolha-oceano bolha-oceano-2"></span>
-        <span class="bolha-oceano bolha-oceano-3"></span>
-        <span class="bolha-oceano bolha-oceano-4"></span>
-        <span class="bolha-oceano bolha-oceano-5"></span>
-        <span class="bolha-oceano bolha-oceano-6"></span>
-        <span class="bolha-oceano bolha-oceano-7"></span>
-        <span class="bolha-oceano bolha-oceano-8"></span>
-
-    </div>
-
-
-    <!-- Pequenos brilhos -->
-    <div class="brilhos-oceano" aria-hidden="true">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </div>
-
-
-    <!-- Decoração -->
-    <div
-        class="concha-oceano concha-esquerda"
+    <section
+        class="mundo-oceano"
+        id="mundoOceano"
         aria-hidden="true"
     >
-        🐚
-    </div>
-
-    <div
-        class="concha-oceano concha-direita"
-        aria-hidden="true"
-    >
-        🐚
-    </div>
 
 
-    <!-- Conteúdo principal -->
+        <!-- =================================================
+             LUZ DO OCEANO
+             ================================================= -->
 
-    <div class="conteudo-oceano">
-
-
-        <!-- Pequena introdução -->
-
-        <div class="ornamento-oceano">
-
-            ✦
-            <span>UM OCEANO ENCANTADO</span>
-            ✦
-
-        </div>
+        <div class="luz-fundo-oceano"></div>
 
 
-        <!-- Nome -->
+        <!-- =================================================
+             BOLHAS
+             ================================================= -->
 
-        <h1 class="nome-oceano">
-            Sophia Emanuely
-        </h1>
+        <div
+            class="bolhas-oceano"
+            aria-hidden="true"
+        >
 
-
-        <!-- Idade -->
-
-        <div class="idade-oceano">
-
-            <strong>4</strong>
-
-            <span>anos</span>
-
-        </div>
+            <span
+                class="bolha-oceano bolha-oceano-1"
+            ></span>
 
 
-        <!-- Espaço reservado para a futura sereia -->
-
-        <div class="sereia-oceano">
-
-            <div class="halo-sereia"></div>
-
-            <div class="sereia-placeholder">
-
-                <span>🧜‍♀️</span>
-
-            </div>
-
-        </div>
+            <span
+                class="bolha-oceano bolha-oceano-2"
+            ></span>
 
 
-        <!-- Mensagem -->
-
-        <div class="mensagem-oceano">
-
-            <p class="frase-principal-oceano">
-
-                Uma pequena sereia está pronta
-                para viver uma aventura muito especial...
-
-            </p>
+            <span
+                class="bolha-oceano bolha-oceano-3"
+            ></span>
 
 
-            <div class="divisor-oceano">
-
-                <span></span>
-                🐚
-                <span></span>
-
-            </div>
+            <span
+                class="bolha-oceano bolha-oceano-4"
+            ></span>
 
 
-            <p class="frase-convite-oceano">
-
-                A sua presença é a joia mais preciosa
-                do nosso oceano!
-
-            </p>
+            <span
+                class="bolha-oceano bolha-oceano-5"
+            ></span>
 
 
-            <p class="frase-tesouro-oceano">
+            <span
+                class="bolha-oceano bolha-oceano-6"
+            ></span>
 
-                Mas se quiser ajudar a escolher um
-                tesouro mágico para essa aventura...
 
-            </p>
+            <span
+                class="bolha-oceano bolha-oceano-7"
+            ></span>
+
+
+            <span
+                class="bolha-oceano bolha-oceano-8"
+            ></span>
 
         </div>
 
 
-        <!-- Indicador para continuar -->
+        <!-- =================================================
+             PEQUENOS BRILHOS
+             ================================================= -->
 
-        <div class="continuar-oceano">
+        <div
+            class="brilhos-oceano"
+            aria-hidden="true"
+        >
 
-            <span>continue descendo</span>
-
-            <div class="seta-descer">
-
-                ↓
-
-            </div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
 
         </div>
 
 
-    </div>
+        <!-- =================================================
+             CONCHAS DECORATIVAS
+             ================================================= -->
 
+        <div
+            class="concha-oceano concha-esquerda"
+            aria-hidden="true"
+        >
 
-    <!-- Fundo do oceano -->
-
-    <div class="fundo-mar">
-
-        <div class="coral-mar coral-mar-1">
-            🪸
-        </div>
-
-        <div class="coral-mar coral-mar-2">
-            🪸
-        </div>
-
-        <div class="concha-mar">
             🐚
+
         </div>
 
-    </div>
 
-</section>
+        <div
+            class="concha-oceano concha-direita"
+            aria-hidden="true"
+        >
+
+            🐚
+
+        </div>
 
 
-    <!-- JavaScript principal -->
+
+        <!-- =================================================
+             CONTEÚDO PRINCIPAL DO OCEANO
+             ================================================= -->
+
+        <div class="conteudo-oceano">
+
+
+            <!-- =================================================
+                 TÍTULO DO OCEANO
+                 ================================================= -->
+
+            <div class="ornamento-oceano">
+
+                ✦
+
+                <span>
+                    UM OCEANO ENCANTADO
+                </span>
+
+                ✦
+
+            </div>
+
+
+            <!-- =================================================
+                 NOME
+                 ================================================= -->
+
+            <h1 class="nome-oceano">
+
+                Sophia Emanuely
+
+            </h1>
+
+
+            <!-- =================================================
+                 IDADE
+                 ================================================= -->
+
+            <div class="idade-oceano">
+
+                <strong>
+                    4
+                </strong>
+
+                <span>
+                    anos
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 SEREIA
+                 ================================================= -->
+
+            <div class="sereia-oceano">
+
+
+                <div class="halo-sereia"></div>
+
+
+                <!--
+                    Sereia temporária.
+
+                    Mais tarde vamos substituir
+                    por uma arte definitiva.
+                -->
+
+                <div class="sereia-placeholder">
+
+                    <span>
+                        🧜‍♀️
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MENSAGEM DA SOPHIA
+                 ================================================= -->
+
+            <div class="mensagem-oceano">
+
+
+                <p class="frase-principal-oceano">
+
+                    Uma pequena sereia está pronta
+                    para viver uma aventura muito especial...
+
+                </p>
+
+
+                <!-- =================================================
+                     DIVISOR
+                     ================================================= -->
+
+                <div class="divisor-oceano">
+
+                    <span></span>
+
+                    🐚
+
+                    <span></span>
+
+                </div>
+
+
+                <!-- =================================================
+                     FRASE PRINCIPAL
+                     ================================================= -->
+
+                <p class="frase-convite-oceano">
+
+                    A sua presença é a joia mais preciosa
+                    do nosso oceano!
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INDICAÇÃO PARA CONTINUAR
+                 ================================================= -->
+
+            <div class="continuar-oceano">
+
+                <span>
+                    continue a aventura
+                </span>
+
+
+                <div class="seta-descer">
+
+                    ↓
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FUNDO DO MAR
+             ================================================= -->
+
+        <div class="fundo-mar">
+
+
+            <div
+                class="coral-mar coral-mar-1"
+                aria-hidden="true"
+            >
+
+                🪸
+
+            </div>
+
+
+            <div
+                class="coral-mar coral-mar-2"
+                aria-hidden="true"
+            >
+
+                🪸
+
+            </div>
+
+
+            <div
+                class="concha-mar"
+                aria-hidden="true"
+            >
+
+                🐚
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
