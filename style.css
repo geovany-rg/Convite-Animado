@@ -1328,3 +1328,1230 @@ body {
     opacity: 1;
 
 }
+/* =========================================================
+   PARTE 2 — OCEANO ENCANTADO
+   ========================================================= */
+
+
+/* =========================================================
+   1. FUNDO PRINCIPAL
+   ========================================================= */
+
+.mundo-oceano {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(91, 229, 237, 0.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 20% 60%,
+            rgba(59, 108, 196, 0.18),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #06345b 0%,
+            #052c53 30%,
+            #041f43 65%,
+            #03142e 100%
+        );
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.7s ease;
+
+}
+
+
+/* =========================================================
+   2. LUZ AO FUNDO
+   ========================================================= */
+
+.luz-fundo-oceano {
+
+    position: absolute;
+
+    top: -20%;
+    left: 50%;
+
+    width: 90vw;
+    height: 70vh;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(173, 250, 255, 0.16),
+            transparent 65%
+        );
+
+    pointer-events: none;
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================================================
+   3. CONTEÚDO
+   ========================================================= */
+
+.conteudo-oceano {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: min(92%, 650px);
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding:
+        55px
+        20px
+        90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   4. ORNAMENTO
+   ========================================================= */
+
+.ornamento-oceano {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            208,
+            255,
+            255,
+            0.7
+        );
+
+    text-shadow:
+        0 0 8px
+        rgba(
+            120,
+            240,
+            255,
+            0.5
+        );
+
+}
+
+
+.ornamento-oceano span {
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   5. NOME
+   ========================================================= */
+
+.nome-oceano {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            8vw,
+            4.5rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            166,
+            249,
+            255,
+            0.65
+        ),
+
+        0 0 30px
+        rgba(
+            70,
+            211,
+            235,
+            0.28
+        );
+
+}
+
+
+/* =========================================================
+   6. IDADE
+   ========================================================= */
+
+.idade-oceano {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    color:
+        rgba(
+            218,
+            255,
+            255,
+            0.8
+        );
+
+}
+
+
+.idade-oceano strong {
+
+    font-size: 2.1rem;
+
+    font-weight: 300;
+
+    color: #b9ffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            113,
+            239,
+            255,
+            0.6
+        );
+
+}
+
+
+.idade-oceano span {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   7. ÁREA DA SEREIA
+   ========================================================= */
+
+.sereia-oceano {
+
+    position: relative;
+
+    width: 190px;
+    height: 180px;
+
+    margin:
+        8px
+        0
+        5px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        flutuarSereiaOceano
+        5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes flutuarSereiaOceano {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px);
+
+    }
+
+}
+
+
+/* =========================================================
+   8. HALO
+   ========================================================= */
+
+.halo-sereia {
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                118,
+                239,
+                247,
+                0.25
+            ),
+
+            rgba(
+                118,
+                239,
+                247,
+                0.08
+            ) 40%,
+
+            transparent 70%
+        );
+
+}
+
+
+/* =========================================================
+   9. MARCADOR TEMPORÁRIO
+   ========================================================= */
+
+.sereia-placeholder {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            140,
+            240,
+            245,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            184,
+            255,
+            255,
+            0.18
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            98,
+            228,
+            240,
+            0.12
+        );
+
+}
+
+
+.sereia-placeholder span {
+
+    font-size: 4rem;
+
+    filter: none;
+
+}
+
+
+/* =========================================================
+   10. MENSAGEM
+   ========================================================= */
+
+.mensagem-oceano {
+
+    width: min(
+        100%,
+        540px
+    );
+
+}
+
+
+.frase-principal-oceano {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            1rem,
+            3.5vw,
+            1.18rem
+        );
+
+    line-height: 1.65;
+
+    color:
+        rgba(
+            230,
+            255,
+            255,
+            0.86
+        );
+
+    font-style: italic;
+
+}
+
+
+.frase-convite-oceano {
+
+    margin:
+        20px
+        auto
+        8px;
+
+    max-width: 490px;
+
+    font-size:
+        clamp(
+            1.08rem,
+            3.8vw,
+            1.35rem
+        );
+
+    line-height: 1.55;
+
+    color: #d8ffff;
+
+    text-shadow:
+        0 0 10px
+        rgba(
+            111,
+            239,
+            248,
+            0.25
+        );
+
+}
+
+
+.frase-tesouro-oceano {
+
+    margin: 0 auto;
+
+    max-width: 450px;
+
+    font-size:
+        clamp(
+            0.92rem,
+            3vw,
+            1.05rem
+        );
+
+    line-height: 1.65;
+
+    color:
+        rgba(
+            217,
+            249,
+            255,
+            0.7
+        );
+
+    font-style: italic;
+
+}
+
+
+/* =========================================================
+   11. DIVISOR
+   ========================================================= */
+
+.divisor-oceano {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        12px
+        auto;
+
+    width: min(
+        80%,
+        300px
+    );
+
+    color:
+        rgba(
+            200,
+            255,
+            255,
+            0.55
+        );
+
+}
+
+
+.divisor-oceano span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(
+                180,
+                255,
+                255,
+                0.4
+            ),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   12. INDICADOR DE SCROLL
+   ========================================================= */
+
+.continuar-oceano {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(
+            210,
+            250,
+            255,
+            0.45
+        );
+
+}
+
+
+.seta-descer {
+
+    font-size: 1.4rem;
+
+    color:
+        rgba(
+            195,
+            255,
+            255,
+            0.7
+        );
+
+    animation:
+        setaDescer
+        1.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes setaDescer {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(7px);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   13. BOLHAS DO OCEANO
+   ========================================================= */
+
+.bolhas-oceano {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+}
+
+
+.bolha-oceano {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    border:
+        1px solid
+        rgba(
+            205,
+            255,
+            255,
+            0.35
+        );
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    animation:
+        bolhaOceanoSubindo
+        linear
+        infinite;
+
+}
+
+
+.bolha-oceano-1 {
+
+    left: 8%;
+
+    width: 10px;
+    height: 10px;
+
+    animation-duration: 9s;
+}
+
+
+.bolha-oceano-2 {
+
+    left: 21%;
+
+    width: 6px;
+    height: 6px;
+
+    animation-duration: 7s;
+
+    animation-delay: 2s;
+}
+
+
+.bolha-oceano-3 {
+
+    left: 34%;
+
+    width: 15px;
+    height: 15px;
+
+    animation-duration: 11s;
+
+    animation-delay: 4s;
+}
+
+
+.bolha-oceano-4 {
+
+    left: 48%;
+
+    width: 7px;
+    height: 7px;
+
+    animation-duration: 8s;
+
+    animation-delay: 1s;
+}
+
+
+.bolha-oceano-5 {
+
+    left: 62%;
+
+    width: 12px;
+    height: 12px;
+
+    animation-duration: 10s;
+
+    animation-delay: 3s;
+}
+
+
+.bolha-oceano-6 {
+
+    left: 74%;
+
+    width: 6px;
+    height: 6px;
+
+    animation-duration: 7s;
+
+    animation-delay: 5s;
+}
+
+
+.bolha-oceano-7 {
+
+    left: 85%;
+
+    width: 17px;
+    height: 17px;
+
+    animation-duration: 12s;
+
+    animation-delay: 2s;
+}
+
+
+.bolha-oceano-8 {
+
+    left: 94%;
+
+    width: 8px;
+    height: 8px;
+
+    animation-duration: 8s;
+
+    animation-delay: 4s;
+}
+
+
+@keyframes bolhaOceanoSubindo {
+
+    0% {
+
+        transform:
+            translateY(0);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.65;
+
+    }
+
+    100% {
+
+        transform:
+            translate(
+                15px,
+                -110vh
+            );
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   14. BRILHOS
+   ========================================================= */
+
+.brilhos-oceano {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 6;
+
+}
+
+
+.brilhos-oceano span {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        #d9ffff;
+
+    box-shadow:
+        0 0 7px
+        rgba(
+            205,
+            255,
+            255,
+            0.9
+        );
+
+    animation:
+        brilhoOceano
+        ease-in-out
+        infinite;
+
+}
+
+
+.brilhos-oceano span:nth-child(1) {
+
+    top: 15%;
+    left: 13%;
+
+    animation-duration: 3s;
+
+}
+
+
+.brilhos-oceano span:nth-child(2) {
+
+    top: 25%;
+    left: 82%;
+
+    animation-duration: 4s;
+
+}
+
+
+.brilhos-oceano span:nth-child(3) {
+
+    top: 48%;
+    left: 8%;
+
+    animation-duration: 2.5s;
+
+}
+
+
+.brilhos-oceano span:nth-child(4) {
+
+    top: 60%;
+    left: 90%;
+
+    animation-duration: 3.5s;
+
+}
+
+
+.brilhos-oceano span:nth-child(5) {
+
+    top: 72%;
+    left: 20%;
+
+    animation-duration: 4s;
+
+}
+
+
+.brilhos-oceano span:nth-child(6) {
+
+    top: 38%;
+    left: 93%;
+
+    animation-duration: 2.8s;
+
+}
+
+
+@keyframes brilhoOceano {
+
+    0%,
+    100% {
+
+        opacity: 0.15;
+
+        transform:
+            scale(0.6);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.6);
+
+    }
+
+}
+
+
+/* =========================================================
+   15. CONCHAS
+   ========================================================= */
+
+.concha-oceano {
+
+    position: absolute;
+
+    z-index: 10;
+
+    font-size:
+        clamp(
+            2rem,
+            7vw,
+            4rem
+        );
+
+    opacity: 0.2;
+
+    filter: none;
+
+    pointer-events: none;
+
+}
+
+
+.concha-esquerda {
+
+    left: 4%;
+
+    bottom: 17%;
+
+    transform:
+        rotate(-18deg);
+
+}
+
+
+.concha-direita {
+
+    right: 4%;
+
+    top: 20%;
+
+    transform:
+        rotate(18deg);
+
+}
+
+
+/* =========================================================
+   16. FUNDO DO MAR
+   ========================================================= */
+
+.fundo-mar {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 100px;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(
+                2,
+                16,
+                39,
+                0.65
+            )
+        );
+
+}
+
+
+.coral-mar {
+
+    position: absolute;
+
+    bottom: -18px;
+
+    font-size: 4rem;
+
+    opacity: 0.2;
+
+}
+
+
+.coral-mar-1 {
+
+    left: 3%;
+
+    transform:
+        rotate(-8deg);
+
+}
+
+
+.coral-mar-2 {
+
+    right: 3%;
+
+    transform:
+        scaleX(-1)
+        rotate(-8deg);
+
+}
+
+
+.concha-mar {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 2rem;
+
+    opacity: 0.18;
+
+}
+
+
+/* =========================================================
+   17. CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .conteudo-oceano {
+
+        padding:
+            40px
+            18px
+            75px;
+
+    }
+
+
+    .ornamento-oceano {
+
+        font-size: 0.52rem;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .sereia-oceano {
+
+        width: 160px;
+        height: 150px;
+
+    }
+
+
+    .halo-sereia {
+
+        width: 145px;
+        height: 145px;
+
+    }
+
+
+    .sereia-placeholder {
+
+        width: 85px;
+        height: 85px;
+
+    }
+
+
+    .sereia-placeholder span {
+
+        font-size: 3.3rem;
+
+    }
+
+
+    .concha-esquerda {
+
+        left: -5px;
+
+    }
+
+
+    .concha-direita {
+
+        right: -5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   18. CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .conteudo-oceano {
+
+        padding-top: 30px;
+
+    }
+
+
+    .nome-oceano {
+
+        font-size: 2.3rem;
+
+    }
+
+
+    .sereia-oceano {
+
+        margin-top: 2px;
+
+        margin-bottom: 0;
+
+    }
+
+
+    .frase-principal-oceano {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .frase-convite-oceano {
+
+        font-size: 1rem;
+
+    }
+
+
+    .frase-tesouro-oceano {
+
+        font-size: 0.84rem;
+
+    }
+
+}
