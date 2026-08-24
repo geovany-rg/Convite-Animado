@@ -1,12 +1,12 @@
 /* =========================================================
    CONVITE SOPHIA EMANUELY
-   TELA 1 — ENTRADA NO OCEANO
    CSS COMPLETO
+   PARTE 1 + TRANSIÇÃO + PARTE 2
    ========================================================= */
 
 
 /* =========================================================
-   1. RESET
+   1. CONFIGURAÇÕES GERAIS
    ========================================================= */
 
 * {
@@ -15,17 +15,11 @@
     box-sizing: border-box;
 }
 
-
 html {
-    width: 100%;
-    min-height: 100%;
-
     scroll-behavior: smooth;
 }
 
-
 body {
-    width: 100%;
     min-height: 100vh;
 
     overflow-x: hidden;
@@ -42,11 +36,10 @@ body {
 
 
 /* =========================================================
-   2. TELA PRINCIPAL
+   2. TELA DE ENTRADA
    ========================================================= */
 
 .entrada {
-
     position: relative;
 
     width: 100%;
@@ -63,192 +56,501 @@ body {
     isolation: isolate;
 
     background:
-
         radial-gradient(
-            ellipse at 50% -10%,
-            rgba(128, 240, 255, 0.28),
-            transparent 38%
+            circle at 50% 15%,
+            rgba(87, 230, 235, 0.30),
+            transparent 28%
         ),
-
         radial-gradient(
-            ellipse at 15% 65%,
-            rgba(55, 122, 205, 0.22),
-            transparent 38%
+            circle at 20% 75%,
+            rgba(79, 73, 180, 0.25),
+            transparent 32%
         ),
-
         radial-gradient(
-            ellipse at 85% 72%,
-            rgba(46, 168, 193, 0.18),
-            transparent 35%
+            circle at 80% 65%,
+            rgba(74, 187, 207, 0.20),
+            transparent 30%
         ),
-
         linear-gradient(
             180deg,
-            #075078 0%,
-            #06466e 18%,
-            #063b62 38%,
-            #052e55 62%,
-            #042347 82%,
-            #02152f 100%
+            #063b63 0%,
+            #052f57 27%,
+            #08264d 57%,
+            #071d42 78%,
+            #03152f 100%
         );
 }
 
 
 /* =========================================================
-   3. PROFUNDIDADE GERAL
+   3. LUZ DA SUPERFÍCIE
    ========================================================= */
 
-.profundidade-oceano {
-
+.luz-oceano {
     position: absolute;
 
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background:
-
-        radial-gradient(
-            ellipse at center,
-            transparent 20%,
-            rgba(1, 12, 35, 0.12) 55%,
-            rgba(0, 7, 25, 0.62) 100%
-        );
-}
-
-
-/* =========================================================
-   4. FUNDO DO OCEANO
-   ========================================================= */
-
-.fundo-oceano {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 0;
-
-    pointer-events: none;
-
-    background:
-
-        radial-gradient(
-            circle at 50% 80%,
-            rgba(29, 100, 151, 0.18),
-            transparent 38%
-        );
-
-    opacity: 0.9;
-}
-
-
-/* =========================================================
-   5. LUZ DA SUPERFÍCIE
-   ========================================================= */
-
-.luz-superficie {
-
-    position: absolute;
-
-    top: -30%;
+    top: -25%;
     left: 50%;
 
-    width: 120%;
-    height: 80%;
-
-    z-index: 2;
-
-    pointer-events: none;
+    width: 90vw;
+    height: 75vh;
 
     transform:
         translateX(-50%)
         rotate(-4deg);
 
     background:
-
         linear-gradient(
-            108deg,
+            110deg,
             transparent 0%,
-            rgba(180, 255, 255, 0.02) 18%,
-            rgba(194, 255, 255, 0.08) 35%,
-            rgba(218, 255, 255, 0.18) 50%,
-            rgba(194, 255, 255, 0.08) 65%,
-            rgba(180, 255, 255, 0.02) 82%,
+            rgba(175, 255, 255, 0.04) 25%,
+            rgba(210, 255, 255, 0.18) 50%,
+            rgba(175, 255, 255, 0.04) 75%,
             transparent 100%
         );
 
-    filter: blur(16px);
+    filter: blur(15px);
 
-    opacity: 0.9;
+    opacity: 0.8;
+
+    pointer-events: none;
 
     animation:
-        movimentoSuperficie
-        9s
+        movimentoLuz
+        8s
         ease-in-out
         infinite
         alternate;
+
+    z-index: -1;
 }
 
 
-@keyframes movimentoSuperficie {
+@keyframes movimentoLuz {
 
-    0% {
-
+    from {
         transform:
-            translateX(-54%)
+            translateX(-55%)
             rotate(-6deg);
-
     }
 
-    100% {
-
+    to {
         transform:
-            translateX(-46%)
+            translateX(-45%)
             rotate(5deg);
-
     }
 }
 
 
 /* =========================================================
-   6. CONTEÚDO
+   4. PROFUNDIDADE
+   ========================================================= */
+
+.entrada::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 25%,
+            rgba(0, 10, 35, 0.15) 55%,
+            rgba(0, 5, 25, 0.55) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   5. CONTEÚDO DA ENTRADA
    ========================================================= */
 
 .conteudo-entrada {
-
     position: relative;
 
-    z-index: 20;
+    z-index: 10;
 
     width: min(92%, 650px);
 
-    min-height: 100vh;
-    min-height: 100svh;
-
     padding:
-        35px
-        20px
-        40px;
+        40px
+        25px
+        50px;
 
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
-    justify-content: center;
 
     text-align: center;
 }
 
 
 /* =========================================================
-   7. ORNAMENTO SUPERIOR
+   6. PERSONAGEM
    ========================================================= */
 
-.ornamento-superior {
+.personagem {
+    position: relative;
+
+    width: 230px;
+    height: 260px;
+
+    margin-bottom: 5px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        flutuarSereia
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes flutuarSereia {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(1deg);
+    }
+}
+
+
+/* =========================================================
+   7. BRILHO DA SEREIA
+   ========================================================= */
+
+.brilho-personagem {
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(121, 244, 255, 0.32),
+            rgba(121, 244, 255, 0.12) 35%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        pulsarBrilho
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes pulsarBrilho {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   8. SILHUETA TEMPORÁRIA
+   ========================================================= */
+
+.silhueta-sereia {
+    position: relative;
+
+    width: 100px;
+    height: 210px;
+
+    opacity: 0.85;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(126, 244, 255, 0.45)
+        );
+}
+
+
+/* Cabeça */
+
+.silhueta-sereia::before {
+    content: "";
+
+    position: absolute;
+
+    top: 5px;
+    left: 35px;
+
+    width: 32px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 30%,
+            #d9fbff,
+            #83d9e9 65%,
+            #4695b7
+        );
+}
+
+
+/* Corpo */
+
+.silhueta-sereia .corpo {
+    position: absolute;
+
+    top: 38px;
+    left: 40px;
+
+    width: 24px;
+    height: 72px;
+
+    border-radius:
+        45%
+        45%
+        35%
+        35%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6bc9dc,
+            #d0fbff,
+            #5fbfd5
+        );
+
+    transform: rotate(2deg);
+}
+
+
+/* Cauda */
+
+.silhueta-sereia .cauda {
+    position: absolute;
+
+    left: 25px;
+    top: 92px;
+
+    width: 70px;
+    height: 95px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #9df4ee,
+            #58cfd4 50%,
+            #377fbe
+        );
+
+    clip-path:
+        polygon(
+            50% 0%,
+            65% 35%,
+            100% 55%,
+            67% 58%,
+            88% 100%,
+            50% 74%,
+            12% 100%,
+            33% 58%,
+            0% 55%,
+            35% 35%
+        );
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(122, 245, 255, 0.5)
+        );
+}
+
+
+/* =========================================================
+   9. ESTRELA
+   ========================================================= */
+
+.decoracao-superior {
+    margin-top: 0;
+
+    margin-bottom: 12px;
+
+    font-size: 24px;
+
+    color: #d5ffff;
+
+    text-shadow:
+        0 0 8px rgba(191, 255, 255, 0.9),
+        0 0 18px rgba(95, 228, 255, 0.8);
+
+    animation:
+        brilhoEstrela
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes brilhoEstrela {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   10. NOME
+   ========================================================= */
+
+.nome-aniversariante {
+    position: relative;
+
+    font-size:
+        clamp(
+            2.6rem,
+            8vw,
+            4.8rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: 1px;
+
+    /* ALTERADO: ROSA */
+    color: #ffb7df;
+
+    text-shadow:
+        0 0 10px rgba(255, 183, 223, 0.75),
+        0 0 25px rgba(255, 120, 200, 0.45);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   11. IDADE
+   ========================================================= */
+
+.idade {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.idade span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            3.5rem,
+            11vw,
+            5.5rem
+        );
+
+    font-weight: 300;
+
+    line-height: 0.9;
+
+    color: #b8ffff;
+
+    text-shadow:
+        0 0 12px rgba(129, 248, 255, 0.9),
+        0 0 30px rgba(70, 211, 235, 0.55);
+}
+
+
+.idade small {
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 4px;
+
+    color: rgba(225, 255, 255, 0.8);
+}
+
+
+/* =========================================================
+   12. FRASE DA ENTRADA
+   ========================================================= */
+
+.frase-entrada {
+    max-width: 420px;
+
+    margin-bottom: 30px;
+
+    font-size:
+        clamp(
+            1rem,
+            3.5vw,
+            1.25rem
+        );
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: rgba(230, 255, 255, 0.86);
+}
+
+
+/* =========================================================
+   13. BOTÃO
+   ========================================================= */
+
+.botao-entrada {
+    position: relative;
 
     display: flex;
 
@@ -257,890 +559,23 @@ body {
 
     gap: 12px;
 
-    margin-bottom: 8px;
-
-    opacity: 0.8;
-
-    animation:
-        aparecerSuave
-        1.2s
-        ease
-        both;
-}
-
-
-.linha-ornamento {
-
-    display: block;
-
-    width: 38px;
-    height: 1px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(203, 255, 255, 0.65)
-        );
-}
-
-
-.linha-ornamento:last-child {
-
-    background:
-
-        linear-gradient(
-            90deg,
-            rgba(203, 255, 255, 0.65),
-            transparent
-        );
-}
-
-
-.estrela-ornamento {
-
-    font-size: 21px;
-
-    color: #dcffff;
-
-    text-shadow:
-
-        0 0 8px
-        rgba(200, 255, 255, 0.9),
-
-        0 0 18px
-        rgba(83, 221, 240, 0.8);
-
-    animation:
-        pulsarEstrela
-        2.5s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes pulsarEstrela {
-
-    0%,
-    100% {
-
-        transform: scale(0.9);
-
-        opacity: 0.55;
-
-    }
-
-    50% {
-
-        transform: scale(1.12);
-
-        opacity: 1;
-
-    }
-}
-
-
-/* =========================================================
-   8. PERSONAGEM
-   ========================================================= */
-
-.personagem {
-
-    position: relative;
-
-    width: 220px;
-    height: 255px;
-
-    margin-bottom: 3px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    animation:
-        flutuarPersonagem
-        5s
-        ease-in-out
-        infinite;
-
-    animation-delay: 0.3s;
-}
-
-
-@keyframes flutuarPersonagem {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0)
-            rotate(-1deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-10px)
-            rotate(1deg);
-
-    }
-}
-
-
-/* =========================================================
-   9. BRILHO DA PERSONAGEM
-   ========================================================= */
-
-.brilho-personagem {
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(111, 241, 255, 0.30),
-            rgba(100, 229, 245, 0.14) 35%,
-            transparent 72%
-        );
-
-    filter: blur(8px);
-
-    animation:
-        brilhoPersonagem
-        4s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes brilhoPersonagem {
-
-    0%,
-    100% {
-
-        transform: scale(0.92);
-
-        opacity: 0.62;
-
-    }
-
-    50% {
-
-        transform: scale(1.08);
-
-        opacity: 1;
-
-    }
-}
-
-
-/* =========================================================
-   10. HALO
-   ========================================================= */
-
-.halo-personagem {
-
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(201, 255, 255, 0.10),
-            transparent 70%
-        );
-
-    box-shadow:
-
-        0 0 35px
-        rgba(109, 237, 248, 0.10);
-
-    animation:
-        haloRespirar
-        4s
-        ease-in-out
-        infinite;
-}
-
-
-@keyframes haloRespirar {
-
-    0%,
-    100% {
-
-        transform: scale(0.95);
-
-    }
-
-    50% {
-
-        transform: scale(1.05);
-
-    }
-}
-
-
-/* =========================================================
-   11. SEREIA CSS
-   ========================================================= */
-
-.sereia {
-
-    position: relative;
-
-    width: 110px;
-    height: 220px;
-
-    z-index: 5;
-
-    filter:
-
-        drop-shadow(
-            0 0 8px
-            rgba(147, 247, 255, 0.45)
-        )
-
-        drop-shadow(
-            0 0 18px
-            rgba(76, 212, 231, 0.25)
-        );
-}
-
-
-/* =========================================================
-   12. CABELO
-   ========================================================= */
-
-.cabelo-sereia {
-
-    position: absolute;
-
-    top: 20px;
-    left: 21px;
-
-    width: 68px;
-    height: 72px;
-
-    z-index: 4;
-}
-
-
-.cabelo-sereia span {
-
-    position: absolute;
-
-    display: block;
-
-    width: 34px;
-    height: 80px;
-
-    border-radius:
-        50%
-        50%
-        45%
-        45%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #244f92,
-            #69d6e5,
-            #3156a1
-        );
-
-    box-shadow:
-
-        inset
-        4px
-        0
-        8px
-        rgba(195, 255, 255, 0.18);
-}
-
-
-.cabelo-sereia span:nth-child(1) {
-
-    left: 0;
-
-    transform:
-        rotate(-15deg);
-
-}
-
-
-.cabelo-sereia span:nth-child(2) {
-
-    left: 17px;
-
-    top: -4px;
-
-    transform:
-        rotate(0deg);
-
-}
-
-
-.cabelo-sereia span:nth-child(3) {
-
-    left: 34px;
-
-    transform:
-        rotate(15deg);
-
-}
-
-
-/* =========================================================
-   13. CABEÇA
-   ========================================================= */
-
-.cabeca-sereia {
-
-    position: absolute;
-
-    top: 24px;
-    left: 32px;
-
-    width: 48px;
-    height: 52px;
-
-    z-index: 6;
-
-    border-radius:
-        48%
-        48%
-        45%
-        45%;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #e4fbff,
-            #a8e4ef 55%,
-            #6bb6d0
-        );
-
-    box-shadow:
-
-        inset
-        -5px
-        -5px
-        10px
-        rgba(50, 118, 160, 0.22);
-}
-
-
-/* =========================================================
-   14. ROSTO
-   ========================================================= */
-
-.rosto-sereia {
-
-    position: absolute;
-
-    inset: 0;
-}
-
-
-.olho {
-
-    position: absolute;
-
-    top: 24px;
-
-    width: 5px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #164f73;
-
-    box-shadow:
-        0 0 4px
-        rgba(255, 255, 255, 0.8);
-}
-
-
-.olho-esquerdo {
-
-    left: 14px;
-}
-
-
-.olho-direito {
-
-    right: 14px;
-}
-
-
-/* =========================================================
-   15. CORPO
-   ========================================================= */
-
-.corpo-sereia {
-
-    position: absolute;
-
-    top: 70px;
-    left: 39px;
-
-    width: 32px;
-    height: 70px;
-
-    z-index: 5;
-}
-
-
-/* =========================================================
-   16. TOP
-   ========================================================= */
-
-.top-sereia {
-
-    position: absolute;
-
-    top: 0;
-    left: 4px;
-
-    width: 24px;
-    height: 34px;
-
-    border-radius:
-        40%
-        40%
-        30%
-        30%;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #62c9d8,
-            #d5ffff,
-            #63c5d7
-        );
-}
-
-
-/* =========================================================
-   17. BRAÇOS
-   ========================================================= */
-
-.braco {
-
-    position: absolute;
-
-    top: 4px;
-
-    width: 9px;
-    height: 52px;
-
-    border-radius: 20px;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            #d7fbff,
-            #81d4e4
-        );
-
-    transform-origin: top center;
-}
-
-
-.braco-esquerdo {
-
-    left: -5px;
-
-    transform:
-        rotate(25deg);
-
-}
-
-
-.braco-direito {
-
-    right: -5px;
-
-    transform:
-        rotate(-25deg);
-
-}
-
-
-/* =========================================================
-   18. CAUDA
-   ========================================================= */
-
-.cauda-sereia {
-
-    position: absolute;
-
-    top: 122px;
-    left: 24px;
-
-    width: 64px;
-    height: 95px;
-
-    z-index: 4;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #a7f8ef,
-            #54d0d5 48%,
-            #3b78b8 100%
-        );
-
-    clip-path:
-
-        polygon(
-            50% 0%,
-            70% 32%,
-            100% 54%,
-            68% 58%,
-            88% 100%,
-            50% 75%,
-            12% 100%,
-            32% 58%,
-            0% 54%,
-            30% 32%
-        );
-
-    filter:
-
-        drop-shadow(
-            0 0 8px
-            rgba(120, 245, 255, 0.5)
-        );
-}
-
-
-/* =========================================================
-   19. ESCAMAS
-   ========================================================= */
-
-.escamas-cauda {
-
-    position: absolute;
-
-    inset: 15px;
-
-    opacity: 0.35;
-
-    background:
-
-        repeating-linear-gradient(
-            135deg,
-            transparent 0,
-            transparent 5px,
-            rgba(220, 255, 255, 0.35) 6px,
-            transparent 7px
-        );
-
-    clip-path: inherit;
-}
-
-
-/* =========================================================
-   20. NADadeiras
-   ========================================================= */
-
-.nadadeira-esquerda,
-.nadadeira-direita {
-
-    position: absolute;
-
-    top: 190px;
-
-    width: 45px;
-    height: 35px;
-
-    z-index: 3;
-
-    background:
-
-        linear-gradient(
-            145deg,
-            #9df4ee,
-            #4ebbcf
-        );
-
-    opacity: 0.9;
-
-    filter:
-
-        drop-shadow(
-            0 0 7px
-            rgba(120, 240, 255, 0.4)
-        );
-}
-
-
-.nadadeira-esquerda {
-
-    left: 13px;
-
-    clip-path:
-
-        polygon(
-            100% 15%,
-            20% 0%,
-            0% 100%,
-            100% 65%
-        );
-
-}
-
-
-.nadadeira-direita {
-
-    right: 13px;
-
-    clip-path:
-
-        polygon(
-            0% 15%,
-            80% 0%,
-            100% 100%,
-            0% 65%
-        );
-
-}
-
-
-/* =========================================================
-   21. NOME
-   ========================================================= */
-
-.nome-aniversariante {
-
-    position: relative;
-
-    margin-top: 0;
-
-    margin-bottom: 9px;
-
-    font-size:
-
-        clamp(
-            2.55rem,
-            8vw,
-            4.6rem
-        );
-
-    font-weight: 400;
-
-    line-height: 1;
-
-    letter-spacing: 0.5px;
-
-    color: #ffffff;
-
-    text-shadow:
-
-        0 0 10px
-        rgba(169, 250, 255, 0.68),
-
-        0 0 24px
-        rgba(80, 216, 238, 0.38);
-
-    animation:
-
-        aparecerNome
-        1.3s
-        ease
-        both;
-}
-
-
-@keyframes aparecerNome {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(12px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-}
-
-
-/* =========================================================
-   22. IDADE
-   ========================================================= */
-
-.idade {
-
-    display: flex;
-
-    align-items: baseline;
-
-    gap: 9px;
-
-    margin-bottom: 15px;
-
-    animation:
-
-        aparecerSuave
-        1.5s
-        ease
-        both;
-}
-
-
-.numero-idade {
-
-    font-size:
-
-        clamp(
-            3.4rem,
-            11vw,
-            5.2rem
-        );
-
-    font-weight: 300;
-
-    line-height: 0.85;
-
-    color: #b8ffff;
-
-    text-shadow:
-
-        0 0 12px
-        rgba(130, 248, 255, 0.9),
-
-        0 0 28px
-        rgba(68, 211, 235, 0.5);
-}
-
-
-.texto-idade {
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 0.76rem;
-
-    letter-spacing: 4px;
-
-    color:
-        rgba(
-            225,
-            255,
-            255,
-            0.78
-        );
-}
-
-
-/* =========================================================
-   23. FRASE
-   ========================================================= */
-
-.frase-entrada {
-
-    width: min(100%, 430px);
-
-    margin-bottom: 25px;
-
-    font-size:
-
-        clamp(
-            0.98rem,
-            3.5vw,
-            1.18rem
-        );
-
-    line-height: 1.65;
-
-    font-style: italic;
-
-    color:
-
-        rgba(
-            231,
-            255,
-            255,
-            0.84
-        );
-
-    animation:
-
-        aparecerSuave
-        1.7s
-        ease
-        both;
-}
-
-
-/* =========================================================
-   24. BOTÃO
-   ========================================================= */
-
-.botao-entrada {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
-
     min-width: 245px;
 
     padding:
-        15px
-        25px;
+        16px
+        24px;
 
     border:
         1px solid
-        rgba(
-            190,
-            255,
-            255,
-            0.55
-        );
+        rgba(190, 255, 255, 0.55);
 
     border-radius: 50px;
 
     background:
-
         linear-gradient(
             135deg,
-            rgba(89, 218, 224, 0.20),
-            rgba(71, 112, 209, 0.22)
+            rgba(98, 221, 224, 0.22),
+            rgba(80, 119, 218, 0.24)
         );
 
     color: #ffffff;
@@ -1152,142 +587,1421 @@ body {
 
     font-size: 1rem;
 
-    letter-spacing: 0.4px;
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
     box-shadow:
-
-        0 0 18px
-        rgba(94, 226, 240, 0.18),
+        0 0 15px
+        rgba(98, 226, 238, 0.18),
 
         inset 0 0 15px
-        rgba(210, 255, 255, 0.04);
+        rgba(202, 255, 255, 0.05);
 
-    backdrop-filter: blur(9px);
+    backdrop-filter: blur(8px);
 
     transition:
-
         transform 0.3s ease,
-
-        background 0.3s ease,
-
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
 
 .botao-entrada:hover {
-
     transform:
         translateY(-3px)
         scale(1.03);
 
     background:
-
         linear-gradient(
             135deg,
-            rgba(91, 224, 230, 0.34),
-            rgba(73, 116, 215, 0.36)
+            rgba(98, 221, 224, 0.35),
+            rgba(80, 119, 218, 0.38)
         );
 
     box-shadow:
-
-        0 0 28px
-        rgba(102, 238, 255, 0.35);
+        0 0 25px
+        rgba(105, 239, 255, 0.35);
 }
 
 
 .botao-entrada:active {
-
-    transform:
-        scale(0.97);
-
+    transform: scale(0.97);
 }
 
 
-.botao-entrada:focus-visible {
-
-    outline:
-
-        2px solid
-        rgba(210, 255, 255, 0.9);
-
-    outline-offset: 4px;
+.icone-botao {
+    font-size: 1.15rem;
 }
 
 
 .seta-botao {
+    font-family: Arial, sans-serif;
 
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 1.3rem;
+    font-size: 1.25rem;
 
     transition:
         transform 0.3s ease;
 }
 
 
-.botao-entrada:hover
-.seta-botao {
-
+.botao-entrada:hover .seta-botao {
     transform:
-        translateX(5px);
+        translateX(4px);
 }
 
 
 /* =========================================================
-   25. INDICADOR
+   14. INDICADOR
    ========================================================= */
 
-.indicador-entrada {
-
+.indicador {
     display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    margin-top: 18px;
+    margin-top: 22px;
 
     font-family:
         Arial,
         sans-serif;
 
-    font-size: 0.57rem;
+    font-size: 0.62rem;
 
-    letter-spacing: 1.8px;
+    letter-spacing: 2px;
 
     text-transform: uppercase;
 
-    color:
+    color: rgba(206, 249, 255, 0.5);
+}
 
-        rgba(
-            207,
-            249,
-            255,
-            0.48
+
+.indicador-linha {
+    width: 25px;
+    height: 1px;
+
+    background:
+        rgba(200, 255, 255, 0.3);
+}
+
+
+/* =========================================================
+   15. BOLHAS DA PRIMEIRA TELA
+   ========================================================= */
+
+.bolhas {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.bolha {
+    position: absolute;
+
+    bottom: -80px;
+
+    display: block;
+
+    border:
+        1px solid
+        rgba(210, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(255, 255, 255, 0.45),
+            rgba(130, 240, 255, 0.08) 45%,
+            transparent 70%
         );
 
-    animation:
+    box-shadow:
+        inset 0 0 8px
+        rgba(210, 255, 255, 0.25),
 
-        aparecerSuave
-        2s
+        0 0 8px
+        rgba(140, 244, 255, 0.12);
+
+    animation:
+        subirBolha
+        linear
+        infinite;
+}
+
+
+.bolha-1 {
+    left: 8%;
+    width: 16px;
+    height: 16px;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.bolha-2 {
+    left: 17%;
+    width: 8px;
+    height: 8px;
+    animation-duration: 7s;
+    animation-delay: 3s;
+}
+
+.bolha-3 {
+    left: 28%;
+    width: 23px;
+    height: 23px;
+    animation-duration: 12s;
+}
+
+.bolha-4 {
+    left: 39%;
+    width: 10px;
+    height: 10px;
+    animation-duration: 8s;
+    animation-delay: 4s;
+}
+
+.bolha-5 {
+    left: 51%;
+    width: 18px;
+    height: 18px;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.bolha-6 {
+    left: 62%;
+    width: 7px;
+    height: 7px;
+    animation-duration: 6s;
+    animation-delay: 1s;
+}
+
+.bolha-7 {
+    left: 72%;
+    width: 26px;
+    height: 26px;
+    animation-duration: 13s;
+    animation-delay: 5s;
+}
+
+.bolha-8 {
+    left: 81%;
+    width: 11px;
+    height: 11px;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.bolha-9 {
+    left: 91%;
+    width: 18px;
+    height: 18px;
+    animation-duration: 11s;
+    animation-delay: 6s;
+}
+
+.bolha-10 {
+    left: 46%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+
+@keyframes subirBolha {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.75;
+    }
+
+    50% {
+        transform:
+            translate3d(25px, -50vh, 0)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translate3d(-30px, -115vh, 0)
+            scale(1.15);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   16. PARTÍCULAS
+   ========================================================= */
+
+.particulas {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+.particulas span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #d9ffff;
+
+    box-shadow:
+        0 0 7px
+        rgba(220, 255, 255, 0.9);
+
+    animation:
+        piscarParticula
+        ease-in-out
+        infinite;
+}
+
+
+.particulas span:nth-child(1) {
+    top: 18%;
+    left: 13%;
+    animation-duration: 3s;
+}
+
+.particulas span:nth-child(2) {
+    top: 32%;
+    left: 78%;
+    animation-duration: 4s;
+}
+
+.particulas span:nth-child(3) {
+    top: 48%;
+    left: 9%;
+    animation-duration: 2.5s;
+}
+
+.particulas span:nth-child(4) {
+    top: 62%;
+    left: 87%;
+    animation-duration: 3.5s;
+}
+
+.particulas span:nth-child(5) {
+    top: 73%;
+    left: 25%;
+    animation-duration: 4.5s;
+}
+
+.particulas span:nth-child(6) {
+    top: 24%;
+    left: 58%;
+    animation-duration: 2.8s;
+}
+
+.particulas span:nth-child(7) {
+    top: 79%;
+    left: 68%;
+    animation-duration: 3.8s;
+}
+
+.particulas span:nth-child(8) {
+    top: 43%;
+    left: 93%;
+    animation-duration: 2.2s;
+}
+
+.particulas span:nth-child(9) {
+    top: 13%;
+    left: 39%;
+    animation-duration: 4.2s;
+}
+
+.particulas span:nth-child(10) {
+    top: 67%;
+    left: 52%;
+    animation-duration: 3.1s;
+}
+
+
+@keyframes piscarParticula {
+
+    0%,
+    100% {
+        opacity: 0.15;
+
+        transform:
+            scale(0.6);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.6);
+    }
+}
+
+
+/* =========================================================
+   17. CORAIS
+   ========================================================= */
+
+.coral {
+    position: absolute;
+
+    bottom: -5px;
+
+    font-size:
+        clamp(
+            4rem,
+            12vw,
+            7rem
+        );
+
+    opacity: 0.32;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(60, 230, 235, 0.18)
+        );
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+.coral-esquerda {
+    left: -15px;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.coral-direita {
+    right: -15px;
+
+    transform:
+        rotate(8deg)
+        scaleX(-1);
+}
+
+
+.concha-decorativa {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 2.5rem;
+
+    opacity: 0.35;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255, 190, 235, 0.35)
+        );
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   18. TRANSIÇÃO — MERGULHO
+   ========================================================= */
+
+.entrada.mergulhando {
+
+    animation:
+        desaparecerOceano
+        0.85s
+        ease-in-out
+        forwards;
+}
+
+
+@keyframes desaparecerOceano {
+
+    0% {
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   19. LUZ DO MERGULHO
+   ========================================================= */
+
+.entrada.mergulhando::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(190, 255, 255, 0.35),
+            rgba(65, 200, 220, 0.15) 25%,
+            transparent 60%
+        );
+
+    opacity: 0;
+
+    animation:
+        luzMergulho
+        0.85s
+        ease-out
+        forwards;
+}
+
+
+@keyframes luzMergulho {
+
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   20. MUNDO DO OCEANO
+   ========================================================= */
+
+.mundo-oceano {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(91, 229, 237, 0.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 20% 60%,
+            rgba(59, 108, 196, 0.18),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #06345b 0%,
+            #052c53 30%,
+            #041f43 65%,
+            #03142e 100%
+        );
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.7s ease;
+}
+
+
+.mundo-oceano.mundo-visivel {
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   21. LUZ DO FUNDO
+   ========================================================= */
+
+.luz-fundo-oceano {
+
+    position: absolute;
+
+    top: -20%;
+    left: 50%;
+
+    width: 90vw;
+    height: 70vh;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(173, 250, 255, 0.16),
+            transparent 65%
+        );
+
+    pointer-events: none;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   22. CONTEÚDO DO OCEANO
+   ========================================================= */
+
+.conteudo-oceano {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: min(92%, 650px);
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding:
+        55px
+        20px
+        90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   23. ORNAMENTO
+   ========================================================= */
+
+.ornamento-oceano {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            208,
+            255,
+            255,
+            0.7
+        );
+
+    text-shadow:
+        0 0 8px
+        rgba(
+            120,
+            240,
+            255,
+            0.5
+        );
+}
+
+
+.ornamento-oceano span {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   24. NOME NO OCEANO
+   ========================================================= */
+
+.nome-oceano {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            2.5rem,
+            8vw,
+            4.5rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            166,
+            249,
+            255,
+            0.65
+        ),
+
+        0 0 30px
+        rgba(
+            70,
+            211,
+            235,
+            0.28
+        );
+}
+
+
+/* =========================================================
+   25. IDADE NO OCEANO
+   ========================================================= */
+
+.idade-oceano {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    color:
+        rgba(
+            218,
+            255,
+            255,
+            0.8
+        );
+}
+
+
+.idade-oceano strong {
+
+    font-size: 2.1rem;
+
+    font-weight: 300;
+
+    color: #b9ffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            113,
+            239,
+            255,
+            0.6
+        );
+}
+
+
+.idade-oceano span {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   26. SEREIA
+   ========================================================= */
+
+.sereia-oceano {
+
+    position: relative;
+
+    width: 190px;
+    height: 180px;
+
+    margin:
+        8px
+        0
+        5px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    animation:
+        flutuarSereiaOceano
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes flutuarSereiaOceano {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   27. HALO DA SEREIA
+   ========================================================= */
+
+.halo-sereia {
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 239, 247, 0.25),
+            rgba(118, 239, 247, 0.08) 40%,
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   28. SEREIA TEMPORÁRIA
+   ========================================================= */
+
+.sereia-placeholder {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            140,
+            240,
+            245,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            184,
+            255,
+            255,
+            0.18
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(
+            98,
+            228,
+            240,
+            0.12
+        );
+}
+
+
+.sereia-placeholder span {
+
+    font-size: 4rem;
+
+    filter: none;
+}
+
+
+/* =========================================================
+   29. MENSAGEM EMOCIONAL
+   ========================================================= */
+
+.mensagem-oceano {
+
+    width: min(
+        100%,
+        540px
+    );
+
+    animation:
+        aparecerMensagem
+        1s
         ease
         both;
 }
 
 
-.linha-indicador {
+@keyframes aparecerMensagem {
 
-    width: 25px;
-    height: 1px;
+    from {
+        opacity: 0;
 
-    background:
+        transform:
+            translateY(18px);
+    }
 
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.frase-principal-oceano {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            1rem,
+            3.5vw,
+            1.18rem
+        );
+
+    line-height: 1.65;
+
+    color:
+        rgba(
+            230,
+            255,
+            255,
+            0.86
+        );
+
+    font-style: italic;
+}
+
+
+.frase-convite-oceano {
+
+    margin:
+        20px
+        auto
+        8px;
+
+    max-width: 490px;
+
+    font-size:
+        clamp(
+            1.08rem,
+            3.8vw,
+            1.35rem
+        );
+
+    line-height: 1.55;
+
+    color: #d8ffff;
+
+    text-shadow:
+        0 0 10px
+        rgba(
+            111,
+            239,
+            248,
+            0.25
+        );
+}
+
+
+.frase-tesouro-oceano {
+
+    margin: 0 auto;
+
+    max-width: 450px;
+
+    font-size:
+        clamp(
+            0.92rem,
+            3vw,
+            1.05rem
+        );
+
+    line-height: 1.65;
+
+    color:
+        rgba(
+            217,
+            249,
+            255,
+            0.7
+        );
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   30. DIVISOR
+   ========================================================= */
+
+.divisor-oceano {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        12px
+        auto;
+
+    width: min(
+        80%,
+        300px
+    );
+
+    color:
         rgba(
             200,
+            255,
+            255,
+            0.55
+        );
+}
+
+
+.divisor-oceano span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(
+                180,
+                255,
+                255,
+                0.4
+            ),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   31. ÁREA DE CURIOSIDADE / LOCAL
+   ========================================================= */
+
+.local-oceano {
+
+    width: min(
+        100%,
+        500px
+    );
+
+    margin-top: 34px;
+
+    padding:
+        22px
+        20px;
+
+    border:
+        1px solid
+        rgba(
+            190,
+            255,
+            255,
+            0.16
+        );
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(92, 225, 235, 0.08),
+            rgba(73, 104, 190, 0.08)
+        );
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(
+            150,
+            255,
+            255,
+            0.025
+        ),
+
+        0 0 30px
+        rgba(
+            70,
+            211,
+            235,
+            0.06
+        );
+
+    backdrop-filter: blur(6px);
+}
+
+
+.local-titulo-oceano {
+
+    margin-bottom: 8px;
+
+    font-size:
+        clamp(
+            1.05rem,
+            4vw,
+            1.3rem
+        );
+
+    color: #e1ffff;
+
+    text-shadow:
+        0 0 10px
+        rgba(
+            120,
+            240,
+            255,
+            0.25
+        );
+}
+
+
+.local-frase-oceano {
+
+    margin-bottom: 16px;
+
+    font-size:
+        clamp(
+            0.9rem,
+            3vw,
+            1rem
+        );
+
+    line-height: 1.6;
+
+    color:
+        rgba(
+            220,
+            250,
+            255,
+            0.68
+        );
+}
+
+
+.botao-local-oceano {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        11px
+        19px;
+
+    border:
+        1px solid
+        rgba(
+            190,
+            255,
+            255,
+            0.3
+        );
+
+    border-radius: 30px;
+
+    background:
+        rgba(
+            120,
+            230,
+            240,
+            0.08
+        );
+
+    color: #dfffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.botao-local-oceano:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(
+            120,
+            230,
+            240,
+            0.16
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(
+            100,
+            230,
+            240,
+            0.15
+        );
+}
+
+
+/* =========================================================
+   32. ÁREA DOS TESOUROS
+   ========================================================= */
+
+.tesouros-oceano {
+
+    width: min(
+        100%,
+        540px
+    );
+
+    margin-top: 42px;
+
+    padding:
+        30px
+        20px;
+
+    border-top:
+        1px solid
+        rgba(
+            200,
+            255,
+            255,
+            0.15
+        );
+}
+
+
+.tesouro-titulo-oceano {
+
+    margin-bottom: 10px;
+
+    font-size:
+        clamp(
+            1.25rem,
+            5vw,
+            1.7rem
+        );
+
+    font-weight: 400;
+
+    color: #e5ffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(
+            120,
+            240,
+            255,
+            0.3
+        );
+}
+
+
+.tesouro-intro-oceano {
+
+    margin-bottom: 22px;
+
+    font-size:
+        clamp(
+            0.9rem,
+            3vw,
+            1rem
+        );
+
+    line-height: 1.65;
+
+    color:
+        rgba(
+            220,
+            250,
+            255,
+            0.68
+        );
+}
+
+
+/* =========================================================
+   33. CARDS DE TESOURO
+   ========================================================= */
+
+.lista-tesouros {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(140px, 1fr)
+        );
+
+    gap: 14px;
+}
+
+
+.tesouro-card {
+
+    padding:
+        20px
+        14px;
+
+    border:
+        1px solid
+        rgba(
+            190,
+            255,
+            255,
+            0.14
+        );
+
+    border-radius: 18px;
+
+    background:
+        rgba(
+            90,
+            220,
+            235,
+            0.055
+        );
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.tesouro-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(
+            90,
+            220,
+            235,
+            0.10
+        );
+
+    border-color:
+        rgba(
+            190,
             255,
             255,
             0.28
@@ -1295,25 +2009,275 @@ body {
 }
 
 
+.tesouro-icone {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 2rem;
+}
+
+
+.tesouro-card h3 {
+
+    margin-bottom: 6px;
+
+    font-size: 1rem;
+
+    font-weight: 400;
+
+    color: #e5ffff;
+}
+
+
+.tesouro-card p {
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.72rem;
+
+    line-height: 1.5;
+
+    color:
+        rgba(
+            220,
+            250,
+            255,
+            0.55
+        );
+}
+
+
 /* =========================================================
-   26. PARTÍCULAS
+   34. INDICADOR DE CONTINUAÇÃO
    ========================================================= */
 
-.particulas {
+.continuar-oceano {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(
+            210,
+            250,
+            255,
+            0.45
+        );
+}
+
+
+.seta-descer {
+
+    font-size: 1.4rem;
+
+    color:
+        rgba(
+            195,
+            255,
+            255,
+            0.7
+        );
+
+    animation:
+        setaDescer
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes setaDescer {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+
+        opacity: 0.45;
+    }
+
+    50% {
+        transform:
+            translateY(7px);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   35. BOLHAS DO OCEANO
+   ========================================================= */
+
+.bolhas-oceano {
 
     position: absolute;
 
     inset: 0;
 
-    z-index: 7;
-
     overflow: hidden;
 
     pointer-events: none;
+
+    z-index: 5;
 }
 
 
-.particulas span {
+.bolha-oceano {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    border:
+        1px solid
+        rgba(
+            205,
+            255,
+            255,
+            0.35
+        );
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    animation:
+        bolhaOceanoSubindo
+        linear
+        infinite;
+}
+
+
+.bolha-oceano-1 {
+    left: 8%;
+    width: 10px;
+    height: 10px;
+    animation-duration: 9s;
+}
+
+.bolha-oceano-2 {
+    left: 21%;
+    width: 6px;
+    height: 6px;
+    animation-duration: 7s;
+    animation-delay: 2s;
+}
+
+.bolha-oceano-3 {
+    left: 34%;
+    width: 15px;
+    height: 15px;
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+.bolha-oceano-4 {
+    left: 48%;
+    width: 7px;
+    height: 7px;
+    animation-duration: 8s;
+    animation-delay: 1s;
+}
+
+.bolha-oceano-5 {
+    left: 62%;
+    width: 12px;
+    height: 12px;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+.bolha-oceano-6 {
+    left: 74%;
+    width: 6px;
+    height: 6px;
+    animation-duration: 7s;
+    animation-delay: 5s;
+}
+
+.bolha-oceano-7 {
+    left: 85%;
+    width: 17px;
+    height: 17px;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.bolha-oceano-8 {
+    left: 94%;
+    width: 8px;
+    height: 8px;
+    animation-duration: 8s;
+    animation-delay: 4s;
+}
+
+
+@keyframes bolhaOceanoSubindo {
+
+    0% {
+        transform:
+            translateY(0);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.65;
+    }
+
+    100% {
+        transform:
+            translate(
+                15px,
+                -110vh
+            );
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   36. BRILHOS
+   ========================================================= */
+
+.brilhos-oceano {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 6;
+}
+
+
+.brilhos-oceano span {
 
     position: absolute;
 
@@ -1322,590 +2286,239 @@ body {
 
     border-radius: 50%;
 
-    background: #ddffff;
+    background:
+        #d9ffff;
 
     box-shadow:
-
         0 0 7px
-        rgba(220, 255, 255, 0.9);
+        rgba(
+            205,
+            255,
+            255,
+            0.9
+        );
 
     animation:
-
-        piscarParticula
+        brilhoOceano
         ease-in-out
         infinite;
 }
 
 
-.particulas span:nth-child(1) {
-
-    top: 14%;
-    left: 12%;
-
-    animation-duration: 3.2s;
-
-}
-
-
-.particulas span:nth-child(2) {
-
-    top: 23%;
-    left: 82%;
-
-    animation-duration: 4s;
-
-}
-
-
-.particulas span:nth-child(3) {
-
-    top: 41%;
-    left: 7%;
-
-    animation-duration: 2.7s;
-
-}
-
-
-.particulas span:nth-child(4) {
-
-    top: 56%;
-    left: 91%;
-
-    animation-duration: 3.7s;
-
-}
-
-
-.particulas span:nth-child(5) {
-
-    top: 68%;
-    left: 17%;
-
-    animation-duration: 4.5s;
-
-}
-
-
-.particulas span:nth-child(6) {
-
-    top: 76%;
-    left: 77%;
-
+.brilhos-oceano span:nth-child(1) {
+    top: 15%;
+    left: 13%;
     animation-duration: 3s;
-
 }
 
-
-.particulas span:nth-child(7) {
-
-    top: 30%;
-    left: 63%;
-
-    animation-duration: 2.4s;
-
+.brilhos-oceano span:nth-child(2) {
+    top: 25%;
+    left: 82%;
+    animation-duration: 4s;
 }
 
-
-.particulas span:nth-child(8) {
-
+.brilhos-oceano span:nth-child(3) {
     top: 48%;
-    left: 27%;
+    left: 8%;
+    animation-duration: 2.5s;
+}
 
-    animation-duration: 3.8s;
+.brilhos-oceano span:nth-child(4) {
+    top: 60%;
+    left: 90%;
+    animation-duration: 3.5s;
+}
 
+.brilhos-oceano span:nth-child(5) {
+    top: 72%;
+    left: 20%;
+    animation-duration: 4s;
+}
+
+.brilhos-oceano span:nth-child(6) {
+    top: 38%;
+    left: 93%;
+    animation-duration: 2.8s;
 }
 
 
-.particulas span:nth-child(9) {
-
-    top: 18%;
-    left: 43%;
-
-    animation-duration: 4.3s;
-
-}
-
-
-.particulas span:nth-child(10) {
-
-    top: 62%;
-    left: 55%;
-
-    animation-duration: 2.9s;
-
-}
-
-
-.particulas span:nth-child(11) {
-
-    top: 82%;
-    left: 37%;
-
-    animation-duration: 4.1s;
-
-}
-
-
-.particulas span:nth-child(12) {
-
-    top: 35%;
-    left: 95%;
-
-    animation-duration: 3.3s;
-
-}
-
-
-@keyframes piscarParticula {
+@keyframes brilhoOceano {
 
     0%,
     100% {
-
-        opacity: 0.12;
+        opacity: 0.15;
 
         transform:
             scale(0.6);
-
     }
 
     50% {
-
         opacity: 1;
 
         transform:
             scale(1.6);
-
     }
 }
 
 
 /* =========================================================
-   27. BOLHAS
+   37. CONCHAS
    ========================================================= */
 
-.bolhas {
+.concha-oceano {
 
     position: absolute;
 
-    inset: 0;
+    z-index: 10;
 
-    z-index: 8;
+    font-size:
+        clamp(
+            2rem,
+            7vw,
+            4rem
+        );
 
-    overflow: hidden;
+    opacity: 0.2;
 
     pointer-events: none;
 }
 
 
-.bolha {
+.concha-esquerda {
 
-    position: absolute;
+    left: 4%;
 
-    bottom: -60px;
+    bottom: 17%;
 
-    display: block;
-
-    border:
-        1px solid
-        rgba(
-            213,
-            255,
-            255,
-            0.42
-        );
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(255, 255, 255, 0.45),
-            rgba(120, 235, 255, 0.08) 45%,
-            transparent 70%
-        );
-
-    box-shadow:
-
-        inset 0 0 7px
-        rgba(215, 255, 255, 0.22),
-
-        0 0 8px
-        rgba(135, 244, 255, 0.10);
-
-    animation:
-
-        subirBolha
-        linear
-        infinite;
+    transform:
+        rotate(-18deg);
 }
 
 
-.bolha-1 {
+.concha-direita {
 
-    left: 7%;
+    right: 4%;
 
-    width: 13px;
-    height: 13px;
+    top: 20%;
 
-    animation-duration: 9s;
-    animation-delay: 1s;
-
-}
-
-
-.bolha-2 {
-
-    left: 19%;
-
-    width: 7px;
-    height: 7px;
-
-    animation-duration: 7s;
-    animation-delay: 3s;
-
-}
-
-
-.bolha-3 {
-
-    left: 31%;
-
-    width: 19px;
-    height: 19px;
-
-    animation-duration: 12s;
-
-}
-
-
-.bolha-4 {
-
-    left: 43%;
-
-    width: 9px;
-    height: 9px;
-
-    animation-duration: 8s;
-    animation-delay: 4s;
-
-}
-
-
-.bolha-5 {
-
-    left: 57%;
-
-    width: 15px;
-    height: 15px;
-
-    animation-duration: 10s;
-    animation-delay: 2s;
-
-}
-
-
-.bolha-6 {
-
-    left: 68%;
-
-    width: 7px;
-    height: 7px;
-
-    animation-duration: 6s;
-    animation-delay: 1s;
-
-}
-
-
-.bolha-7 {
-
-    left: 80%;
-
-    width: 22px;
-    height: 22px;
-
-    animation-duration: 13s;
-    animation-delay: 5s;
-
-}
-
-
-.bolha-8 {
-
-    left: 92%;
-
-    width: 10px;
-    height: 10px;
-
-    animation-duration: 8s;
-    animation-delay: 2s;
-
-}
-
-
-@keyframes subirBolha {
-
-    0% {
-
-        transform:
-            translate3d(
-                0,
-                0,
-                0
-            )
-            scale(0.8);
-
-        opacity: 0;
-
-    }
-
-    10% {
-
-        opacity: 0.7;
-
-    }
-
-    50% {
-
-        transform:
-            translate3d(
-                20px,
-                -50vh,
-                0
-            )
-            scale(1);
-
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                -15px,
-                -115vh,
-                0
-            )
-            scale(1.1);
-
-        opacity: 0;
-
-    }
+    transform:
+        rotate(18deg);
 }
 
 
 /* =========================================================
-   28. SOMBRAS LATERAIS
+   38. FUNDO DO MAR
    ========================================================= */
 
-.sombra-fundo {
-
-    position: absolute;
-
-    bottom: -10%;
-
-    width: 35vw;
-    height: 45vh;
-
-    z-index: 4;
-
-    pointer-events: none;
-
-    filter: blur(35px);
-
-    opacity: 0.35;
-
-    background:
-
-        radial-gradient(
-            ellipse,
-            rgba(20, 87, 137, 0.55),
-            transparent 70%
-        );
-}
-
-
-.sombra-esquerda {
-
-    left: -15%;
-
-    transform:
-        rotate(-15deg);
-}
-
-
-.sombra-direita {
-
-    right: -15%;
-
-    transform:
-        rotate(15deg);
-}
-
-
-/* =========================================================
-   29. BASE DO OCEANO
-   ========================================================= */
-
-.base-oceano {
+.fundo-mar {
 
     position: absolute;
 
     left: 0;
     right: 0;
-    bottom: -20px;
+    bottom: 0;
 
-    height: 110px;
+    height: 100px;
 
-    z-index: 9;
+    z-index: 8;
 
     pointer-events: none;
 
-    opacity: 0.75;
-
     background:
-
         linear-gradient(
             180deg,
             transparent,
-            rgba(1, 13, 33, 0.45) 45%,
-            rgba(1, 10, 27, 0.82) 100%
+            rgba(
+                2,
+                16,
+                39,
+                0.65
+            )
         );
 }
 
 
-/* =========================================================
-   30. ONDAS DE FUNDO
-   ========================================================= */
-
-.onda-fundo {
+.coral-mar {
 
     position: absolute;
 
-    bottom: 30px;
+    bottom: -18px;
 
-    width: 180px;
-    height: 45px;
+    font-size: 4rem;
 
-    border-radius: 50%;
-
-    border-top:
-        1px solid
-        rgba(
-            125,
-            226,
-            236,
-            0.12
-        );
-
-    filter: blur(1px);
+    opacity: 0.2;
 }
 
 
-.onda-1 {
+.coral-mar-1 {
 
-    left: 5%;
+    left: 3%;
 
     transform:
-        rotate(-5deg);
+        rotate(-8deg);
 }
 
 
-.onda-2 {
+.coral-mar-2 {
 
-    left: 42%;
-
-    width: 220px;
+    right: 3%;
 
     transform:
-        rotate(3deg);
+        scaleX(-1)
+        rotate(-8deg);
 }
 
 
-.onda-3 {
+.concha-mar {
 
-    right: 4%;
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8px;
 
     transform:
-        rotate(-4deg);
+        translateX(-50%);
+
+    font-size: 2rem;
+
+    opacity: 0.18;
 }
 
 
 /* =========================================================
-   31. ANIMAÇÃO DE APARECIMENTO
-   ========================================================= */
-
-@keyframes aparecerSuave {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(10px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-}
-
-
-/* =========================================================
-   32. RESPONSIVIDADE — CELULAR
+   39. CELULARES
    ========================================================= */
 
 @media (max-width: 600px) {
 
-
     .conteudo-entrada {
-
-        width: 94%;
 
         padding:
             25px
-            15px
-            35px;
-
+            18px
+            45px;
     }
 
 
     .personagem {
 
         width: 190px;
-        height: 225px;
-
+        height: 220px;
     }
 
 
     .brilho-personagem {
 
-        width: 185px;
-        height: 185px;
-
+        width: 180px;
+        height: 180px;
     }
 
 
-    .halo-personagem {
-
-        width: 145px;
-        height: 145px;
-
-    }
-
-
-    .sereia {
+    .silhueta-sereia {
 
         transform:
             scale(0.88);
-
     }
 
 
@@ -1913,15 +2526,30 @@ body {
 
         letter-spacing: 0;
 
+        text-shadow:
+            0 0 10px
+            rgba(
+                255,
+                183,
+                223,
+                0.75
+            ),
+
+            0 0 25px
+            rgba(
+                255,
+                120,
+                200,
+                0.45
+            );
     }
 
 
     .frase-entrada {
 
-        max-width: 340px;
+        max-width: 330px;
 
-        line-height: 1.55;
-
+        line-height: 1.6;
     }
 
 
@@ -1930,122 +2558,177 @@ body {
         min-width: 225px;
 
         padding:
-            14px
+            15px
             20px;
-
     }
 
 
-    .indicador-entrada {
+    .indicador {
+
+        font-size: 0.56rem;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .coral {
+
+        opacity: 0.22;
+    }
+
+
+    .concha-decorativa {
+
+        bottom: 15px;
+    }
+
+
+    /* -----------------------------------------
+       OCEANO
+       ----------------------------------------- */
+
+    .conteudo-oceano {
+
+        padding:
+            40px
+            18px
+            100px;
+    }
+
+
+    .ornamento-oceano {
 
         font-size: 0.52rem;
 
-        letter-spacing: 1.4px;
-
+        letter-spacing: 2px;
     }
 
 
-    .linha-indicador {
+    .sereia-oceano {
 
-        width: 20px;
-
+        width: 160px;
+        height: 150px;
     }
 
 
-    .sombra-fundo {
+    .halo-sereia {
 
-        width: 50vw;
+        width: 145px;
+        height: 145px;
+    }
 
+
+    .sereia-placeholder {
+
+        width: 85px;
+        height: 85px;
+    }
+
+
+    .sereia-placeholder span {
+
+        font-size: 3.3rem;
+    }
+
+
+    .concha-esquerda {
+
+        left: -5px;
+    }
+
+
+    .concha-direita {
+
+        right: -5px;
+    }
+
+
+    .local-oceano {
+
+        margin-top: 28px;
+
+        padding:
+            19px
+            16px;
+    }
+
+
+    .tesouros-oceano {
+
+        margin-top: 32px;
+
+        padding:
+            25px
+            14px;
+    }
+
+
+    .lista-tesouros {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 10px;
+    }
+
+
+    .tesouro-card {
+
+        padding:
+            17px
+            10px;
     }
 
 }
 
 
 /* =========================================================
-   33. CELULARES PEQUENOS
+   40. CELULARES MUITO PEQUENOS
    ========================================================= */
 
 @media (max-width: 380px) {
 
-
-    .conteudo-entrada {
-
-        padding:
-            20px
-            12px
-            30px;
-
-    }
-
-
-    .ornamento-superior {
-
-        margin-bottom: 2px;
-
-    }
-
-
     .personagem {
 
         width: 160px;
-        height: 195px;
+        height: 190px;
 
+        margin-bottom: 0;
     }
 
 
     .brilho-personagem {
 
-        width: 155px;
-        height: 155px;
-
+        width: 150px;
+        height: 150px;
     }
 
 
-    .halo-personagem {
-
-        width: 125px;
-        height: 125px;
-
-    }
-
-
-    .sereia {
+    .silhueta-sereia {
 
         transform:
             scale(0.75);
-
     }
 
 
     .nome-aniversariante {
 
-        font-size: 2.25rem;
-
+        font-size: 2.3rem;
     }
 
 
-    .numero-idade {
+    .idade span {
 
-        font-size: 3.4rem;
-
-    }
-
-
-    .texto-idade {
-
-        font-size: 0.68rem;
-
-        letter-spacing: 3px;
-
+        font-size: 3.5rem;
     }
 
 
     .frase-entrada {
 
-        font-size: 0.9rem;
-
-        margin-bottom: 21px;
-
+        font-size: 0.92rem;
     }
 
 
@@ -2054,25 +2737,70 @@ body {
         min-width: 210px;
 
         font-size: 0.9rem;
-
     }
 
 
-    .indicador-entrada {
+    /* -----------------------------------------
+       OCEANO PEQUENO
+       ----------------------------------------- */
 
-        margin-top: 15px;
+    .conteudo-oceano {
 
+        padding-top: 30px;
+    }
+
+
+    .nome-oceano {
+
+        font-size: 2.3rem;
+    }
+
+
+    .sereia-oceano {
+
+        margin-top: 2px;
+
+        margin-bottom: 0;
+    }
+
+
+    .frase-principal-oceano {
+
+        font-size: 0.9rem;
+    }
+
+
+    .frase-convite-oceano {
+
+        font-size: 1rem;
+    }
+
+
+    .frase-tesouro-oceano {
+
+        font-size: 0.84rem;
+    }
+
+
+    .local-oceano {
+
+        margin-top: 24px;
+    }
+
+
+    .lista-tesouros {
+
+        grid-template-columns: 1fr;
     }
 
 }
 
 
 /* =========================================================
-   34. ACESSIBILIDADE
+   41. MENOS MOVIMENTO
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
 
     *,
     *::before,
@@ -2084,12 +2812,10 @@ body {
         animation-iteration-count:
             1 !important;
 
-        transition-duration:
-            0.01ms !important;
-
         scroll-behavior:
             auto !important;
 
+        transition-duration:
+            0.01ms !important;
     }
-
 }
