@@ -2820,3 +2820,791 @@ body {
             0.01ms !important;
     }
 }
+/* =========================================================
+   BLOCO 2 — VIDA DO OCEANO
+   ========================================================= */
+
+
+/* =========================================================
+   RAIOS DE LUZ DA SUPERFÍCIE
+   ========================================================= */
+
+.raios-superficie {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+
+.raios-superficie span {
+
+    position: absolute;
+
+    top: -25%;
+
+    width: 18%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(210,255,255,0.14),
+            rgba(150,240,255,0.025),
+            transparent
+        );
+
+    filter: blur(10px);
+
+    transform:
+        rotate(
+            12deg
+        );
+
+    opacity: 0.5;
+
+    animation:
+        movimentoRaio
+        8s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.raios-superficie span:nth-child(1) {
+
+    left: 8%;
+
+    height: 120%;
+
+    animation-delay: 0s;
+
+}
+
+
+.raios-superficie span:nth-child(2) {
+
+    left: 31%;
+
+    height: 110%;
+
+    animation-delay: 2s;
+
+}
+
+
+.raios-superficie span:nth-child(3) {
+
+    left: 57%;
+
+    height: 125%;
+
+    animation-delay: 1s;
+
+}
+
+
+.raios-superficie span:nth-child(4) {
+
+    left: 79%;
+
+    height: 115%;
+
+    animation-delay: 3s;
+
+}
+
+
+@keyframes movimentoRaio {
+
+    from {
+
+        transform:
+            translateX(-20px)
+            rotate(10deg);
+
+        opacity: 0.25;
+
+    }
+
+    to {
+
+        transform:
+            translateX(25px)
+            rotate(15deg);
+
+        opacity: 0.55;
+
+    }
+
+}
+
+
+/* =========================================================
+   PEIXES
+   ========================================================= */
+
+.peixes-oceano {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 7;
+
+}
+
+
+.peixe {
+
+    position: absolute;
+
+    display: block;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(120,240,255,0.22)
+        );
+
+    /*
+       IMPORTANTE:
+       os emojis originais podem apontar para
+       direções diferentes dependendo do navegador.
+
+       scaleX(-1) faz todos visualmente
+       seguirem para a DIREITA.
+    */
+
+    transform:
+        scaleX(-1);
+
+    animation:
+        peixeNadando
+        linear
+        infinite;
+
+}
+
+
+/* PEIXE 1 */
+
+.peixe-1 {
+
+    top: 20%;
+
+    left: -10%;
+
+    font-size: 2rem;
+
+    animation-duration: 17s;
+
+}
+
+
+/* PEIXE 2 */
+
+.peixe-2 {
+
+    top: 34%;
+
+    left: -15%;
+
+    font-size: 1.5rem;
+
+    animation-duration: 22s;
+
+    animation-delay: 4s;
+
+}
+
+
+/* PEIXE 3 */
+
+.peixe-3 {
+
+    top: 49%;
+
+    left: -12%;
+
+    font-size: 1.2rem;
+
+    animation-duration: 19s;
+
+    animation-delay: 7s;
+
+}
+
+
+/* PEIXE 4 */
+
+.peixe-4 {
+
+    top: 63%;
+
+    left: -18%;
+
+    font-size: 1.8rem;
+
+    animation-duration: 24s;
+
+    animation-delay: 2s;
+
+}
+
+
+/* PEIXE 5 */
+
+.peixe-5 {
+
+    top: 72%;
+
+    left: -10%;
+
+    font-size: 1rem;
+
+    animation-duration: 16s;
+
+    animation-delay: 9s;
+
+}
+
+
+/* PEIXE 6 */
+
+.peixe-6 {
+
+    top: 43%;
+
+    left: -15%;
+
+    font-size: 1.25rem;
+
+    animation-duration: 21s;
+
+    animation-delay: 12s;
+
+}
+
+
+@keyframes peixeNadando {
+
+    0% {
+
+        transform:
+            translateX(-15vw)
+            translateY(0)
+            scaleX(-1);
+
+        opacity: 0;
+
+    }
+
+    8% {
+
+        opacity: 0.75;
+
+    }
+
+    25% {
+
+        transform:
+            translateX(25vw)
+            translateY(-12px)
+            scaleX(-1);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(55vw)
+            translateY(8px)
+            scaleX(-1);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(85vw)
+            translateY(-10px)
+            scaleX(-1);
+
+    }
+
+    92% {
+
+        opacity: 0.7;
+
+    }
+
+    100% {
+
+        transform:
+            translateX(125vw)
+            translateY(5px)
+            scaleX(-1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   ALGAS
+   ========================================================= */
+
+.algas {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 150px;
+
+    height: 130px;
+
+}
+
+
+.algas span {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 13px;
+
+    height: 90px;
+
+    border-radius:
+        80%
+        20%
+        0
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #073f48,
+            #15746d,
+            #0b4e50
+        );
+
+    transform-origin: bottom center;
+
+    animation:
+        balancarAlga
+        3s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.algas span:nth-child(1) {
+
+    left: 15px;
+
+    height: 75px;
+
+}
+
+
+.algas span:nth-child(2) {
+
+    left: 45px;
+
+    height: 105px;
+
+    animation-delay: 0.5s;
+
+}
+
+
+.algas span:nth-child(3) {
+
+    left: 80px;
+
+    height: 85px;
+
+    animation-delay: 1s;
+
+}
+
+
+.algas span:nth-child(4) {
+
+    left: 110px;
+
+    height: 115px;
+
+    animation-delay: 0.2s;
+
+}
+
+
+.algas-esquerda {
+
+    left: -15px;
+
+}
+
+
+.algas-direita {
+
+    right: -15px;
+
+    transform:
+        scaleX(-1);
+
+}
+
+
+@keyframes balancarAlga {
+
+    from {
+
+        transform:
+            rotate(-5deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(6deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   AREIA
+   ========================================================= */
+
+.areia-mar {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 38px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #173d50,
+            #102c3c 45%,
+            #092233
+        );
+
+    border-radius:
+        50%
+        50%
+        0
+        0;
+
+    box-shadow:
+        0 -8px 30px
+        rgba(90,220,230,0.08);
+
+}
+
+
+/* =========================================================
+   PEDRAS
+   ========================================================= */
+
+.pedras-mar {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+}
+
+
+.pedras-mar span {
+
+    display: block;
+
+    width: 35px;
+
+    height: 20px;
+
+    border-radius:
+        60%
+        50%
+        35%
+        30%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #315667,
+            #142f40
+        );
+
+    box-shadow:
+        inset
+        4px
+        3px
+        7px
+        rgba(150,240,255,0.08);
+
+}
+
+
+.pedras-mar span:nth-child(2) {
+
+    width: 25px;
+
+    height: 14px;
+
+}
+
+
+.pedras-mar span:nth-child(3) {
+
+    width: 45px;
+
+    height: 23px;
+
+}
+
+
+.pedras-esquerda {
+
+    left: 15%;
+
+}
+
+
+.pedras-direita {
+
+    right: 15%;
+
+}
+
+
+/* =========================================================
+   CORAIS — MAIS PROFUNDOS
+   ========================================================= */
+
+.coral-mar {
+
+    position: absolute;
+
+    bottom: 12px;
+
+    font-size:
+        clamp(
+            4rem,
+            10vw,
+            6rem
+        );
+
+    opacity: 0.35;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(80,220,230,0.2)
+        );
+
+}
+
+
+.coral-mar-1 {
+
+    left: 2%;
+
+    transform:
+        rotate(-8deg);
+
+}
+
+
+.coral-mar-2 {
+
+    right: 2%;
+
+    transform:
+        scaleX(-1)
+        rotate(-8deg);
+
+}
+
+
+/* =========================================================
+   CONCHA
+   ========================================================= */
+
+.concha-mar {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%)
+        rotate(-8deg);
+
+    font-size: 2.2rem;
+
+    opacity: 0.4;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(255,190,235,0.3)
+        );
+
+}
+
+
+/* =========================================================
+   PROFUNDIDADE EXTRA
+   ========================================================= */
+
+.mundo-oceano::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 15;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,10,30,0.12) 65%,
+            rgba(0,5,25,0.42) 100%
+        );
+
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .peixe-1 {
+
+        top: 18%;
+
+    }
+
+
+    .peixe-2 {
+
+        top: 31%;
+
+    }
+
+
+    .peixe-3 {
+
+        top: 46%;
+
+    }
+
+
+    .peixe-4 {
+
+        top: 61%;
+
+    }
+
+
+    .peixe-5 {
+
+        top: 74%;
+
+    }
+
+
+    .peixe-6 {
+
+        top: 40%;
+
+    }
+
+
+    .algas {
+
+        transform:
+            scale(0.8);
+
+        transform-origin:
+            bottom;
+
+    }
+
+
+    .algas-direita {
+
+        transform:
+            scaleX(-1)
+            scale(0.8);
+
+    }
+
+
+    .pedras-esquerda {
+
+        left: 4%;
+
+    }
+
+
+    .pedras-direita {
+
+        right: 4%;
+
+    }
+
+}
