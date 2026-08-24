@@ -22,7 +22,8 @@ const CONFIG = {
 
     horario: "13:00",
 
-    local: "Local da Festa",
+    local:
+        "Local com piscina — Uso infantil liberado com acompanhamento de responsável",
 
     link:
         "https://maps.app.goo.gl/SGfxecVLVifhaA4a7",
@@ -46,26 +47,11 @@ const mergulho =
 const oceano =
     document.getElementById("oceano");
 
-const bauSecao =
-    document.getElementById("bau-secao");
-
-const cartaSecao =
-    document.getElementById("carta-secao");
+const bauTesouro =
+    document.getElementById("bau-tesouro");
 
 const presentes =
     document.getElementById("presentes");
-
-const fundoMar =
-    document.getElementById("fundo-mar");
-
-const conchaFinal =
-    document.getElementById("concha-final");
-
-const btnMergulhar =
-    document.getElementById("btn-mergulhar");
-
-const bauTesouro =
-    document.getElementById("bau-tesouro");
 
 const conchaConvite =
     document.getElementById("concha-convite");
@@ -83,42 +69,27 @@ const fecharDownload =
     document.getElementById("fechar-download");
 
 const cartaModalConteudo =
-    document.getElementById(
-        "carta-modal-conteudo"
-    );
+    document.getElementById("carta-modal-conteudo");
 
 const downloadConvite =
-    document.getElementById(
-        "download-convite"
-    );
+    document.getElementById("download-convite");
 
 const mensagemDownload =
-    document.getElementById(
-        "mensagem-download"
-    );
+    document.getElementById("mensagem-download");
 
 
 /* =========================================================
    ESTADO
 ========================================================= */
 
-let mergulhoExecutado = false;
-
 let bauAberto = false;
 
 let conviteGerado = false;
-
-let bloqueandoTransicao = false;
 
 
 /* =========================================================
    FUNÇÕES UTILITÁRIAS
 ========================================================= */
-
-
-/*
-    Rola suavemente até determinada seção.
-*/
 
 function irPara(secao) {
 
@@ -130,12 +101,9 @@ function irPara(secao) {
         behavior: "smooth",
         block: "start"
     });
+
 }
 
-
-/*
-    Espera alguns milissegundos.
-*/
 
 function esperar(tempo) {
 
@@ -145,26 +113,7 @@ function esperar(tempo) {
             tempo
         )
     );
-}
 
-
-/*
-    Bloqueia/desbloqueia temporariamente
-    algumas interações.
-*/
-
-function bloquearPagina(valor) {
-
-    if (valor) {
-
-        document.body.dataset.transicao =
-            "ativa";
-
-    } else {
-
-        delete document.body.dataset.transicao;
-
-    }
 }
 
 
@@ -202,166 +151,39 @@ function carregarDadosDaFesta() {
 
 
 /* =========================================================
-   BOTÃO "MERGULHAR"
+   REMOVER TRANSIÇÃO DE MERGULHO
 ========================================================= */
 
-async function iniciarMergulho() {
+/*
+    O botão antigo "Mergulhar" não será mais utilizado
+    para controlar a navegação.
 
-    if (bloqueandoTransicao) {
-        return;
-    }
+    O usuário pode simplesmente rolar a página.
 
-    if (mergulhoExecutado) {
+    Isso evita travamentos e problemas em celulares
+    mais simples.
+*/
 
-        irPara(oceano);
+function desativarMergulho() {
 
-        return;
-    }
-
-    bloqueandoTransicao = true;
-
-    bloquearPagina(true);
-
-    mergulhoExecutado = true;
-
-
-    /*
-        Pequeno efeito inicial na entrada.
-    */
-
-    entrada.style.transition =
-        "opacity 0.7s ease, transform 1.2s ease";
-
-    entrada.style.opacity = "0";
-
-    entrada.style.transform =
-        "scale(1.15)";
-
-
-    await esperar(650);
-
-
-    /*
-        Mostra a tela de mergulho.
-    */
-
-    mergulho.classList.add("ativo");
-
-    mergulho.style.opacity = "1";
-
-    mergulho.style.visibility =
-        "visible";
-
-
-    /*
-        Posiciona o usuário no mergulho.
-    */
-
-    mergulho.scrollIntoView({
-        behavior: "instant",
-        block: "start"
-    });
-
-
-    await esperar(2200);
-
-
-    /*
-        Esconde o mergulho.
-    */
-
-    mergulho.style.opacity = "0";
-
-
-    await esperar(700);
-
-
-    mergulho.classList.remove("ativo");
-
-    mergulho.style.visibility =
-        "hidden";
-
-
-    /*
-        Revela o oceano.
-    */
-
-    entrada.style.display =
-        "none";
-
-    mergulho.style.display =
-        "none";
-
-    oceano.style.display =
-        "block";
-
-
-    irPara(oceano);
-
-
-    bloquearPagina(false);
-
-    bloqueandoTransicao = false;
-
-}
-
-
-/* =========================================================
-   BAÚ DO TESOURO
-========================================================= */
-
-async function abrirBau() {
-
-    if (bauAberto) {
-        abrirCarta();
-        return;
-    }
-
-    bauAberto = true;
-
-
-    /*
-        Classe utilizada para a animação
-        do baú.
-    */
-
-    bauTesouro.classList.add(
-        "bau-aberto"
-    );
-
-
-    /*
-        Troca visual simples da fechadura.
-    */
-
-    const fechadura =
-        bauTesouro.querySelector(
-            ".bau-fechadura"
+    const botao =
+        document.getElementById(
+            "btn-mergulhar"
         );
 
-    if (fechadura) {
-
-        fechadura.textContent =
-            "✨";
-
+    if (!botao) {
+        return;
     }
 
+    botao.disabled = true;
 
-    /*
-        Pequeno atraso para parecer
-        que o baú realmente abriu.
-    */
-
-    await esperar(900);
-
-
-    abrirCarta();
+    botao.style.display = "none";
 
 }
 
 
 /* =========================================================
-   CARTA
+   CARTA DA SOPHIA
 ========================================================= */
 
 function criarCartaModal() {
@@ -393,6 +215,7 @@ function criarCartaModal() {
                     🌊 ✨ 🌊
                 </div>
 
+
                 <div class="texto-carta">
 
                     <p>
@@ -413,7 +236,11 @@ function criarCartaModal() {
 
                 </div>
 
+
                 <div class="dados-festa">
+
+
+                    <!-- LOCAL -->
 
                     <div class="dado-festa">
 
@@ -427,18 +254,24 @@ function criarCartaModal() {
                                 LOCAL
                             </strong>
 
+                            <span>
+                                ${CONFIG.local}
+                            </span>
+
                             <a
                                 href="${CONFIG.link}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                ${CONFIG.local}
+                                Ver localização
                             </a>
 
                         </div>
 
                     </div>
 
+
+                    <!-- DATA -->
 
                     <div class="dado-festa">
 
@@ -461,6 +294,8 @@ function criarCartaModal() {
                     </div>
 
 
+                    <!-- HORÁRIO -->
+
                     <div class="dado-festa">
 
                         <span class="icone-dado">
@@ -481,6 +316,8 @@ function criarCartaModal() {
 
                     </div>
 
+
+                    <!-- MAPA -->
 
                     <div class="dado-festa">
 
@@ -530,9 +367,9 @@ function criarCartaModal() {
 }
 
 
-/*
-    Abre a carta.
-*/
+/* =========================================================
+   ABRIR CARTA
+========================================================= */
 
 function abrirCarta() {
 
@@ -548,9 +385,20 @@ function abrirCarta() {
         "ativo"
     );
 
+
     modalCarta.setAttribute(
         "aria-hidden",
         "false"
+    );
+
+
+    /*
+        Impede apenas a rolagem do fundo enquanto
+        a carta está aberta.
+    */
+
+    document.body.classList.add(
+        "modal-aberto"
     );
 
 
@@ -560,9 +408,9 @@ function abrirCarta() {
 }
 
 
-/*
-    Fecha a carta.
-*/
+/* =========================================================
+   FECHAR CARTA
+========================================================= */
 
 function fecharCartaModal() {
 
@@ -575,9 +423,15 @@ function fecharCartaModal() {
         "ativo"
     );
 
+
     modalCarta.setAttribute(
         "aria-hidden",
         "true"
+    );
+
+
+    document.body.classList.remove(
+        "modal-aberto"
     );
 
 
@@ -586,15 +440,79 @@ function fecharCartaModal() {
 
 
     /*
-        Depois que a carta fecha,
-        a aventura continua.
+        NÃO manda automaticamente para outra seção.
+
+        O usuário pode continuar exatamente de onde estava.
     */
 
-    setTimeout(() => {
+}
 
-        irPara(presentes);
 
-    }, 350);
+/* =========================================================
+   BAÚ
+========================================================= */
+
+async function abrirBau() {
+
+    if (!bauTesouro) {
+        return;
+    }
+
+
+    /*
+        Se já abriu anteriormente,
+        apenas mostra a carta novamente.
+    */
+
+    if (bauAberto) {
+
+        abrirCarta();
+
+        return;
+
+    }
+
+
+    bauAberto = true;
+
+
+    /*
+        Animação do baú.
+    */
+
+    bauTesouro.classList.add(
+        "bau-aberto"
+    );
+
+
+    const fechadura =
+        bauTesouro.querySelector(
+            ".bau-fechadura"
+        );
+
+
+    if (fechadura) {
+
+        fechadura.textContent =
+            "✨";
+
+    }
+
+
+    /*
+        Espera a animação terminar.
+    */
+
+    await esperar(750);
+
+
+    /*
+        SOMENTE AGORA a carta aparece.
+
+        Ela não aparece por rolagem.
+    */
+
+    abrirCarta();
 
 }
 
@@ -614,10 +532,20 @@ function abrirModalDownload() {
         "ativo"
     );
 
+
     modalDownload.setAttribute(
         "aria-hidden",
         "false"
     );
+
+
+    document.body.classList.add(
+        "modal-aberto"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
@@ -633,19 +561,34 @@ function fecharModalDownload() {
         "ativo"
     );
 
+
     modalDownload.setAttribute(
         "aria-hidden",
         "true"
     );
 
+
+    document.body.classList.remove(
+        "modal-aberto"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
 }
 
 
 /* =========================================================
-   CONCHA FINAL
+   PREPARAR CONVITE
 ========================================================= */
 
 async function prepararConvite() {
+
+    if (!conchaConvite) {
+        return;
+    }
+
 
     if (conviteGerado) {
 
@@ -665,10 +608,12 @@ async function prepararConvite() {
             "ativo"
         );
 
+
         const texto =
             mensagemDownload.querySelector(
                 "p"
             );
+
 
         if (texto) {
 
@@ -680,28 +625,25 @@ async function prepararConvite() {
     }
 
 
-    /*
-        Pequena animação antes
-        da geração da imagem.
-    */
-
     conchaConvite.classList.add(
         "concha-processando"
     );
 
 
-    await esperar(800);
+    await esperar(700);
 
-
-    /*
-        Cria o convite.
-    */
 
     const canvas =
         criarImagemConvite();
 
 
     if (!canvas) {
+
+        conviteGerado = false;
+
+        conchaConvite.classList.remove(
+            "concha-processando"
+        );
 
         if (mensagemDownload) {
 
@@ -716,11 +658,6 @@ async function prepararConvite() {
     }
 
 
-    /*
-        Guarda o canvas para
-        o botão de download.
-    */
-
     window.__conviteCanvas =
         canvas;
 
@@ -731,6 +668,7 @@ async function prepararConvite() {
             mensagemDownload.querySelector(
                 "p"
             );
+
 
         if (texto) {
 
@@ -747,7 +685,7 @@ async function prepararConvite() {
     );
 
 
-    await esperar(500);
+    await esperar(400);
 
 
     abrirModalDownload();
@@ -756,15 +694,10 @@ async function prepararConvite() {
 
 
 /* =========================================================
-   GERAÇÃO DA IMAGEM DO CONVITE
+   GERAÇÃO DA IMAGEM
 ========================================================= */
 
 function criarImagemConvite() {
-
-    /*
-        Tamanho pensado para compartilhamento
-        em celular.
-    */
 
     const largura = 1080;
 
@@ -775,6 +708,7 @@ function criarImagemConvite() {
         document.createElement(
             "canvas"
         );
+
 
     canvas.width =
         largura;
@@ -795,7 +729,7 @@ function criarImagemConvite() {
 
 
     /* =====================================================
-       FUNDO
+       FUNDO EM DEGRADÊ SUAVE
     ====================================================== */
 
     const gradiente =
@@ -809,22 +743,33 @@ function criarImagemConvite() {
 
     gradiente.addColorStop(
         0,
-        "#74e6f4"
+        "#b9f4f8"
     );
 
     gradiente.addColorStop(
-        0.45,
-        "#32c6df"
+        0.20,
+        "#75dce9"
+    );
+
+    gradiente.addColorStop(
+        0.48,
+        "#35bdd7"
+    );
+
+    gradiente.addColorStop(
+        0.72,
+        "#168eb5"
     );
 
     gradiente.addColorStop(
         1,
-        "#075b88"
+        "#07547f"
     );
 
 
     ctx.fillStyle =
         gradiente;
+
 
     ctx.fillRect(
         0,
@@ -835,24 +780,31 @@ function criarImagemConvite() {
 
 
     /* =====================================================
-       LUZ
+       LUZ DO OCEANO
     ====================================================== */
 
     const luz =
         ctx.createRadialGradient(
             largura / 2,
-            180,
-            30,
+            130,
+            20,
             largura / 2,
-            180,
-            550
+            130,
+            650
         );
 
 
     luz.addColorStop(
         0,
-        "rgba(255,255,255,0.45)"
+        "rgba(255,255,255,0.58)"
     );
+
+
+    luz.addColorStop(
+        0.35,
+        "rgba(255,255,255,0.20)"
+    );
+
 
     luz.addColorStop(
         1,
@@ -863,74 +815,108 @@ function criarImagemConvite() {
     ctx.fillStyle =
         luz;
 
+
     ctx.fillRect(
         0,
         0,
         largura,
-        700
+        720
     );
+
+
+    /* =====================================================
+       RAIOS DE LUZ
+    ====================================================== */
+
+    ctx.save();
+
+
+    ctx.globalAlpha =
+        0.12;
+
+
+    ctx.fillStyle =
+        "#ffffff";
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(120, 0);
+    ctx.lineTo(330, 0);
+    ctx.lineTo(560, 700);
+    ctx.lineTo(390, 700);
+
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(650, 0);
+    ctx.lineTo(820, 0);
+    ctx.lineTo(700, 700);
+    ctx.lineTo(540, 700);
+
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    ctx.restore();
 
 
     /* =====================================================
        BOLHAS
     ====================================================== */
 
-    desenharBolha(
-        ctx,
-        100,
-        180,
-        18
-    );
+    const bolhas = [
 
-    desenharBolha(
-        ctx,
-        940,
-        230,
-        25
-    );
+        [100, 190, 18],
+        [950, 230, 25],
+        [170, 520, 13],
+        [900, 650, 19],
+        [100, 900, 22],
+        [970, 1050, 14],
+        [760, 370, 11],
+        [310, 760, 16]
 
-    desenharBolha(
-        ctx,
-        180,
-        620,
-        13
-    );
+    ];
 
-    desenharBolha(
-        ctx,
-        890,
-        720,
-        18
-    );
 
-    desenharBolha(
-        ctx,
-        120,
-        1050,
-        22
-    );
+    bolhas.forEach(
+        bolha => {
 
-    desenharBolha(
-        ctx,
-        970,
-        1120,
-        14
+            desenharBolha(
+                ctx,
+                bolha[0],
+                bolha[1],
+                bolha[2]
+            );
+
+        }
     );
 
 
     /* =====================================================
-       PEIXES DECORATIVOS
+       PEIXES
     ====================================================== */
 
-    desenharEmoji(
+    /*
+        Os peixes foram espelhados para apontarem
+        para a direita.
+    */
+
+    desenharEmojiEspelhado(
         ctx,
         "🐟",
-        90,
+        100,
         390,
         60
     );
 
-    desenharEmoji(
+
+    desenharEmojiEspelhado(
         ctx,
         "🐠",
         900,
@@ -938,7 +924,8 @@ function criarImagemConvite() {
         65
     );
 
-    desenharEmoji(
+
+    desenharEmojiEspelhado(
         ctx,
         "🐟",
         150,
@@ -946,7 +933,8 @@ function criarImagemConvite() {
         55
     );
 
-    desenharEmoji(
+
+    desenharEmojiEspelhado(
         ctx,
         "🐠",
         870,
@@ -966,6 +954,7 @@ function criarImagemConvite() {
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
         "bold 48px Trebuchet MS, Arial, sans-serif";
 
@@ -973,12 +962,13 @@ function criarImagemConvite() {
     ctx.fillText(
         "O Oceano",
         largura / 2,
-        170
+        150
     );
 
 
     ctx.fillStyle =
         "#ff69b4";
+
 
     ctx.font =
         "bold 64px Trebuchet MS, Arial, sans-serif";
@@ -987,12 +977,13 @@ function criarImagemConvite() {
     ctx.fillText(
         "Cor-de-Rosa",
         largura / 2,
-        240
+        225
     );
 
 
     ctx.fillStyle =
         "#ffffff";
+
 
     ctx.font =
         "bold 46px Trebuchet MS, Arial, sans-serif";
@@ -1001,61 +992,67 @@ function criarImagemConvite() {
     ctx.fillText(
         "da Sophia",
         largura / 2,
-        305
+        290
     );
 
 
     /* =====================================================
-       SEREIA / GOLFINHO
+       SEREIA
     ====================================================== */
 
     desenharEmoji(
         ctx,
         "🧜‍♀️",
         540,
-        400,
+        405,
         120
     );
 
+
+    /* =====================================================
+       GOLFINHO
+    ====================================================== */
 
     desenharEmoji(
         ctx,
         "🐬",
         540,
-        560,
-        100
+        545,
+        95
     );
 
 
     /* =====================================================
-       NOME
+       NOME DA SOPHIA
     ====================================================== */
 
     ctx.fillStyle =
-        "#ffb4d9";
+        "#ff9dcc";
+
 
     ctx.font =
-        "bold 52px Trebuchet MS, Arial, sans-serif";
+        "bold 56px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.nome,
         largura / 2,
-        690
+        665
     );
 
 
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
         "bold 30px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
-        `${CONFIG.idade} anos`,
+        CONFIG.idade,
         largura / 2,
-        735
+        710
     );
 
 
@@ -1063,13 +1060,13 @@ function criarImagemConvite() {
        CARD DE INFORMAÇÕES
     ====================================================== */
 
-    const cardX = 100;
+    const cardX = 75;
 
-    const cardY = 780;
+    const cardY = 755;
 
-    const cardW = 880;
+    const cardW = 930;
 
-    const cardH = 330;
+    const cardH = 370;
 
 
     desenharRetanguloArredondado(
@@ -1078,111 +1075,143 @@ function criarImagemConvite() {
         cardY,
         cardW,
         cardH,
-        35,
-        "rgba(255,255,255,0.18)"
+        38,
+        "rgba(255,255,255,0.17)"
     );
 
 
     ctx.strokeStyle =
-        "rgba(255,255,255,0.35)";
+        "rgba(255,255,255,0.42)";
+
 
     ctx.lineWidth =
         2;
 
+
     ctx.stroke();
 
-
-    /* Data */
 
     ctx.textAlign =
         "left";
 
+
+    /* DATA */
+
     ctx.fillStyle =
         "#ffb4d9";
 
+
     ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
+        "bold 25px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "📅 DATA",
-        cardX + 45,
-        cardY + 60
+        cardX + 40,
+        cardY + 55
     );
 
 
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
-        "26px Trebuchet MS, Arial, sans-serif";
+        "25px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.data,
-        cardX + 45,
-        cardY + 100
+        cardX + 40,
+        cardY + 93
     );
 
 
-    /* Horário */
+    /* HORÁRIO */
 
     ctx.fillStyle =
         "#ffb4d9";
 
+
     ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
+        "bold 25px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "🕐 HORÁRIO",
-        cardX + 45,
-        cardY + 155
+        cardX + 40,
+        cardY + 145
     );
 
 
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
-        "26px Trebuchet MS, Arial, sans-serif";
+        "25px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         CONFIG.horario,
-        cardX + 45,
-        cardY + 195
+        cardX + 40,
+        cardY + 183
     );
 
 
-    /* Local */
+    /* LOCAL */
 
     ctx.fillStyle =
         "#ffb4d9";
 
+
     ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
+        "bold 25px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
         "📍 LOCAL",
-        cardX + 45,
-        cardY + 250
+        cardX + 40,
+        cardY + 235
     );
 
+
+    /*
+        O texto do local é muito comprido.
+        Será quebrado automaticamente.
+    */
 
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
-        "24px Trebuchet MS, Arial, sans-serif";
+        "22px Trebuchet MS, Arial, sans-serif";
 
 
-    ctx.fillText(
-        CONFIG.local,
-        cardX + 45,
-        cardY + 290
-    );
+    const linhasLocal =
+        quebrarTexto(
+            ctx,
+            CONFIG.local,
+            820
+        );
+
+
+    linhasLocal
+        .slice(0, 2)
+        .forEach(
+            (linha, index) => {
+
+                ctx.fillText(
+                    linha,
+                    cardX + 40,
+                    cardY +
+                    273 +
+                    index * 32
+                );
+
+            }
+        );
 
 
     /* =====================================================
@@ -1192,15 +1221,17 @@ function criarImagemConvite() {
     ctx.textAlign =
         "center";
 
+
     ctx.fillStyle =
         "#ffe8f4";
 
+
     ctx.font =
-        "bold 20px Trebuchet MS, Arial, sans-serif";
+        "bold 21px Trebuchet MS, Arial, sans-serif";
 
 
     ctx.fillText(
-        "📍 Abra o mapa pelo link:",
+        "📍 Localização:",
         largura / 2,
         1170
     );
@@ -1209,28 +1240,16 @@ function criarImagemConvite() {
     ctx.fillStyle =
         "#ffffff";
 
+
     ctx.font =
         "18px Trebuchet MS, Arial, sans-serif";
-
-
-    /*
-        O link pode ser grande.
-        Fazemos quebra em duas linhas.
-    */
-
-    const linkTexto =
-        CONFIG.link;
-
-
-    const limite =
-        850;
 
 
     const partes =
         quebrarTexto(
             ctx,
-            linkTexto,
-            limite
+            CONFIG.link,
+            850
         );
 
 
@@ -1240,8 +1259,8 @@ function criarImagemConvite() {
             ctx.fillText(
                 parte,
                 largura / 2,
-                1210 +
-                (index * 27)
+                1205 +
+                index * 26
             );
 
         }
@@ -1254,6 +1273,7 @@ function criarImagemConvite() {
 
     ctx.fillStyle =
         "#ffffff";
+
 
     ctx.font =
         "italic 30px Georgia, serif";
@@ -1272,7 +1292,7 @@ function criarImagemConvite() {
 
 
 /* =========================================================
-   DESENHAR BOLHA
+   BOLHAS
 ========================================================= */
 
 function desenharBolha(
@@ -1287,6 +1307,7 @@ function desenharBolha(
 
     ctx.beginPath();
 
+
     ctx.arc(
         x,
         y,
@@ -1299,16 +1320,42 @@ function desenharBolha(
     ctx.fillStyle =
         "rgba(255,255,255,0.12)";
 
+
     ctx.fill();
 
 
     ctx.strokeStyle =
-        "rgba(255,255,255,0.6)";
+        "rgba(255,255,255,0.65)";
+
 
     ctx.lineWidth =
         3;
 
+
     ctx.stroke();
+
+
+    /*
+        Pequeno brilho dentro da bolha.
+    */
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+        x - tamanho * 0.3,
+        y - tamanho * 0.3,
+        tamanho * 0.18,
+        0,
+        Math.PI * 2
+    );
+
+
+    ctx.fillStyle =
+        "rgba(255,255,255,0.75)";
+
+
+    ctx.fill();
 
 
     ctx.restore();
@@ -1317,7 +1364,7 @@ function desenharBolha(
 
 
 /* =========================================================
-   DESENHAR EMOJI
+   EMOJI
 ========================================================= */
 
 function desenharEmoji(
@@ -1330,20 +1377,80 @@ function desenharEmoji(
 
     ctx.save();
 
+
     ctx.textAlign =
         "center";
+
 
     ctx.textBaseline =
         "middle";
 
+
     ctx.font =
         `${tamanho}px Arial`;
+
 
     ctx.fillText(
         emoji,
         x,
         y
     );
+
+
+    ctx.restore();
+
+}
+
+
+/* =========================================================
+   EMOJI ESPELHADO
+========================================================= */
+
+function desenharEmojiEspelhado(
+    ctx,
+    emoji,
+    x,
+    y,
+    tamanho
+) {
+
+    ctx.save();
+
+
+    ctx.translate(
+        x,
+        y
+    );
+
+
+    /*
+        Espelha horizontalmente o emoji.
+    */
+
+    ctx.scale(
+        -1,
+        1
+    );
+
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.textBaseline =
+        "middle";
+
+
+    ctx.font =
+        `${tamanho}px Arial`;
+
+
+    ctx.fillText(
+        emoji,
+        0,
+        0
+    );
+
 
     ctx.restore();
 
@@ -1366,15 +1473,18 @@ function desenharRetanguloArredondado(
 
     ctx.beginPath();
 
+
     ctx.moveTo(
         x + raio,
         y
     );
 
+
     ctx.lineTo(
         x + largura - raio,
         y
     );
+
 
     ctx.quadraticCurveTo(
         x + largura,
@@ -1383,10 +1493,12 @@ function desenharRetanguloArredondado(
         y + raio
     );
 
+
     ctx.lineTo(
         x + largura,
         y + altura - raio
     );
+
 
     ctx.quadraticCurveTo(
         x + largura,
@@ -1395,10 +1507,12 @@ function desenharRetanguloArredondado(
         y + altura
     );
 
+
     ctx.lineTo(
         x + raio,
         y + altura
     );
+
 
     ctx.quadraticCurveTo(
         x,
@@ -1407,10 +1521,12 @@ function desenharRetanguloArredondado(
         y + altura - raio
     );
 
+
     ctx.lineTo(
         x,
         y + raio
     );
+
 
     ctx.quadraticCurveTo(
         x,
@@ -1418,11 +1534,14 @@ function desenharRetanguloArredondado(
         x + raio,
         y
     );
+
 
     ctx.closePath();
 
+
     ctx.fillStyle =
         preenchimento;
+
 
     ctx.fill();
 
@@ -1442,9 +1561,12 @@ function quebrarTexto(
     const palavras =
         texto.split(" ");
 
+
     const linhas = [];
 
-    let linhaAtual = "";
+
+    let linhaAtual =
+        "";
 
 
     palavras.forEach(
@@ -1475,6 +1597,7 @@ function quebrarTexto(
 
                 }
 
+
                 linhaAtual =
                     palavra;
 
@@ -1504,7 +1627,7 @@ function quebrarTexto(
 
 
 /* =========================================================
-   DOWNLOAD DO CONVITE
+   DOWNLOAD
 ========================================================= */
 
 function baixarConvite() {
@@ -1581,16 +1704,13 @@ function baixarConvite() {
             );
 
 
-            /*
-                Atualiza a mensagem.
-            */
-
             if (mensagemDownload) {
 
                 const texto =
                     mensagemDownload.querySelector(
                         "p"
                     );
+
 
                 if (texto) {
 
@@ -1627,15 +1747,8 @@ function configurarPresentes() {
                 "click",
                 () => {
 
-                    /*
-                        Aqui futuramente podemos
-                        colocar os links reais
-                        dos produtos.
-                    */
-
                     console.log(
-                        "Abrindo sugestão de presente:"
-                        ,
+                        "Abrindo sugestão de presente:",
                         link.textContent.trim()
                     );
 
@@ -1649,10 +1762,10 @@ function configurarPresentes() {
 
 
 /* =========================================================
-   ANIMAÇÃO DO BAÚ
+   ANIMAÇÕES
 ========================================================= */
 
-function prepararAnimacaoBau() {
+function prepararAnimacoes() {
 
     const estilo =
         document.createElement(
@@ -1668,6 +1781,7 @@ function prepararAnimacaoBau() {
                 ease both !important;
         }
 
+
         @keyframes bauAbrindo {
 
             0% {
@@ -1676,13 +1790,13 @@ function prepararAnimacaoBau() {
                     rotate(0);
             }
 
-            35% {
+            30% {
                 transform:
                     scale(1.08)
                     rotate(-3deg);
             }
 
-            65% {
+            60% {
                 transform:
                     scale(1.12)
                     rotate(3deg);
@@ -1696,30 +1810,41 @@ function prepararAnimacaoBau() {
 
         }
 
+
         .concha-processando {
+
             animation:
-                conchaProcessando 0.7s
-                ease-in-out infinite alternate !important;
+                conchaProcessando
+                0.7s
+                ease-in-out
+                infinite alternate !important;
+
         }
+
 
         @keyframes conchaProcessando {
 
             from {
+
                 transform:
                     scale(0.95)
                     rotate(-5deg);
+
             }
 
             to {
+
                 transform:
                     scale(1.08)
                     rotate(5deg);
+
             }
 
         }
 
-        body[data-transicao="ativa"] {
-            cursor: wait;
+
+        body.modal-aberto {
+            overflow: hidden;
         }
 
     `;
@@ -1733,15 +1858,10 @@ function prepararAnimacaoBau() {
 
 
 /* =========================================================
-   INTERSECTION OBSERVER
+   ELEMENTOS VISÍVEIS
 ========================================================= */
 
 function observarElementos() {
-
-    /*
-        Elementos podem receber a classe
-        "visivel" quando entram na tela.
-    */
 
     const elementos =
         document.querySelectorAll(
@@ -1813,7 +1933,7 @@ function observarElementos() {
 
 
 /* =========================================================
-   DETECÇÃO DA SEÇÃO ATUAL
+   OBSERVAR SEÇÕES
 ========================================================= */
 
 function observarSecoes() {
@@ -1827,7 +1947,9 @@ function observarSecoes() {
     if (
         !("IntersectionObserver" in window)
     ) {
+
         return;
+
     }
 
 
@@ -1853,7 +1975,7 @@ function observarSecoes() {
 
             },
             {
-                threshold: 0.25
+                threshold: 0.20
             }
         );
 
@@ -1872,7 +1994,7 @@ function observarSecoes() {
 
 
 /* =========================================================
-   FECHAR MODAIS CLICANDO FORA
+   FECHAMENTO DOS MODAIS
 ========================================================= */
 
 function configurarFechamentoModais() {
@@ -1903,9 +2025,15 @@ function configurarFechamentoModais() {
                             "ativo"
                         );
 
+
                         modal.setAttribute(
                             "aria-hidden",
                             "true"
+                        );
+
+
+                        document.body.classList.remove(
+                            "modal-aberto"
                         );
 
 
@@ -1934,7 +2062,9 @@ function configurarTeclaEsc() {
             if (
                 evento.key !== "Escape"
             ) {
+
                 return;
+
             }
 
 
@@ -1949,7 +2079,7 @@ function configurarTeclaEsc() {
 
 
 /* =========================================================
-   EVITAR CLIQUE DUPLO
+   PROTEÇÃO CONTRA CLIQUE DUPLO
 ========================================================= */
 
 function protegerCliqueRapido(
@@ -2008,17 +2138,17 @@ function protegerCliqueRapido(
 
 function configurarEventos() {
 
+    /*
+        O antigo botão Mergulhar não controla mais
+        a navegação.
+    */
 
-    /* Botão de mergulho */
-
-    protegerCliqueRapido(
-        btnMergulhar,
-        iniciarMergulho,
-        1200
-    );
+    desativarMergulho();
 
 
-    /* Baú */
+    /*
+        BAÚ
+    */
 
     protegerCliqueRapido(
         bauTesouro,
@@ -2027,7 +2157,9 @@ function configurarEventos() {
     );
 
 
-    /* Concha */
+    /*
+        CONCHA
+    */
 
     protegerCliqueRapido(
         conchaConvite,
@@ -2036,7 +2168,9 @@ function configurarEventos() {
     );
 
 
-    /* Fechar carta */
+    /*
+        FECHAR CARTA
+    */
 
     if (fecharCarta) {
 
@@ -2048,7 +2182,9 @@ function configurarEventos() {
     }
 
 
-    /* Fechar download */
+    /*
+        FECHAR DOWNLOAD
+    */
 
     if (fecharDownload) {
 
@@ -2060,7 +2196,9 @@ function configurarEventos() {
     }
 
 
-    /* Baixar convite */
+    /*
+        DOWNLOAD
+    */
 
     if (downloadConvite) {
 
@@ -2072,17 +2210,23 @@ function configurarEventos() {
     }
 
 
-    /* Links de presente */
+    /*
+        PRESENTES
+    */
 
     configurarPresentes();
 
 
-    /* Modais */
+    /*
+        MODAIS
+    */
 
     configurarFechamentoModais();
 
 
-    /* ESC */
+    /*
+        ESC
+    */
 
     configurarTeclaEsc();
 
@@ -2090,29 +2234,26 @@ function configurarEventos() {
 
 
 /* =========================================================
-   AJUSTES INICIAIS
+   PREPARAR PÁGINA
 ========================================================= */
 
 function prepararPagina() {
 
+
     /*
-        Garante que algumas telas
-        estejam no estado correto.
+        Garante que os modais comecem fechados.
     */
-
-    if (mergulho) {
-
-        mergulho.classList.remove(
-            "ativo"
-        );
-
-    }
-
 
     if (modalCarta) {
 
         modalCarta.classList.remove(
             "ativo"
+        );
+
+
+        modalCarta.setAttribute(
+            "aria-hidden",
+            "true"
         );
 
     }
@@ -2124,11 +2265,17 @@ function prepararPagina() {
             "ativo"
         );
 
+
+        modalDownload.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
     }
 
 
     /*
-        Carrega os dados.
+        Carrega dados.
     */
 
     carregarDadosDaFesta();
@@ -2138,7 +2285,7 @@ function prepararPagina() {
         Prepara animações.
     */
 
-    prepararAnimacaoBau();
+    prepararAnimacoes();
 
 
     /*
@@ -2180,7 +2327,7 @@ if (
 
 
 /* =========================================================
-   LOG DE DESENVOLVIMENTO
+   LOG
 ========================================================= */
 
 console.log(
@@ -2193,4 +2340,8 @@ console.log(
 
 console.log(
     "📅 28 de novembro de 2026 — 13:00"
+);
+
+console.log(
+    "🏊 Local com piscina — Uso infantil liberado com acompanhamento de responsável"
 );
