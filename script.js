@@ -1,6 +1,6 @@
 // =========================================================
 // CONVITE SOPHIA EMANUELY
-// PARTE 1.2 — ENTRADA NO FUNDO DO MAR
+// PARTE 1.2 — ENTRADA LEVE NO OCEANO
 // =========================================================
 
 
@@ -19,29 +19,33 @@ const mundoOceano = document.getElementById("mundoOceano");
 
 botaoEntrada.addEventListener("click", () => {
 
-    // Evita que a pessoa clique várias vezes
+    // Impede cliques repetidos
     botaoEntrada.disabled = true;
 
-    // Adiciona a animação de mergulho
+    // Inicia a transição
     entrada.classList.add("mergulhando");
 
-    // Aguarda a animação terminar
+    // Aguarda a transição curta
     setTimeout(() => {
 
-        // Esconde a primeira tela
         entrada.style.display = "none";
 
-        // Mostra o próximo mundo
         mundoOceano.style.display = "flex";
-        mundoOceano.setAttribute("aria-hidden", "false");
 
-        // Pequeno atraso para a animação aparecer corretamente
-        setTimeout(() => {
+        mundoOceano.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
-            mundoOceano.classList.add("mundo-visivel");
+        // Faz a próxima tela aparecer
+        requestAnimationFrame(() => {
 
-        }, 50);
+            mundoOceano.classList.add(
+                "mundo-visivel"
+            );
 
-    }, 1800);
+        });
+
+    }, 850);
 
 });
