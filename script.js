@@ -1,70 +1,515 @@
-// =========================================================
-// CONVITE SOPHIA EMANUELY
-// JAVASCRIPT — TELA 1
-// =========================================================
+/* =========================================================
+   CONVITE SOPHIA EMANUELY
+   JAVASCRIPT COMPLETO
+   ========================================================= */
 
 
-// =========================================================
-// ELEMENTOS
-// =========================================================
-
-const botaoEntrada = document.getElementById("botaoEntrada");
-const entrada = document.getElementById("entrada");
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
 
-// =========================================================
-// ENTRAR NA AVENTURA
-// =========================================================
-
-if (botaoEntrada && entrada) {
-
-    botaoEntrada.addEventListener("click", () => {
-
-        // Impede vários cliques
-        botaoEntrada.disabled = true;
-
-        // Inicia a animação da tela
-        entrada.classList.add("saindo");
+        /* =================================================
+           ELEMENTOS
+           ================================================= */
 
 
-        // Aguarda a animação terminar
-        setTimeout(() => {
+        const oceano =
+            document.getElementById(
+                "oceano"
+            );
+
+
+        const bolhas =
+            document.getElementById(
+                "bolhasOceano"
+            );
+
+
+
+        /* =================================================
+           GARANTIR QUE A PÁGINA COMEÇA NO TOPO
+           ================================================= */
+
+
+        if (
+            "scrollRestoration"
+            in history
+        ) {
+
+            history.scrollRestoration =
+                "manual";
+
+        }
+
+
+        window.scrollTo(
+            0,
+            0
+        );
+
+
+
+        /* =================================================
+           CRIAÇÃO DE BOLHAS EXTRAS
+           ================================================= */
+
+
+        function criarBolhaExtra(
+            quantidade = 8
+        ) {
+
+
+            if (!bolhas) {
+                return;
+            }
+
+
+            const largura =
+                window.innerWidth;
+
+
+            for (
+                let i = 0;
+                i < quantidade;
+                i++
+            ) {
+
+
+                const bolha =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                bolha.classList.add(
+                    "bolha-extra"
+                );
+
+
+                const tamanho =
+                    Math.floor(
+                        Math.random() * 14
+                    ) + 5;
+
+
+                const duracao =
+                    (
+                        Math.random() * 5
+                        + 5
+                    ).toFixed(2);
+
+
+                const desvio =
+                    Math.floor(
+                        Math.random() * 100
+                    ) - 50;
+
+
+                const posicao =
+                    Math.floor(
+                        Math.random()
+                        * largura
+                    );
+
+
+                bolha.style.left =
+                    `${posicao}px`;
+
+
+                bolha.style.setProperty(
+                    "--tamanho",
+                    `${tamanho}px`
+                );
+
+
+                bolha.style.setProperty(
+                    "--duracao",
+                    `${duracao}s`
+                );
+
+
+                bolha.style.setProperty(
+                    "--desvio",
+                    `${desvio}px`
+                );
+
+
+                bolhas.appendChild(
+                    bolha
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        bolha.remove();
+
+                    },
+                    (
+                        Number(duracao)
+                        * 1000
+                    ) + 1000
+                );
+
+            }
+
+        }
+
+
+
+        /* =================================================
+           MAIS BOLHAS QUANDO A PESSOA INTERAGE
+           ================================================= */
+
+
+        let ultimoToque =
+            0;
+
+
+        function respostaAoToque() {
+
+
+            const agora =
+                Date.now();
+
 
             /*
-             * Por enquanto não vamos esconder
-             * nem trocar de tela aqui.
-             *
-             * A próxima etapa será colocar
-             * o OCEANO logo abaixo desta tela.
-             */
+               Evita criar centenas
+               de bolhas quando o
+               navegador dispara
+               vários eventos juntos.
+            */
 
-            const proximaTela =
-                document.getElementById("mundoOceano");
+            if (
+                agora -
+                ultimoToque
+                <
+                180
+            ) {
 
-
-            // Se a próxima tela existir,
-            // fazemos a rolagem até ela.
-            if (proximaTela) {
-
-                proximaTela.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+                return;
 
             }
 
 
-            // Libera o botão novamente
-            // caso precisemos voltar à tela.
-            setTimeout(() => {
-
-                botaoEntrada.disabled = false;
-
-            }, 1000);
+            ultimoToque =
+                agora;
 
 
-        }, 850);
+            criarBolhaExtra(
+                7
+            );
 
-    });
+        }
 
-}
+
+
+        /* =================================================
+           TOQUE / CLIQUE
+           ================================================= */
+
+
+        if (oceano) {
+
+
+            oceano.addEventListener(
+                "pointerdown",
+                respostaAoToque,
+                {
+                    passive: true
+                }
+            );
+
+
+            oceano.addEventListener(
+                "touchmove",
+                respostaAoToque,
+                {
+                    passive: true
+                }
+            );
+
+
+            oceano.addEventListener(
+                "wheel",
+                (evento) => {
+
+
+                    if (
+                        Math.abs(
+                            evento.deltaY
+                        ) > 0
+                    ) {
+
+                        criarBolhaExtra(
+                            4
+                        );
+
+                    }
+
+                },
+                {
+                    passive: true
+                }
+            );
+
+        }
+
+
+
+        /* =================================================
+           BOLHAS QUANDO A PESSOA DESCE
+           ================================================= */
+
+
+        let ultimoScroll =
+            window.scrollY;
+
+
+        let ultimoDisparo =
+            0;
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+
+                if (!oceano) {
+                    return;
+                }
+
+
+                const agora =
+                    Date.now();
+
+
+                const atual =
+                    window.scrollY;
+
+
+                const descendo =
+                    atual >
+                    ultimoScroll;
+
+
+                ultimoScroll =
+                    atual;
+
+
+                if (!descendo) {
+                    return;
+                }
+
+
+                if (
+                    agora -
+                    ultimoDisparo
+                    <
+                    350
+                ) {
+
+                    return;
+
+                }
+
+
+                const topoOceano =
+                    oceano.offsetTop;
+
+
+                const fundoOceano =
+                    topoOceano +
+                    oceano.offsetHeight;
+
+
+                const posicao =
+                    window.scrollY +
+                    window.innerHeight;
+
+
+                const dentroOceano =
+                    posicao >
+                    topoOceano &&
+                    window.scrollY <
+                    fundoOceano;
+
+
+                if (
+                    dentroOceano
+                ) {
+
+
+                    ultimoDisparo =
+                        agora;
+
+
+                    criarBolhaExtra(
+                        5
+                    );
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+
+        /* =================================================
+           BOLHAS INICIAIS EXTRAS
+           ================================================= */
+
+
+        setTimeout(
+            () => {
+
+                criarBolhaExtra(
+                    6
+                );
+
+            },
+            1000
+        );
+
+
+
+        /* =================================================
+           PEIXES
+           =================================================
+
+           O movimento dos peixes é feito
+           exclusivamente pelo CSS.
+
+           Não usamos JS para mover peixe.
+
+           Portanto:
+
+           ESQUERDA → DIREITA
+
+           e nunca:
+
+           DIREITA → ESQUERDA.
+        */
+
+
+
+        /* =================================================
+           PROTEÇÃO CONTRA IMAGENS / ELEMENTOS
+           ================================================= */
+
+
+        document.addEventListener(
+            "dragstart",
+            (evento) => {
+
+                if (
+                    evento.target.tagName ===
+                    "IMG"
+                ) {
+
+                    evento.preventDefault();
+
+                }
+
+            }
+        );
+
+
+
+        /* =================================================
+           AJUSTE DE ORIENTAÇÃO
+           ================================================= */
+
+
+        function atualizarTela() {
+
+
+            const altura =
+                window.innerHeight;
+
+
+            document.documentElement
+                .style
+                .setProperty(
+                    "--altura-tela",
+                    `${altura}px`
+                );
+
+        }
+
+
+        atualizarTela();
+
+
+        window.addEventListener(
+            "resize",
+            atualizarTela
+        );
+
+
+
+        /* =================================================
+           DETECTAR QUANDO O OCEANO ENTROU NA TELA
+           ================================================= */
+
+
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
+
+
+            const observador =
+                new IntersectionObserver(
+                    (entradas) => {
+
+
+                        entradas.forEach(
+                            (entrada) => {
+
+
+                                if (
+                                    entrada.isIntersecting
+                                ) {
+
+
+                                    /*
+                                       Ao entrar no oceano,
+                                       liberamos algumas
+                                       bolhas adicionais.
+                                    */
+
+                                    criarBolhaExtra(
+                                        5
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.15
+                    }
+                );
+
+
+            if (oceano) {
+
+                observador.observe(
+                    oceano
+                );
+
+            }
+
+        }
+
+
+
+    }
+);
