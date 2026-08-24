@@ -1,64 +1,1053 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aniversário da Sophia Emanuely 🧜‍♀️✨</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description"
+        content="O Oceano Cor-de-Rosa da Sophia Emanuely - 4 anos. Um convite especial para uma aventura no fundo do mar.">
+
+    <meta name="theme-color" content="#ff69b4">
+
+    <title>O Oceano Cor-de-Rosa da Sophia 💕🌊</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Container do Mundo Submarino -->
-    <main class="mundo-oceano">
+    <!-- =========================================================
+         CONTAINER PRINCIPAL
+    ========================================================== -->
 
-        <!-- Raios de luz e camada de água -->
-        <div class="efeito-luz-agua"></div>
-        <div class="bolhas-oceano"></div>
-        <div class="brilhos-oceano"></div>
+    <main id="app">
 
-        <!-- TELA DE ENTRADA (01) -->
-        <section class="tela-entrada" id="entrada">
-            <div class="conteudo-entrada">
-                
-                <div class="silhueta-sereia-distante">
-                    <!-- Imagem ou SVG da Sereia -->
-                    <span class="emoji-sereia">🧜‍♀️</span>
+        <!-- =====================================================
+             PARTE 1 — ENTRADA
+        ====================================================== -->
+
+        <section id="entrada" class="tela entrada">
+
+            <!-- Fundo do oceano -->
+            <div class="fundo-oceano">
+
+                <!-- Raios de luz -->
+                <div class="raio raio-1"></div>
+                <div class="raio raio-2"></div>
+                <div class="raio raio-3"></div>
+
+                <!-- Corais -->
+                <div class="coral coral-1"></div>
+                <div class="coral coral-2"></div>
+                <div class="coral coral-3"></div>
+
+                <!-- Algas -->
+                <div class="alga alga-1"></div>
+                <div class="alga alga-2"></div>
+                <div class="alga alga-3"></div>
+
+                <!-- Anêmonas -->
+                <div class="anemona anemona-1"></div>
+                <div class="anemona anemona-2"></div>
+
+                <!-- Cardume -->
+                <div class="cardume cardume-entrada">
+                    <span>🐟</span>
+                    <span>🐠</span>
+                    <span>🐟</span>
+                    <span>🐠</span>
+                    <span>🐟</span>
                 </div>
 
-                <h2 class="subtitulo-entrada">Uma pequena aventura está prestes a começar...</h2>
-                <h1 class="titulo-aniversariante">Sophia Emanuely</h1>
-                <p class="idade-destaque">✨ 4 ANOS ✨</p>
+                <!-- Sereia decorativa -->
+                <div class="sereia-silhueta">
+                    🧜‍♀️
+                </div>
 
-                <button id="btn-mergulhar" class="btn-oceanico">
-                    <span>🌊 ENTRAR NO MUNDO DA SEREIA</span>
+                <!-- Bolhas -->
+                <div class="bolhas">
+                    <span class="bolha"></span>
+                    <span class="bolha"></span>
+                    <span class="bolha"></span>
+                    <span class="bolha"></span>
+                    <span class="bolha"></span>
+                    <span class="bolha"></span>
+                </div>
+
+            </div>
+
+            <!-- Conteúdo da entrada -->
+            <div class="conteudo-entrada">
+
+                <p class="pequeno-titulo">
+                    ✨ Uma aventura especial está começando... ✨
+                </p>
+
+                <h1>
+                    O Oceano<br>
+                    <span>Cor-de-Rosa</span><br>
+                    da Sophia
+                </h1>
+
+                <div class="informacoes-principais">
+
+                    <p>
+                        🧜‍♀️ <strong>Sophia Emanuely</strong>
+                    </p>
+
+                    <p>
+                        🎂 4 anos
+                    </p>
+
+                    <p>
+                        📅 28 de novembro de 2026
+                    </p>
+
+                    <p>
+                        🕐 13:00
+                    </p>
+
+                </div>
+
+                <p class="convite-texto">
+                    Prepare-se para mergulhar em uma aventura
+                    cheia de magia, descobertas e tesouros! 💕
+                </p>
+
+                <button id="btn-mergulhar" class="botao-principal">
+                    🌊 Mergulhar na aventura
                 </button>
 
             </div>
+
+            <!-- Indicador -->
+            <div class="indicador-entrada">
+                <span>Toque para começar</span>
+                <span class="seta-baixo">↓</span>
+            </div>
+
         </section>
 
-        <!-- SEÇÃO HERO / APRESENTAÇÃO (02 - Preparada para o próximo passo) -->
-        <section class="secao-hero surpresa-mergulho" id="hero">
-            <div class="conteudo-hero">
-                <div class="sereia-container">
-                    <span class="sereia-personagem">🧜‍♀️</span>
+
+        <!-- =====================================================
+             PARTE 2 — TRANSIÇÃO DE MERGULHO
+        ====================================================== -->
+
+        <section id="mergulho" class="tela mergulho">
+
+            <div class="efeito-mergulho">
+
+                <div class="luz-mergulho"></div>
+
+                <div class="bolhas-mergulho">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
                 </div>
-                <h2>🐚 Prepare-se para uma aventura encantada!</h2>
-                <p class="texto-boas-vindas">
-                    Bem-vindo ao oceano de encanto e magia da <strong>Sophia Emanuely</strong>!
-                </p>
+
             </div>
+
+            <div class="texto-mergulho">
+
+                <p>
+                    Prepare-se...
+                </p>
+
+                <h2>
+                    Vamos mergulhar! 🌊
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 3 — OCEANO
+        ====================================================== -->
+
+        <section id="oceano" class="tela oceano">
+
+            <!-- Fundo -->
+            <div class="oceano-fundo">
+
+                <div class="luz-oceano"></div>
+
+                <!-- Bolhas -->
+                <div class="bolhas-oceano">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <!-- Peixes -->
+                <div class="peixes">
+
+                    <div class="peixe peixe-1">🐟</div>
+                    <div class="peixe peixe-2">🐠</div>
+                    <div class="peixe peixe-3">🐡</div>
+                    <div class="peixe peixe-4">🐟</div>
+                    <div class="peixe peixe-5">🐠</div>
+                    <div class="peixe peixe-6">🐟</div>
+
+                </div>
+
+                <!-- Golfinho central -->
+                <div class="golfinho">
+                    🐬
+                </div>
+
+                <!-- Corais -->
+                <div class="corais-oceano">
+
+                    <div class="coral-oceano coral-oceano-1"></div>
+                    <div class="coral-oceano coral-oceano-2"></div>
+                    <div class="coral-oceano coral-oceano-3"></div>
+
+                </div>
+
+                <!-- Algas -->
+                <div class="algas-oceano">
+
+                    <div class="alga-oceano"></div>
+                    <div class="alga-oceano"></div>
+                    <div class="alga-oceano"></div>
+                    <div class="alga-oceano"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Conteúdo do oceano -->
+            <div class="conteudo-oceano">
+
+                <div class="titulo-oceano">
+
+                    <span>🌊</span>
+
+                    <h2>
+                        Bem-vindo ao oceano
+                        da Sophia!
+                    </h2>
+
+                    <p>
+                        Continue explorando...
+                    </p>
+
+                </div>
+
+
+                <!-- Área de exploração -->
+                <div id="area-exploracao" class="area-exploracao">
+
+                    <div class="mensagem-exploracao">
+
+                        <span>🐬</span>
+
+                        <p>
+                            Observe com atenção...
+                            há algo escondido por aqui.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Indicador de rolagem -->
+                <div class="indicador-rolagem">
+
+                    <span>
+                        Continue descendo
+                    </span>
+
+                    <span>
+                        ↓
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 4 — BAÚ DO TESOURO
+        ====================================================== -->
+
+        <section id="bau-secao" class="tela bau-secao">
+
+            <div class="fundo-bau">
+
+                <!-- Bolhas -->
+                <div class="bolhas-bau">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <!-- Partículas -->
+                <div class="particulas-bau">
+
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="conteudo-bau">
+
+                <p class="texto-descoberta">
+                    Você encontrou alguma coisa... 👀
+                </p>
+
+                <!-- BAÚ CLICÁVEL -->
+                <button id="bau-tesouro"
+                    class="bau-tesouro"
+                    aria-label="Abrir o baú do tesouro">
+
+                    <span class="bau-tampa">
+                        🪵
+                    </span>
+
+                    <span class="bau-corpo">
+                        🏴‍☠️
+                    </span>
+
+                    <span class="bau-fechadura">
+                        🔒
+                    </span>
+
+                </button>
+
+                <p class="texto-bau">
+                    Clique no baú para descobrir
+                    o tesouro escondido!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 5 — CARTA DA SOPHIA
+        ====================================================== -->
+
+        <section id="carta-secao" class="tela carta-secao">
+
+            <div class="fundo-carta">
+
+                <div class="bolhas-carta">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="carta-container">
+
+                <div class="carta">
+
+                    <!-- Decoração -->
+                    <div class="carta-decoracao">
+                        🐚
+                    </div>
+
+                    <div class="carta-conteudo">
+
+                        <p class="carta-pequeno-titulo">
+                            💕 Uma mensagem especial
+                        </p>
+
+                        <h2>
+                            Uma mensagem
+                            de Sophia
+                        </h2>
+
+                        <div class="linha-decorativa">
+                            🌊 ✨ 🌊
+                        </div>
+
+
+                        <div class="texto-carta">
+
+                            <p>
+                                Existe um tesouro esperando
+                                para ser encontrado...
+                            </p>
+
+                            <p>
+                                Talvez o verdadeiro tesouro
+                                seja descobrir onde essa
+                                aventura vai nos levar.
+                            </p>
+
+                            <p>
+                                Procure no lugar indicado
+                                e siga as pistas.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Informações da festa -->
+                        <div class="dados-festa">
+
+                            <div class="dado-festa">
+
+                                <span class="icone-dado">
+                                    📍
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        LOCAL
+                                    </strong>
+
+                                    <a href="https://maps.app.goo.gl/SGfxecVLVifhaA4a7"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+
+                                        Ver localização
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="dado-festa">
+
+                                <span class="icone-dado">
+                                    📅
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        DATA
+                                    </strong>
+
+                                    <span>
+                                        28 de novembro de 2026
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="dado-festa">
+
+                                <span class="icone-dado">
+                                    🕐
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        HORÁRIO
+                                    </strong>
+
+                                    <span>
+                                        13:00
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="dado-festa">
+
+                                <span class="icone-dado">
+                                    🔗
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        LINK
+                                    </strong>
+
+                                    <a href="https://maps.app.goo.gl/SGfxecVLVifhaA4a7"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+
+                                        Abrir mapa
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="assinatura">
+
+                            <p>
+                                Com carinho,
+                            </p>
+
+                            <strong>
+                                Sophia 💕
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 6 — PRESENTES OPCIONAIS
+        ====================================================== -->
+
+        <section id="presentes" class="tela presentes">
+
+            <div class="fundo-presentes">
+
+                <!-- Bolhas -->
+                <div class="bolhas-presentes">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <!-- Brilhos -->
+                <div class="brilhos-presentes">
+
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                    <span>✧</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="conteudo-presentes">
+
+                <p class="titulo-pequeno">
+                    🎁 Um pequeno segredo...
+                </p>
+
+                <h2>
+                    Quer trazer um tesouro
+                    para a aventura da Sophia?
+                </h2>
+
+                <p class="descricao-presentes">
+                    Se quiser presentear a Sophia,
+                    existem algumas opções que
+                    combinam com o fundo do mar. 💕
+                </p>
+
+
+                <!-- OPÇÕES DE PRESENTE -->
+
+                <div class="lista-presentes">
+
+
+                    <!-- SEREIA -->
+
+                    <article class="presente-card">
+
+                        <div class="presente-imagem">
+                            🧜‍♀️
+                        </div>
+
+                        <div class="presente-info">
+
+                            <h3>
+                                Sereia
+                            </h3>
+
+                            <p>
+                                Um tesouro para
+                                continuar a aventura.
+                            </p>
+
+                            <!-- LINK DE TESTE -->
+                            <a href="https://shopee.com.br/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="botao-presente">
+
+                                Ver opção 🧜‍♀️
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BLOCOS -->
+
+                    <article class="presente-card">
+
+                        <div class="presente-imagem">
+                            🧱
+                        </div>
+
+                        <div class="presente-info">
+
+                            <h3>
+                                Blocos de montar
+                            </h3>
+
+                            <p>
+                                Para construir novas
+                                aventuras.
+                            </p>
+
+                            <!-- LINK DE TESTE -->
+                            <a href="https://shopee.com.br/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="botao-presente">
+
+                                Ver opção 🧱
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ROUPA -->
+
+                    <article class="presente-card">
+
+                        <div class="presente-imagem">
+                            👗
+                        </div>
+
+                        <div class="presente-info">
+
+                            <h3>
+                                Roupa
+                            </h3>
+
+                            <p>
+                                Um look especial para
+                                a pequena aventureira.
+                            </p>
+
+                            <!-- LINK DE TESTE -->
+                            <a href="https://shopee.com.br/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="botao-presente">
+
+                                Ver opção 👗
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <p class="aviso-presente">
+                    💕 Essa parte é totalmente opcional.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 7 — FUNDO DO MAR
+        ====================================================== -->
+
+        <section id="fundo-mar" class="tela fundo-mar">
+
+            <div class="ambiente-profundo">
+
+                <!-- Luz vindo de cima -->
+                <div class="luz-profunda"></div>
+
+
+                <!-- Bolhas -->
+                <div class="bolhas-profundas">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <!-- Partículas -->
+                <div class="particulas-profundas">
+
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>·</span>
+                    <span>✦</span>
+                    <span>·</span>
+                    <span>✧</span>
+                    <span>✦</span>
+
+                </div>
+
+
+                <!-- Elementos do fundo do mar -->
+
+                <div class="elementos-fundo-mar">
+
+                    <div class="concha concha-1">
+                        🐚
+                    </div>
+
+                    <div class="concha concha-2">
+                        🐚
+                    </div>
+
+                    <div class="coral-profundo coral-profundo-1">
+                        🪸
+                    </div>
+
+                    <div class="coral-profundo coral-profundo-2">
+                        🪸
+                    </div>
+
+                    <div class="alga-profunda alga-profunda-1">
+                        🌿
+                    </div>
+
+                    <div class="alga-profunda alga-profunda-2">
+                        🌿
+                    </div>
+
+                    <div class="peixe-profundo peixe-profundo-1">
+                        🐟
+                    </div>
+
+                    <div class="peixe-profundo peixe-profundo-2">
+                        🐠
+                    </div>
+
+                    <div class="peixe-profundo peixe-profundo-3">
+                        🐡
+                    </div>
+
+                </div>
+
+
+                <!-- Conteúdo -->
+
+                <div class="conteudo-fundo-mar">
+
+                    <p class="texto-profundezas">
+                        🌊 Continue explorando...
+                    </p>
+
+                    <h2>
+                        Ainda existe
+                        um último tesouro.
+                    </h2>
+
+                    <p>
+                        Desça mais um pouco
+                        e descubra o final
+                        dessa aventura. 💕
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PARTE 8 — CONCHA FINAL
+        ====================================================== -->
+
+        <section id="concha-final" class="tela concha-final">
+
+            <div class="fundo-final">
+
+                <!-- Luz -->
+                <div class="luz-final"></div>
+
+
+                <!-- Bolhas -->
+                <div class="bolhas-final">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <!-- Partículas -->
+                <div class="particulas-final">
+
+                    <span>✦</span>
+                    <span>✧</span>
+                    <span>✦</span>
+                    <span>✧</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="conteudo-final">
+
+                <p class="final-pequeno-titulo">
+                    ✨ Você encontrou o tesouro final ✨
+                </p>
+
+
+                <!-- CONCHA CLICÁVEL -->
+
+                <button id="concha-convite"
+                    class="concha-convite"
+                    aria-label="Gerar convite da festa">
+
+                    🐚
+
+                </button>
+
+
+                <h2>
+                    A concha mágica
+                </h2>
+
+
+                <p class="texto-final">
+
+                    Clique na concha para
+                    guardar uma lembrança
+                    dessa aventura. 💕
+
+                </p>
+
+
+                <!-- Dados que serão usados
+                     futuramente pelo JavaScript
+                     para gerar a imagem -->
+
+                <div id="dados-convite"
+                    class="dados-convite">
+
+                    <span data-convite="nome">
+                        Sophia Emanuely
+                    </span>
+
+                    <span data-convite="idade">
+                        4 anos
+                    </span>
+
+                    <span data-convite="titulo">
+                        O Oceano Cor-de-Rosa da Sophia
+                    </span>
+
+                    <span data-convite="data">
+                        28 de novembro de 2026
+                    </span>
+
+                    <span data-convite="horario">
+                        13:00
+                    </span>
+
+                    <span data-convite="local">
+                        Local da Festa
+                    </span>
+
+                    <span data-convite="link">
+                        https://maps.app.goo.gl/SGfxecVLVifhaA4a7
+                    </span>
+
+                </div>
+
+
+                <!-- Mensagem de download -->
+
+                <div id="mensagem-download"
+                    class="mensagem-download"
+                    aria-live="polite">
+
+                    <span>
+                        🐚
+                    </span>
+
+                    <p>
+                        Preparando seu convite...
+                    </p>
+
+                </div>
+
+
+                <!-- Rodapé -->
+
+                <footer class="rodape">
+
+                    <p>
+                        O Oceano Cor-de-Rosa da Sophia 💕
+                    </p>
+
+                    <p>
+                        Sophia Emanuely · 4 anos
+                    </p>
+
+                </footer>
+
+            </div>
+
         </section>
 
     </main>
 
-    <!-- JavaScript Base -->
-    <script src="js/script.js"></script>
+
+    <!-- =========================================================
+         MODAL DA CARTA
+    ========================================================== -->
+
+    <div id="modal-carta"
+        class="modal"
+        aria-hidden="true">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-conteudo">
+
+            <button id="fechar-carta"
+                class="fechar-modal"
+                aria-label="Fechar carta">
+
+                ×
+
+            </button>
+
+            <div id="carta-modal-conteudo">
+
+                <!-- O JavaScript poderá preencher
+                     ou controlar este conteúdo -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         MODAL DE DOWNLOAD
+    ========================================================== -->
+
+    <div id="modal-download"
+        class="modal"
+        aria-hidden="true">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-conteudo modal-download-conteudo">
+
+            <button id="fechar-download"
+                class="fechar-modal"
+                aria-label="Fechar">
+
+                ×
+
+            </button>
+
+            <div class="icone-download">
+                🐚
+            </div>
+
+            <h2>
+                Seu convite está pronto! 💕
+            </h2>
+
+            <p>
+                A lembrança da aventura da
+                Sophia foi preparada.
+            </p>
+
+            <button id="download-convite"
+                class="botao-download">
+
+                🖼️ Baixar convite
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
