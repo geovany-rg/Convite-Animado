@@ -1,58 +1,70 @@
-/* =========================================================
-   CONVITE SEREIA — INTERAÇÃO PARTE 1
-   ========================================================= */
+// =========================================================
+// CONVITE SOPHIA EMANUELY
+// JAVASCRIPT — TELA 1
+// =========================================================
 
-document.addEventListener("DOMContentLoaded", () => {
-    const botaoMergulhar = document.querySelector("#btn-mergulhar");
-    const secaoHero = document.querySelector("#hero");
-    const mundo = document.querySelector(".mundo-oceano");
 
-    if (botaoMergulhar) {
-        botaoMergulhar.addEventListener("click", () => {
-            
-            // 1. Aplica o efeito visual do mergulho
-            document.body.classList.add("mergulho-ativo");
+// =========================================================
+// ELEMENTOS
+// =========================================================
 
-            // 2. Transição suave de rolagem/revelação após 500ms
+const botaoEntrada = document.getElementById("botaoEntrada");
+const entrada = document.getElementById("entrada");
+
+
+// =========================================================
+// ENTRAR NA AVENTURA
+// =========================================================
+
+if (botaoEntrada && entrada) {
+
+    botaoEntrada.addEventListener("click", () => {
+
+        // Impede vários cliques
+        botaoEntrada.disabled = true;
+
+        // Inicia a animação da tela
+        entrada.classList.add("saindo");
+
+
+        // Aguarda a animação terminar
+        setTimeout(() => {
+
+            /*
+             * Por enquanto não vamos esconder
+             * nem trocar de tela aqui.
+             *
+             * A próxima etapa será colocar
+             * o OCEANO logo abaixo desta tela.
+             */
+
+            const proximaTela =
+                document.getElementById("mundoOceano");
+
+
+            // Se a próxima tela existir,
+            // fazemos a rolagem até ela.
+            if (proximaTela) {
+
+                proximaTela.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+
+            // Libera o botão novamente
+            // caso precisemos voltar à tela.
             setTimeout(() => {
-                if (secaoHero) {
-                    secaoHero.style.display = "flex";
-                    secaoHero.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }
-            }, 500);
 
-            // 3. Remove a classe de animação temporária
-            setTimeout(() => {
-                document.body.classList.remove("mergulho-ativo");
-            }, 1300);
-        });
-    }
+                botaoEntrada.disabled = false;
 
-    // Gerador dinâmico de bolhas de fundo
-    criarBolhasSubmarinas();
-});
+            }, 1000);
 
-function criarBolhasSubmarinas() {
-    const containerBolhas = document.querySelector(".bolhas-oceano");
-    if (!containerBolhas) return;
 
-    const quantidadeBolhas = 15;
+        }, 850);
 
-    for (let i = 0; i < quantidadeBolhas; i++) {
-        const bolha = document.createElement("div");
-        bolha.className = "bolha-elemento";
-        
-        // Posicionamento aleatório
-        const tamanho = Math.random() * 12 + 6; // 6px a 18px
-        bolha.style.width = `${tamanho}px`;
-        bolha.style.height = `${tamanho}px`;
-        bolha.style.left = `${Math.random() * 100}%`;
-        bolha.style.animationDuration = `${Math.random() * 6 + 4}s`; // 4s a 10s
-        bolha.style.animationDelay = `${Math.random() * 3}s`;
+    });
 
-        containerBolhas.appendChild(bolha);
-    }
 }
