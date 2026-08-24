@@ -1,6 +1,6 @@
 /* =========================================================
    O OCEANO COR-DE-ROSA DA SOPHIA
-   STYLE.CSS
+   STYLE.CSS — VERSÃO ATUALIZADA
 ========================================================= */
 
 
@@ -14,41 +14,45 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
-    background: #62d9ed;
 }
 
+
 body {
-    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+
+    min-height: 100%;
+
     overflow-x: hidden;
+
     font-family:
         "Trebuchet MS",
         "Segoe UI",
         Arial,
         sans-serif;
 
-    background: #62d9ed;
+    background:
+        #bdeff5;
+
     color: #ffffff;
 }
 
-button,
-a {
-    font: inherit;
-}
-
-button {
-    border: none;
-}
 
 button,
 a {
     -webkit-tap-highlight-color: transparent;
 }
 
-a {
-    color: inherit;
+
+button {
+    font-family: inherit;
 }
+
 
 img {
     max-width: 100%;
@@ -62,55 +66,61 @@ img {
 
 :root {
 
-    --azul-claro: #72e4f2;
-    --azul: #35bddb;
-    --azul-medio: #168fbe;
-    --azul-profundo: #086a9c;
-    --azul-escuro: #034d79;
+    --azul-superficie: #c8f6f7;
 
-    --turquesa: #43d6d5;
-    --turquesa-claro: #8cf2e8;
+    --azul-claro: #9ce8ef;
+
+    --azul-medio: #63d2e2;
+
+    --azul-oceano: #3bb5d0;
+
+    --azul-profundo: #248eaf;
+
+    --azul-fundo: #176d91;
+
+    --azul-final: #145878;
 
     --rosa: #ff69b4;
-    --rosa-claro: #ff9ed0;
-    --rosa-suave: #ffd3e9;
+
+    --rosa-claro: #ff9dce;
+
+    --rosa-suave: #ffd5e8;
+
     --rosa-escuro: #e94f9b;
 
-    --amarelo: #ffe36e;
-    --amarelo-claro: #fff3a8;
-
-    --laranja: #ff9966;
-    --roxo: #a77cff;
-
     --branco: #ffffff;
-    --branco-suave: #f8ffff;
 
-    --sombra: rgba(0, 68, 110, 0.25);
-    --sombra-forte: rgba(0, 44, 80, 0.4);
+    --texto-escuro: #164c67;
 
-    --raio: 24px;
+    --sombra:
+        0 12px 35px rgba(15, 92, 120, 0.22);
+
+    --sombra-forte:
+        0 20px 50px rgba(7, 65, 90, 0.30);
+
 }
 
 
 /* =========================================================
-   APP
-========================================================= */
-
-#app {
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   TELAS
+   CONFIGURAÇÃO GERAL DAS TELAS
 ========================================================= */
 
 .tela {
+
     position: relative;
+
     width: 100%;
+
     min-height: 100vh;
+    min-height: 100svh;
+
+    overflow: hidden;
+
+}
+
+
+#app {
+    width: 100%;
     overflow: hidden;
 }
 
@@ -120,273 +130,733 @@ img {
 ========================================================= */
 
 .entrada {
+
+    position: relative;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     min-height: 100vh;
+    min-height: 100svh;
+
+    padding:
+        70px
+        20px
+        90px;
 
     background:
         linear-gradient(
-            to bottom,
-            #72e7f4 0%,
-            #48cfe7 40%,
-            #1aa4cf 75%,
-            #0876a8 100%
+            180deg,
+            #bff7f8 0%,
+            #9debf0 22%,
+            #71d9e6 48%,
+            #4bc2d8 72%,
+            #35acc8 100%
         );
+
 }
 
 
-/* Fundo */
+/* =========================================================
+   FUNDO DA ENTRADA
+========================================================= */
 
 .fundo-oceano {
+
     position: absolute;
+
     inset: 0;
 
     overflow: hidden;
 
     pointer-events: none;
+
 }
 
 
-/* Raios de luz */
+/* =========================================================
+   RAIOS DE LUZ
+========================================================= */
 
 .raio {
+
     position: absolute;
 
-    top: -10%;
-    width: 18%;
-    height: 90%;
+    top: -12%;
 
-    opacity: 0.2;
+    width: 20%;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.8),
-        rgba(255,255,255,0)
-    );
+    height: 75%;
+
+    opacity: 0.18;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.8),
+            rgba(255,255,255,0)
+        );
+
+    filter: blur(4px);
 
     transform-origin: top center;
 
-    filter: blur(3px);
+    animation:
+        movimento-raio
+        8s
+        ease-in-out
+        infinite alternate;
+
 }
+
 
 .raio-1 {
-    left: 12%;
-    transform: rotate(15deg);
+
+    left: 8%;
+
+    transform:
+        rotate(14deg);
+
 }
+
 
 .raio-2 {
-    left: 43%;
-    width: 23%;
-    transform: rotate(-8deg);
+
+    left: 42%;
+
+    width: 24%;
+
+    transform:
+        rotate(-5deg);
+
+    animation-delay: -3s;
+
 }
+
 
 .raio-3 {
-    right: 8%;
-    transform: rotate(-18deg);
+
+    right: 6%;
+
+    transform:
+        rotate(-16deg);
+
+    animation-delay: -5s;
+
 }
 
 
-/* Conteúdo */
-
-.conteudo-entrada {
-    position: relative;
-    z-index: 20;
-
-    width: min(700px, 90%);
-
-    text-align: center;
-
-    padding: 40px 20px 100px;
-
-    animation: entradaAparecer 1.5s ease both;
-}
-
-@keyframes entradaAparecer {
+@keyframes movimento-raio {
 
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 0.10;
+        transform: rotate(-8deg) scale(0.95);
     }
 
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 0.24;
+        transform: rotate(8deg) scale(1.05);
     }
 
 }
 
 
-/* Pequeno título */
+/* =========================================================
+   CORAIS
+========================================================= */
+
+.coral {
+
+    position: absolute;
+
+    bottom: -15px;
+
+    width: 90px;
+
+    height: 145px;
+
+    border-radius:
+        55% 45% 0 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff8b9e,
+            #ffb15f,
+            #ff729f
+        );
+
+    opacity: 0.85;
+
+}
+
+
+.coral::before,
+.coral::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 38px;
+
+    height: 105px;
+
+    border-radius: 50px;
+
+    background:
+        inherit;
+
+}
+
+
+.coral::before {
+    left: -20px;
+    transform: rotate(-22deg);
+}
+
+
+.coral::after {
+    right: -20px;
+    transform: rotate(22deg);
+}
+
+
+.coral-1 {
+    left: 3%;
+    transform: scale(0.85);
+}
+
+
+.coral-2 {
+    right: 5%;
+    transform: scale(1.1);
+}
+
+
+.coral-3 {
+
+    left: 45%;
+
+    bottom: -30px;
+
+    transform:
+        scale(0.65);
+
+    opacity: 0.55;
+
+}
+
+
+/* =========================================================
+   ALGAS
+========================================================= */
+
+.alga {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 15px;
+
+    height: 145px;
+
+    border-radius: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #43ad74,
+            #78d77c
+        );
+
+    transform-origin: bottom;
+
+    animation:
+        balanco-alga
+        4s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.alga::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+
+    bottom: 0;
+
+    width: 13px;
+
+    height: 110px;
+
+    border-radius: 100%;
+
+    background:
+        #4fbd77;
+
+}
+
+
+.alga-1 {
+    left: 15%;
+}
+
+
+.alga-2 {
+
+    left: 24%;
+
+    height: 190px;
+
+    animation-delay: -1s;
+
+}
+
+
+.alga-3 {
+
+    right: 20%;
+
+    height: 165px;
+
+    animation-delay: -2s;
+
+}
+
+
+@keyframes balanco-alga {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(7deg);
+    }
+
+}
+
+
+/* =========================================================
+   ANÊMONAS
+========================================================= */
+
+.anemona {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 75px;
+
+    height: 85px;
+
+    border-radius:
+        50% 50% 20% 20%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff9bc9 0 22%,
+            #ff6ca9 23% 52%,
+            #e955a0 53% 100%
+        );
+
+    opacity: 0.85;
+
+}
+
+
+.anemona-1 {
+    left: 31%;
+}
+
+
+.anemona-2 {
+    right: 31%;
+    transform: scale(0.8);
+}
+
+
+/* =========================================================
+   CARDUME DA ENTRADA
+========================================================= */
+
+.cardume {
+
+    position: absolute;
+
+    left: -25%;
+
+    display: flex;
+
+    gap: 18px;
+
+    white-space: nowrap;
+
+    animation:
+        cardume-direita
+        18s
+        linear
+        infinite;
+
+}
+
+
+.cardume span {
+
+    display: inline-block;
+
+    font-size: clamp(26px, 4vw, 48px);
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(0,0,0,0.12)
+        );
+
+}
+
+
+.cardume-entrada {
+
+    top: 28%;
+
+}
+
+
+@keyframes cardume-direita {
+
+    from {
+        transform: translateX(-10vw);
+    }
+
+    to {
+        transform: translateX(145vw);
+    }
+
+}
+
+
+/* =========================================================
+   SEREIA
+========================================================= */
+
+.sereia-silhueta {
+
+    position: absolute;
+
+    right: 7%;
+
+    top: 19%;
+
+    font-size:
+        clamp(60px, 10vw, 125px);
+
+    opacity: 0.20;
+
+    filter:
+        blur(0.5px)
+        drop-shadow(
+            0 10px 12px rgba(0,0,0,0.08)
+        );
+
+    animation:
+        sereia-flutuar
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes sereia-flutuar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+    }
+
+}
+
+
+/* =========================================================
+   BOLHAS DA ENTRADA
+========================================================= */
+
+.bolha {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    width: 12px;
+
+    height: 12px;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.75);
+
+    border-radius: 50%;
+
+    animation:
+        bolha-subindo
+        7s
+        linear
+        infinite;
+
+}
+
+
+.bolha:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+
+.bolha:nth-child(2) {
+    left: 27%;
+    animation-delay: -2s;
+}
+
+
+.bolha:nth-child(3) {
+    left: 45%;
+    animation-delay: -4s;
+}
+
+
+.bolha:nth-child(4) {
+    left: 63%;
+    animation-delay: -1s;
+}
+
+
+.bolha:nth-child(5) {
+    left: 78%;
+    animation-delay: -3s;
+}
+
+
+.bolha:nth-child(6) {
+    left: 91%;
+    animation-delay: -5s;
+}
+
+
+@keyframes bolha-subindo {
+
+    from {
+        transform:
+            translateY(0)
+            scale(0.6);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    to {
+
+        transform:
+            translateY(-115vh)
+            scale(1.25);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTEÚDO DA ENTRADA
+========================================================= */
+
+.conteudo-entrada {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(760px, 100%);
+
+    text-align: center;
+
+}
+
 
 .pequeno-titulo {
+
     margin-bottom: 20px;
 
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size:
+        clamp(14px, 2vw, 19px);
 
-    font-weight: 700;
+    font-weight: 600;
 
     color: #ffffff;
 
     text-shadow:
-        0 3px 8px rgba(0, 80, 120, 0.25);
+        0 3px 8px rgba(20, 80, 100, 0.18);
+
 }
 
 
-/* Título */
+.conteudo-entrada h1 {
 
-.entrada h1 {
-    margin-bottom: 25px;
+    margin: 0;
 
-    font-family:
-        "Trebuchet MS",
-        "Segoe UI",
-        sans-serif;
-
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size:
+        clamp(45px, 9vw, 92px);
 
     line-height: 0.95;
 
     font-weight: 900;
 
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 
     color: #ffffff;
 
     text-shadow:
-        0 5px 0 rgba(255, 105, 180, 0.15),
-        0 10px 25px rgba(0, 70, 100, 0.3);
+        0 7px 18px rgba(21, 91, 115, 0.25);
+
 }
 
-.entrada h1 span {
+
+.conteudo-entrada h1 span {
+
     color: var(--rosa);
 
     text-shadow:
-        0 3px 0 #ffffff,
-        0 7px 20px rgba(200, 40, 120, 0.25);
+        0 4px 12px rgba(214, 57, 130, 0.25);
+
 }
 
 
-/* Informações */
+/* =========================================================
+   INFORMAÇÕES PRINCIPAIS
+========================================================= */
 
 .informacoes-principais {
+
     display: flex;
+
     flex-wrap: wrap;
 
     justify-content: center;
 
     gap: 10px;
 
-    margin: 25px auto;
+    margin:
+        28px
+        auto
+        22px;
 
-    max-width: 620px;
+    max-width: 720px;
+
 }
+
 
 .informacoes-principais p {
-    padding: 9px 15px;
 
-    border-radius: 50px;
+    margin: 0;
 
-    background: rgba(255,255,255,0.22);
+    padding:
+        10px
+        16px;
 
-    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
 
-    backdrop-filter: blur(8px);
+    background:
+        rgba(255,255,255,0.26);
 
-    font-size: 0.95rem;
+    border:
+        1px solid
+        rgba(255,255,255,0.40);
 
-    box-shadow:
-        0 5px 15px rgba(0, 80, 110, 0.12);
-}
-
-.informacoes-principais strong {
-    color: var(--rosa-suave);
-}
-
-
-/* Texto */
-
-.convite-texto {
-    max-width: 500px;
-
-    margin: 25px auto;
-
-    font-size: clamp(1rem, 2vw, 1.2rem);
-
-    line-height: 1.6;
-
-    color: #faffff;
-
-    text-shadow:
-        0 2px 5px rgba(0, 80, 110, 0.2);
-}
-
-
-/* Botão */
-
-.botao-principal {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 58px;
-
-    padding: 15px 28px;
-
-    margin-top: 15px;
-
-    border-radius: 50px;
-
-    cursor: pointer;
+    backdrop-filter:
+        blur(8px);
 
     color: #ffffff;
 
-    font-weight: 800;
-    font-size: 1rem;
+    font-size:
+        clamp(13px, 2vw, 16px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(23, 111, 139, 0.10);
+
+}
+
+
+.informacoes-principais strong {
+
+    color: #ffffff;
+
+}
+
+
+.informacao-especial {
 
     background:
-        linear-gradient(
-            135deg,
-            #ff8bc6,
-            #ff5dad
-        );
+        rgba(255,255,255,0.34) !important;
 
-    box-shadow:
-        0 10px 25px rgba(205, 45, 130, 0.3),
-        inset 0 2px 0 rgba(255,255,255,0.4);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.botao-principal:hover {
-    transform: translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 15px 30px rgba(205, 45, 130, 0.4),
-        inset 0 2px 0 rgba(255,255,255,0.5);
-}
-
-.botao-principal:active {
-    transform: scale(0.96);
 }
 
 
-/* Indicador */
+/* =========================================================
+   TEXTO DO CONVITE
+========================================================= */
 
-.indicador-entrada {
-    position: absolute;
+.convite-texto {
 
-    z-index: 20;
+    max-width: 590px;
 
-    bottom: 25px;
+    margin:
+        0 auto
+        25px;
 
-    left: 50%;
+    font-size:
+        clamp(15px, 2.3vw, 19px);
 
-    transform: translateX(-50%);
+    line-height: 1.6;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 8px rgba(25, 91, 111, 0.15);
+
+}
+
+
+/* =========================================================
+   INDICAÇÃO DE CONTINUAÇÃO
+========================================================= */
+
+.entrada-continuar {
 
     display: flex;
 
@@ -396,19 +866,29 @@ img {
 
     gap: 5px;
 
-    font-size: 0.8rem;
+    color: #ffffff;
 
-    opacity: 0.85;
-}
+    font-size: 15px;
 
-.seta-baixo {
-    font-size: 1.8rem;
+    font-weight: 700;
 
     animation:
-        setaMovimento 1.5s infinite ease-in-out;
+        indicador-flutuar
+        2.2s
+        ease-in-out
+        infinite;
+
 }
 
-@keyframes setaMovimento {
+
+.seta-baixo {
+
+    font-size: 28px;
+
+}
+
+
+@keyframes indicador-flutuar {
 
     0%,
     100% {
@@ -422,78 +902,361 @@ img {
 }
 
 
-/* =========================================================
-   ELEMENTOS DO FUNDO DA ENTRADA
-========================================================= */
+.indicador-entrada {
 
-
-/* Cardume */
-
-.cardume {
     position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 20;
 
     display: flex;
 
-    gap: 8px;
+    flex-direction: column;
 
-    font-size: 1.4rem;
+    align-items: center;
 
-    opacity: 0.75;
+    gap: 2px;
+
+    font-size: 12px;
+
+    color: rgba(255,255,255,0.9);
+
+}
+
+
+/* =========================================================
+   PARTE 2 — OCEANO
+========================================================= */
+
+.oceano {
+
+    min-height: 120vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #bdf5f6 0%,
+            #a0e9ef 14%,
+            #79dce8 30%,
+            #5bc9dd 48%,
+            #43b8d2 66%,
+            #329fbe 82%,
+            #2588aa 100%
+        );
+
+}
+
+
+/* =========================================================
+   FUNDO DO OCEANO
+========================================================= */
+
+.oceano-fundo {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.luz-oceano {
+
+    position: absolute;
+
+    top: -5%;
+
+    left: 50%;
+
+    width: 65%;
+
+    height: 70%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,0.45),
+            rgba(255,255,255,0) 68%
+        );
+
+    filter: blur(5px);
+
+}
+
+
+/* =========================================================
+   BOLHAS DO OCEANO
+========================================================= */
+
+.bolhas-oceano span {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    width: 14px;
+
+    height: 14px;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.65);
+
+    border-radius: 50%;
 
     animation:
-        cardumeMovimento 16s linear infinite;
+        bolhas-oceano-subir
+        9s
+        linear
+        infinite;
+
 }
 
-.cardume-entrada {
-    top: 28%;
 
-    left: -15%;
+.bolhas-oceano span:nth-child(1) {
+    left: 8%;
+    animation-delay: -1s;
 }
 
-@keyframes cardumeMovimento {
+
+.bolhas-oceano span:nth-child(2) {
+    left: 19%;
+    animation-delay: -5s;
+}
+
+
+.bolhas-oceano span:nth-child(3) {
+    left: 34%;
+    animation-delay: -3s;
+}
+
+
+.bolhas-oceano span:nth-child(4) {
+    left: 48%;
+    animation-delay: -7s;
+}
+
+
+.bolhas-oceano span:nth-child(5) {
+    left: 61%;
+    animation-delay: -2s;
+}
+
+
+.bolhas-oceano span:nth-child(6) {
+    left: 74%;
+    animation-delay: -6s;
+}
+
+
+.bolhas-oceano span:nth-child(7) {
+    left: 86%;
+    animation-delay: -4s;
+}
+
+
+.bolhas-oceano span:nth-child(8) {
+    left: 94%;
+    animation-delay: -8s;
+}
+
+
+@keyframes bolhas-oceano-subir {
 
     from {
-        transform: translateX(0);
+
+        transform:
+            translateY(0)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    15% {
+        opacity: 0.8;
     }
 
     to {
-        transform: translateX(125vw);
+
+        transform:
+            translateY(-130vh)
+            scale(1.2);
+
+        opacity: 0;
+
     }
 
 }
 
 
-/* Sereia */
+/* =========================================================
+   PEIXES — TODOS ESQUERDA → DIREITA
+========================================================= */
 
-.sereia-silhueta {
+.peixes {
+
     position: absolute;
 
-    right: 7%;
-    bottom: 22%;
+    inset: 0;
 
-    font-size: clamp(3rem, 7vw, 6rem);
+    overflow: hidden;
 
-    opacity: 0.28;
-
-    filter:
-        grayscale(1)
-        brightness(0.5);
-
-    animation:
-        sereiaFlutuar 5s ease-in-out infinite;
 }
 
-@keyframes sereiaFlutuar {
+
+.peixe {
+
+    position: absolute;
+
+    left: -15%;
+
+    font-size:
+        clamp(28px, 5vw, 55px);
+
+    white-space: nowrap;
+
+    animation:
+        peixe-nadando
+        18s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 5px 7px
+            rgba(0,0,0,0.12)
+        );
+
+}
+
+
+/*
+   scaleX(-1) espelha o emoji.
+   Assim os peixes ficam voltados para
+   o sentido da viagem: ESQUERDA → DIREITA.
+*/
+
+.peixe-1 {
+    top: 18%;
+    animation-delay: -1s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-2 {
+    top: 31%;
+    animation-delay: -7s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-3 {
+    top: 45%;
+    animation-delay: -12s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-4 {
+    top: 59%;
+    animation-delay: -4s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-5 {
+    top: 72%;
+    animation-delay: -9s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-6 {
+    top: 84%;
+    animation-delay: -15s;
+    transform: scaleX(-1);
+}
+
+
+@keyframes peixe-nadando {
+
+    from {
+
+        left: -15%;
+
+    }
+
+    to {
+
+        left: 115%;
+
+    }
+
+}
+
+
+/* =========================================================
+   GOLFINHO
+========================================================= */
+
+.golfinho {
+
+    position: absolute;
+
+    top: 18%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 3;
+
+    font-size:
+        clamp(80px, 14vw, 150px);
+
+    filter:
+        drop-shadow(
+            0 12px 15px
+            rgba(22, 98, 125, 0.20)
+        );
+
+    animation:
+        golfinho-flutuar
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes golfinho-flutuar {
 
     0%,
     100% {
         transform:
+            translateX(-50%)
             translateY(0)
-            rotate(-3deg);
+            rotate(-2deg);
     }
 
     50% {
         transform:
+            translateX(-50%)
             translateY(-15px)
             rotate(3deg);
     }
@@ -501,82 +1264,126 @@ img {
 }
 
 
-/* Corais */
+/* =========================================================
+   CORAIS DO OCEANO
+========================================================= */
 
-.coral {
+.corais-oceano {
+
+    position: absolute;
+
+    inset: auto 0 0;
+
+    height: 190px;
+
+}
+
+
+.coral-oceano {
+
     position: absolute;
 
     bottom: -20px;
 
-    width: 45px;
-    height: 100px;
+    width: 80px;
+
+    height: 150px;
 
     border-radius:
-        30px 30px 5px 5px;
+        50px 50px 10px 10px;
 
     background:
         linear-gradient(
             90deg,
-            #ff8d76,
-            #ffb178,
-            #ff75aa
+            #ff809d,
+            #ffb15e,
+            #ff6fa5
         );
 
-    opacity: 0.85;
 }
 
-.coral::before,
-.coral::after {
+
+.coral-oceano::before,
+.coral-oceano::after {
+
     content: "";
 
     position: absolute;
 
-    width: 25px;
-    height: 70px;
+    bottom: 0;
 
-    bottom: 30px;
+    width: 35px;
 
-    border-radius: 30px;
+    height: 105px;
 
-    background: inherit;
-}
+    border-radius: 40px;
 
-.coral::before {
-    left: -18px;
+    background:
+        inherit;
 
-    transform: rotate(-20deg);
-}
-
-.coral::after {
-    right: -18px;
-
-    transform: rotate(20deg);
-}
-
-.coral-1 {
-    left: 4%;
-    transform: scale(1.3);
-}
-
-.coral-2 {
-    right: 17%;
-    transform: scale(0.9);
-}
-
-.coral-3 {
-    left: 48%;
-    transform: scale(0.7);
 }
 
 
-/* Algas */
+.coral-oceano::before {
 
-.alga {
+    left: -20px;
+
+    transform:
+        rotate(-20deg);
+
+}
+
+
+.coral-oceano::after {
+
+    right: -20px;
+
+    transform:
+        rotate(20deg);
+
+}
+
+
+.coral-oceano-1 {
+    left: 3%;
+}
+
+
+.coral-oceano-2 {
+    left: 47%;
+    transform: scale(0.75);
+}
+
+
+.coral-oceano-3 {
+    right: 5%;
+    transform: scale(1.15);
+}
+
+
+/* =========================================================
+   ALGAS DO OCEANO
+========================================================= */
+
+.algas-oceano {
+
+    position: absolute;
+
+    inset: auto 0 0;
+
+    height: 190px;
+
+}
+
+
+.alga-oceano {
+
     position: absolute;
 
     bottom: 0;
 
-    width: 20px;
+    width: 14px;
+
     height: 150px;
 
     border-radius: 50%;
@@ -584,552 +1391,124 @@ img {
     background:
         linear-gradient(
             90deg,
-            #43b96b,
-            #7be27b
+            #3ba66d,
+            #75d37d
         );
 
-    transform-origin: bottom;
-
     animation:
-        algaMovimento 4s ease-in-out infinite;
+        algas-movimento
+        4s
+        ease-in-out
+        infinite alternate;
+
 }
 
-.alga-1 {
-    left: 18%;
+
+.alga-oceano:nth-child(1) {
+    left: 14%;
 }
 
-.alga-2 {
-    left: 35%;
 
-    height: 110px;
-
-    animation-delay: 0.5s;
-}
-
-.alga-3 {
-    right: 7%;
-
+.alga-oceano:nth-child(2) {
+    left: 27%;
     height: 180px;
-
-    animation-delay: 1s;
-}
-
-@keyframes algaMovimento {
-
-    0%,
-    100% {
-        transform: rotate(-5deg);
-    }
-
-    50% {
-        transform: rotate(8deg);
-    }
-
+    animation-delay: -1s;
 }
 
 
-/* Anêmonas */
-
-.anemona {
-    position: absolute;
-
-    bottom: 0;
-
-    width: 80px;
-    height: 55px;
-
-    border-radius: 50% 50% 0 0;
-
-    background:
-        radial-gradient(
-            circle,
-            #ff76bd 15%,
-            #ff4e9f 50%,
-            #e23e91 100%
-        );
-
-    opacity: 0.85;
-}
-
-.anemona::before {
-    content: "";
-
-    position: absolute;
-
-    inset: -30px 10px 0;
-
-    border-radius: 50%;
-
-    border-top:
-        25px solid rgba(255, 126, 195, 0.7);
-
-    transform: rotate(15deg);
-}
-
-.anemona-1 {
-    left: 28%;
-}
-
-.anemona-2 {
-    right: 30%;
+.alga-oceano:nth-child(3) {
+    right: 27%;
+    height: 170px;
+    animation-delay: -2s;
 }
 
 
-/* =========================================================
-   BOLHAS
-========================================================= */
-
-.bolhas,
-.bolhas-oceano,
-.bolhas-bau,
-.bolhas-carta,
-.bolhas-presentes,
-.bolhas-profundas,
-.bolhas-final,
-.bolhas-mergulho {
-    pointer-events: none;
-}
-
-.bolha {
-    position: absolute;
-
-    bottom: -30px;
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-
-    border:
-        2px solid rgba(255,255,255,0.7);
-
-    background:
-        rgba(255,255,255,0.15);
-
-    animation:
-        bolhaSubindo 8s linear infinite;
-}
-
-.bolha:nth-child(1) {
-    left: 8%;
-    animation-delay: 0s;
-}
-
-.bolha:nth-child(2) {
-    left: 23%;
-    width: 10px;
-    height: 10px;
-    animation-delay: 2s;
-}
-
-.bolha:nth-child(3) {
-    left: 42%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 4s;
-}
-
-.bolha:nth-child(4) {
-    left: 65%;
-    animation-delay: 1s;
-}
-
-.bolha:nth-child(5) {
-    left: 80%;
-    width: 12px;
-    height: 12px;
-    animation-delay: 5s;
-}
-
-.bolha:nth-child(6) {
-    left: 91%;
-    width: 18px;
-    height: 18px;
-    animation-delay: 3s;
-}
-
-@keyframes bolhaSubindo {
-
-    0% {
-        transform:
-            translateY(0)
-            translateX(0)
-            scale(0.7);
-
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.8;
-    }
-
-    50% {
-        transform:
-            translateY(-50vh)
-            translateX(20px)
-            scale(1);
-    }
-
-    100% {
-        transform:
-            translateY(-115vh)
-            translateX(-15px)
-            scale(1.2);
-
-        opacity: 0;
-    }
-
+.alga-oceano:nth-child(4) {
+    right: 12%;
+    height: 135px;
+    animation-delay: -3s;
 }
 
 
-/* =========================================================
-   PARTE 2 — MERGULHO
-========================================================= */
-
-.mergulho {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #66e4f2,
-            #168fbe,
-            #04567f
-        );
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
-}
-
-.mergulho.ativo {
-    opacity: 1;
-    visibility: visible;
-}
-
-.efeito-mergulho {
-    position: absolute;
-    inset: 0;
-
-    overflow: hidden;
-}
-
-
-/* Luz */
-
-.luz-mergulho {
-    position: absolute;
-
-    top: -30%;
-    left: 50%;
-
-    width: 250px;
-    height: 150%;
-
-    transform:
-        translateX(-50%)
-        rotate(7deg);
-
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.65),
-            rgba(255,255,255,0)
-        );
-
-    filter: blur(15px);
-
-    animation:
-        luzMergulho 3s ease-in-out infinite alternate;
-}
-
-@keyframes luzMergulho {
+@keyframes algas-movimento {
 
     from {
-        opacity: 0.25;
+        transform: rotate(-6deg);
     }
 
     to {
-        opacity: 0.65;
-    }
-
-}
-
-
-/* Texto */
-
-.texto-mergulho {
-    position: relative;
-
-    z-index: 5;
-
-    text-align: center;
-
-    opacity: 0;
-
-    animation:
-        textoMergulho 3s ease forwards;
-}
-
-.texto-mergulho p {
-    font-size: 1.2rem;
-}
-
-.texto-mergulho h2 {
-    margin-top: 10px;
-
-    font-size: clamp(2rem, 7vw, 4rem);
-
-    color: var(--rosa-claro);
-
-    text-shadow:
-        0 4px 15px rgba(0,0,0,0.25);
-}
-
-@keyframes textoMergulho {
-
-    0% {
-        opacity: 0;
-        transform: scale(1.5);
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(0.7);
+        transform: rotate(7deg);
     }
 
 }
 
 
 /* =========================================================
-   PARTE 3 — OCEANO
+   CONTEÚDO DO OCEANO
 ========================================================= */
 
-.oceano {
-    min-height: 140vh;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #74e6f4 0%,
-            #36c5e1 30%,
-            #169bc8 65%,
-            #0876a7 100%
-        );
-}
-
-.oceano-fundo {
-    position: absolute;
-    inset: 0;
-
-    overflow: hidden;
-}
-
-
-/* Luz */
-
-.luz-oceano {
-    position: absolute;
-
-    top: -20%;
-    left: 20%;
-
-    width: 60%;
-    height: 65%;
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,0.38),
-            transparent 70%
-        );
-
-    filter: blur(20px);
-}
-
-
-/* Conteúdo */
-
 .conteudo-oceano {
+
     position: relative;
 
     z-index: 10;
 
-    min-height: 140vh;
+    width: min(850px, 100%);
+
+    min-height: 120vh;
+
+    margin: 0 auto;
 
     padding:
-        12vh 20px
-        20vh;
+        90px
+        20px
+        100px;
 
     text-align: center;
+
 }
 
-.titulo-oceano {
+
+.titulo-oceano span {
+
+    display: block;
+
+    font-size:
+        clamp(45px, 8vw, 80px);
+
+    margin-bottom: 8px;
+
+}
+
+
+.titulo-oceano h2 {
+
     max-width: 650px;
 
     margin: 0 auto;
-}
 
-.titulo-oceano > span {
-    display: block;
+    font-size:
+        clamp(34px, 6vw, 64px);
 
-    font-size: 3rem;
+    line-height: 1.05;
 
-    margin-bottom: 10px;
-
-    animation:
-        flutuar 4s ease-in-out infinite;
-}
-
-.titulo-oceano h2 {
-    font-size: clamp(2rem, 6vw, 4.5rem);
-
-    line-height: 1;
+    color: #ffffff;
 
     text-shadow:
-        0 5px 15px rgba(0,70,100,0.3);
+        0 7px 15px
+        rgba(23, 92, 117, 0.25);
+
 }
+
 
 .titulo-oceano p {
-    margin-top: 20px;
 
-    font-size: 1.1rem;
+    margin-top: 18px;
 
-    opacity: 0.9;
-}
+    font-size:
+        clamp(16px, 2.5vw, 20px);
 
-
-/* Golfinho */
-
-.golfinho {
-    position: absolute;
-
-    top: 28%;
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    font-size: clamp(5rem, 13vw, 10rem);
-
-    filter:
-        drop-shadow(
-            0 15px 15px rgba(0,60,100,0.2)
-        );
-
-    animation:
-        golfinhoMovimento 5s ease-in-out infinite;
-}
-
-@keyframes golfinhoMovimento {
-
-    0%,
-    100% {
-        transform:
-            translate(-50%, -50%)
-            rotate(-4deg);
-    }
-
-    50% {
-        transform:
-            translate(-50%, -65%)
-            rotate(4deg);
-    }
-
-}
-
-
-/* Peixes */
-
-.peixes {
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-}
-
-.peixe {
-    position: absolute;
-
-    left: -15%;
-
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-
-    animation:
-        peixeNadando 14s linear infinite;
-}
-
-.peixe-1 {
-    top: 18%;
-    animation-delay: 0s;
-}
-
-.peixe-2 {
-    top: 35%;
-    animation-delay: 3s;
-}
-
-.peixe-3 {
-    top: 48%;
-    animation-delay: 6s;
-}
-
-.peixe-4 {
-    top: 63%;
-    animation-delay: 1s;
-}
-
-.peixe-5 {
-    top: 75%;
-    animation-delay: 4s;
-}
-
-.peixe-6 {
-    top: 88%;
-    animation-delay: 8s;
-}
-
-@keyframes peixeNadando {
-
-    0% {
-        left: -15%;
-
-        transform:
-            translateY(0)
-            scaleX(1);
-    }
-
-    45% {
-        transform:
-            translateY(-20px)
-            scaleX(1);
-    }
-
-    50% {
-        transform:
-            translateY(-20px)
-            scaleX(1);
-    }
-
-    100% {
-        left: 115%;
-
-        transform:
-            translateY(10px)
-            scaleX(1);
-    }
+    color: rgba(255,255,255,0.92);
 
 }
 
@@ -1139,451 +1518,772 @@ img {
 ========================================================= */
 
 .area-exploracao {
+
     position: relative;
 
-    width: min(800px, 95%);
+    width: min(720px, 100%);
 
-    min-height: 65vh;
+    min-height: 360px;
 
     margin:
-        20vh auto
-        0;
+        90px
+        auto
+        70px;
 
-    border-radius: 40px;
+    display: flex;
 
-    background:
-        rgba(0,100,150,0.08);
+    align-items: center;
 
-    border:
-        1px solid rgba(255,255,255,0.15);
+    justify-content: center;
 
-    box-shadow:
-        inset 0 0 80px rgba(0,60,100,0.1);
 }
+
+
+/* =========================================================
+   MENSAGEM DE EXPLORAÇÃO
+========================================================= */
 
 .mensagem-exploracao {
-    position: absolute;
 
-    top: 50%;
-    left: 50%;
+    position: relative;
 
-    transform:
-        translate(-50%, -50%);
+    display: flex;
 
-    width: min(400px, 80%);
+    align-items: center;
 
-    padding: 25px;
+    gap: 25px;
 
-    border-radius: 25px;
+    width: min(680px, 100%);
+
+    padding:
+        35px
+        30px;
+
+    border-radius: 38px;
 
     background:
-        rgba(255,255,255,0.12);
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.30),
+            rgba(255,255,255,0.13)
+        );
 
-    backdrop-filter: blur(8px);
+    border:
+        1px solid
+        rgba(255,255,255,0.40);
+
+    box-shadow:
+        0 20px 45px
+        rgba(23, 93, 117, 0.16);
+
+    backdrop-filter:
+        blur(12px);
+
+    text-align: left;
+
 }
 
-.mensagem-exploracao span {
+
+.icone-exploracao {
+
+    flex:
+        0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 110px;
+
+    height: 110px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.28);
+
+    font-size: 70px;
+
+    animation:
+        golfinho-mini
+        3.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes golfinho-mini {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+
+.texto-exploracao {
+
+    flex: 1;
+
+}
+
+
+.titulo-exploracao {
+
     display: block;
 
-    font-size: 3rem;
+    margin-bottom: 10px;
+
+    font-size:
+        clamp(23px, 4vw, 32px);
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+}
+
+
+.texto-exploracao p {
 
     margin-bottom: 10px;
+
+    font-size:
+        clamp(15px, 2.3vw, 18px);
+
+    line-height: 1.55;
+
+    color: rgba(255,255,255,0.94);
+
 }
 
-.mensagem-exploracao p {
-    line-height: 1.5;
+
+.pista-exploracao {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size:
+        clamp(14px, 2vw, 17px);
+
+    font-weight: 700;
+
+    color: #ffe0ee;
+
 }
 
 
-/* Indicador */
+/* =========================================================
+   ELEMENTOS DA EXPLORAÇÃO
+========================================================= */
+
+.exploracao-bolha,
+.exploracao-brilho {
+
+    position: absolute;
+
+    pointer-events: none;
+
+}
+
+
+.exploracao-bolha {
+
+    font-size: 35px;
+
+    animation:
+        mini-bolha
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.bolha-1 {
+
+    left: 5%;
+
+    top: 15%;
+
+}
+
+
+.bolha-2 {
+
+    right: 5%;
+
+    bottom: 15%;
+
+    animation-delay: -2s;
+
+}
+
+
+.exploracao-brilho {
+
+    font-size: 32px;
+
+    opacity: 0.8;
+
+    animation:
+        brilho-piscar
+        2s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.brilho-1 {
+
+    top: 5%;
+
+    right: 18%;
+
+}
+
+
+.brilho-2 {
+
+    bottom: 5%;
+
+    left: 15%;
+
+    animation-delay: -1s;
+
+}
+
+
+@keyframes mini-bolha {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes brilho-piscar {
+
+    from {
+        opacity: 0.35;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   INDICADOR
+========================================================= */
 
 .indicador-rolagem {
+
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
 
-    gap: 5px;
+    gap: 6px;
 
-    margin-top: 8vh;
+    font-weight: 700;
 
-    opacity: 0.8;
-}
-
-.indicador-rolagem span:last-child {
-    font-size: 2rem;
+    color: rgba(255,255,255,0.90);
 
     animation:
-        setaMovimento 1.5s infinite;
+        indicador-flutuar
+        2.3s
+        ease-in-out
+        infinite;
+
 }
 
 
 /* =========================================================
-   PARTE 4 — BAÚ
+   PARTE 3 — BAÚ
 ========================================================= */
 
 .bau-secao {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
 
     min-height: 100vh;
 
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        90px
+        20px;
+
     background:
         linear-gradient(
-            to bottom,
-            #0876a7,
-            #075b88,
-            #03486f
+            180deg,
+            #2c9fbd 0%,
+            #218cac 35%,
+            #197997 70%,
+            #166883 100%
         );
+
 }
+
 
 .fundo-bau {
+
     position: absolute;
+
     inset: 0;
-}
 
+    overflow: hidden;
 
-/* Partículas */
-
-.particulas-bau {
-    position: absolute;
-    inset: 0;
-}
-
-.particulas-bau span {
-    position: absolute;
-
-    color: var(--amarelo);
-
-    opacity: 0.6;
-
-    animation:
-        brilho 3s ease-in-out infinite;
-}
-
-.particulas-bau span:nth-child(1) {
-    top: 20%;
-    left: 15%;
-}
-
-.particulas-bau span:nth-child(2) {
-    top: 30%;
-    right: 20%;
-}
-
-.particulas-bau span:nth-child(3) {
-    bottom: 25%;
-    left: 25%;
-}
-
-.particulas-bau span:nth-child(4) {
-    bottom: 20%;
-    right: 15%;
-}
-
-.particulas-bau span:nth-child(5) {
-    top: 50%;
-    left: 80%;
-}
-
-@keyframes brilho {
-
-    0%,
-    100% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.4);
-    }
+    pointer-events: none;
 
 }
 
-
-/* Conteúdo */
 
 .conteudo-bau {
+
     position: relative;
 
     z-index: 5;
 
     text-align: center;
 
-    padding: 30px;
 }
+
 
 .texto-descoberta {
-    margin-bottom: 25px;
 
-    font-size: 1.2rem;
+    margin-bottom: 35px;
 
-    color: var(--rosa-claro);
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    font-weight: 700;
+
+    color: #ffffff;
+
 }
 
 
-/* Baú */
-
 .bau-tesouro {
+
     position: relative;
 
-    display: flex;
+    display: block;
 
-    flex-direction: column;
+    width: 190px;
 
-    align-items: center;
-
-    justify-content: center;
-
-    width: 200px;
     height: 170px;
 
-    margin: auto;
+    margin: 0 auto;
+
+    border: none;
 
     background: transparent;
 
     cursor: pointer;
 
+    font-size: 75px;
+
     transition:
         transform 0.3s ease;
+
 }
+
 
 .bau-tesouro:hover {
+
     transform:
         scale(1.08)
-        rotate(-2deg);
+        translateY(-5px);
+
 }
+
 
 .bau-tesouro:active {
+
     transform:
         scale(0.94);
+
 }
+
 
 .bau-tampa {
+
     position: absolute;
 
-    top: 15px;
+    top: 0;
 
-    font-size: 6rem;
+    left: 50%;
 
-    z-index: 2;
+    transform:
+        translateX(-50%);
 
-    filter:
-        drop-shadow(
-            0 8px 10px rgba(0,0,0,0.25)
-        );
+    font-size: 100px;
+
+    transition:
+        transform 0.6s ease;
+
 }
+
 
 .bau-corpo {
+
     position: absolute;
 
-    top: 65px;
+    bottom: 0;
 
-    font-size: 7rem;
+    left: 50%;
 
-    filter:
-        drop-shadow(
-            0 12px 12px rgba(0,0,0,0.3)
-        );
+    transform:
+        translateX(-50%);
+
+    font-size: 90px;
+
 }
+
 
 .bau-fechadura {
+
     position: absolute;
 
-    top: 85px;
+    left: 50%;
 
-    z-index: 5;
+    bottom: 25px;
 
-    font-size: 1.4rem;
+    transform:
+        translateX(-50%);
+
+    font-size: 27px;
+
 }
 
+
 .texto-bau {
-    margin-top: 25px;
 
-    max-width: 350px;
+    max-width: 400px;
 
-    line-height: 1.5;
+    margin:
+        30px auto
+        0;
 
-    opacity: 0.9;
+    font-size:
+        clamp(15px, 2.5vw, 19px);
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,0.92);
+
 }
 
 
 /* =========================================================
-   PARTE 5 — CARTA
+   PARTÍCULAS DO BAÚ
+========================================================= */
+
+.particulas-bau span {
+
+    position: absolute;
+
+    color: #ffe4f1;
+
+    font-size: 25px;
+
+    animation:
+        particula-flutuar
+        5s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.particulas-bau span:nth-child(1) {
+    left: 12%;
+    top: 20%;
+}
+
+
+.particulas-bau span:nth-child(2) {
+    left: 30%;
+    top: 65%;
+    animation-delay: -1s;
+}
+
+
+.particulas-bau span:nth-child(3) {
+    right: 15%;
+    top: 25%;
+    animation-delay: -2s;
+}
+
+
+.particulas-bau span:nth-child(4) {
+    right: 30%;
+    bottom: 20%;
+    animation-delay: -3s;
+}
+
+
+.particulas-bau span:nth-child(5) {
+    left: 50%;
+    top: 12%;
+    animation-delay: -4s;
+}
+
+
+@keyframes particula-flutuar {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.45;
+    }
+
+    to {
+        transform: translateY(-20px) rotate(25deg);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   CARTA — ESCONDIDA
+========================================================= */
+
+.carta-escondida {
+
+    display: none !important;
+
+}
+
+
+/*
+   Quando o JavaScript adicionar a classe
+   .carta-visivel, a carta poderá aparecer.
+*/
+
+.carta-secao.carta-visivel {
+
+    display: flex !important;
+
+}
+
+
+/* =========================================================
+   PARTE DA CARTA
 ========================================================= */
 
 .carta-secao {
-    display: flex;
+
+    position: relative;
+
+    min-height: 100vh;
 
     align-items: center;
+
     justify-content: center;
 
-    min-height: 120vh;
-
-    padding: 80px 20px;
+    padding:
+        70px
+        20px;
 
     background:
         linear-gradient(
-            to bottom,
-            #03486f,
-            #087fa5,
-            #27b8c9
+            180deg,
+            #51c9dc 0%,
+            #35abc7 35%,
+            #248dac 70%,
+            #1c7695 100%
         );
+
 }
+
 
 .fundo-carta {
+
     position: absolute;
+
     inset: 0;
+
 }
 
 
-/* Carta */
-
 .carta-container {
+
     position: relative;
 
     z-index: 10;
 
-    width: min(720px, 94%);
+    width: min(720px, 100%);
 
-    margin: auto;
 }
 
+
 .carta {
+
     position: relative;
 
-    padding: 55px 45px;
+    padding:
+        45px
+        30px
+        35px;
 
-    border-radius: 8px;
-
-    color: #704d3a;
+    border-radius: 30px;
 
     background:
         linear-gradient(
-            135deg,
-            #fff7d8,
-            #ffeec2
+            145deg,
+            #fffdfb,
+            #fff3f7
         );
+
+    color: var(--texto-escuro);
 
     box-shadow:
-        0 25px 60px rgba(0,35,60,0.35),
-        inset 0 0 25px rgba(200,150,70,0.15);
+        0 25px 60px
+        rgba(10, 69, 92, 0.30);
 
-    transform:
-        rotate(-0.5deg);
-
-    animation:
-        cartaAparecer 1s ease both;
-}
-
-@keyframes cartaAparecer {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(40px)
-            rotate(-3deg);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            rotate(-0.5deg);
-    }
+    border:
+        3px solid
+        rgba(255,105,180,0.20);
 
 }
 
-
-/* Decoração */
 
 .carta-decoracao {
+
     position: absolute;
 
-    top: -35px;
-    right: 30px;
+    top: -32px;
 
-    font-size: 4rem;
-
-    filter:
-        drop-shadow(
-            0 8px 8px rgba(0,0,0,0.15)
-        );
+    left: 50%;
 
     transform:
-        rotate(15deg);
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.12);
+
+    font-size: 38px;
+
 }
 
-
-/* Conteúdo */
 
 .carta-conteudo {
+
     text-align: center;
+
 }
 
+
 .carta-pequeno-titulo {
-    color: var(--rosa-escuro);
+
+    color: var(--rosa);
 
     font-weight: 800;
 
-    font-size: 0.9rem;
+    margin-bottom: 10px;
 
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
 }
+
 
 .carta h2 {
-    margin: 10px 0 15px;
 
-    color: #8c5570;
+    font-size:
+        clamp(30px, 6vw, 50px);
 
-    font-family:
-        Georgia,
-        serif;
+    line-height: 1.05;
 
-    font-size: clamp(2rem, 5vw, 3.3rem);
-
-    line-height: 1.1;
-}
-
-.linha-decorativa {
     color: var(--rosa);
 
-    margin-bottom: 25px;
-
-    letter-spacing: 8px;
 }
 
 
-/* Texto */
+.linha-decorativa {
+
+    margin:
+        18px
+        0
+        25px;
+
+    color: var(--rosa);
+
+    font-size: 20px;
+
+}
+
 
 .texto-carta {
-    max-width: 540px;
 
-    margin: auto;
+    max-width: 550px;
 
-    font-family:
-        Georgia,
-        serif;
+    margin:
+        0 auto
+        30px;
 
-    font-size: 1.08rem;
+    font-size:
+        clamp(16px, 2.5vw, 19px);
 
-    line-height: 1.8;
+    line-height: 1.7;
+
 }
+
 
 .texto-carta p {
-    margin-bottom: 15px;
+
+    margin-bottom: 14px;
+
 }
 
 
-/* Dados */
+/* =========================================================
+   DADOS DA FESTA
+========================================================= */
 
 .dados-festa {
+
     display: grid;
 
     grid-template-columns:
@@ -1591,168 +2291,261 @@ img {
 
     gap: 12px;
 
-    margin-top: 30px;
+    margin-top: 25px;
+
 }
 
+
 .dado-festa {
+
     display: flex;
 
-    align-items: flex-start;
+    align-items: center;
 
-    gap: 10px;
+    gap: 12px;
 
     padding: 15px;
 
-    text-align: left;
-
-    border-radius: 16px;
+    border-radius: 18px;
 
     background:
-        rgba(255,255,255,0.5);
+        rgba(255,105,180,0.07);
 
-    border:
-        1px solid rgba(180,120,80,0.15);
+    text-align: left;
+
 }
+
 
 .icone-dado {
-    font-size: 1.4rem;
+
+    font-size: 27px;
+
 }
 
-.dado-festa div {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-
-    min-width: 0;
-}
 
 .dado-festa strong {
-    color: var(--rosa-escuro);
 
-    font-size: 0.75rem;
-
-    letter-spacing: 1px;
-}
-
-.dado-festa span,
-.dado-festa a {
-    font-size: 0.9rem;
-
-    line-height: 1.4;
-
-    overflow-wrap: anywhere;
-}
-
-.dado-festa a {
-    color: #167da0;
-
-    font-weight: 700;
-
-    text-decoration: underline;
-}
-
-
-/* Assinatura */
-
-.assinatura {
-    margin-top: 30px;
-
-    font-family:
-        "Brush Script MT",
-        "Segoe Script",
-        cursive;
-
-    font-size: 1.4rem;
-}
-
-.assinatura strong {
     display: block;
 
-    margin-top: 5px;
+    margin-bottom: 4px;
 
     color: var(--rosa);
 
-    font-size: 2rem;
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.dado-festa span,
+.dado-festa a {
+
+    font-size: 14px;
+
+    color: var(--texto-escuro);
+
+}
+
+
+.dado-festa a {
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+}
+
+
+.dado-festa a:hover {
+
+    text-decoration: underline;
+
 }
 
 
 /* =========================================================
-   PARTE 6 — PRESENTES
+   ASSINATURA
 ========================================================= */
 
-.presentes {
-    min-height: 120vh;
+.assinatura {
+
+    margin-top: 30px;
+
+}
+
+
+.assinatura p {
+
+    margin-bottom: 4px;
+
+}
+
+
+.assinatura strong {
+
+    color: var(--rosa);
+
+    font-size: 24px;
+
+}
+
+
+/* =========================================================
+   BOTÃO FECHAR CARTA
+========================================================= */
+
+.botao-fechar-carta {
+
+    margin-top: 30px;
 
     padding:
-        100px 20px;
+        13px
+        22px;
+
+    border: none;
+
+    border-radius: 999px;
 
     background:
         linear-gradient(
-            to bottom,
-            #27b8c9,
-            #4bd5d4,
-            #55dfe0
+            135deg,
+            var(--rosa),
+            var(--rosa-escuro)
         );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(233,79,155,0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
 }
+
+
+.botao-fechar-carta:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(233,79,155,0.35);
+
+}
+
+
+/* =========================================================
+   PARTE — PRESENTES
+========================================================= */
+
+.presentes {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        100px
+        20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1d829e 0%,
+            #1b7592 45%,
+            #17627d 100%
+        );
+
+}
+
 
 .fundo-presentes {
+
     position: absolute;
+
     inset: 0;
 
-    overflow: hidden;
 }
 
+
 .conteudo-presentes {
+
     position: relative;
 
     z-index: 5;
 
     width: min(1000px, 100%);
 
-    margin: auto;
+    margin: 0 auto;
 
     text-align: center;
+
 }
+
 
 .titulo-pequeno {
-    color: var(--rosa-escuro);
 
-    font-weight: 900;
+    color: #ffe3f0;
 
-    font-size: 1rem;
+    font-weight: 800;
+
+    margin-bottom: 15px;
+
 }
 
+
 .conteudo-presentes h2 {
+
     max-width: 700px;
 
-    margin: 15px auto;
+    margin: 0 auto;
 
-    color: #ffffff;
-
-    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-size:
+        clamp(32px, 6vw, 58px);
 
     line-height: 1.05;
 
-    text-shadow:
-        0 4px 15px rgba(0,80,100,0.2);
+    color: #ffffff;
+
 }
 
-.descricao-presentes {
-    max-width: 600px;
 
-    margin: 0 auto 40px;
+.descricao-presentes {
+
+    max-width: 620px;
+
+    margin:
+        22px auto
+        40px;
+
+    font-size:
+        clamp(15px, 2.5vw, 18px);
 
     line-height: 1.6;
 
-    color: #f7ffff;
+    color:
+        rgba(255,255,255,0.90);
+
 }
 
 
-/* Cards */
+/* =========================================================
+   LISTA DE PRESENTES
+========================================================= */
 
 .lista-presentes {
+
     display: grid;
 
     grid-template-columns:
@@ -1760,514 +2553,641 @@ img {
 
     gap: 20px;
 
-    max-width: 900px;
-
-    margin: auto;
 }
 
+
 .presente-card {
-    display: flex;
 
-    flex-direction: column;
-
-    align-items: center;
-
-    padding: 25px 20px;
+    padding: 24px;
 
     border-radius: 28px;
 
     background:
-        rgba(255,255,255,0.25);
+        rgba(255,255,255,0.14);
 
     border:
-        1px solid rgba(255,255,255,0.35);
+        1px solid
+        rgba(255,255,255,0.22);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(10px);
 
     box-shadow:
-        0 15px 35px rgba(0,100,130,0.12);
+        0 15px 35px
+        rgba(4, 57, 77, 0.15);
 
     transition:
-        transform 0.3s ease,
-        background 0.3s ease;
+        transform 0.3s ease;
+
 }
+
 
 .presente-card:hover {
-    transform:
-        translateY(-8px);
 
-    background:
-        rgba(255,255,255,0.35);
+    transform:
+        translateY(-7px);
+
 }
 
 
-/* Imagem */
-
 .presente-imagem {
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    width: 110px;
-    height: 110px;
+    width: 100px;
 
-    margin-bottom: 15px;
+    height: 100px;
+
+    margin:
+        0 auto
+        18px;
 
     border-radius: 50%;
 
     background:
-        rgba(255,255,255,0.35);
+        rgba(255,255,255,0.20);
 
-    font-size: 4rem;
+    font-size: 55px;
 
-    box-shadow:
-        inset 0 0 20px rgba(255,255,255,0.3);
 }
 
-
-/* Informações */
 
 .presente-info h3 {
-    color: #ffffff;
-
-    font-size: 1.3rem;
 
     margin-bottom: 8px;
-}
 
-.presente-info p {
-    min-height: 48px;
-
-    color: #f6ffff;
-
-    font-size: 0.9rem;
-
-    line-height: 1.4;
-}
-
-
-/* Botão */
-
-.botao-presente {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 44px;
-
-    margin-top: 15px;
-
-    padding: 10px 18px;
-
-    border-radius: 50px;
+    font-size: 23px;
 
     color: #ffffff;
 
+}
+
+
+.presente-info p {
+
+    min-height: 50px;
+
+    margin-bottom: 18px;
+
+    line-height: 1.5;
+
+    color:
+        rgba(255,255,255,0.86);
+
+}
+
+
+.botao-presente {
+
+    display: inline-block;
+
+    padding:
+        11px
+        18px;
+
+    border-radius: 999px;
+
     background:
-        linear-gradient(
-            135deg,
-            #ff8dc6,
-            #ff5aaa
-        );
+        var(--rosa);
+
+    color: #ffffff;
 
     text-decoration: none;
 
     font-weight: 800;
 
-    font-size: 0.85rem;
-
-    box-shadow:
-        0 7px 15px rgba(210,40,130,0.2);
+    font-size: 14px;
 
     transition:
-        transform 0.25s ease;
+        transform 0.2s ease,
+        background 0.2s ease;
+
 }
+
 
 .botao-presente:hover {
+
     transform:
-        translateY(-3px);
+        translateY(-2px);
+
+    background:
+        var(--rosa-escuro);
+
 }
 
+
 .aviso-presente {
-    margin-top: 35px;
 
-    color: #ffffff;
+    margin-top: 30px;
 
-    font-size: 0.85rem;
+    color:
+        rgba(255,255,255,0.82);
 
-    opacity: 0.8;
+    font-size: 14px;
+
 }
 
 
 /* =========================================================
-   PARTE 7 — FUNDO DO MAR
+   FUNDO DO MAR
 ========================================================= */
 
 .fundo-mar {
-    min-height: 150vh;
+
+    min-height: 120vh;
 
     background:
         linear-gradient(
-            to bottom,
-            #087fa5 0%,
-            #066b94 35%,
-            #04577f 70%,
-            #033e63 100%
+            180deg,
+            #176a88 0%,
+            #155f7d 30%,
+            #12546f 65%,
+            #10475f 100%
         );
+
 }
+
 
 .ambiente-profundo {
-    position: absolute;
-    inset: 0;
 
-    min-height: 150vh;
+    position: relative;
+
+    min-height: 120vh;
 
     overflow: hidden;
+
 }
 
 
-/* Luz */
-
 .luz-profunda {
+
     position: absolute;
 
-    top: -15%;
-    left: 35%;
+    top: -10%;
 
-    width: 35%;
+    left: 50%;
+
+    width: 70%;
+
     height: 70%;
+
+    transform:
+        translateX(-50%);
 
     background:
         radial-gradient(
             ellipse,
-            rgba(120,240,255,0.22),
-            transparent 70%
+            rgba(120,235,244,0.28),
+            rgba(120,235,244,0) 70%
         );
 
-    filter: blur(20px);
+    filter: blur(10px);
+
 }
 
 
-/* Conteúdo */
+/* =========================================================
+   ELEMENTOS DO FUNDO DO MAR
+========================================================= */
 
-.conteudo-fundo-mar {
-    position: relative;
+.elementos-fundo-mar {
 
-    z-index: 5;
-
-    width: min(600px, 90%);
-
-    margin: auto;
-
-    padding-top: 25vh;
-
-    text-align: center;
-}
-
-.texto-profundezas {
-    color: var(--rosa-claro);
-
-    font-weight: 800;
-
-    margin-bottom: 15px;
-}
-
-.conteudo-fundo-mar h2 {
-    font-size: clamp(2.3rem, 6vw, 4.5rem);
-
-    line-height: 1;
-
-    margin-bottom: 20px;
-
-    text-shadow:
-        0 5px 15px rgba(0,0,0,0.25);
-}
-
-.conteudo-fundo-mar p:last-child {
-    line-height: 1.6;
-
-    opacity: 0.85;
-}
-
-
-/* Elementos */
-
-.elementos-fundo-mar > div {
     position: absolute;
 
-    user-select: none;
+    inset: 0;
+
 }
 
 
-/* Conchas */
+.concha,
+.coral-profundo,
+.alga-profunda,
+.peixe-profundo {
 
-.concha {
-    font-size: clamp(2rem, 6vw, 5rem);
-
-    opacity: 0.8;
+    position: absolute;
 
     filter:
         drop-shadow(
-            0 8px 8px rgba(0,0,0,0.2)
+            0 8px 8px
+            rgba(0,0,0,0.15)
         );
 
-    animation:
-        elementoFlutuante 5s ease-in-out infinite;
 }
+
+
+.concha {
+
+    font-size:
+        clamp(45px, 8vw, 85px);
+
+}
+
 
 .concha-1 {
+
     left: 8%;
-    top: 50%;
+
+    bottom: 15%;
+
 }
+
 
 .concha-2 {
-    right: 10%;
-    top: 68%;
 
-    animation-delay: 2s;
+    right: 10%;
+
+    top: 30%;
+
 }
 
-
-/* Corais */
 
 .coral-profundo {
-    font-size: clamp(3rem, 8vw, 7rem);
 
-    opacity: 0.7;
+    font-size:
+        clamp(60px, 10vw, 110px);
+
 }
+
 
 .coral-profundo-1 {
+
     left: 2%;
-    bottom: 3%;
+
+    bottom: -5%;
+
 }
+
 
 .coral-profundo-2 {
-    right: 3%;
-    bottom: 10%;
+
+    right: 4%;
+
+    bottom: -8%;
+
 }
 
-
-/* Algas */
 
 .alga-profunda {
-    font-size: clamp(2rem, 6vw, 5rem);
 
-    opacity: 0.65;
+    font-size:
+        clamp(45px, 7vw, 75px);
+
 }
+
 
 .alga-profunda-1 {
-    left: 20%;
-    bottom: 2%;
+
+    left: 22%;
+
+    bottom: 0;
+
 }
+
 
 .alga-profunda-2 {
-    right: 22%;
-    bottom: 1%;
+
+    right: 23%;
+
+    bottom: 0;
+
 }
 
-
-/* Peixes profundos */
 
 .peixe-profundo {
-    font-size: clamp(1.8rem, 4vw, 3rem);
+
+    font-size:
+        clamp(28px, 5vw, 50px);
+
+    left: -10%;
 
     animation:
-        peixeProfundo 15s linear infinite;
+        peixe-profundo-nadar
+        20s
+        linear
+        infinite;
+
 }
 
+
 .peixe-profundo-1 {
-    top: 35%;
-    left: -10%;
+    top: 25%;
 }
+
 
 .peixe-profundo-2 {
     top: 55%;
-    left: -15%;
-
-    animation-delay: 5s;
+    animation-delay: -7s;
 }
+
 
 .peixe-profundo-3 {
     top: 75%;
-    left: -20%;
-
-    animation-delay: 9s;
+    animation-delay: -14s;
 }
 
-@keyframes peixeProfundo {
+
+@keyframes peixe-profundo-nadar {
 
     from {
-        transform:
-            translateX(0);
+        left: -10%;
     }
 
     to {
-        transform:
-            translateX(130vw);
+        left: 115%;
     }
 
 }
 
 
 /* =========================================================
-   PARTE 8 — CONCHA FINAL
+   CONTEÚDO FUNDO DO MAR
 ========================================================= */
 
-.concha-final {
-    display: flex;
+.conteudo-fundo-mar {
 
-    align-items: center;
-    justify-content: center;
-
-    min-height: 100vh;
-
-    padding:
-        80px 20px;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            #178bb0,
-            #05577f 55%,
-            #033d60 100%
-        );
-}
-
-.fundo-final {
-    position: absolute;
-    inset: 0;
-}
-
-
-/* Conteúdo */
-
-.conteudo-final {
     position: relative;
 
-    z-index: 10;
+    z-index: 5;
 
-    width: min(650px, 95%);
+    width: min(700px, 100%);
+
+    margin: 0 auto;
+
+    padding:
+        150px
+        20px
+        100px;
 
     text-align: center;
+
 }
 
-.final-pequeno-titulo {
-    color: var(--rosa-claro);
+
+.texto-profundezas {
+
+    color: #ffd6e9;
 
     font-weight: 800;
 
-    margin-bottom: 20px;
 }
 
 
-/* Concha */
+.conteudo-fundo-mar h2 {
 
-.concha-convite {
-    display: flex;
+    margin:
+        15px
+        0;
 
-    align-items: center;
-    justify-content: center;
+    font-size:
+        clamp(35px, 6vw, 60px);
 
-    width: clamp(160px, 30vw, 230px);
-    height: clamp(160px, 30vw, 230px);
-
-    margin: 20px auto;
-
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    font-size: clamp(6rem, 15vw, 10rem);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,170,220,0.8),
-            rgba(255,100,180,0.35),
-            rgba(255,255,255,0.1)
-        );
-
-    box-shadow:
-        0 0 0 10px rgba(255,255,255,0.04),
-        0 0 50px rgba(255,105,180,0.35),
-        inset 0 0 40px rgba(255,255,255,0.25);
-
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-
-    animation:
-        conchaBrilho 3s ease-in-out infinite;
-}
-
-.concha-convite:hover {
-    transform:
-        scale(1.08)
-        rotate(-4deg);
-
-    box-shadow:
-        0 0 0 15px rgba(255,255,255,0.05),
-        0 0 80px rgba(255,105,180,0.55),
-        inset 0 0 50px rgba(255,255,255,0.35);
-}
-
-.concha-convite:active {
-    transform:
-        scale(0.94);
-}
-
-@keyframes conchaBrilho {
-
-    0%,
-    100% {
-        box-shadow:
-            0 0 0 10px rgba(255,255,255,0.04),
-            0 0 40px rgba(255,105,180,0.25),
-            inset 0 0 35px rgba(255,255,255,0.2);
-    }
-
-    50% {
-        box-shadow:
-            0 0 0 15px rgba(255,255,255,0.06),
-            0 0 80px rgba(255,105,180,0.5),
-            inset 0 0 50px rgba(255,255,255,0.3);
-    }
-
-}
-
-
-/* Título */
-
-.conteudo-final h2 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.05;
 
     color: #ffffff;
 
-    margin-bottom: 15px;
-
-    text-shadow:
-        0 5px 15px rgba(0,0,0,0.25);
 }
 
-.texto-final {
-    max-width: 450px;
 
-    margin: auto;
+.conteudo-fundo-mar > p:last-child {
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    font-size:
+        clamp(16px, 2.5vw, 19px);
 
     line-height: 1.6;
 
-    opacity: 0.85;
+    color:
+        rgba(255,255,255,0.86);
+
 }
 
 
-/* Dados escondidos */
+/* =========================================================
+   PARTE FINAL
+========================================================= */
+
+.concha-final {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #145a76 0%,
+            #124e68 40%,
+            #0f4359 72%,
+            #0d3a4e 100%
+        );
+
+}
+
+
+.fundo-final {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+}
+
+
+.luz-final {
+
+    position: absolute;
+
+    top: -10%;
+
+    left: 50%;
+
+    width: 80%;
+
+    height: 65%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(105,220,235,0.25),
+            rgba(105,220,235,0) 70%
+        );
+
+}
+
+
+/* =========================================================
+   CONTEÚDO FINAL
+========================================================= */
+
+.conteudo-final {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(750px, 100%);
+
+    margin: 0 auto;
+
+    padding:
+        100px
+        20px
+        70px;
+
+    text-align: center;
+
+}
+
+
+.final-pequeno-titulo {
+
+    color: #ffd7e9;
+
+    font-weight: 800;
+
+}
+
+
+.concha-convite {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        clamp(130px, 25vw, 190px);
+
+    height:
+        clamp(130px, 25vw, 190px);
+
+    margin:
+        35px
+        auto
+        20px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff4fa,
+            #ffc4df 45%,
+            #f784b9 100%
+        );
+
+    font-size:
+        clamp(70px, 13vw, 115px);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 18px 40px
+        rgba(0,0,0,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation:
+        concha-flutuar
+        3.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+.concha-convite:hover {
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+        0 25px 50px
+        rgba(0,0,0,0.30);
+
+}
+
+
+.concha-convite:active {
+
+    transform:
+        scale(0.94);
+
+}
+
+
+@keyframes concha-flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+.conteudo-final h2 {
+
+    font-size:
+        clamp(35px, 7vw, 65px);
+
+    color: #ffffff;
+
+    text-shadow:
+        0 6px 15px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.texto-final {
+
+    max-width: 520px;
+
+    margin:
+        18px auto
+        25px;
+
+    font-size:
+        clamp(15px, 2.5vw, 19px);
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.86);
+
+}
+
+
+/* =========================================================
+   DADOS DO CONVITE
+========================================================= */
 
 .dados-convite {
+
     position: absolute;
 
     width: 1px;
+
     height: 1px;
 
     overflow: hidden;
@@ -2275,12 +3195,16 @@ img {
     opacity: 0;
 
     pointer-events: none;
+
 }
 
 
-/* Mensagem */
+/* =========================================================
+   MENSAGEM DOWNLOAD
+========================================================= */
 
 .mensagem-download {
+
     display: none;
 
     align-items: center;
@@ -2289,50 +3213,113 @@ img {
 
     gap: 10px;
 
-    margin: 30px auto 0;
+    margin:
+        20px auto;
 
-    padding: 14px 20px;
+    padding:
+        12px
+        18px;
 
-    max-width: 400px;
+    max-width: 360px;
 
-    border-radius: 20px;
+    border-radius: 999px;
 
     background:
-        rgba(255,255,255,0.1);
+        rgba(255,255,255,0.12);
 
-    backdrop-filter: blur(10px);
+    color: #ffffff;
+
 }
 
-.mensagem-download.ativo {
+
+.mensagem-download.ativa {
+
     display: flex;
-}
 
-.mensagem-download span {
-    font-size: 1.5rem;
 }
 
 
-/* Rodapé */
+/* =========================================================
+   VOLTAR AO INÍCIO
+========================================================= */
+
+.botao-voltar-inicio {
+
+    margin-top: 30px;
+
+    padding:
+        12px
+        22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.botao-voltar-inicio:hover {
+
+    background:
+        rgba(255,105,180,0.28);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
 
 .rodape {
-    margin-top: 80px;
+
+    margin-top: 60px;
 
     padding-top: 25px;
 
     border-top:
-        1px solid rgba(255,255,255,0.15);
+        1px solid
+        rgba(255,255,255,0.18);
 
-    color: rgba(255,255,255,0.65);
+    color:
+        rgba(255,255,255,0.65);
 
-    font-size: 0.8rem;
+    font-size: 13px;
 
-    line-height: 1.7;
+    line-height: 1.8;
+
 }
 
+
 .rodape p:first-child {
-    color: var(--rosa-claro);
+
+    color:
+        #ffd5e7;
 
     font-weight: 700;
+
 }
 
 
@@ -2341,277 +3328,918 @@ img {
 ========================================================= */
 
 .modal {
+
     position: fixed;
 
     inset: 0;
 
     z-index: 9999;
 
-    display: flex;
+    display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
 
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
 }
+
 
 .modal.ativo {
-    opacity: 1;
 
-    visibility: visible;
+    display: flex;
 
-    pointer-events: auto;
 }
 
 
-/* Fundo */
-
 .modal-overlay {
+
     position: absolute;
 
     inset: 0;
 
     background:
-        rgba(0,30,50,0.75);
+        rgba(5, 37, 50, 0.72);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter:
+        blur(7px);
+
 }
 
 
-/* Conteúdo */
-
 .modal-conteudo {
+
     position: relative;
 
-    z-index: 5;
+    z-index: 2;
 
-    width: min(700px, 95%);
+    width: min(700px, 100%);
 
     max-height: 90vh;
 
     overflow-y: auto;
 
+    padding: 30px;
+
     border-radius: 28px;
 
     background:
-        linear-gradient(
-            135deg,
-            #fff8df,
-            #ffeec5
-        );
+        #ffffff;
 
-    color: #704d3a;
-
-    padding: 35px;
+    color: var(--texto-escuro);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,0.35);
-
-    animation:
-        modalAparecer 0.35s ease both;
-}
-
-@keyframes modalAparecer {
-
-    from {
-        transform:
-            scale(0.85)
-            translateY(20px);
-
-        opacity: 0;
-    }
-
-    to {
-        transform:
-            scale(1)
-            translateY(0);
-
-        opacity: 1;
-    }
+        0 25px 70px
+        rgba(0,0,0,0.30);
 
 }
 
-
-/* Fechar */
 
 .fechar-modal {
+
     position: absolute;
 
     top: 12px;
+
     right: 15px;
 
     width: 42px;
+
     height: 42px;
+
+    border: none;
 
     border-radius: 50%;
 
-    cursor: pointer;
-
-    color: #ffffff;
-
     background:
+        rgba(255,105,180,0.10);
+
+    color:
         var(--rosa);
 
-    font-size: 1.6rem;
-
-    line-height: 1;
-
-    transition:
-        transform 0.25s ease;
-}
-
-.fechar-modal:hover {
-    transform:
-        rotate(90deg)
-        scale(1.1);
-}
-
-
-/* Download */
-
-.modal-download-conteudo {
-    text-align: center;
-}
-
-.icone-download {
-    font-size: 5rem;
-
-    margin-bottom: 15px;
-}
-
-.modal-download-conteudo h2 {
-    color: var(--rosa-escuro);
-
-    font-size: clamp(1.7rem, 5vw, 2.5rem);
-
-    margin-bottom: 15px;
-}
-
-.modal-download-conteudo p {
-    line-height: 1.6;
-
-    margin-bottom: 25px;
-}
-
-.botao-download {
-    min-height: 52px;
-
-    padding: 12px 25px;
-
-    border-radius: 50px;
+    font-size: 28px;
 
     cursor: pointer;
 
-    color: #ffffff;
+}
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+.modal-download-conteudo {
+
+    text-align: center;
+
+}
+
+
+.icone-download {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.modal-download-conteudo h2 {
+
+    color:
+        var(--rosa);
+
+    font-size:
+        clamp(26px, 5vw, 40px);
+
+}
+
+
+.modal-download-conteudo p {
+
+    margin:
+        15px
+        auto
+        25px;
+
+    max-width: 450px;
+
+    line-height: 1.6;
+
+}
+
+
+.botao-download {
+
+    padding:
+        14px
+        24px;
+
+    border: none;
+
+    border-radius: 999px;
 
     background:
         linear-gradient(
             135deg,
-            #ff8bc6,
-            #ff55a9
-        );
-
-    font-weight: 800;
-
-    box-shadow:
-        0 10px 25px rgba(220,50,140,0.25);
-
-    transition:
-        transform 0.25s ease;
-}
-
-.botao-download:hover {
-    transform:
-        translateY(-3px);
-}
-
-
-/* =========================================================
-   ANIMAÇÕES GERAIS
-========================================================= */
-
-@keyframes flutuar {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-12px);
-    }
-
-}
-
-@keyframes elementoFlutuante {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
-
-    50% {
-        transform:
-            translateY(-12px)
-            rotate(3deg);
-    }
-
-}
-
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background:
-        #03486f;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            to bottom,
             var(--rosa),
             var(--rosa-escuro)
         );
-}
 
-::-webkit-scrollbar-thumb:hover {
-    background:
-        var(--rosa-claro);
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
 }
 
 
 /* =========================================================
-   SELEÇÃO DE TEXTO
+   BOLHAS DE FUNDOS
 ========================================================= */
 
-::selection {
-    color: #ffffff;
+.bolhas-bau span,
+.bolhas-carta span,
+.bolhas-presentes span,
+.bolhas-profundas span,
+.bolhas-final span {
 
-    background:
-        var(--rosa);
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.30);
+
+    border-radius: 50%;
+
+    bottom: -20px;
+
+    animation:
+        bolha-generica
+        10s
+        linear
+        infinite;
+
+}
+
+
+.bolhas-bau span:nth-child(1),
+.bolhas-carta span:nth-child(1),
+.bolhas-presentes span:nth-child(1),
+.bolhas-profundas span:nth-child(1),
+.bolhas-final span:nth-child(1) {
+    left: 8%;
+}
+
+
+.bolhas-bau span:nth-child(2),
+.bolhas-carta span:nth-child(2),
+.bolhas-presentes span:nth-child(2),
+.bolhas-profundas span:nth-child(2),
+.bolhas-final span:nth-child(2) {
+    left: 27%;
+    animation-delay: -3s;
+}
+
+
+.bolhas-bau span:nth-child(3),
+.bolhas-carta span:nth-child(3),
+.bolhas-presentes span:nth-child(3),
+.bolhas-profundas span:nth-child(3),
+.bolhas-final span:nth-child(3) {
+    left: 48%;
+    animation-delay: -6s;
+}
+
+
+.bolhas-bau span:nth-child(4),
+.bolhas-carta span:nth-child(4),
+.bolhas-presentes span:nth-child(4),
+.bolhas-profundas span:nth-child(4),
+.bolhas-final span:nth-child(4) {
+    left: 70%;
+    animation-delay: -2s;
+}
+
+
+.bolhas-bau span:nth-child(5),
+.bolhas-presentes span:nth-child(5),
+.bolhas-profundas span:nth-child(5),
+.bolhas-final span:nth-child(5) {
+    left: 90%;
+    animation-delay: -8s;
+}
+
+
+.bolhas-profundas span:nth-child(6) {
+    left: 35%;
+    animation-delay: -4s;
+}
+
+
+.bolhas-profundas span:nth-child(7) {
+    left: 58%;
+    animation-delay: -7s;
+}
+
+
+.bolhas-profundas span:nth-child(8) {
+    left: 82%;
+    animation-delay: -1s;
+}
+
+
+@keyframes bolha-generica {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(0.6);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 0.7;
+
+    }
+
+    to {
+
+        transform:
+            translateY(-120vh)
+            scale(1.25);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   BRILHOS
+========================================================= */
+
+.brilhos-presentes span {
+
+    position: absolute;
+
+    color:
+        rgba(255,225,240,0.75);
+
+    font-size: 25px;
+
+    animation:
+        brilho-piscar
+        2.5s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.brilhos-presentes span:nth-child(1) {
+    left: 10%;
+    top: 20%;
+}
+
+
+.brilhos-presentes span:nth-child(2) {
+    left: 30%;
+    bottom: 20%;
+    animation-delay: -1s;
+}
+
+
+.brilhos-presentes span:nth-child(3) {
+    right: 20%;
+    top: 15%;
+    animation-delay: -2s;
+}
+
+
+.brilhos-presentes span:nth-child(4) {
+    right: 8%;
+    bottom: 25%;
+    animation-delay: -1.5s;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+
+    .entrada {
+
+        padding-top: 55px;
+
+    }
+
+
+    .conteudo-entrada h1 {
+
+        letter-spacing: -1px;
+
+    }
+
+
+    .informacoes-principais {
+
+        max-width: 600px;
+
+    }
+
+
+    .mensagem-exploracao {
+
+        padding:
+            28px
+            22px;
+
+    }
+
+
+    .icone-exploracao {
+
+        width: 90px;
+
+        height: 90px;
+
+        font-size: 55px;
+
+    }
+
+
+    .lista-presentes {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 500px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .presente-card {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 20px;
+
+        text-align: left;
+
+    }
+
+
+    .presente-imagem {
+
+        flex:
+            0 0 90px;
+
+        width: 90px;
+
+        height: 90px;
+
+        margin: 0;
+
+    }
+
+
+    .presente-info p {
+
+        min-height: auto;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+    .tela {
+
+        min-height: 100svh;
+
+    }
+
+
+    .entrada {
+
+        padding:
+            50px
+            16px
+            75px;
+
+    }
+
+
+    .pequeno-titulo {
+
+        font-size: 13px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .conteudo-entrada h1 {
+
+        font-size:
+            clamp(42px, 13vw, 65px);
+
+        line-height: 0.98;
+
+    }
+
+
+    .informacoes-principais {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 7px;
+
+        margin:
+            22px
+            auto;
+
+    }
+
+
+    .informacoes-principais p {
+
+        width: fit-content;
+
+        max-width: 95%;
+
+        font-size: 13px;
+
+        padding:
+            9px
+            13px;
+
+    }
+
+
+    .convite-texto {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+
+        max-width: 330px;
+
+    }
+
+
+    .sereia-silhueta {
+
+        right: -20px;
+
+        top: 15%;
+
+        opacity: 0.12;
+
+    }
+
+
+    .cardume span {
+
+        font-size: 28px;
+
+    }
+
+
+    /* OCEANO */
+
+    .oceano {
+
+        min-height: 125svh;
+
+    }
+
+
+    .conteudo-oceano {
+
+        min-height: 125svh;
+
+        padding:
+            70px
+            15px
+            90px;
+
+    }
+
+
+    .titulo-oceano span {
+
+        font-size: 45px;
+
+    }
+
+
+    .titulo-oceano h2 {
+
+        font-size:
+            clamp(32px, 10vw, 48px);
+
+    }
+
+
+    .area-exploracao {
+
+        min-height: 390px;
+
+        margin:
+            65px
+            auto
+            50px;
+
+    }
+
+
+    .mensagem-exploracao {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding:
+            25px
+            18px;
+
+        border-radius: 30px;
+
+    }
+
+
+    .icone-exploracao {
+
+        width: 85px;
+
+        height: 85px;
+
+        font-size: 50px;
+
+    }
+
+
+    .titulo-exploracao {
+
+        font-size: 24px;
+
+    }
+
+
+    .texto-exploracao p {
+
+        font-size: 15px;
+
+    }
+
+
+    .pista-exploracao {
+
+        font-size: 14px;
+
+    }
+
+
+    /* BAÚ */
+
+    .bau-secao {
+
+        padding:
+            80px
+            15px;
+
+    }
+
+
+    .bau-tesouro {
+
+        width: 170px;
+
+        height: 160px;
+
+    }
+
+
+    .bau-tampa {
+
+        font-size: 85px;
+
+    }
+
+
+    .bau-corpo {
+
+        font-size: 78px;
+
+    }
+
+
+    /* CARTA */
+
+    .carta-secao {
+
+        padding:
+            60px
+            12px;
+
+    }
+
+
+    .carta {
+
+        padding:
+            38px
+            17px
+            25px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .carta h2 {
+
+        font-size:
+            clamp(28px, 9vw, 42px);
+
+    }
+
+
+    .texto-carta {
+
+        font-size: 15px;
+
+    }
+
+
+    .dados-festa {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .dado-festa {
+
+        padding: 12px;
+
+    }
+
+
+    /* PRESENTES */
+
+    .presentes {
+
+        padding:
+            80px
+            15px;
+
+    }
+
+
+    .conteudo-presentes h2 {
+
+        font-size:
+            clamp(31px, 9vw, 45px);
+
+    }
+
+
+    .descricao-presentes {
+
+        font-size: 15px;
+
+    }
+
+
+    .presente-card {
+
+        padding: 18px;
+
+    }
+
+
+    .presente-imagem {
+
+        flex-basis: 75px;
+
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 45px;
+
+    }
+
+
+    .presente-info h3 {
+
+        font-size: 20px;
+
+    }
+
+
+    .presente-info p {
+
+        font-size: 14px;
+
+    }
+
+
+    .botao-presente {
+
+        font-size: 13px;
+
+        padding:
+            9px
+            14px;
+
+    }
+
+
+    /* FUNDO DO MAR */
+
+    .conteudo-fundo-mar {
+
+        padding:
+            110px
+            15px
+            80px;
+
+    }
+
+
+    .conteudo-fundo-mar h2 {
+
+        font-size:
+            clamp(34px, 10vw, 48px);
+
+    }
+
+
+    /* FINAL */
+
+    .conteudo-final {
+
+        padding:
+            80px
+            15px
+            50px;
+
+    }
+
+
+    .conteudo-final h2 {
+
+        font-size:
+            clamp(34px, 10vw, 50px);
+
+    }
+
+
+    .texto-final {
+
+        font-size: 15px;
+
+    }
+
+
+    .rodape {
+
+        margin-top: 45px;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+
+    .conteudo-entrada h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .informacoes-principais p {
+
+        font-size: 12px;
+
+    }
+
+
+    .mensagem-exploracao {
+
+        padding:
+            20px
+            14px;
+
+    }
+
+
+    .area-exploracao {
+
+        min-height: 410px;
+
+    }
+
+
+    .presente-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .presente-imagem {
+
+        margin: 0 auto;
+
+    }
+
+
 }
 
 
@@ -2621,397 +4249,20 @@ img {
 
 button:focus-visible,
 a:focus-visible {
+
     outline:
-        3px solid var(--amarelo);
+        3px solid
+        #ffffff;
 
-    outline-offset:
-        4px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .lista-presentes {
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 12px;
-    }
-
-    .presente-card {
-        padding:
-            20px 12px;
-    }
-
-    .presente-imagem {
-        width: 90px;
-        height: 90px;
-
-        font-size: 3.2rem;
-    }
-
-    .presente-info h3 {
-        font-size: 1.05rem;
-    }
-
-    .presente-info p {
-        font-size: 0.82rem;
-    }
-
-}
-
-
-/* =========================================================
-   CELULAR
-========================================================= */
-
-@media (max-width: 650px) {
-
-    /* Geral */
-
-    .tela {
-        min-height: 100svh;
-    }
-
-
-    /* Entrada */
-
-    .conteudo-entrada {
-        padding:
-            30px 15px 100px;
-    }
-
-    .entrada h1 {
-        font-size:
-            clamp(2.8rem, 13vw, 4.5rem);
-
-        letter-spacing:
-            -2px;
-    }
-
-    .pequeno-titulo {
-        font-size: 0.85rem;
-    }
-
-    .informacoes-principais {
-        gap: 7px;
-    }
-
-    .informacoes-principais p {
-        font-size: 0.78rem;
-
-        padding:
-            7px 11px;
-    }
-
-    .convite-texto {
-        font-size: 0.95rem;
-    }
-
-    .botao-principal {
-        width: 100%;
-
-        max-width: 320px;
-    }
-
-    .sereia-silhueta {
-        right: -5%;
-        bottom: 17%;
-
-        opacity: 0.2;
-    }
-
-
-    /* Oceano */
-
-    .oceano {
-        min-height: 130svh;
-    }
-
-    .conteudo-oceano {
-        min-height: 130svh;
-
-        padding:
-            10vh 15px
-            15vh;
-    }
-
-    .titulo-oceano h2 {
-        font-size:
-            clamp(2rem, 11vw, 3.5rem);
-    }
-
-    .golfinho {
-        top: 30%;
-
-        font-size: 6rem;
-    }
-
-    .peixe {
-        font-size: 2rem;
-    }
-
-    .area-exploracao {
-        min-height: 55vh;
-
-        margin-top:
-            15vh;
-    }
-
-
-    /* Baú */
-
-    .bau-secao {
-        min-height: 100svh;
-    }
-
-    .bau-tesouro {
-        transform:
-            scale(0.9);
-    }
-
-    .bau-tesouro:hover {
-        transform:
-            scale(0.95);
-    }
-
-
-    /* Carta */
-
-    .carta-secao {
-        padding:
-            70px 12px;
-    }
-
-    .carta {
-        padding:
-            45px 18px 35px;
-    }
-
-    .carta h2 {
-        font-size:
-            2.2rem;
-    }
-
-    .texto-carta {
-        font-size:
-            0.98rem;
-    }
-
-    .dados-festa {
-        grid-template-columns:
-            1fr;
-    }
-
-    .dado-festa {
-        padding:
-            12px;
-    }
-
-
-    /* Presentes */
-
-    .presentes {
-        padding:
-            80px 15px;
-    }
-
-    .conteudo-presentes h2 {
-        font-size:
-            clamp(2rem, 10vw, 3rem);
-    }
-
-    .lista-presentes {
-        grid-template-columns:
-            1fr;
-
-        max-width: 400px;
-
-        gap: 15px;
-    }
-
-    .presente-card {
-        display: grid;
-
-        grid-template-columns:
-            90px 1fr;
-
-        align-items: center;
-
-        text-align: left;
-
-        padding: 15px;
-    }
-
-    .presente-imagem {
-        width: 80px;
-        height: 80px;
-
-        margin:
-            0;
-
-        font-size: 2.8rem;
-    }
-
-    .presente-info p {
-        min-height: auto;
-
-        margin-bottom: 5px;
-    }
-
-    .botao-presente {
-        margin-top:
-            8px;
-    }
-
-
-    /* Fundo do mar */
-
-    .fundo-mar {
-        min-height: 140svh;
-    }
-
-    .ambiente-profundo {
-        min-height: 140svh;
-    }
-
-    .conteudo-fundo-mar {
-        padding-top:
-            25vh;
-    }
-
-    .conteudo-fundo-mar h2 {
-        font-size:
-            clamp(2rem, 10vw, 3.2rem);
-    }
-
-    .coral-profundo-1 {
-        left: -5%;
-    }
-
-    .coral-profundo-2 {
-        right: -5%;
-    }
-
-
-    /* Final */
-
-    .concha-final {
-        padding:
-            70px 15px;
-    }
-
-    .concha-convite {
-        width: 180px;
-        height: 180px;
-
-        font-size: 7rem;
-    }
-
-    .rodape {
-        margin-top:
-            60px;
-    }
-
-
-    /* Modal */
-
-    .modal {
-        padding:
-            12px;
-    }
-
-    .modal-conteudo {
-        padding:
-            35px 20px 25px;
-
-        border-radius:
-            22px;
-    }
-
-}
-
-
-/* =========================================================
-   CELULARES PEQUENOS
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .entrada h1 {
-        font-size:
-            2.65rem;
-    }
-
-    .informacoes-principais {
-        display:
-            grid;
-
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .informacoes-principais p {
-        width: 100%;
-    }
-
-    .botao-principal {
-        font-size:
-            0.9rem;
-    }
-
-    .carta {
-        padding:
-            40px 14px 25px;
-    }
-
-    .presente-card {
-        grid-template-columns:
-            75px 1fr;
-    }
-
-    .presente-imagem {
-        width: 68px;
-        height: 68px;
-
-        font-size:
-            2.3rem;
-    }
-
-}
-
-
-/* =========================================================
-   TELAS GRANDES
-========================================================= */
-
-@media (min-width: 1200px) {
-
-    .conteudo-entrada {
-        max-width:
-            900px;
-    }
-
-    .entrada h1 {
-        font-size:
-            6.5rem;
-    }
-
-    .golfinho {
-        font-size:
-            10rem;
-    }
+    outline-offset: 4px;
 
 }
 
 
 /* =========================================================
    REDUZIR ANIMAÇÕES
-   Acessibilidade
+   Para aparelhos/configurações que solicitam
+   menos movimento.
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -3019,16 +4270,15 @@ a:focus-visible {
     *,
     *::before,
     *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
         scroll-behavior: auto !important;
 
-        animation-duration:
-            0.01ms !important;
+        transition-duration: 0.01ms !important;
 
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
     }
 
 }
