@@ -1,6 +1,6 @@
 /* =========================================================
    CONVITE — OCEANO ENCANTADO
-   CSS COMPLETO
+   CSS COMPLETO E INTEGRADO
    ========================================================= */
 
 * {
@@ -31,9 +31,101 @@ img {
     display: block;
 }
 
+/* =========================================================
+   PARTE 1 — TELA DE ENTRADA
+   ========================================================= */
+
+.entrada {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #03152f 0%, #07527b 100%);
+    overflow: hidden;
+}
+
+.conteudo-entrada {
+    position: relative;
+    z-index: 10;
+    max-width: 500px;
+}
+
+.decoracao-superior {
+    font-size: 1.2rem;
+    color: #b9ffff;
+    margin-bottom: 10px;
+}
+
+.frase-entrada {
+    font-size: 1rem;
+    color: #d8ffff;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.nome-aniversariante {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.5rem, 8vw, 4.2rem);
+    color: #fff;
+    text-shadow: 0 0 15px rgba(166, 249, 255, 0.7);
+    margin-bottom: 10px;
+}
+
+.idade {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.idade span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #b9ffff;
+}
+
+.idade small {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.indicador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: rgba(210, 255, 255, 0.7);
+    text-transform: uppercase;
+}
+
+.indicador-linha {
+    flex: 1;
+    height: 1px;
+    background: rgba(210, 255, 255, 0.3);
+}
+
+.indicador-descer {
+    position: absolute;
+    bottom: 25px;
+    font-size: 1.5rem;
+    color: #b9ffff;
+    animation: flutuarSeta 2s infinite ease-in-out;
+}
+
+@keyframes flutuarSeta {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(8px); opacity: 1; }
+}
 
 /* =========================================================
-   TELA INICIAL — MAR
+   PARTE 2 — TELA INICIAL — MAR (OCEANO ENCANTADO)
    ========================================================= */
 
 .mundo-oceano {
@@ -71,11 +163,6 @@ img {
         );
 }
 
-
-/* =========================================================
-   PROFUNDIDADE
-   ========================================================= */
-
 .profundidade-oceano {
     position: absolute;
     inset: 0;
@@ -90,11 +177,6 @@ img {
             rgba(0, 4, 20, 0.70) 100%
         );
 }
-
-
-/* =========================================================
-   LUZ DA SUPERFÍCIE
-   ========================================================= */
 
 .luz-superficie-oceano {
     position: absolute;
@@ -116,11 +198,6 @@ img {
 
     filter: blur(14px);
 }
-
-
-/* =========================================================
-   RAIOS
-   ========================================================= */
 
 .raios-oceano {
     position: absolute;
@@ -153,26 +230,19 @@ img {
         );
 
     filter: blur(9px);
-
     animation: movimentoRaios 12s ease-in-out infinite alternate;
 }
 
 @keyframes movimentoRaios {
-    from {
-        transform: translateX(-25px) rotate(-2deg);
-    }
-
-    to {
-        transform: translateX(25px) rotate(2deg);
-    }
+    from { transform: translateX(-25px) rotate(-2deg); }
+    to { transform: translateX(25px) rotate(2deg); }
 }
-
 
 /* =========================================================
    PARTÍCULAS / BRILHOS
    ========================================================= */
 
-.particulas-oceano {
+.brilhos-oceano, .brilhos-entrada, .brilhos-final {
     position: absolute;
     inset: 0;
     z-index: 7;
@@ -180,101 +250,31 @@ img {
     overflow: hidden;
 }
 
-.particulas-oceano span {
+.brilhos-oceano span, .brilhos-entrada span, .brilhos-final span {
     position: absolute;
     width: 4px;
     height: 4px;
     border-radius: 50%;
-
     background: rgba(220, 255, 255, 0.90);
-
     box-shadow:
         0 0 6px rgba(180, 255, 255, 0.90),
         0 0 14px rgba(100, 240, 255, 0.55);
-
-    animation: brilhoParticula linear infinite;
+    animation: brilhoParticula 8s linear infinite;
 }
 
-.particulas-oceano span:nth-child(1) {
-    left: 8%;
-    top: 18%;
-    animation-duration: 8s;
-}
-
-.particulas-oceano span:nth-child(2) {
-    left: 22%;
-    top: 32%;
-    animation-duration: 11s;
-    animation-delay: 2s;
-}
-
-.particulas-oceano span:nth-child(3) {
-    left: 39%;
-    top: 12%;
-    animation-duration: 9s;
-    animation-delay: 1s;
-}
-
-.particulas-oceano span:nth-child(4) {
-    left: 54%;
-    top: 42%;
-    animation-duration: 13s;
-    animation-delay: 4s;
-}
-
-.particulas-oceano span:nth-child(5) {
-    left: 71%;
-    top: 24%;
-    animation-duration: 10s;
-    animation-delay: 2s;
-}
-
-.particulas-oceano span:nth-child(6) {
-    left: 86%;
-    top: 48%;
-    animation-duration: 12s;
-    animation-delay: 5s;
-}
-
-.particulas-oceano span:nth-child(7) {
-    left: 30%;
-    top: 65%;
-    animation-duration: 14s;
-    animation-delay: 3s;
-}
-
-.particulas-oceano span:nth-child(8) {
-    left: 65%;
-    top: 72%;
-    animation-duration: 9s;
-    animation-delay: 6s;
-}
+.brilhos-oceano span:nth-child(1) { left: 8%; top: 18%; animation-duration: 8s; }
+.brilhos-oceano span:nth-child(2) { left: 22%; top: 32%; animation-duration: 11s; animation-delay: 2s; }
+.brilhos-oceano span:nth-child(3) { left: 39%; top: 12%; animation-duration: 9s; animation-delay: 1s; }
+.brilhos-oceano span:nth-child(4) { left: 54%; top: 42%; animation-duration: 13s; animation-delay: 4s; }
+.brilhos-oceano span:nth-child(5) { left: 71%; top: 24%; animation-duration: 10s; animation-delay: 2s; }
 
 @keyframes brilhoParticula {
-    0% {
-        transform: translate3d(0, 0, 0) scale(0.3);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 0.9;
-    }
-
-    50% {
-        transform: translate3d(25px, -60px, 0) scale(1);
-        opacity: 0.75;
-    }
-
-    80% {
-        opacity: 0.35;
-    }
-
-    100% {
-        transform: translate3d(-20px, -130px, 0) scale(0.2);
-        opacity: 0;
-    }
+    0% { transform: translate3d(0, 0, 0) scale(0.3); opacity: 0; }
+    20% { opacity: 0.9; }
+    50% { transform: translate3d(25px, -60px, 0) scale(1); opacity: 0.75; }
+    80% { opacity: 0.35; }
+    100% { transform: translate3d(-20px, -130px, 0) scale(0.2); opacity: 0; }
 }
-
 
 /* =========================================================
    PEIXES
@@ -291,143 +291,32 @@ img {
 .peixe {
     position: absolute;
     left: -140px;
-
     display: block;
     white-space: nowrap;
-
-    /*
-       O peixe NÃO gira.
-       O peixe aponta para a DIREITA.
-       A animação apenas desloca horizontalmente.
-    */
-
-    animation-name: peixeDireita;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-
+    animation: peixeDireita linear infinite;
     will-change: transform;
 }
 
 @keyframes peixeDireita {
-    0% {
-        transform: translate3d(0, 0, 0);
-        opacity: 0;
-    }
-
-    8% {
-        opacity: 0.85;
-    }
-
-    45% {
-        transform: translate3d(55vw, -10px, 0);
-    }
-
-    75% {
-        transform: translate3d(100vw, 8px, 0);
-        opacity: 0.85;
-    }
-
-    100% {
-        transform: translate3d(125vw, -4px, 0);
-        opacity: 0;
-    }
+    0% { transform: translate3d(0, 0, 0); opacity: 0; }
+    8% { opacity: 0.85; }
+    45% { transform: translate3d(55vw, -10px, 0); }
+    75% { transform: translate3d(100vw, 8px, 0); opacity: 0.85; }
+    100% { transform: translate3d(125vw, -4px, 0); opacity: 0; }
 }
 
-
-/* =========================================================
-   POSIÇÃO DOS PEIXES
-   ========================================================= */
-
-.peixe-1 {
-    top: 12%;
-    font-size: 2rem;
-    animation-duration: 17s;
-    animation-delay: 0s;
-}
-
-.peixe-2 {
-    top: 19%;
-    font-size: 1.5rem;
-    animation-duration: 13s;
-    animation-delay: 4s;
-}
-
-.peixe-3 {
-    top: 28%;
-    font-size: 2.5rem;
-    animation-duration: 21s;
-    animation-delay: 7s;
-}
-
-.peixe-4 {
-    top: 35%;
-    font-size: 1.7rem;
-    animation-duration: 15s;
-    animation-delay: 11s;
-}
-
-.peixe-5 {
-    top: 44%;
-    font-size: 2.1rem;
-    animation-duration: 19s;
-    animation-delay: 2s;
-}
-
-.peixe-6 {
-    top: 51%;
-    font-size: 1.4rem;
-    animation-duration: 14s;
-    animation-delay: 9s;
-}
-
-.peixe-7 {
-    top: 61%;
-    font-size: 2.4rem;
-    animation-duration: 22s;
-    animation-delay: 14s;
-}
-
-.peixe-8 {
-    top: 68%;
-    font-size: 1.6rem;
-    animation-duration: 16s;
-    animation-delay: 5s;
-}
-
-.peixe-9 {
-    top: 77%;
-    font-size: 2rem;
-    animation-duration: 20s;
-    animation-delay: 17s;
-}
-
-.peixe-10 {
-    top: 83%;
-    font-size: 1.5rem;
-    animation-duration: 13s;
-    animation-delay: 12s;
-}
-
-.peixe-11 {
-    top: 90%;
-    font-size: 2.3rem;
-    animation-duration: 18s;
-    animation-delay: 20s;
-}
-
-.peixe-12 {
-    top: 96%;
-    font-size: 1.7rem;
-    animation-duration: 15s;
-    animation-delay: 16s;
-}
-
+.peixe-1 { top: 12%; font-size: 2rem; animation-duration: 17s; }
+.peixe-2 { top: 19%; font-size: 1.5rem; animation-duration: 13s; animation-delay: 4s; }
+.peixe-3 { top: 28%; font-size: 2.5rem; animation-duration: 21s; animation-delay: 7s; }
+.peixe-4 { top: 35%; font-size: 1.7rem; animation-duration: 15s; animation-delay: 11s; }
+.peixe-5 { top: 44%; font-size: 2.1rem; animation-duration: 19s; animation-delay: 2s; }
+.peixe-6 { top: 51%; font-size: 1.4rem; animation-duration: 14s; animation-delay: 9s; }
 
 /* =========================================================
    BOLHAS
    ========================================================= */
 
-.bolhas-oceano {
+.bolhas-oceano, .bolhas-entrada {
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -435,212 +324,33 @@ img {
     z-index: 6;
 }
 
-.bolhas-oceano span {
+.bolhas-oceano span, .bolhas-entrada span {
     position: absolute;
     bottom: -60px;
-
     width: 10px;
     height: 10px;
-
     border: 1px solid rgba(210, 255, 255, 0.48);
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(255, 255, 255, 0.50),
-            transparent 60%
-        );
-
-    box-shadow:
-        inset 0 0 7px rgba(210, 255, 255, 0.35),
-        0 0 8px rgba(130, 240, 255, 0.20);
-
+    background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.50), transparent 60%);
+    box-shadow: inset 0 0 7px rgba(210, 255, 255, 0.35), 0 0 8px rgba(130, 240, 255, 0.20);
     animation: subirBolhaOceano linear infinite;
 }
 
 @keyframes subirBolhaOceano {
-    0% {
-        transform: translate3d(0, 0, 0) scale(0.7);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.75;
-    }
-
-    50% {
-        transform: translate3d(30px, -90vh, 0) scale(1);
-    }
-
-    100% {
-        transform: translate3d(-25px, -220vh, 0) scale(1.15);
-        opacity: 0;
-    }
+    0% { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
+    10% { opacity: 0.75; }
+    50% { transform: translate3d(30px, -90vh, 0) scale(1); }
+    100% { transform: translate3d(-25px, -220vh, 0) scale(1.15); opacity: 0; }
 }
 
-.bolhas-oceano span:nth-child(1) {
-    left: 5%;
-    width: 8px;
-    height: 8px;
-    animation-duration: 10s;
-}
-
-.bolhas-oceano span:nth-child(2) {
-    left: 11%;
-    width: 15px;
-    height: 15px;
-    animation-duration: 14s;
-    animation-delay: 2s;
-}
-
-.bolhas-oceano span:nth-child(3) {
-    left: 18%;
-    width: 6px;
-    height: 6px;
-    animation-duration: 8s;
-    animation-delay: 5s;
-}
-
-.bolhas-oceano span:nth-child(4) {
-    left: 27%;
-    width: 12px;
-    height: 12px;
-    animation-duration: 12s;
-    animation-delay: 1s;
-}
-
-.bolhas-oceano span:nth-child(5) {
-    left: 35%;
-    width: 7px;
-    height: 7px;
-    animation-duration: 9s;
-    animation-delay: 7s;
-}
-
-.bolhas-oceano span:nth-child(6) {
-    left: 43%;
-    width: 18px;
-    height: 18px;
-    animation-duration: 16s;
-    animation-delay: 4s;
-}
-
-.bolhas-oceano span:nth-child(7) {
-    left: 50%;
-    width: 9px;
-    height: 9px;
-    animation-duration: 11s;
-    animation-delay: 8s;
-}
-
-.bolhas-oceano span:nth-child(8) {
-    left: 57%;
-    width: 13px;
-    height: 13px;
-    animation-duration: 13s;
-    animation-delay: 3s;
-}
-
-.bolhas-oceano span:nth-child(9) {
-    left: 64%;
-    width: 6px;
-    height: 6px;
-    animation-duration: 8s;
-    animation-delay: 6s;
-}
-
-.bolhas-oceano span:nth-child(10) {
-    left: 70%;
-    width: 16px;
-    height: 16px;
-    animation-duration: 15s;
-    animation-delay: 2s;
-}
-
-.bolhas-oceano span:nth-child(11) {
-    left: 76%;
-    width: 8px;
-    height: 8px;
-    animation-duration: 10s;
-    animation-delay: 9s;
-}
-
-.bolhas-oceano span:nth-child(12) {
-    left: 82%;
-    width: 14px;
-    height: 14px;
-    animation-duration: 13s;
-    animation-delay: 5s;
-}
-
-.bolhas-oceano span:nth-child(13) {
-    left: 88%;
-    width: 7px;
-    height: 7px;
-    animation-duration: 9s;
-    animation-delay: 1s;
-}
-
-.bolhas-oceano span:nth-child(14) {
-    left: 93%;
-    width: 18px;
-    height: 18px;
-    animation-duration: 17s;
-    animation-delay: 6s;
-}
-
-.bolhas-oceano span:nth-child(15) {
-    left: 23%;
-    width: 5px;
-    height: 5px;
-    animation-duration: 7s;
-    animation-delay: 10s;
-}
-
-.bolhas-oceano span:nth-child(16) {
-    left: 47%;
-    width: 11px;
-    height: 11px;
-    animation-duration: 12s;
-    animation-delay: 11s;
-}
-
-.bolhas-oceano span:nth-child(17) {
-    left: 67%;
-    width: 9px;
-    height: 9px;
-    animation-duration: 10s;
-    animation-delay: 13s;
-}
-
-.bolhas-oceano span:nth-child(18) {
-    left: 79%;
-    width: 6px;
-    height: 6px;
-    animation-duration: 8s;
-    animation-delay: 14s;
-}
-
-.bolhas-oceano span:nth-child(19) {
-    left: 15%;
-    width: 12px;
-    height: 12px;
-    animation-duration: 14s;
-    animation-delay: 12s;
-}
-
-.bolhas-oceano span:nth-child(20) {
-    left: 90%;
-    width: 10px;
-    height: 10px;
-    animation-duration: 11s;
-    animation-delay: 15s;
-}
-
+.bolhas-oceano span:nth-child(1) { left: 5%; width: 8px; height: 8px; animation-duration: 10s; }
+.bolhas-oceano span:nth-child(2) { left: 18%; width: 15px; height: 15px; animation-duration: 14s; animation-delay: 2s; }
+.bolhas-oceano span:nth-child(3) { left: 35%; width: 7px; height: 7px; animation-duration: 9s; animation-delay: 7s; }
+.bolhas-oceano span:nth-child(4) { left: 50%; width: 12px; height: 12px; animation-duration: 12s; animation-delay: 1s; }
+.bolhas-oceano span:nth-child(5) { left: 70%; width: 16px; height: 16px; animation-duration: 15s; animation-delay: 2s; }
 
 /* =========================================================
-   VEGETAÇÃO
+   VEGETAÇÃO E CONTEÚDO
    ========================================================= */
 
 .vegetacao-oceano {
@@ -655,109 +365,44 @@ img {
     bottom: -10px;
     opacity: 0.28;
     font-size: 5rem;
-
-    filter:
-        drop-shadow(
-            0 0 12px rgba(60, 220, 220, 0.25)
-        );
+    filter: drop-shadow(0 0 12px rgba(60, 220, 220, 0.25));
 }
 
-.planta-1 {
-    left: 3%;
-}
-
-.planta-2 {
-    left: 18%;
-    bottom: 8%;
-    transform: scale(0.7);
-}
-
-.planta-3 {
-    right: 12%;
-    bottom: 4%;
-    transform: scale(0.85);
-}
-
-.planta-4 {
-    right: 1%;
-    transform: scale(1.2);
-}
-
-
-/* =========================================================
-   CONTEÚDO PRINCIPAL
-   ========================================================= */
+.planta-1 { left: 3%; }
+.planta-2 { left: 18%; bottom: 8%; transform: scale(0.7); }
+.planta-3 { right: 12%; bottom: 4%; transform: scale(0.85); }
+.planta-4 { right: 1%; transform: scale(1.2); }
 
 .conteudo-oceano {
     position: relative;
     z-index: 20;
-
     width: min(92%, 700px);
-    min-height: 200svh;
-
     margin: 0 auto;
-
-    padding:
-        18vh
-        20px
-        35vh;
-
+    padding: 10vh 20px 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-
     text-align: center;
 }
-
-
-/* =========================================================
-   ORNAMENTO
-   ========================================================= */
 
 .ornamento-oceano {
     display: flex;
     align-items: center;
     gap: 12px;
-
     margin-bottom: 15px;
-
     font-size: 0.62rem;
     letter-spacing: 3px;
-
     color: rgba(210, 255, 255, 0.72);
 }
 
-.ornamento-oceano span {
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   NOME
-   ========================================================= */
-
 .nome-oceano {
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
+    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
-
     font-weight: 400;
     line-height: 1.05;
-
     color: #fff;
-
-    text-shadow:
-        0 0 12px rgba(166, 249, 255, 0.65),
-        0 0 30px rgba(70, 211, 235, 0.30);
+    text-shadow: 0 0 12px rgba(166, 249, 255, 0.65), 0 0 30px rgba(70, 211, 235, 0.30);
 }
-
-
-/* =========================================================
-   IDADE
-   ========================================================= */
 
 .idade-oceano {
     display: flex;
@@ -778,126 +423,40 @@ img {
     text-transform: uppercase;
 }
 
-
 /* =========================================================
-   SEREIA
+   SEREIA E FRASES
    ========================================================= */
 
 .sereia-oceano {
     position: relative;
-
     width: 230px;
     height: 220px;
-
     margin: 20px 0 15px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    animation:
-        flutuarOceano
-        5s
-        ease-in-out
-        infinite;
+    animation: flutuarOceano 5s ease-in-out infinite;
 }
 
 @keyframes flutuarOceano {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .halo-sereia {
     position: absolute;
-
     width: 190px;
     height: 190px;
-
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(118, 239, 247, 0.28),
-            rgba(118, 239, 247, 0.08) 40%,
-            transparent 70%
-        );
-
-    box-shadow:
-        0 0 35px rgba(100, 235, 255, 0.15);
+    background: radial-gradient(circle, rgba(118, 239, 247, 0.28), rgba(118, 239, 247, 0.08) 40%, transparent 70%);
+    box-shadow: 0 0 35px rgba(100, 235, 255, 0.15);
 }
 
-.sereia-placeholder {
+.sereia-personagem {
+    font-size: 5rem;
     position: relative;
     z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 5.5rem;
-
-    animation:
-        movimentoSereia
-        4s
-        ease-in-out
-        infinite;
 }
-
-@keyframes movimentoSereia {
-    0%,
-    100% {
-        transform: rotate(-2deg) translateY(0);
-    }
-
-    50% {
-        transform: rotate(2deg) translateY(-5px);
-    }
-}
-
-
-/* =========================================================
-   FRASES EM ROSA
-   ========================================================= */
-
-.frases-sereia {
-    max-width: 560px;
-    margin-top: 5px;
-}
-
-.frases-sereia p {
-    margin: 7px 0;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: clamp(1rem, 3.5vw, 1.25rem);
-
-    line-height: 1.55;
-
-    color: #ffd1eb;
-
-    text-shadow:
-        0 0 8px rgba(255, 105, 180, 0.55),
-        0 0 18px rgba(255, 80, 170, 0.25);
-}
-
-.frases-sereia strong {
-    color: #ff9dce;
-}
-
-
-/* =========================================================
-   MENSAGEM
-   ========================================================= */
 
 .mensagem-oceano {
     max-width: 550px;
@@ -907,815 +466,217 @@ img {
 .mensagem-oceano p {
     font-size: clamp(1rem, 3.5vw, 1.2rem);
     line-height: 1.7;
-
     color: rgba(230, 255, 255, 0.86);
-
-    font-style: italic;
 }
 
-.mensagem-oceano p:last-child {
-    color: #d8ffff;
-
-    font-size: clamp(1.05rem, 3.8vw, 1.35rem);
-
-    font-style: normal;
+.destaque-rosa {
+    color: #ff9dce;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.55);
 }
-
-
-/* =========================================================
-   DIVISOR
-   ========================================================= */
 
 .divisor-oceano {
     display: flex;
     align-items: center;
     gap: 12px;
-
     width: 80%;
-
     margin: 20px auto;
 }
 
 .divisor-oceano span {
     flex: 1;
     height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(200, 255, 255, 0.4),
-            transparent
-        );
+    background: linear-gradient(90deg, transparent, rgba(200, 255, 255, 0.4), transparent);
 }
-
 
 /* =========================================================
-   CONTINUE
+   DADOS DO CONVITE E CARDS
    ========================================================= */
 
-.continue-oceano {
-    margin-top: 50vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-
-    font-size: 0.58rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    color: rgba(215, 255, 255, 0.5);
-}
-
-.continue-oceano strong {
-    font-size: 1.8rem;
-
-    color: rgba(210, 255, 255, 0.75);
-
-    animation:
-        setaOceano
-        1.8s
-        ease-in-out
-        infinite;
-}
-
-@keyframes setaOceano {
-    0%,
-    100% {
-        transform: translateY(0);
-        opacity: 0.4;
-    }
-
-    50% {
-        transform: translateY(10px);
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   FUNDO DO MAR
-   ========================================================= */
-
-.fundo-mar-oceano {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 260px;
-
-    z-index: 15;
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(1, 13, 32, 0.88)
-        );
-}
-
-.coral-fundo {
-    position: absolute;
-    bottom: -20px;
-
-    font-size: 6rem;
-
-    opacity: 0.32;
-
-    filter:
-        drop-shadow(
-            0 0 10px rgba(60, 220, 220, 0.18)
-        );
-}
-
-.coral-fundo-1 {
-    left: 2%;
-}
-
-.coral-fundo-2 {
-    left: 42%;
-    transform: scale(0.8);
-}
-
-.coral-fundo-3 {
-    right: 2%;
-    transform: scaleX(-1);
-}
-
-.concha-fundo {
-    position: absolute;
-
-    left: 50%;
-    bottom: 20px;
-
-    transform: translateX(-50%);
-
-    font-size: 3rem;
-
-    opacity: 0.28;
-}
-
-
-/* =========================================================
-   PARTES 2, 3 E 4
-   ========================================================= */
-
-.secao-oceano {
-    position: relative;
-    min-height: 100svh;
-
-    padding:
-        100px
-        20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    text-align: center;
-
-    overflow: hidden;
-}
-
-.secao-oceano h2 {
-    position: relative;
-    z-index: 5;
-
-    margin-bottom: 20px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: clamp(2rem, 7vw, 3.5rem);
-
-    font-weight: 400;
-
-    color: #f5ffff;
-
-    text-shadow:
-        0 0 15px rgba(140, 245, 255, 0.45);
-}
-
-.secao-oceano > p {
-    position: relative;
-    z-index: 5;
-
-    max-width: 650px;
-
-    color: rgba(230, 255, 255, 0.82);
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   MERGULHE MAIS FUNDO
-   ========================================================= */
-
-.mergulhe-fundo {
-    min-height: 100svh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(30, 120, 190, 0.25),
-            transparent 55%
-        );
-}
-
-.mergulhe-fundo::before {
-    content: "🫧";
-
-    position: absolute;
-
-    top: 20%;
-    left: 15%;
-
-    font-size: 3rem;
-
-    opacity: 0.25;
-
-    animation:
-        flutuarElemento
-        5s
-        ease-in-out
-        infinite;
-}
-
-.mergulhe-fundo::after {
-    content: "🐚";
-
-    position: absolute;
-
-    right: 12%;
-    bottom: 15%;
-
-    font-size: 4rem;
-
-    opacity: 0.28;
-
-    animation:
-        flutuarElemento
-        6s
-        ease-in-out
-        infinite reverse;
-}
-
-@keyframes flutuarElemento {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-18px);
-    }
-}
-
-
-/* =========================================================
-   SURPRESA
-   ========================================================= */
-
-.surpresa-oceano {
-    width: min(90%, 600px);
-
-    margin-top: 30px;
-    padding: 30px;
-
-    border:
-        1px solid
-        rgba(180, 255, 255, 0.20);
-
-    border-radius: 25px;
-
-    background:
-        rgba(0, 30, 65, 0.35);
-
+.convite-oceano {
+    width: 100%;
+    margin-top: 40px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(0, 25, 55, 0.48);
     backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.20),
-        inset 0 0 30px rgba(100, 230, 255, 0.04);
+    border: 1px solid rgba(190, 255, 255, 0.18);
 }
 
+.convite-titulo {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #b9ffff;
+    margin-bottom: 20px;
+}
+
+.dados-festa {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.dado-festa {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.dado-festa span {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.dado-festa small {
+    display: block;
+    font-size: 0.65rem;
+    color: #b9ffff;
+    letter-spacing: 1px;
+}
+
+.dado-festa strong {
+    font-size: 1.1rem;
+}
 
 /* =========================================================
-   PRESENTES
+   INTERAÇÕES / MERGULHO / SURPRESA
    ========================================================= */
 
-.presentes-oceano {
-    min-height: auto;
-    padding-bottom: 120px;
+.mergulhe-profundo {
+    margin-top: 60px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(30, 120, 190, 0.15);
+    border: 1px dashed rgba(180, 255, 255, 0.3);
+}
+
+.botao-mergulhar, .botao-continuar, .botao-baixar-convite {
+    margin-top: 20px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff9dcc, #d96ca7);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 100, 180, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botao-mergulhar:hover, .botao-continuar:hover, .botao-baixar-convite:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 100, 180, 0.4);
+}
+
+.surpresa-mergulho {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+/* =========================================================
+   PRESENTES E ROUPAS
+   ========================================================= */
+
+.presentes-oceano, .area-roupas {
+    width: 100%;
+    margin-top: 60px;
 }
 
 .lista-presentes {
-    position: relative;
-    z-index: 5;
-
-    width: min(100%, 900px);
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px, 1fr)
-        );
-
-    gap: 22px;
-
-    margin-top: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
 }
 
 .presente-card {
     padding: 18px;
-
-    border:
-        1px solid
-        rgba(190, 255, 255, 0.18);
-
+    border: 1px solid rgba(190, 255, 255, 0.18);
     border-radius: 20px;
-
-    background:
-        rgba(0, 25, 55, 0.48);
-
+    background: rgba(0, 25, 55, 0.48);
     backdrop-filter: blur(9px);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.20);
+    text-align: left;
 }
 
-.presente-card:hover {
-    transform: translateY(-6px);
-
-    box-shadow:
-        0 20px 45px rgba(70, 220, 255, 0.15);
-}
-
-.presente-card img {
+.presente-imagem img {
     width: 100%;
-    height: 190px;
-
+    height: 180px;
     object-fit: cover;
-
-    border-radius: 14px;
-
-    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
 }
 
-.presente-card h3 {
-    margin-bottom: 10px;
-
-    color: #ffd4ea;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-}
-
-.presente-card p {
-    margin: 6px 0;
-
-    font-size: 0.9rem;
-
-    color: rgba(235, 255, 255, 0.75);
-}
-
-.presente-card a {
+.botao-presente {
     display: inline-block;
-
-    margin-top: 14px;
-
-    padding: 10px 18px;
-
-    border-radius: 30px;
-
-    background: rgba(255, 145, 205, 0.16);
-
-    border:
-        1px solid
-        rgba(255, 170, 220, 0.35);
-
+    margin-top: 12px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 145, 205, 0.2);
+    border: 1px solid rgba(255, 170, 220, 0.4);
     color: #ffd8ec;
-
     text-decoration: none;
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
+    font-size: 0.85rem;
 }
 
-.presente-card a:hover {
-    background: rgba(255, 145, 205, 0.28);
-    transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   ROUPAS
-   ========================================================= */
-
-.roupas-oceano {
-    min-height: 70svh;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(255, 110, 190, 0.07),
-            transparent 60%
-        );
-}
-
-.roupas-box {
-    position: relative;
-    z-index: 5;
-
-    width: min(90%, 650px);
-
-    padding: 30px;
-
-    margin-top: 25px;
-
-    border-radius: 25px;
-
-    border:
-        1px solid
-        rgba(255, 190, 225, 0.20);
-
-    background:
-        rgba(60, 15, 55, 0.20);
-
-    backdrop-filter: blur(10px);
-}
-
-
-/* =========================================================
-   CONVITE DIGITAL
-   ========================================================= */
-
-.convite-final {
-    min-height: 100svh;
-
+.roupas-dados {
+    display: flex;
     justify-content: center;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(50, 160, 210, 0.18),
-            transparent 65%
-        );
+    gap: 20px;
+    margin: 20px 0;
 }
 
-.convite-imagem {
-    position: relative;
-    z-index: 5;
-
-    width: min(90%, 520px);
-
-    margin: 25px auto;
-
-    border-radius: 22px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 20px 70px rgba(0, 0, 0, 0.45),
-        0 0 35px rgba(100, 230, 255, 0.15);
+.roupas-dados div {
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
 }
-
-.convite-imagem img {
-    width: 100%;
-    height: auto;
-}
-
 
 /* =========================================================
-   BOTÃO BAIXAR
+   SEÇÃO SEGREDO E TESOUROS FINAEIS
    ========================================================= */
 
-.botao-baixar {
+.parte-segredo, .parte-presentes-final {
     position: relative;
-    z-index: 10;
+    padding: 80px 20px;
+    text-align: center;
+    background: #01132d;
+}
 
-    display: inline-flex;
+.informacoes-festa {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 30px auto;
+}
 
+.info-festa {
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
+    text-align: left;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
 
-    gap: 10px;
-
-    margin-top: 20px;
-
-    padding: 15px 30px;
-
-    border: 0;
-    border-radius: 40px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff9dcc,
-            #d96ca7
-        );
-
-    color: white;
-
-    font-size: 0.95rem;
-    font-weight: bold;
-
+.voltar-inicio {
+    display: inline-block;
+    margin-top: 30px;
+    color: #b9ffff;
     text-decoration: none;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 30px rgba(255, 100, 180, 0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    font-size: 0.9rem;
 }
-
-.botao-baixar:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 12px 40px rgba(255, 100, 180, 0.35);
-}
-
-.botao-baixar:active {
-    transform: scale(0.97);
-}
-
 
 /* =========================================================
-   CONCHAS / CORAIS / ESTRELAS
-   ========================================================= */
-
-.elementos-fundo {
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    pointer-events: none;
-}
-
-.elemento-marinho {
-    position: absolute;
-
-    opacity: 0.35;
-
-    font-size: 3rem;
-
-    filter:
-        drop-shadow(
-            0 0 10px rgba(150, 240, 255, 0.20)
-        );
-
-    animation:
-        flutuarElemento
-        6s
-        ease-in-out
-        infinite;
-}
-
-
-/* =========================================================
-   REVELAÇÃO AO DESCER
-   ========================================================= */
-
-.revelar {
-    opacity: 0;
-
-    transform:
-        translateY(45px);
-
-    transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
-}
-
-.revelar.visivel {
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 801px) {
-
-    .mundo-oceano {
-        min-height: 200svh;
-    }
-
-    .conteudo-oceano {
-        padding-top: 20vh;
-    }
-
-    .sereia-oceano {
-        width: 260px;
-        height: 240px;
-    }
-
-    .sereia-placeholder {
-        font-size: 6rem;
-    }
-
-}
-
-
-/* =========================================================
-   CELULAR
+   RESPONSIVIDADE (CELULARES)
    ========================================================= */
 
 @media (max-width: 600px) {
-
-    .mundo-oceano {
-        min-height: 200svh;
-    }
-
-    .conteudo-oceano {
-        min-height: 200svh;
-
-        width: 94%;
-
-        padding:
-            14vh
-            16px
-            25vh;
-    }
-
-    .nome-oceano {
-        font-size: clamp(2.3rem, 12vw, 3.4rem);
-    }
-
-    .idade-oceano strong {
-        font-size: 2rem;
-    }
-
-    .sereia-oceano {
-        width: 200px;
-        height: 200px;
-    }
-
-    .halo-sereia {
-        width: 165px;
-        height: 165px;
-    }
-
-    .sereia-placeholder {
-        font-size: 4.8rem;
-    }
-
-    .continue-oceano {
-        margin-top: 45vh;
-    }
-
-    .secao-oceano {
-        padding:
-            80px
-            16px;
-    }
-
-    .lista-presentes {
-        grid-template-columns: 1fr;
-    }
-
-    .presente-card {
-        width: 100%;
-    }
-
-    .presente-card img {
-        height: 210px;
-    }
-
-    .surpresa-oceano,
-    .roupas-box {
-        padding: 22px;
-    }
-
-    .elemento-marinho {
-        font-size: 2.2rem;
-    }
-
-    /*
-       Peixes continuam andando
-       SOMENTE da esquerda para a direita.
-       Nada de rotate / reverse.
-    */
-
-    .peixe {
-        left: -100px;
-    }
-
-    .peixe-1 {
-        font-size: 1.5rem;
-    }
-
-    .peixe-2 {
-        font-size: 1.2rem;
-    }
-
-    .peixe-3 {
-        font-size: 1.8rem;
-    }
-
-    .peixe-4 {
-        font-size: 1.3rem;
-    }
-
-    .peixe-5 {
-        font-size: 1.6rem;
-    }
-
-    .peixe-6 {
-        font-size: 1.2rem;
-    }
-
-    .peixe-7 {
-        font-size: 1.8rem;
-    }
-
-    .peixe-8 {
-        font-size: 1.3rem;
-    }
-
-    .peixe-9 {
-        font-size: 1.6rem;
-    }
-
-    .peixe-10 {
-        font-size: 1.2rem;
-    }
-
-    .peixe-11 {
-        font-size: 1.7rem;
-    }
-
-    .peixe-12 {
-        font-size: 1.3rem;
-    }
-}
-
-
-/* =========================================================
-   CELULARES PEQUENOS
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    .conteudo-oceano {
-        padding-top: 11vh;
-    }
-
-    .nome-oceano {
-        font-size: 2.2rem;
-    }
-
-    .sereia-oceano {
-        transform: scale(0.9);
-    }
-
-    .continue-oceano {
-        margin-top: 40vh;
-    }
-
-    .mensagem-oceano p {
-        font-size: 0.95rem;
-    }
-}
-
-
-/* =========================================================
-   REDUÇÃO DE MOVIMENTO
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-    }
+    .nome-oceano { font-size: clamp(2.3rem, 12vw, 3.4rem); }
+    .sereia-oceano { width: 180px; height: 180px; }
+    .lista-presentes { grid-template-columns: 1fr; }
 }
