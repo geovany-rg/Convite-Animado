@@ -1184,3 +1184,195 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+/* =========================================================
+   PARTE 1.2 — ANIMAÇÃO DE MERGULHO
+   ========================================================= */
+
+
+/* =========================================================
+   TELA COMEÇA A MERGULHAR
+   ========================================================= */
+
+.entrada.mergulhando {
+
+    animation:
+        mergulhoOceano
+        1.8s
+        cubic-bezier(
+            0.65,
+            0,
+            0.35,
+            1
+        )
+        forwards;
+
+}
+
+
+/* =========================================================
+   ANIMAÇÃO PRINCIPAL
+   ========================================================= */
+
+@keyframes mergulhoOceano {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        filter:
+            brightness(1);
+
+        opacity: 1;
+
+    }
+
+    35% {
+
+        transform:
+            scale(1.04);
+
+        filter:
+            brightness(1.08);
+
+    }
+
+    65% {
+
+        transform:
+            scale(1.12);
+
+        filter:
+            brightness(0.65)
+            blur(1px);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1.35);
+
+        filter:
+            brightness(0.15)
+            blur(5px);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   EFEITO EXTRA DE PROFUNDIDADE
+   ========================================================= */
+
+.entrada.mergulhando::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -20%;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 5%,
+            rgba(4, 18, 48, 0.15) 35%,
+            rgba(1, 8, 28, 0.75) 100%
+        );
+
+    animation:
+        fecharMergulho
+        1.8s
+        ease-in
+        forwards;
+
+}
+
+
+@keyframes fecharMergulho {
+
+    0% {
+
+        opacity: 0;
+
+    }
+
+    55% {
+
+        opacity: 0.15;
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   PRÓXIMA TELA
+   ========================================================= */
+
+.mundo-oceano {
+
+    position: relative;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(83, 223, 231, 0.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #041d3d,
+            #03142e
+        );
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    transform:
+        scale(1.08);
+
+    transition:
+        opacity 1s ease,
+        transform 1.4s ease;
+
+}
+
+
+/* =========================================================
+   PRÓXIMA TELA APARECENDO
+   ========================================================= */
+
+.mundo-oceano.mundo-visivel {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+}
