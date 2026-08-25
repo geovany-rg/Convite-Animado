@@ -149,7 +149,14 @@
                 </p>
 
 
-                <h1>
+                <!-- =================================================
+                     TÍTULO PRINCIPAL
+                     
+                     A sereia 734.png ficará como destaque
+                     central da abertura.
+                ================================================== -->
+
+                <h1 class="titulo-entrada">
 
                     O Oceano<br>
 
@@ -160,6 +167,21 @@
                     da Sophia
 
                 </h1>
+
+
+                <!-- =================================================
+                     SEREIA PRINCIPAL — 734.png
+                ================================================== -->
+
+                <div class="sereia-principal-container">
+
+                    <img
+                        src="734.png"
+                        alt="Sereia cor-de-rosa da aventura de Sophia"
+                        class="sereia-principal"
+                        loading="eager">
+
+                </div>
 
 
                 <!-- =================================================
@@ -669,11 +691,6 @@
 
         <!-- =====================================================
              PARTE 4 — CARTA DA SOPHIA
-             
-             IMPORTANTE:
-             Esta seção começa escondida.
-             O JavaScript somente irá mostrá-la
-             quando o baú for clicado.
         ====================================================== -->
 
         <section id="carta-secao"
@@ -1575,10 +1592,14 @@
 
                 <!-- =================================================
                      DADOS DO CONVITE
+                     
+                     A imagem principal para download agora será
+                     convite-sophia-emanuely.jpg
                 ================================================== -->
 
                 <div id="dados-convite"
-                    class="dados-convite">
+                    class="dados-convite"
+                    data-imagem-convite="convite-sophia-emanuely.jpg">
 
 
                     <span data-convite="nome">
@@ -1700,7 +1721,8 @@
          MODAL DA CARTA
          
          Mantido para compatibilidade com o JavaScript.
-         A carta somente aparecerá após o clique no baú.
+         O CSS será responsável pelo tamanho máximo,
+         rolagem e área de toque do botão.
     ========================================================== -->
 
     <div id="modal-carta"
@@ -1712,7 +1734,10 @@
         </div>
 
 
-        <div class="modal-conteudo">
+        <div class="modal-conteudo"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="carta-modal-conteudo">
 
 
             <button id="fechar-carta-modal"
@@ -1750,7 +1775,10 @@
         </div>
 
 
-        <div class="modal-conteudo modal-download-conteudo">
+        <div class="modal-conteudo modal-download-conteudo"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal-download">
 
 
             <button id="fechar-download"
@@ -1770,7 +1798,7 @@
             </div>
 
 
-            <h2>
+            <h2 id="titulo-modal-download">
 
                 Seu convite está pronto! 💕
 
