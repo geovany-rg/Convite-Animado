@@ -4282,3 +4282,252 @@ a:focus-visible {
     }
 
 }
+
+/* =========================================================
+   COMPATIBILIDADE COM O HTML ATUAL — SOPHIA
+   Estas regras complementam o CSS existente sem alterar o HTML.
+========================================================= */
+
+/* TÍTULO PRINCIPAL DA ENTRADA */
+.titulo-entrada {
+    margin: 0 auto;
+    max-width: 760px;
+    font-size: clamp(42px, 8vw, 78px);
+    line-height: 0.98;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    text-shadow: 0 7px 18px rgba(21, 91, 115, 0.30);
+}
+
+.titulo-entrada span {
+    color: var(--rosa);
+    text-shadow: 0 5px 14px rgba(214, 57, 130, 0.32);
+}
+
+/* SEREIA PRINCIPAL — 734.png */
+.sereia-principal-container {
+    position: relative;
+    z-index: 2;
+    width: min(540px, 88vw);
+    margin: 22px auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: sereia-principal-flutuar 5s ease-in-out infinite;
+}
+
+.sereia-principal {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 22px rgba(21, 91, 115, 0.18));
+}
+
+@keyframes sereia-principal-flutuar {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+/* CONTAINER DAS BOLHAS DA ENTRADA */
+.bolhas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* CARDUME DA ÁREA DE PRESENTES */
+.cardume-presentes {
+    top: 18%;
+    animation-duration: 24s;
+    opacity: 0.85;
+}
+
+/* PEIXES PROFUNDOS EXTRAS */
+.peixes-profundos {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.peixe-profundo-4 {
+    top: 40%;
+    animation-delay: -4s;
+}
+
+.peixe-profundo-5 {
+    top: 88%;
+    animation-delay: -11s;
+}
+
+/* PARTÍCULAS DO FUNDO */
+.particulas-profundas,
+.particulas-final {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particulas-profundas span,
+.particulas-final span {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.72);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    animation: particula-flutuar 5s ease-in-out infinite alternate;
+}
+
+.particulas-profundas span:nth-child(1),
+.particulas-final span:nth-child(1) {
+    left: 12%;
+    top: 18%;
+}
+
+.particulas-profundas span:nth-child(2),
+.particulas-final span:nth-child(2) {
+    left: 28%;
+    top: 42%;
+    animation-delay: -1s;
+}
+
+.particulas-profundas span:nth-child(3),
+.particulas-final span:nth-child(3) {
+    left: 50%;
+    top: 24%;
+    animation-delay: -2s;
+}
+
+.particulas-profundas span:nth-child(4),
+.particulas-final span:nth-child(4) {
+    right: 20%;
+    top: 52%;
+    animation-delay: -3s;
+}
+
+.particulas-profundas span:nth-child(5) {
+    right: 10%;
+    top: 20%;
+    animation-delay: -1.5s;
+}
+
+.particulas-profundas span:nth-child(6) {
+    left: 70%;
+    top: 72%;
+    animation-delay: -2.5s;
+}
+
+.particulas-profundas span:nth-child(7) {
+    left: 6%;
+    top: 70%;
+    animation-delay: -4s;
+}
+
+@keyframes particula-flutuar {
+    from {
+        transform: translateY(0) scale(0.9);
+        opacity: 0.35;
+    }
+    to {
+        transform: translateY(-14px) scale(1.12);
+        opacity: 0.95;
+    }
+}
+
+/* MENSAGEM DE DOWNLOAD: aceita os dois estados */
+.mensagem-download.ativo,
+.mensagem-download.ativa {
+    display: flex;
+}
+
+/* EVITA QUE O CONTEÚDO DOS DADOS INVISÍVEIS INTERFIRA NA PÁGINA */
+#dados-convite {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* MODAIS DO HTML ATUAL */
+#modal-carta .modal-conteudo,
+#modal-download .modal-conteudo {
+    max-height: min(90vh, 900px);
+    -webkit-overflow-scrolling: touch;
+}
+
+#modal-carta .carta-modal-interna {
+    margin: 0;
+}
+
+#fechar-carta-modal,
+#fechar-carta,
+#fechar-download {
+    touch-action: manipulation;
+}
+
+/* ANIMAÇÃO DO BAÚ E DA CONCHA */
+.bau-aberto .bau-tampa {
+    transform: translateX(-50%) translateY(-18px) rotate(-4deg);
+}
+
+.concha-processando {
+    animation: conchaProcessando 0.7s ease-in-out infinite alternate !important;
+}
+
+@keyframes conchaProcessando {
+    from {
+        transform: scale(0.95) rotate(-5deg);
+    }
+    to {
+        transform: scale(1.08) rotate(5deg);
+    }
+}
+
+/* =========================================================
+   RESPONSIVIDADE DAS NOVAS CLASSES
+========================================================= */
+
+@media (max-width: 800px) {
+    .sereia-principal-container {
+        width: min(470px, 88vw);
+        margin-top: 18px;
+    }
+
+    .titulo-entrada {
+        font-size: clamp(40px, 9vw, 68px);
+    }
+}
+
+@media (max-width: 600px) {
+    .titulo-entrada {
+        font-size: clamp(36px, 11vw, 58px);
+        line-height: 0.99;
+        letter-spacing: -1px;
+    }
+
+    .sereia-principal-container {
+        width: min(410px, 92vw);
+        margin: 15px auto 12px;
+    }
+
+    .sereia-principal {
+        filter: drop-shadow(0 12px 16px rgba(21, 91, 115, 0.18));
+    }
+}
+
+@media (max-width: 380px) {
+    .titulo-entrada {
+        font-size: 34px;
+    }
+
+    .sereia-principal-container {
+        width: 94vw;
+    }
+}
