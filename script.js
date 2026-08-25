@@ -1,182 +1,171 @@
 /* =========================================================
    O OCEANO COR-DE-ROSA DA SOPHIA
-   SCRIPT.JS
+   SCRIPT.JS — COMPATÍVEL COM O HTML ATUAL
 ========================================================= */
 
 "use strict";
 
-
 /* =========================================================
-   CONFIGURAÇÕES DA FESTA
+   CONFIGURAÇÕES PADRÃO
 ========================================================= */
 
 const CONFIG = {
-
     nome: "Sophia Emanuely",
-
     idade: "4 anos",
-
     titulo: "O Oceano Cor-de-Rosa da Sophia",
-
     data: "28 de novembro de 2026",
-
     horario: "13:00",
-
-    local:
-        "Uso infantil liberado com acompanhamento de responsável",
-
-    link:
-        "https://maps.app.goo.gl/SGfxecVLVifhaA4a7",
-
-    assinatura:
-        "Com carinho, Sophia 💕"
-
+    local: "Local da Festa",
+    link: "https://maps.app.goo.gl/SGfxecVLVifhaA4a7",
+    assinatura: "Com carinho, Sophia 💕"
 };
 
-
 /* =========================================================
-   ELEMENTOS
+   ELEMENTOS DO HTML ATUAL
 ========================================================= */
 
-const entrada =
-    document.getElementById("entrada");
+const entrada = document.getElementById("entrada");
+const oceano = document.getElementById("oceano");
+const bauSecao = document.getElementById("bau-secao");
+const cartaSecao = document.getElementById("carta-secao");
+const presentes = document.getElementById("presentes");
+const fundoMar = document.getElementById("fundo-mar");
+const conchaFinal = document.getElementById("concha-final");
 
-const mergulho =
-    document.getElementById("mergulho");
+const bauTesouro = document.getElementById("bau-tesouro");
+const conchaConvite = document.getElementById("concha-convite");
 
-const oceano =
-    document.getElementById("oceano");
+const modalCarta = document.getElementById("modal-carta");
+const modalDownload = document.getElementById("modal-download");
 
-const bauSecao =
-    document.getElementById("bau-secao");
+const fecharCarta = document.getElementById("fechar-carta");
+const fecharCartaModalBotao = document.getElementById("fechar-carta-modal");
+const fecharDownload = document.getElementById("fechar-download");
 
-const cartaSecao =
-    document.getElementById("carta-secao");
-
-const presentes =
-    document.getElementById("presentes");
-
-const fundoMar =
-    document.getElementById("fundo-mar");
-
-const conchaFinal =
-    document.getElementById("concha-final");
-
-const btnMergulhar =
-    document.getElementById("btn-mergulhar");
-
-const bauTesouro =
-    document.getElementById("bau-tesouro");
-
-const conchaConvite =
-    document.getElementById("concha-convite");
-
-const modalCarta =
-    document.getElementById("modal-carta");
-
-const modalDownload =
-    document.getElementById("modal-download");
-
-const fecharCarta =
-    document.getElementById("fechar-carta");
-
-const fecharDownload =
-    document.getElementById("fechar-download");
-
-const cartaModalConteudo =
-    document.getElementById(
-        "carta-modal-conteudo"
-    );
-
-const downloadConvite =
-    document.getElementById(
-        "download-convite"
-    );
-
-const mensagemDownload =
-    document.getElementById(
-        "mensagem-download"
-    );
-
+const cartaModalConteudo = document.getElementById("carta-modal-conteudo");
+const downloadConvite = document.getElementById("download-convite");
+const mensagemDownload = document.getElementById("mensagem-download");
+const dadosConvite = document.getElementById("dados-convite");
 
 /* =========================================================
    ESTADO
 ========================================================= */
 
 let bauAberto = false;
-
 let conviteGerado = false;
-
+let conviteImagemPronta = false;
+let imagemConvite = null;
 
 /* =========================================================
-   FUNÇÕES UTILITÁRIAS
+   UTILITÁRIOS
 ========================================================= */
 
-function irPara(secao) {
+function esperar(tempo) {
+    return new Promise(resolve => setTimeout(resolve, tempo));
+}
 
-    if (!secao) {
-        return;
-    }
+function irPara(secao) {
+    if (!secao) return;
 
     secao.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
 }
 
-
-function esperar(tempo) {
-
-    return new Promise(
-        resolve =>
-            setTimeout(
-                resolve,
-                tempo
-            )
+function textoDataConvite(tipo, fallback) {
+    const elemento = document.querySelector(
+        `[data-convite="${tipo}"]`
     );
 
+    if (!elemento) return fallback;
+
+    const texto = elemento.textContent.trim();
+
+    return texto || fallback;
 }
 
-
 /* =========================================================
-   INICIALIZAÇÃO DOS DADOS
+   DADOS DO CONVITE
 ========================================================= */
 
 function carregarDadosDaFesta() {
 
-    const campos =
-        document.querySelectorAll(
+    const valores = {
+
+        nome: textoDataConvite(
+            "nome",
+            CONFIG.nome
+        ),
+
+        idade: textoDataConvite(
+            "idade",
+            CONFIG.idade
+        ),
+
+        titulo: textoDataConvite(
+            "titulo",
+            CONFIG.titulo
+        ),
+
+        data: textoDataConvite(
+            "data",
+            CONFIG.data
+        ),
+
+        horario: textoDataConvite(
+            "horario",
+            CONFIG.horario
+        ),
+
+        local: textoDataConvite(
+            "local",
+            CONFIG.local
+        ),
+
+        link: textoDataConvite(
+            "link",
+            CONFIG.link
+        )
+
+    };
+
+    Object.assign(
+        CONFIG,
+        valores
+    );
+
+
+    document
+        .querySelectorAll(
             "[data-convite]"
+        )
+        .forEach(
+            campo => {
+
+                const tipo =
+                    campo.dataset.convite;
+
+
+                if (
+                    Object.prototype.hasOwnProperty.call(
+                        CONFIG,
+                        tipo
+                    )
+                ) {
+
+                    campo.textContent =
+                        CONFIG[tipo];
+
+                }
+
+            }
         );
-
-
-    campos.forEach(campo => {
-
-        const tipo =
-            campo.dataset.convite;
-
-
-        if (
-            Object.prototype.hasOwnProperty.call(
-                CONFIG,
-                tipo
-            )
-        ) {
-
-            campo.textContent =
-                CONFIG[tipo];
-
-        }
-
-    });
 
 }
 
-
 /* =========================================================
    PEIXES
-   Todos devem nadar ESQUERDA → DIREITA.
 ========================================================= */
 
 function corrigirDirecaoPeixes() {
@@ -189,15 +178,16 @@ function corrigirDirecaoPeixes() {
         );
 
 
-    peixes.forEach(peixe => {
+    peixes.forEach(
+        peixe => {
 
-        peixe.style.transform =
-            "scaleX(-1)";
+            peixe.style.transform =
+                "scaleX(-1)";
 
-    });
+        }
+    );
 
 }
-
 
 /* =========================================================
    BAÚ DO TESOURO
@@ -247,7 +237,6 @@ async function abrirBau() {
     abrirCarta();
 
 }
-
 
 /* =========================================================
    CARTA
@@ -389,7 +378,7 @@ function criarCartaModal() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Abrir localização
+                                Abrir mapa
                             </a>
 
                         </div>
@@ -411,18 +400,39 @@ function criarCartaModal() {
 
                 </div>
 
+
+                <button
+                    id="fechar-carta-modal-interno"
+                    class="botao-fechar-carta"
+                    type="button"
+                >
+                    Fechar carta
+                </button>
+
             </div>
 
         </div>
 
     `;
 
+
+    const fecharInterno =
+        document.getElementById(
+            "fechar-carta-modal-interno"
+        );
+
+
+    if (fecharInterno) {
+
+        fecharInterno.addEventListener(
+            "click",
+            fecharCartaModal
+        );
+
+    }
+
 }
 
-
-/* =========================================================
-   ABRIR CARTA
-========================================================= */
 
 function abrirCarta() {
 
@@ -444,21 +454,8 @@ function abrirCarta() {
         "false"
     );
 
-
-    /*
-        Não usamos overflow:hidden
-        no body.
-
-        Isso evita que celulares fiquem
-        presos ou travados ao fechar a carta.
-    */
-
 }
 
-
-/* =========================================================
-   FECHAR CARTA
-========================================================= */
 
 function fecharCartaModal() {
 
@@ -477,16 +474,7 @@ function fecharCartaModal() {
         "true"
     );
 
-
-    /*
-        Não força nenhuma rolagem.
-
-        O usuário continua exatamente
-        de onde estava.
-    */
-
 }
-
 
 /* =========================================================
    MODAL DE DOWNLOAD
@@ -532,8 +520,115 @@ function fecharModalDownload() {
 }
 
 
+function atualizarMensagemDownload(
+    texto,
+    mostrar = true
+) {
+
+    if (!mensagemDownload) {
+        return;
+    }
+
+
+    const paragrafo =
+        mensagemDownload.querySelector(
+            "p"
+        );
+
+
+    if (paragrafo) {
+
+        paragrafo.textContent =
+            texto;
+
+    }
+
+
+    mensagemDownload.classList.toggle(
+        "ativa",
+        mostrar
+    );
+
+
+    mensagemDownload.classList.toggle(
+        "ativo",
+        mostrar
+    );
+
+}
+
 /* =========================================================
-   CONCHA FINAL
+   IMAGEM DO CONVITE
+========================================================= */
+
+function obterCaminhoImagemConvite() {
+
+    if (
+        dadosConvite?.dataset.imagemConvite
+    ) {
+
+        return (
+            dadosConvite.dataset
+                .imagemConvite
+        );
+
+    }
+
+
+    return "convite-sophia-emanuely.jpg";
+
+}
+
+
+function carregarImagemConvite() {
+
+    return new Promise(
+        resolve => {
+
+            const caminho =
+                obterCaminhoImagemConvite();
+
+
+            const imagem =
+                new Image();
+
+
+            imagem.onload = () => {
+
+                imagemConvite =
+                    imagem;
+
+                conviteImagemPronta =
+                    true;
+
+                resolve(true);
+
+            };
+
+
+            imagem.onerror = () => {
+
+                imagemConvite =
+                    null;
+
+                conviteImagemPronta =
+                    false;
+
+                resolve(false);
+
+            };
+
+
+            imagem.src =
+                caminho;
+
+        }
+    );
+
+}
+
+/* =========================================================
+   PREPARAR CONVITE
 ========================================================= */
 
 async function prepararConvite() {
@@ -543,7 +638,10 @@ async function prepararConvite() {
     }
 
 
-    if (conviteGerado) {
+    if (
+        conviteGerado &&
+        conviteImagemPronta
+    ) {
 
         abrirModalDownload();
 
@@ -552,30 +650,14 @@ async function prepararConvite() {
     }
 
 
-    conviteGerado = true;
+    conviteGerado =
+        true;
 
 
-    if (mensagemDownload) {
-
-        mensagemDownload.classList.add(
-            "ativo"
-        );
-
-
-        const texto =
-            mensagemDownload.querySelector(
-                "p"
-            );
-
-
-        if (texto) {
-
-            texto.textContent =
-                "Preparando seu convite...";
-
-        }
-
-    }
+    atualizarMensagemDownload(
+        "Preparando seu convite...",
+        true
+    );
 
 
     conchaConvite.classList.add(
@@ -583,46 +665,11 @@ async function prepararConvite() {
     );
 
 
-    await esperar(700);
+    const imagemCarregada =
+        await carregarImagemConvite();
 
 
-    const canvas =
-        criarImagemConvite();
-
-
-    if (!canvas) {
-
-        conviteGerado = false;
-
-        conchaConvite.classList.remove(
-            "concha-processando"
-        );
-
-        return;
-
-    }
-
-
-    window.__conviteCanvas =
-        canvas;
-
-
-    if (mensagemDownload) {
-
-        const texto =
-            mensagemDownload.querySelector(
-                "p"
-            );
-
-
-        if (texto) {
-
-            texto.textContent =
-                "Convite preparado! 💕";
-
-        }
-
-    }
+    await esperar(350);
 
 
     conchaConvite.classList.remove(
@@ -630,981 +677,192 @@ async function prepararConvite() {
     );
 
 
-    await esperar(400);
+    if (!imagemCarregada) {
+
+        conviteGerado =
+            false;
 
 
-    abrirModalDownload();
-
-}
-
-
-/* =========================================================
-   GERAÇÃO DA IMAGEM
-========================================================= */
-
-function criarImagemConvite() {
-
-    const largura = 1080;
-
-    const altura = 1350;
-
-
-    const canvas =
-        document.createElement(
-            "canvas"
+        atualizarMensagemDownload(
+            "Não foi possível localizar a imagem do convite.",
+            true
         );
 
-
-    canvas.width =
-        largura;
-
-    canvas.height =
-        altura;
-
-
-    const ctx =
-        canvas.getContext(
-            "2d"
-        );
-
-
-    if (!ctx) {
-        return null;
-    }
-
-
-    /* =====================================================
-       FUNDO EM DEGRADÊ
-    ====================================================== */
-
-    const gradiente =
-        ctx.createLinearGradient(
-            0,
-            0,
-            0,
-            altura
-        );
-
-
-    gradiente.addColorStop(
-        0,
-        "#b8f6ff"
-    );
-
-
-    gradiente.addColorStop(
-        0.25,
-        "#6edff2"
-    );
-
-
-    gradiente.addColorStop(
-        0.55,
-        "#29b9d8"
-    );
-
-
-    gradiente.addColorStop(
-        0.8,
-        "#087da9"
-    );
-
-
-    gradiente.addColorStop(
-        1,
-        "#06466e"
-    );
-
-
-    ctx.fillStyle =
-        gradiente;
-
-
-    ctx.fillRect(
-        0,
-        0,
-        largura,
-        altura
-    );
-
-
-    /* =====================================================
-       LUZ
-    ====================================================== */
-
-    const luz =
-        ctx.createRadialGradient(
-            largura / 2,
-            130,
-            20,
-            largura / 2,
-            200,
-            650
-        );
-
-
-    luz.addColorStop(
-        0,
-        "rgba(255,255,255,0.55)"
-    );
-
-
-    luz.addColorStop(
-        1,
-        "rgba(255,255,255,0)"
-    );
-
-
-    ctx.fillStyle =
-        luz;
-
-
-    ctx.fillRect(
-        0,
-        0,
-        largura,
-        750
-    );
-
-
-    /* =====================================================
-       BOLHAS
-    ====================================================== */
-
-    desenharBolha(
-        ctx,
-        100,
-        180,
-        18
-    );
-
-    desenharBolha(
-        ctx,
-        940,
-        230,
-        25
-    );
-
-    desenharBolha(
-        ctx,
-        180,
-        620,
-        13
-    );
-
-    desenharBolha(
-        ctx,
-        890,
-        720,
-        18
-    );
-
-    desenharBolha(
-        ctx,
-        120,
-        1050,
-        22
-    );
-
-    desenharBolha(
-        ctx,
-        970,
-        1120,
-        14
-    );
-
-
-    /* =====================================================
-       PEIXES
-       Espelhados para parecerem nadando
-       corretamente para a direita.
-    ====================================================== */
-
-    desenharEmojiEspelhado(
-        ctx,
-        "🐟",
-        90,
-        390,
-        60
-    );
-
-
-    desenharEmojiEspelhado(
-        ctx,
-        "🐠",
-        900,
-        470,
-        65
-    );
-
-
-    desenharEmojiEspelhado(
-        ctx,
-        "🐟",
-        150,
-        850,
-        55
-    );
-
-
-    desenharEmojiEspelhado(
-        ctx,
-        "🐠",
-        870,
-        930,
-        55
-    );
-
-
-    /* =====================================================
-       TÍTULO
-    ====================================================== */
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "bold 48px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "O Oceano",
-        largura / 2,
-        170
-    );
-
-
-    ctx.fillStyle =
-        "#ff69b4";
-
-
-    ctx.font =
-        "bold 64px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "Cor-de-Rosa",
-        largura / 2,
-        240
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "bold 46px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "da Sophia",
-        largura / 2,
-        305
-    );
-
-
-    /* =====================================================
-       SEREIA
-    ====================================================== */
-
-    desenharEmoji(
-        ctx,
-        "🧜‍♀️",
-        540,
-        410,
-        120
-    );
-
-
-    /* =====================================================
-       GOLFINHO
-    ====================================================== */
-
-    desenharEmoji(
-        ctx,
-        "🐬",
-        540,
-        560,
-        100
-    );
-
-
-    /* =====================================================
-       NOME
-    ====================================================== */
-
-    ctx.fillStyle =
-        "#ffb4d9";
-
-
-    ctx.font =
-        "bold 52px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        CONFIG.nome,
-        largura / 2,
-        690
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "bold 30px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        CONFIG.idade,
-        largura / 2,
-        735
-    );
-
-
-    /* =====================================================
-       CARD
-    ====================================================== */
-
-    const cardX = 100;
-
-    const cardY = 780;
-
-    const cardW = 880;
-
-    const cardH = 350;
-
-
-    desenharRetanguloArredondado(
-        ctx,
-        cardX,
-        cardY,
-        cardW,
-        cardH,
-        35,
-        "rgba(255,255,255,0.18)"
-    );
-
-
-    ctx.strokeStyle =
-        "rgba(255,255,255,0.35)";
-
-
-    ctx.lineWidth =
-        2;
-
-
-    ctx.stroke();
-
-
-    ctx.textAlign =
-        "left";
-
-
-    /* DATA */
-
-    ctx.fillStyle =
-        "#ffb4d9";
-
-
-    ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "📅 DATA",
-        cardX + 45,
-        cardY + 60
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "26px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        CONFIG.data,
-        cardX + 45,
-        cardY + 100
-    );
-
-
-    /* HORÁRIO */
-
-    ctx.fillStyle =
-        "#ffb4d9";
-
-
-    ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "🕐 HORÁRIO",
-        cardX + 45,
-        cardY + 155
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "26px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        CONFIG.horario,
-        cardX + 45,
-        cardY + 195
-    );
-
-
-    /* LOCAL */
-
-    ctx.fillStyle =
-        "#ffb4d9";
-
-
-    ctx.font =
-        "bold 26px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "📍 LOCAL",
-        cardX + 45,
-        cardY + 250
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "22px Trebuchet MS, Arial, sans-serif";
-
-
-    const localLinhas =
-        quebrarTexto(
-            ctx,
-            CONFIG.local,
-            cardW - 90
-        );
-
-
-    localLinhas.forEach(
-        (linha, index) => {
-
-            ctx.fillText(
-                linha,
-                cardX + 45,
-                cardY +
-                290 +
-                index * 30
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       LINK
-    ====================================================== */
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.fillStyle =
-        "#ffe8f4";
-
-
-    ctx.font =
-        "bold 20px Trebuchet MS, Arial, sans-serif";
-
-
-    ctx.fillText(
-        "📍 Localização:",
-        largura / 2,
-        1190
-    );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "18px Trebuchet MS, Arial, sans-serif";
-
-
-    const partes =
-        quebrarTexto(
-            ctx,
-            CONFIG.link,
-            850
-        );
-
-
-    partes.forEach(
-        (parte, index) => {
-
-            ctx.fillText(
-                parte,
-                largura / 2,
-                1225 +
-                index * 27
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       ASSINATURA
-    ====================================================== */
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "italic 30px Georgia, serif";
-
-
-    ctx.fillText(
-        CONFIG.assinatura,
-        largura / 2,
-        1300
-    );
-
-
-    return canvas;
-
-}
-
-
-/* =========================================================
-   BOLHA
-========================================================= */
-
-function desenharBolha(
-    ctx,
-    x,
-    y,
-    tamanho
-) {
-
-    ctx.save();
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-        x,
-        y,
-        tamanho,
-        0,
-        Math.PI * 2
-    );
-
-
-    ctx.fillStyle =
-        "rgba(255,255,255,0.12)";
-
-
-    ctx.fill();
-
-
-    ctx.strokeStyle =
-        "rgba(255,255,255,0.6)";
-
-
-    ctx.lineWidth =
-        3;
-
-
-    ctx.stroke();
-
-
-    ctx.restore();
-
-}
-
-
-/* =========================================================
-   EMOJI
-========================================================= */
-
-function desenharEmoji(
-    ctx,
-    emoji,
-    x,
-    y,
-    tamanho
-) {
-
-    ctx.save();
-
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.textBaseline =
-        "middle";
-
-
-    ctx.font =
-        `${tamanho}px Arial`;
-
-
-    ctx.fillText(
-        emoji,
-        x,
-        y
-    );
-
-
-    ctx.restore();
-
-}
-
-
-/* =========================================================
-   EMOJI ESPELHADO
-========================================================= */
-
-function desenharEmojiEspelhado(
-    ctx,
-    emoji,
-    x,
-    y,
-    tamanho
-) {
-
-    ctx.save();
-
-
-    ctx.translate(
-        x,
-        y
-    );
-
-
-    ctx.scale(
-        -1,
-        1
-    );
-
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.textBaseline =
-        "middle";
-
-
-    ctx.font =
-        `${tamanho}px Arial`;
-
-
-    ctx.fillText(
-        emoji,
-        0,
-        0
-    );
-
-
-    ctx.restore();
-
-}
-
-
-/* =========================================================
-   RETÂNGULO ARREDONDADO
-========================================================= */
-
-function desenharRetanguloArredondado(
-    ctx,
-    x,
-    y,
-    largura,
-    altura,
-    raio,
-    preenchimento
-) {
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(
-        x + raio,
-        y
-    );
-
-
-    ctx.lineTo(
-        x + largura - raio,
-        y
-    );
-
-
-    ctx.quadraticCurveTo(
-        x + largura,
-        y,
-        x + largura,
-        y + raio
-    );
-
-
-    ctx.lineTo(
-        x + largura,
-        y + altura - raio
-    );
-
-
-    ctx.quadraticCurveTo(
-        x + largura,
-        y + altura,
-        x + largura - raio,
-        y + altura
-    );
-
-
-    ctx.lineTo(
-        x + raio,
-        y + altura
-    );
-
-
-    ctx.quadraticCurveTo(
-        x,
-        y + altura,
-        x,
-        y + altura - raio
-    );
-
-
-    ctx.lineTo(
-        x,
-        y + raio
-    );
-
-
-    ctx.quadraticCurveTo(
-        x,
-        y,
-        x + raio,
-        y
-    );
-
-
-    ctx.closePath();
-
-
-    ctx.fillStyle =
-        preenchimento;
-
-
-    ctx.fill();
-
-}
-
-
-/* =========================================================
-   QUEBRAR TEXTO
-========================================================= */
-
-function quebrarTexto(
-    ctx,
-    texto,
-    larguraMaxima
-) {
-
-    const palavras =
-        texto.split(" ");
-
-
-    const linhas = [];
-
-
-    let linhaAtual = "";
-
-
-    palavras.forEach(
-        palavra => {
-
-            const teste =
-                linhaAtual
-                    ? `${linhaAtual} ${palavra}`
-                    : palavra;
-
-
-            const medida =
-                ctx.measureText(
-                    teste
-                ).width;
-
-
-            if (
-                medida >
-                larguraMaxima
-            ) {
-
-                if (linhaAtual) {
-
-                    linhas.push(
-                        linhaAtual
-                    );
-
-                }
-
-
-                linhaAtual =
-                    palavra;
-
-            } else {
-
-                linhaAtual =
-                    teste;
-
-            }
-
-        }
-    );
-
-
-    if (linhaAtual) {
-
-        linhas.push(
-            linhaAtual
-        );
-
-    }
-
-
-    return linhas;
-
-}
-
-
-/* =========================================================
-   DOWNLOAD
-========================================================= */
-
-function baixarConvite() {
-
-    const canvas =
-        window.__conviteCanvas;
-
-
-    if (!canvas) {
-
-        alert(
-            "O convite ainda está sendo preparado. Tente novamente."
-        );
 
         return;
 
     }
 
 
-    canvas.toBlob(
-        blob => {
-
-            if (!blob) {
-
-                alert(
-                    "Não foi possível gerar o convite."
-                );
-
-                return;
-
-            }
-
-
-            const url =
-                URL.createObjectURL(
-                    blob
-                );
-
-
-            const link =
-                document.createElement(
-                    "a"
-                );
-
-
-            link.href =
-                url;
-
-
-            link.download =
-                "convite-sophia-emanuely.png";
-
-
-            document.body.appendChild(
-                link
-            );
-
-
-            link.click();
-
-
-            link.remove();
-
-
-            setTimeout(
-                () => {
-
-                    URL.revokeObjectURL(
-                        url
-                    );
-
-                },
-                1000
-            );
-
-
-            if (mensagemDownload) {
-
-                const texto =
-                    mensagemDownload.querySelector(
-                        "p"
-                    );
-
-
-                if (texto) {
-
-                    texto.textContent =
-                        "Convite baixado com sucesso! 💕";
-
-                }
-
-            }
-
-        },
-        "image/png"
+    atualizarMensagemDownload(
+        "Convite preparado! 💕",
+        true
     );
+
+
+    await esperar(350);
+
+
+    abrirModalDownload();
 
 }
 
+/* =========================================================
+   DOWNLOAD DA IMAGEM REAL DO CONVITE
+========================================================= */
+
+async function baixarConvite() {
+
+    const caminho =
+        obterCaminhoImagemConvite();
+
+
+    if (!caminho) {
+
+        atualizarMensagemDownload(
+            "A imagem do convite não foi configurada.",
+            true
+        );
+
+
+        return;
+
+    }
+
+
+    atualizarMensagemDownload(
+        "Preparando o download...",
+        true
+    );
+
+
+    try {
+
+        const resposta =
+            await fetch(
+                caminho,
+                {
+                    cache: "no-cache"
+                }
+            );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Imagem não encontrada"
+            );
+
+        }
+
+
+        const blob =
+            await resposta.blob();
+
+
+        const url =
+            URL.createObjectURL(
+                blob
+            );
+
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.href =
+            url;
+
+
+        link.download =
+            "convite-sophia-emanuely.jpg";
+
+
+        document.body.appendChild(
+            link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        setTimeout(
+            () => {
+
+                URL.revokeObjectURL(
+                    url
+                );
+
+            },
+            1000
+        );
+
+
+        atualizarMensagemDownload(
+            "Convite baixado com sucesso! 💕",
+            true
+        );
+
+
+    } catch (erro) {
+
+        console.warn(
+            "Download por blob falhou:",
+            erro
+        );
+
+
+        /*
+           Fallback para arquivos locais
+           ou servidores que não permitem fetch.
+        */
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.href =
+            caminho;
+
+
+        link.download =
+            "convite-sophia-emanuely.jpg";
+
+
+        link.target =
+            "_blank";
+
+
+        link.rel =
+            "noopener noreferrer";
+
+
+        document.body.appendChild(
+            link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        atualizarMensagemDownload(
+            "O convite foi aberto para você salvar a imagem. 💕",
+            true
+        );
+
+    }
+
+}
 
 /* =========================================================
    PRESENTES
@@ -1612,38 +870,46 @@ function baixarConvite() {
 
 function configurarPresentes() {
 
-    const links =
-        document.querySelectorAll(
+    document
+        .querySelectorAll(
             ".botao-presente"
+        )
+        .forEach(
+            link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        console.log(
+                            "Abrindo sugestão de presente:",
+                            link.textContent.trim()
+                        );
+
+                    }
+                );
+
+            }
         );
-
-
-    links.forEach(
-        link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    console.log(
-                        "Abrindo sugestão de presente:",
-                        link.textContent.trim()
-                    );
-
-                }
-            );
-
-        }
-    );
 
 }
 
-
 /* =========================================================
-   ANIMAÇÕES
+   ANIMAÇÕES EXTRAS
 ========================================================= */
 
 function prepararAnimacaoBau() {
+
+    if (
+        document.getElementById(
+            "estilos-js-sophia"
+        )
+    ) {
+
+        return;
+
+    }
+
 
     const estilo =
         document.createElement(
@@ -1651,39 +917,53 @@ function prepararAnimacaoBau() {
         );
 
 
+    estilo.id =
+        "estilos-js-sophia";
+
+
     estilo.textContent = `
 
         .bau-aberto {
+
             animation:
                 bauAbrindo 0.8s
                 ease both !important;
+
         }
 
 
         @keyframes bauAbrindo {
 
             0% {
+
                 transform:
                     scale(1)
                     rotate(0);
+
             }
 
             35% {
+
                 transform:
                     scale(1.08)
                     rotate(-3deg);
+
             }
 
             65% {
+
                 transform:
                     scale(1.12)
                     rotate(3deg);
+
             }
 
             100% {
+
                 transform:
                     scale(1)
                     rotate(0);
+
             }
 
         }
@@ -1702,33 +982,20 @@ function prepararAnimacaoBau() {
         @keyframes conchaProcessando {
 
             from {
+
                 transform:
                     scale(0.95)
                     rotate(-5deg);
+
             }
 
             to {
+
                 transform:
                     scale(1.08)
                     rotate(5deg);
+
             }
-
-        }
-
-
-        /*
-            Correção dos peixes.
-
-            scaleX(-1) faz com que eles
-            apontem para o lado correto.
-        */
-
-        .peixe,
-        .peixe-profundo,
-        .cardume span {
-
-            transform:
-                scaleX(-1);
 
         }
 
@@ -1740,7 +1007,6 @@ function prepararAnimacaoBau() {
     );
 
 }
-
 
 /* =========================================================
    INTERSECTION OBSERVER
@@ -1759,7 +1025,10 @@ function observarElementos() {
 
 
     if (
-        !("IntersectionObserver" in window)
+        !(
+            "IntersectionObserver"
+            in window
+        )
     ) {
 
         elementos.forEach(
@@ -1771,6 +1040,7 @@ function observarElementos() {
 
             }
         );
+
 
         return;
 
@@ -1817,10 +1087,6 @@ function observarElementos() {
 }
 
 
-/* =========================================================
-   OBSERVAR SEÇÕES
-========================================================= */
-
 function observarSecoes() {
 
     const secoes =
@@ -1830,9 +1096,14 @@ function observarSecoes() {
 
 
     if (
-        !("IntersectionObserver" in window)
+        !(
+            "IntersectionObserver"
+            in window
+        )
     ) {
+
         return;
+
     }
 
 
@@ -1875,9 +1146,8 @@ function observarSecoes() {
 
 }
 
-
 /* =========================================================
-   FECHAMENTO DOS MODAIS
+   MODAIS
 ========================================================= */
 
 function configurarFechamentoModais() {
@@ -1923,10 +1193,6 @@ function configurarFechamentoModais() {
 }
 
 
-/* =========================================================
-   ESC
-========================================================= */
-
 function configurarTeclaEsc() {
 
     document.addEventListener(
@@ -1936,7 +1202,9 @@ function configurarTeclaEsc() {
             if (
                 evento.key !== "Escape"
             ) {
+
                 return;
+
             }
 
 
@@ -1948,7 +1216,6 @@ function configurarTeclaEsc() {
     );
 
 }
-
 
 /* =========================================================
    PROTEÇÃO CONTRA CLIQUE DUPLO
@@ -1965,7 +1232,8 @@ function protegerCliqueRapido(
     }
 
 
-    let bloqueado = false;
+    let bloqueado =
+        false;
 
 
     elemento.addEventListener(
@@ -1981,7 +1249,8 @@ function protegerCliqueRapido(
             }
 
 
-            bloqueado = true;
+            bloqueado =
+                true;
 
 
             callback(
@@ -1992,7 +1261,8 @@ function protegerCliqueRapido(
             setTimeout(
                 () => {
 
-                    bloqueado = false;
+                    bloqueado =
+                        false;
 
                 },
                 intervalo
@@ -2003,31 +1273,11 @@ function protegerCliqueRapido(
 
 }
 
-
 /* =========================================================
    EVENTOS
 ========================================================= */
 
 function configurarEventos() {
-
-    /*
-        Se o botão de mergulho ainda estiver
-        no HTML antigo, ele simplesmente
-        ficará desativado.
-
-        Isso evita a transição problemática
-        no celular.
-    */
-
-    if (btnMergulhar) {
-
-        btnMergulhar.style.display =
-            "none";
-
-    }
-
-
-    /* BAÚ */
 
     protegerCliqueRapido(
         bauTesouro,
@@ -2036,16 +1286,12 @@ function configurarEventos() {
     );
 
 
-    /* CONCHA */
-
     protegerCliqueRapido(
         conchaConvite,
         prepararConvite,
         1200
     );
 
-
-    /* FECHAR CARTA */
 
     if (fecharCarta) {
 
@@ -2057,7 +1303,15 @@ function configurarEventos() {
     }
 
 
-    /* FECHAR DOWNLOAD */
+    if (fecharCartaModalBotao) {
+
+        fecharCartaModalBotao.addEventListener(
+            "click",
+            fecharCartaModal
+        );
+
+    }
+
 
     if (fecharDownload) {
 
@@ -2068,8 +1322,6 @@ function configurarEventos() {
 
     }
 
-
-    /* DOWNLOAD */
 
     if (downloadConvite) {
 
@@ -2089,6 +1341,38 @@ function configurarEventos() {
 
 }
 
+/* =========================================================
+   GARANTIR MODAIS FECHADOS
+========================================================= */
+
+function fecharModaisInicialmente() {
+
+    [
+        modalCarta,
+        modalDownload
+    ]
+        .forEach(
+            modal => {
+
+                if (!modal) {
+                    return;
+                }
+
+
+                modal.classList.remove(
+                    "ativo"
+                );
+
+
+                modal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+            }
+        );
+
+}
 
 /* =========================================================
    PREPARAR PÁGINA
@@ -2108,41 +1392,29 @@ function prepararPagina() {
 
     configurarEventos();
 
-
-    /*
-        Garantimos que os modais
-        comecem fechados.
-    */
-
-    if (modalCarta) {
-
-        modalCarta.classList.remove(
-            "ativo"
-        );
-
-        modalCarta.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-    }
+    fecharModaisInicialmente();
 
 
-    if (modalDownload) {
+    console.log(
+        "🌊 O Oceano Cor-de-Rosa da Sophia carregado!"
+    );
 
-        modalDownload.classList.remove(
-            "ativo"
-        );
 
-        modalDownload.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+    console.log(
+        `💕 ${CONFIG.nome} — ${CONFIG.idade}`
+    );
 
-    }
+
+    console.log(
+        `📅 ${CONFIG.data} — ${CONFIG.horario}`
+    );
+
+
+    console.log(
+        `📍 ${CONFIG.local}`
+    );
 
 }
-
 
 /* =========================================================
    INICIALIZAÇÃO
@@ -2162,23 +1434,3 @@ if (
     prepararPagina();
 
 }
-
-
-/* =========================================================
-   LOG
-========================================================= */
-
-console.log(
-    "🌊 O Oceano Cor-de-Rosa da Sophia carregado!"
-);
-
-console.log(
-    "💕 Sophia Emanuely — 4 anos"
-);
-
-console.log(
-    "📅 28 de novembro de 2026 — 13:00"
-);
-console.log(
-    "🏊 Local com piscina — Uso infantil liberado com acompanhamento de responsável"
-);
