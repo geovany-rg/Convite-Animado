@@ -1,4533 +1,4009 @@
 /* =========================================================
-   O OCEANO COR-DE-ROSA DA SOPHIA
-   STYLE.CSS — VERSÃO ATUALIZADA
+O OCEANO COR-DE-ROSA DA SOPHIA
+STYLE.CSS — VERSÃO COMPLETA
+Compatível com o HTML + script.js enviados
 ========================================================= */
 
-
 /* =========================================================
-   RESET
+RESET
 ========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
+overflow-x: hidden;
 }
-
 
 body {
-    margin: 0;
-    padding: 0;
+font-family:
+"Trebuchet MS",
+"Segoe UI",
+Arial,
+sans-serif;
 
-    width: 100%;
+```
+background:
+    #061d3b;
 
-    min-height: 100%;
+color: #ffffff;
 
-    overflow-x: hidden;
+overflow-x: hidden;
+```
 
-    font-family:
-        "Trebuchet MS",
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        #bdeff5;
-
-    color: #ffffff;
 }
-
 
 button,
 a {
-    -webkit-tap-highlight-color: transparent;
+font: inherit;
 }
-
 
 button {
-    font-family: inherit;
+border: 0;
 }
 
+a {
+text-decoration: none;
+}
 
 img {
-    max-width: 100%;
-    display: block;
+max-width: 100%;
+display: block;
 }
 
-
 /* =========================================================
-   VARIÁVEIS
+VARIÁVEIS
 ========================================================= */
 
 :root {
 
-    --azul-superficie: #c8f6f7;
+```
+--rosa: #ff69b4;
+--rosa-claro: #ffb6d9;
+--rosa-suave: #ffd8eb;
+--rosa-escuro: #d94c91;
 
-    --azul-claro: #9ce8ef;
+--azul-profundo: #03152d;
+--azul: #075985;
+--azul-claro: #38bdf8;
+--azul-oceano: #087ea4;
 
-    --azul-medio: #63d2e2;
+--branco: #ffffff;
+--texto: #243447;
 
-    --azul-oceano: #3bb5d0;
+--ouro: #ffd166;
 
-    --azul-profundo: #248eaf;
+--sombra:
+    0 20px 60px rgba(0, 0, 0, .30);
 
-    --azul-fundo: #176d91;
-
-    --azul-final: #145878;
-
-    --rosa: #ff69b4;
-
-    --rosa-claro: #ff9dce;
-
-    --rosa-suave: #ffd5e8;
-
-    --rosa-escuro: #e94f9b;
-
-    --branco: #ffffff;
-
-    --texto-escuro: #164c67;
-
-    --sombra:
-        0 12px 35px rgba(15, 92, 120, 0.22);
-
-    --sombra-forte:
-        0 20px 50px rgba(7, 65, 90, 0.30);
+--sombra-suave:
+    0 10px 35px rgba(0, 0, 0, .20);
+```
 
 }
 
+/* =========================================================
+APP
+========================================================= */
+
+#app {
+width: 100%;
+overflow: hidden;
+}
 
 /* =========================================================
-   CONFIGURAÇÃO GERAL DAS TELAS
+TELAS
 ========================================================= */
 
 .tela {
+position: relative;
 
-    position: relative;
+```
+width: 100%;
+min-height: 100vh;
 
-    width: 100%;
+overflow: hidden;
 
-    min-height: 100vh;
-    min-height: 100svh;
-
-    overflow: hidden;
+isolation: isolate;
+```
 
 }
-
-
-#app {
-    width: 100%;
-    overflow: hidden;
-}
-
 
 /* =========================================================
-   PARTE 1 — ENTRADA
+ENTRADA
 ========================================================= */
 
 .entrada {
 
-    position: relative;
+```
+display: flex;
 
-    display: flex;
+justify-content: center;
+align-items: center;
 
-    align-items: center;
+text-align: center;
 
-    justify-content: center;
-
-    min-height: 100vh;
-    min-height: 100svh;
-
-    padding:
-        70px
-        20px
-        90px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #bff7f8 0%,
-            #9debf0 22%,
-            #71d9e6 48%,
-            #4bc2d8 72%,
-            #35acc8 100%
-        );
+background:
+    radial-gradient(
+        circle at 50% 15%,
+        rgba(255, 182, 217, .35),
+        transparent 30%
+    ),
+    linear-gradient(
+        180deg,
+        #f8a8cf 0%,
+        #f58bbd 28%,
+        #1787ad 68%,
+        #04385d 100%
+    );
+```
 
 }
 
-
 /* =========================================================
-   FUNDO DA ENTRADA
+FUNDO OCEANO — ENTRADA
 ========================================================= */
 
 .fundo-oceano {
+position: absolute;
+inset: 0;
 
-    position: absolute;
+```
+z-index: -1;
 
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
+overflow: hidden;
+```
 
 }
 
-
 /* =========================================================
-   RAIOS DE LUZ
+RAIOS
 ========================================================= */
 
 .raio {
+position: absolute;
 
-    position: absolute;
+```
+top: -15%;
 
-    top: -12%;
+width: 18%;
+height: 90%;
 
-    width: 20%;
+background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,.22),
+        transparent
+    );
 
-    height: 75%;
+filter: blur(5px);
 
-    opacity: 0.18;
+opacity: .6;
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.8),
-            rgba(255,255,255,0)
-        );
+transform-origin: top center;
 
-    filter: blur(4px);
-
-    transform-origin: top center;
-
-    animation:
-        movimento-raio
-        8s
-        ease-in-out
-        infinite alternate;
+animation:
+    raioMovimento 7s ease-in-out infinite alternate;
+```
 
 }
-
 
 .raio-1 {
-
-    left: 8%;
-
-    transform:
-        rotate(14deg);
-
+left: 10%;
+transform: rotate(12deg);
 }
-
 
 .raio-2 {
-
-    left: 42%;
-
-    width: 24%;
-
-    transform:
-        rotate(-5deg);
-
-    animation-delay: -3s;
-
+left: 42%;
+width: 22%;
+animation-delay: -2s;
 }
-
 
 .raio-3 {
-
-    right: 6%;
-
-    transform:
-        rotate(-16deg);
-
-    animation-delay: -5s;
-
+right: 8%;
+transform: rotate(-13deg);
+animation-delay: -4s;
 }
 
+@keyframes raioMovimento {
 
-@keyframes movimento-raio {
-
-    from {
-        opacity: 0.10;
-        transform: rotate(-8deg) scale(0.95);
-    }
-
-    to {
-        opacity: 0.24;
-        transform: rotate(8deg) scale(1.05);
-    }
-
+```
+from {
+    opacity: .25;
+    transform: rotate(-5deg);
 }
 
+to {
+    opacity: .65;
+    transform: rotate(7deg);
+}
+```
+
+}
 
 /* =========================================================
-   CORAIS
+CORAIS
 ========================================================= */
 
 .coral {
+position: absolute;
 
-    position: absolute;
+```
+bottom: -20px;
 
-    bottom: -15px;
+width: 100px;
+height: 150px;
 
-    width: 90px;
+border-radius:
+    50% 50% 0 0;
 
-    height: 145px;
+opacity: .75;
 
-    border-radius:
-        55% 45% 0 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff8b9e,
-            #ffb15f,
-            #ff729f
-        );
-
-    opacity: 0.85;
+filter: blur(.2px);
+```
 
 }
-
 
 .coral::before,
 .coral::after {
+content: "";
 
-    content: "";
+```
+position: absolute;
 
-    position: absolute;
+bottom: 0;
 
-    bottom: 0;
+width: 35px;
+height: 130px;
 
-    width: 38px;
-
-    height: 105px;
-
-    border-radius: 50px;
-
-    background:
-        inherit;
+border-radius:
+    50px 50px 0 0;
+```
 
 }
-
 
 .coral::before {
-    left: -20px;
-    transform: rotate(-22deg);
+left: 15px;
 }
-
 
 .coral::after {
-    right: -20px;
-    transform: rotate(22deg);
+right: 15px;
 }
-
 
 .coral-1 {
-    left: 3%;
-    transform: scale(0.85);
+left: 3%;
+
+```
+background:
+    linear-gradient(
+        90deg,
+        #ff6fae,
+        #ff9fca
+    );
+```
+
 }
 
+.coral-1::before,
+.coral-1::after {
+background: #ff82b9;
+}
 
 .coral-2 {
-    right: 5%;
-    transform: scale(1.1);
+right: 4%;
+transform: scale(1.2);
+
+```
+background:
+    linear-gradient(
+        90deg,
+        #e86ba9,
+        #ffb0d5
+    );
+```
+
 }
 
+.coral-2::before,
+.coral-2::after {
+background: #f889bd;
+}
 
 .coral-3 {
+left: 38%;
+bottom: -50px;
+transform: scale(.8);
 
-    left: 45%;
-
-    bottom: -30px;
-
-    transform:
-        scale(0.65);
-
-    opacity: 0.55;
+```
+background: #ef72ae;
+```
 
 }
 
+.coral-3::before,
+.coral-3::after {
+background: #ff9ec8;
+}
 
 /* =========================================================
-   ALGAS
+ALGAS
 ========================================================= */
 
 .alga {
+position: absolute;
 
-    position: absolute;
+```
+bottom: 0;
 
-    bottom: 0;
+width: 16px;
+height: 180px;
 
-    width: 15px;
+border-radius: 100%;
 
-    height: 145px;
+background:
+    linear-gradient(
+        90deg,
+        #126b62,
+        #55c59d
+    );
 
-    border-radius: 100%;
+transform-origin: bottom;
 
-    background:
-        linear-gradient(
-            90deg,
-            #43ad74,
-            #78d77c
-        );
-
-    transform-origin: bottom;
-
-    animation:
-        balanco-alga
-        4s
-        ease-in-out
-        infinite alternate;
+animation:
+    algaBalanço 4s ease-in-out infinite alternate;
+```
 
 }
-
 
 .alga::after {
+content: "";
 
-    content: "";
+```
+position: absolute;
 
-    position: absolute;
+left: 25px;
+bottom: 10px;
 
-    left: 20px;
+width: 13px;
+height: 130px;
 
-    bottom: 0;
+border-radius: 100%;
 
-    width: 13px;
+background: #2f9e82;
 
-    height: 110px;
-
-    border-radius: 100%;
-
-    background:
-        #4fbd77;
+transform: rotate(-9deg);
+```
 
 }
-
 
 .alga-1 {
-    left: 15%;
+left: 18%;
 }
-
 
 .alga-2 {
-
-    left: 24%;
-
-    height: 190px;
-
-    animation-delay: -1s;
-
+left: 26%;
+height: 130px;
+animation-delay: -1s;
 }
-
 
 .alga-3 {
-
-    right: 20%;
-
-    height: 165px;
-
-    animation-delay: -2s;
-
+right: 20%;
+height: 160px;
+animation-delay: -2s;
 }
 
+@keyframes algaBalanço {
 
-@keyframes balanco-alga {
-
-    from {
-        transform: rotate(-5deg);
-    }
-
-    to {
-        transform: rotate(7deg);
-    }
-
+```
+from {
+    transform: rotate(-5deg);
 }
 
+to {
+    transform: rotate(6deg);
+}
+```
+
+}
 
 /* =========================================================
-   ANÊMONAS
+ANÊMONAS
 ========================================================= */
 
 .anemona {
+position: absolute;
 
-    position: absolute;
+```
+bottom: 0;
 
-    bottom: 0;
+width: 80px;
+height: 70px;
 
-    width: 75px;
+border-radius:
+    50% 50% 15% 15%;
 
-    height: 85px;
+background:
+    radial-gradient(
+        circle,
+        #ffb1d2,
+        #e95b9e
+    );
 
-    border-radius:
-        50% 50% 20% 20%;
-
-    background:
-        radial-gradient(
-            circle,
-            #ff9bc9 0 22%,
-            #ff6ca9 23% 52%,
-            #e955a0 53% 100%
-        );
-
-    opacity: 0.85;
+opacity: .8;
+```
 
 }
-
 
 .anemona-1 {
-    left: 31%;
+left: 30%;
 }
-
 
 .anemona-2 {
-    right: 31%;
-    transform: scale(0.8);
+right: 30%;
+transform: scale(.8);
 }
 
-
 /* =========================================================
-   CARDUME DA ENTRADA
+CARDUMES
 ========================================================= */
 
 .cardume {
+position: absolute;
 
-    position: absolute;
+```
+pointer-events: none;
 
-    left: -25%;
-
-    display: flex;
-
-    gap: 18px;
-
-    white-space: nowrap;
-
-    animation:
-        cardume-direita
-        18s
-        linear
-        infinite;
+white-space: nowrap;
+```
 
 }
-
 
 .cardume span {
+display: inline-block;
 
-    display: inline-block;
+```
+margin: 0 15px;
 
-    font-size: clamp(26px, 4vw, 48px);
+font-size: 2rem;
 
-    filter:
-        drop-shadow(
-            0 5px 8px rgba(0,0,0,0.12)
-        );
+filter:
+    drop-shadow(
+        0 5px 8px rgba(0,0,0,.18)
+    );
+
+animation:
+    peixeNadando 7s linear infinite;
+```
 
 }
-
 
 .cardume-entrada {
+top: 20%;
+left: -20%;
 
-    top: 28%;
-
-}
-
-
-@keyframes cardume-direita {
-
-    from {
-        transform: translateX(-10vw);
-    }
-
-    to {
-        transform: translateX(145vw);
-    }
+```
+animation:
+    cardumeEntrada 18s linear infinite;
+```
 
 }
 
+@keyframes cardumeEntrada {
+
+```
+from {
+    transform: translateX(-10%);
+}
+
+to {
+    transform: translateX(120%);
+}
+```
+
+}
+
+@keyframes peixeNadando {
+
+```
+0%,
+100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-12px);
+}
+```
+
+}
 
 /* =========================================================
-   SEREIA
+SEREIA DECORATIVA
 ========================================================= */
 
 .sereia-silhueta {
 
-    position: absolute;
+```
+position: absolute;
 
-    right: 7%;
+right: 4%;
+top: 10%;
 
-    top: 19%;
+font-size:
+    clamp(3rem, 8vw, 6rem);
 
-    font-size:
-        clamp(60px, 10vw, 125px);
+opacity: .35;
 
-    opacity: 0.20;
+filter:
+    drop-shadow(
+        0 8px 15px rgba(0,0,0,.2)
+    );
 
-    filter:
-        blur(0.5px)
-        drop-shadow(
-            0 10px 12px rgba(0,0,0,0.08)
-        );
-
-    animation:
-        sereia-flutuar
-        6s
-        ease-in-out
-        infinite;
+animation:
+    sereiaFlutuando 5s ease-in-out infinite;
+```
 
 }
 
+@keyframes sereiaFlutuando {
 
-@keyframes sereia-flutuar {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateY(-18px)
-            rotate(3deg);
-    }
-
+```
+0%,
+100% {
+    transform: translateY(0) rotate(-3deg);
 }
 
+50% {
+    transform: translateY(-20px) rotate(3deg);
+}
+```
+
+}
 
 /* =========================================================
-   BOLHAS DA ENTRADA
+BOLHAS
 ========================================================= */
 
-.bolha {
+.bolhas,
+.bolhas-oceano,
+.bolhas-bau,
+.bolhas-carta,
+.bolhas-presentes,
+.bolhas-profundas,
+.bolhas-final {
 
-    position: absolute;
+```
+position: absolute;
 
-    bottom: -40px;
+inset: 0;
 
-    width: 12px;
+pointer-events: none;
+```
 
-    height: 12px;
-
-    border:
-        2px solid
-        rgba(255,255,255,0.75);
-
-    border-radius: 50%;
-
-    animation:
-        bolha-subindo
-        7s
-        linear
-        infinite;
-
-}
-
-
-.bolha:nth-child(1) {
-    left: 10%;
-    animation-delay: 0s;
-}
-
-
-.bolha:nth-child(2) {
-    left: 27%;
-    animation-delay: -2s;
-}
-
-
-.bolha:nth-child(3) {
-    left: 45%;
-    animation-delay: -4s;
-}
-
-
-.bolha:nth-child(4) {
-    left: 63%;
-    animation-delay: -1s;
-}
-
-
-.bolha:nth-child(5) {
-    left: 78%;
-    animation-delay: -3s;
-}
-
-
-.bolha:nth-child(6) {
-    left: 91%;
-    animation-delay: -5s;
-}
-
-
-@keyframes bolha-subindo {
-
-    from {
-        transform:
-            translateY(0)
-            scale(0.6);
-
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 0.8;
-    }
-
-    to {
-
-        transform:
-            translateY(-115vh)
-            scale(1.25);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================================================
-   CONTEÚDO DA ENTRADA
-========================================================= */
-
-.conteudo-entrada {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: min(760px, 100%);
-
-    text-align: center;
-
-}
-
-
-.pequeno-titulo {
-
-    margin-bottom: 20px;
-
-    font-size:
-        clamp(14px, 2vw, 19px);
-
-    font-weight: 600;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 3px 8px rgba(20, 80, 100, 0.18);
-
-}
-
-
-.conteudo-entrada h1 {
-
-    margin: 0;
-
-    font-size:
-        clamp(45px, 9vw, 92px);
-
-    line-height: 0.95;
-
-    font-weight: 900;
-
-    letter-spacing: -2px;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 7px 18px rgba(21, 91, 115, 0.25);
-
-}
-
-
-.conteudo-entrada h1 span {
-
-    color: var(--rosa);
-
-    text-shadow:
-        0 4px 12px rgba(214, 57, 130, 0.25);
-
-}
-
-
-/* =========================================================
-   INFORMAÇÕES PRINCIPAIS
-========================================================= */
-
-.informacoes-principais {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    margin:
-        28px
-        auto
-        22px;
-
-    max-width: 720px;
-
-}
-
-
-.informacoes-principais p {
-
-    margin: 0;
-
-    padding:
-        10px
-        16px;
-
-    border-radius: 999px;
-
-    background:
-        rgba(255,255,255,0.26);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.40);
-
-    backdrop-filter:
-        blur(8px);
-
-    color: #ffffff;
-
-    font-size:
-        clamp(13px, 2vw, 16px);
-
-    box-shadow:
-        0 6px 18px
-        rgba(23, 111, 139, 0.10);
-
-}
-
-
-.informacoes-principais strong {
-
-    color: #ffffff;
-
-}
-
-
-.informacao-especial {
-
-    background:
-        rgba(255,255,255,0.34) !important;
-
-}
-
-
-/* =========================================================
-   TEXTO DO CONVITE
-========================================================= */
-
-.convite-texto {
-
-    max-width: 590px;
-
-    margin:
-        0 auto
-        25px;
-
-    font-size:
-        clamp(15px, 2.3vw, 19px);
-
-    line-height: 1.6;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 3px 8px rgba(25, 91, 111, 0.15);
-
-}
-
-
-/* =========================================================
-   INDICAÇÃO DE CONTINUAÇÃO
-========================================================= */
-
-.entrada-continuar {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 5px;
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    animation:
-        indicador-flutuar
-        2.2s
-        ease-in-out
-        infinite;
-
-}
-
-
-.seta-baixo {
-
-    font-size: 28px;
-
-}
-
-
-@keyframes indicador-flutuar {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(8px);
-    }
-
-}
-
-
-.indicador-entrada {
-
-    position: absolute;
-
-    bottom: 25px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 20;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 2px;
-
-    font-size: 12px;
-
-    color: rgba(255,255,255,0.9);
-
-}
-
-
-/* =========================================================
-   PARTE 2 — OCEANO
-========================================================= */
-
-.oceano {
-
-    min-height: 120vh;
-
-    background:
-        linear-gradient(
-            180deg,
-            #bdf5f6 0%,
-            #a0e9ef 14%,
-            #79dce8 30%,
-            #5bc9dd 48%,
-            #43b8d2 66%,
-            #329fbe 82%,
-            #2588aa 100%
-        );
-
-}
-
-
-/* =========================================================
-   FUNDO DO OCEANO
-========================================================= */
-
-.oceano-fundo {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-}
-
-
-.luz-oceano {
-
-    position: absolute;
-
-    top: -5%;
-
-    left: 50%;
-
-    width: 65%;
-
-    height: 70%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,255,255,0.45),
-            rgba(255,255,255,0) 68%
-        );
-
-    filter: blur(5px);
-
-}
-
-
-/* =========================================================
-   BOLHAS DO OCEANO
-========================================================= */
-
-.bolhas-oceano span {
-
-    position: absolute;
-
-    bottom: -30px;
-
-    width: 14px;
-
-    height: 14px;
-
-    border:
-        2px solid
-        rgba(255,255,255,0.65);
-
-    border-radius: 50%;
-
-    animation:
-        bolhas-oceano-subir
-        9s
-        linear
-        infinite;
-
-}
-
-
-.bolhas-oceano span:nth-child(1) {
-    left: 8%;
-    animation-delay: -1s;
-}
-
-
-.bolhas-oceano span:nth-child(2) {
-    left: 19%;
-    animation-delay: -5s;
-}
-
-
-.bolhas-oceano span:nth-child(3) {
-    left: 34%;
-    animation-delay: -3s;
-}
-
-
-.bolhas-oceano span:nth-child(4) {
-    left: 48%;
-    animation-delay: -7s;
-}
-
-
-.bolhas-oceano span:nth-child(5) {
-    left: 61%;
-    animation-delay: -2s;
-}
-
-
-.bolhas-oceano span:nth-child(6) {
-    left: 74%;
-    animation-delay: -6s;
-}
-
-
-.bolhas-oceano span:nth-child(7) {
-    left: 86%;
-    animation-delay: -4s;
-}
-
-
-.bolhas-oceano span:nth-child(8) {
-    left: 94%;
-    animation-delay: -8s;
-}
-
-
-@keyframes bolhas-oceano-subir {
-
-    from {
-
-        transform:
-            translateY(0)
-            scale(0.5);
-
-        opacity: 0;
-
-    }
-
-    15% {
-        opacity: 0.8;
-    }
-
-    to {
-
-        transform:
-            translateY(-130vh)
-            scale(1.2);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================================================
-   PEIXES — TODOS ESQUERDA → DIREITA
-========================================================= */
-
-.peixes {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-}
-
-
-.peixe {
-
-    position: absolute;
-
-    left: -15%;
-
-    font-size:
-        clamp(28px, 5vw, 55px);
-
-    white-space: nowrap;
-
-    animation:
-        peixe-nadando
-        18s
-        linear
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 5px 7px
-            rgba(0,0,0,0.12)
-        );
-
-}
-
-
-/*
-   scaleX(-1) espelha o emoji.
-   Assim os peixes ficam voltados para
-   o sentido da viagem: ESQUERDA → DIREITA.
-*/
-
-.peixe-1 {
-    top: 18%;
-    animation-delay: -1s;
-    transform: scaleX(-1);
-}
-
-
-.peixe-2 {
-    top: 31%;
-    animation-delay: -7s;
-    transform: scaleX(-1);
-}
-
-
-.peixe-3 {
-    top: 45%;
-    animation-delay: -12s;
-    transform: scaleX(-1);
-}
-
-
-.peixe-4 {
-    top: 59%;
-    animation-delay: -4s;
-    transform: scaleX(-1);
-}
-
-
-.peixe-5 {
-    top: 72%;
-    animation-delay: -9s;
-    transform: scaleX(-1);
-}
-
-
-.peixe-6 {
-    top: 84%;
-    animation-delay: -15s;
-    transform: scaleX(-1);
-}
-
-
-@keyframes peixe-nadando {
-
-    from {
-
-        left: -15%;
-
-    }
-
-    to {
-
-        left: 115%;
-
-    }
-
-}
-
-
-/* =========================================================
-   GOLFINHO
-========================================================= */
-
-.golfinho {
-
-    position: absolute;
-
-    top: 18%;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 3;
-
-    font-size:
-        clamp(80px, 14vw, 150px);
-
-    filter:
-        drop-shadow(
-            0 12px 15px
-            rgba(22, 98, 125, 0.20)
-        );
-
-    animation:
-        golfinho-flutuar
-        4s
-        ease-in-out
-        infinite;
-
-}
-
-
-@keyframes golfinho-flutuar {
-
-    0%,
-    100% {
-        transform:
-            translateX(-50%)
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateX(-50%)
-            translateY(-15px)
-            rotate(3deg);
-    }
-
-}
-
-
-/* =========================================================
-   CORAIS DO OCEANO
-========================================================= */
-
-.corais-oceano {
-
-    position: absolute;
-
-    inset: auto 0 0;
-
-    height: 190px;
-
-}
-
-
-.coral-oceano {
-
-    position: absolute;
-
-    bottom: -20px;
-
-    width: 80px;
-
-    height: 150px;
-
-    border-radius:
-        50px 50px 10px 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff809d,
-            #ffb15e,
-            #ff6fa5
-        );
-
-}
-
-
-.coral-oceano::before,
-.coral-oceano::after {
-
-    content: "";
-
-    position: absolute;
-
-    bottom: 0;
-
-    width: 35px;
-
-    height: 105px;
-
-    border-radius: 40px;
-
-    background:
-        inherit;
-
-}
-
-
-.coral-oceano::before {
-
-    left: -20px;
-
-    transform:
-        rotate(-20deg);
-
-}
-
-
-.coral-oceano::after {
-
-    right: -20px;
-
-    transform:
-        rotate(20deg);
-
-}
-
-
-.coral-oceano-1 {
-    left: 3%;
-}
-
-
-.coral-oceano-2 {
-    left: 47%;
-    transform: scale(0.75);
-}
-
-
-.coral-oceano-3 {
-    right: 5%;
-    transform: scale(1.15);
-}
-
-
-/* =========================================================
-   ALGAS DO OCEANO
-========================================================= */
-
-.algas-oceano {
-
-    position: absolute;
-
-    inset: auto 0 0;
-
-    height: 190px;
-
-}
-
-
-.alga-oceano {
-
-    position: absolute;
-
-    bottom: 0;
-
-    width: 14px;
-
-    height: 150px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3ba66d,
-            #75d37d
-        );
-
-    animation:
-        algas-movimento
-        4s
-        ease-in-out
-        infinite alternate;
-
-}
-
-
-.alga-oceano:nth-child(1) {
-    left: 14%;
-}
-
-
-.alga-oceano:nth-child(2) {
-    left: 27%;
-    height: 180px;
-    animation-delay: -1s;
-}
-
-
-.alga-oceano:nth-child(3) {
-    right: 27%;
-    height: 170px;
-    animation-delay: -2s;
-}
-
-
-.alga-oceano:nth-child(4) {
-    right: 12%;
-    height: 135px;
-    animation-delay: -3s;
-}
-
-
-@keyframes algas-movimento {
-
-    from {
-        transform: rotate(-6deg);
-    }
-
-    to {
-        transform: rotate(7deg);
-    }
-
-}
-
-
-/* =========================================================
-   CONTEÚDO DO OCEANO
-========================================================= */
-
-.conteudo-oceano {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: min(850px, 100%);
-
-    min-height: 120vh;
-
-    margin: 0 auto;
-
-    padding:
-        90px
-        20px
-        100px;
-
-    text-align: center;
-
-}
-
-
-.titulo-oceano span {
-
-    display: block;
-
-    font-size:
-        clamp(45px, 8vw, 80px);
-
-    margin-bottom: 8px;
-
-}
-
-
-.titulo-oceano h2 {
-
-    max-width: 650px;
-
-    margin: 0 auto;
-
-    font-size:
-        clamp(34px, 6vw, 64px);
-
-    line-height: 1.05;
-
-    color: #ffffff;
-
-    text-shadow:
-        0 7px 15px
-        rgba(23, 92, 117, 0.25);
-
-}
-
-
-.titulo-oceano p {
-
-    margin-top: 18px;
-
-    font-size:
-        clamp(16px, 2.5vw, 20px);
-
-    color: rgba(255,255,255,0.92);
-
-}
-
-
-/* =========================================================
-   ÁREA DE EXPLORAÇÃO
-========================================================= */
-
-.area-exploracao {
-
-    position: relative;
-
-    width: min(720px, 100%);
-
-    min-height: 360px;
-
-    margin:
-        90px
-        auto
-        70px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-/* =========================================================
-   MENSAGEM DE EXPLORAÇÃO
-========================================================= */
-
-.mensagem-exploracao {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 25px;
-
-    width: min(680px, 100%);
-
-    padding:
-        35px
-        30px;
-
-    border-radius: 38px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.30),
-            rgba(255,255,255,0.13)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,0.40);
-
-    box-shadow:
-        0 20px 45px
-        rgba(23, 93, 117, 0.16);
-
-    backdrop-filter:
-        blur(12px);
-
-    text-align: left;
-
-}
-
-
-.icone-exploracao {
-
-    flex:
-        0 0 auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 110px;
-
-    height: 110px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,0.28);
-
-    font-size: 70px;
-
-    animation:
-        golfinho-mini
-        3.5s
-        ease-in-out
-        infinite;
-
-}
-
-
-@keyframes golfinho-mini {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-9px);
-    }
-
-}
-
-
-.texto-exploracao {
-
-    flex: 1;
-
-}
-
-
-.titulo-exploracao {
-
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size:
-        clamp(23px, 4vw, 32px);
-
-    font-weight: 900;
-
-    color: #ffffff;
-
-}
-
-
-.texto-exploracao p {
-
-    margin-bottom: 10px;
-
-    font-size:
-        clamp(15px, 2.3vw, 18px);
-
-    line-height: 1.55;
-
-    color: rgba(255,255,255,0.94);
-
-}
-
-
-.pista-exploracao {
-
-    display: block;
-
-    margin-top: 18px;
-
-    font-size:
-        clamp(14px, 2vw, 17px);
-
-    font-weight: 700;
-
-    color: #ffe0ee;
-
-}
-
-
-/* =========================================================
-   ELEMENTOS DA EXPLORAÇÃO
-========================================================= */
-
-.exploracao-bolha,
-.exploracao-brilho {
-
-    position: absolute;
-
-    pointer-events: none;
-
-}
-
-
-.exploracao-bolha {
-
-    font-size: 35px;
-
-    animation:
-        mini-bolha
-        4s
-        ease-in-out
-        infinite;
-
-}
-
-
-.bolha-1 {
-
-    left: 5%;
-
-    top: 15%;
-
-}
-
-
-.bolha-2 {
-
-    right: 5%;
-
-    bottom: 15%;
-
-    animation-delay: -2s;
-
-}
-
-
-.exploracao-brilho {
-
-    font-size: 32px;
-
-    opacity: 0.8;
-
-    animation:
-        brilho-piscar
-        2s
-        ease-in-out
-        infinite alternate;
-
-}
-
-
-.brilho-1 {
-
-    top: 5%;
-
-    right: 18%;
-
-}
-
-
-.brilho-2 {
-
-    bottom: 5%;
-
-    left: 15%;
-
-    animation-delay: -1s;
-
-}
-
-
-@keyframes mini-bolha {
-
-    0%,
-    100% {
-        transform: translateY(0);
-        opacity: 0.55;
-    }
-
-    50% {
-        transform: translateY(-15px);
-        opacity: 1;
-    }
-
-}
-
-
-@keyframes brilho-piscar {
-
-    from {
-        opacity: 0.35;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1.15);
-    }
-
-}
-
-
-/* =========================================================
-   INDICADOR
-========================================================= */
-
-.indicador-rolagem {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 6px;
-
-    font-weight: 700;
-
-    color: rgba(255,255,255,0.90);
-
-    animation:
-        indicador-flutuar
-        2.3s
-        ease-in-out
-        infinite;
-
-}
-
-
-/* =========================================================
-   PARTE 3 — BAÚ
-========================================================= */
-
-.bau-secao {
-
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        90px
-        20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #2c9fbd 0%,
-            #218cac 35%,
-            #197997 70%,
-            #166883 100%
-        );
-
-}
-
-
-.fundo-bau {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-}
-
-
-.conteudo-bau {
-
-    position: relative;
-
-    z-index: 5;
-
-    text-align: center;
-
-}
-
-
-.texto-descoberta {
-
-    margin-bottom: 35px;
-
-    font-size:
-        clamp(18px, 3vw, 25px);
-
-    font-weight: 700;
-
-    color: #ffffff;
-
-}
-
-
-.bau-tesouro {
-
-    position: relative;
-
-    display: block;
-
-    width: 190px;
-
-    height: 170px;
-
-    margin: 0 auto;
-
-    border: none;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    font-size: 75px;
-
-    transition:
-        transform 0.3s ease;
-
-}
-
-
-.bau-tesouro:hover {
-
-    transform:
-        scale(1.08)
-        translateY(-5px);
-
-}
-
-
-.bau-tesouro:active {
-
-    transform:
-        scale(0.94);
-
-}
-
-
-.bau-tampa {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 100px;
-
-    transition:
-        transform 0.6s ease;
-
-}
-
-
-.bau-corpo {
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 90px;
-
-}
-
-
-.bau-fechadura {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 25px;
-
-    transform:
-        translateX(-50%);
-
-    font-size: 27px;
-
-}
-
-
-.texto-bau {
-
-    max-width: 400px;
-
-    margin:
-        30px auto
-        0;
-
-    font-size:
-        clamp(15px, 2.5vw, 19px);
-
-    line-height: 1.6;
-
-    color: rgba(255,255,255,0.92);
-
-}
-
-
-/* =========================================================
-   PARTÍCULAS DO BAÚ
-========================================================= */
-
-.particulas-bau span {
-
-    position: absolute;
-
-    color: #ffe4f1;
-
-    font-size: 25px;
-
-    animation:
-        particula-flutuar
-        5s
-        ease-in-out
-        infinite alternate;
-
-}
-
-
-.particulas-bau span:nth-child(1) {
-    left: 12%;
-    top: 20%;
-}
-
-
-.particulas-bau span:nth-child(2) {
-    left: 30%;
-    top: 65%;
-    animation-delay: -1s;
-}
-
-
-.particulas-bau span:nth-child(3) {
-    right: 15%;
-    top: 25%;
-    animation-delay: -2s;
-}
-
-
-.particulas-bau span:nth-child(4) {
-    right: 30%;
-    bottom: 20%;
-    animation-delay: -3s;
-}
-
-
-.particulas-bau span:nth-child(5) {
-    left: 50%;
-    top: 12%;
-    animation-delay: -4s;
-}
-
-
-@keyframes particula-flutuar {
-
-    from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.45;
-    }
-
-    to {
-        transform: translateY(-20px) rotate(25deg);
-        opacity: 1;
-    }
-
-}
-
-
-/* =========================================================
-   CARTA — ESCONDIDA
-========================================================= */
-
-.carta-escondida {
-
-    display: none !important;
-
-}
-
-
-/*
-   Quando o JavaScript adicionar a classe
-   .carta-visivel, a carta poderá aparecer.
-*/
-
-.carta-secao.carta-visivel {
-
-    display: flex !important;
-
-}
-
-
-/* =========================================================
-   PARTE DA CARTA
-========================================================= */
-
-.carta-secao {
-
-    position: relative;
-
-    min-height: 100vh;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding:
-        70px
-        20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #51c9dc 0%,
-            #35abc7 35%,
-            #248dac 70%,
-            #1c7695 100%
-        );
-
-}
-
-
-.fundo-carta {
-
-    position: absolute;
-
-    inset: 0;
-
-}
-
-
-.carta-container {
-
-    position: relative;
-
-    z-index: 10;
-
-    width: min(720px, 100%);
-
-}
-
-
-.carta {
-
-    position: relative;
-
-    padding:
-        45px
-        30px
-        35px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffdfb,
-            #fff3f7
-        );
-
-    color: var(--texto-escuro);
-
-    box-shadow:
-        0 25px 60px
-        rgba(10, 69, 92, 0.30);
-
-    border:
-        3px solid
-        rgba(255,105,180,0.20);
-
-}
-
-
-.carta-decoracao {
-
-    position: absolute;
-
-    top: -32px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 65px;
-
-    height: 65px;
-
-    border-radius: 50%;
-
-    background:
-        #ffffff;
-
-    box-shadow:
-        0 8px 20px
-        rgba(0,0,0,0.12);
-
-    font-size: 38px;
-
-}
-
-
-.carta-conteudo {
-
-    text-align: center;
-
-}
-
-
-.carta-pequeno-titulo {
-
-    color: var(--rosa);
-
-    font-weight: 800;
-
-    margin-bottom: 10px;
-
-}
-
-
-.carta h2 {
-
-    font-size:
-        clamp(30px, 6vw, 50px);
-
-    line-height: 1.05;
-
-    color: var(--rosa);
-
-}
-
-
-.linha-decorativa {
-
-    margin:
-        18px
-        0
-        25px;
-
-    color: var(--rosa);
-
-    font-size: 20px;
-
-}
-
-
-.texto-carta {
-
-    max-width: 550px;
-
-    margin:
-        0 auto
-        30px;
-
-    font-size:
-        clamp(16px, 2.5vw, 19px);
-
-    line-height: 1.7;
-
-}
-
-
-.texto-carta p {
-
-    margin-bottom: 14px;
-
-}
-
-
-/* =========================================================
-   DADOS DA FESTA
-========================================================= */
-
-.dados-festa {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 12px;
-
-    margin-top: 25px;
-
-}
-
-
-.dado-festa {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 15px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,105,180,0.07);
-
-    text-align: left;
-
-}
-
-
-.icone-dado {
-
-    font-size: 27px;
-
-}
-
-
-.dado-festa strong {
-
-    display: block;
-
-    margin-bottom: 4px;
-
-    color: var(--rosa);
-
-    font-size: 12px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.dado-festa span,
-.dado-festa a {
-
-    font-size: 14px;
-
-    color: var(--texto-escuro);
-
-}
-
-
-.dado-festa a {
-
-    font-weight: 800;
-
-    text-decoration: none;
-
-}
-
-
-.dado-festa a:hover {
-
-    text-decoration: underline;
-
-}
-
-
-/* =========================================================
-   ASSINATURA
-========================================================= */
-
-.assinatura {
-
-    margin-top: 30px;
-
-}
-
-
-.assinatura p {
-
-    margin-bottom: 4px;
-
-}
-
-
-.assinatura strong {
-
-    color: var(--rosa);
-
-    font-size: 24px;
-
-}
-
-
-/* =========================================================
-   BOTÃO FECHAR CARTA
-========================================================= */
-
-.botao-fechar-carta {
-
-    margin-top: 30px;
-
-    padding:
-        13px
-        22px;
-
-    border: none;
-
-    border-radius: 999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--rosa),
-            var(--rosa-escuro)
-        );
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 20px
-        rgba(233,79,155,0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-
-}
-
-
-.botao-fechar-carta:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 25px
-        rgba(233,79,155,0.35);
-
-}
-
-
-/* =========================================================
-   PARTE — PRESENTES
-========================================================= */
-
-.presentes {
-
-    position: relative;
-
-    min-height: 100vh;
-
-    padding:
-        100px
-        20px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #1d829e 0%,
-            #1b7592 45%,
-            #17627d 100%
-        );
-
-}
-
-
-.fundo-presentes {
-
-    position: absolute;
-
-    inset: 0;
-
-}
-
-
-.conteudo-presentes {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: min(1000px, 100%);
-
-    margin: 0 auto;
-
-    text-align: center;
-
-}
-
-
-.titulo-pequeno {
-
-    color: #ffe3f0;
-
-    font-weight: 800;
-
-    margin-bottom: 15px;
-
-}
-
-
-.conteudo-presentes h2 {
-
-    max-width: 700px;
-
-    margin: 0 auto;
-
-    font-size:
-        clamp(32px, 6vw, 58px);
-
-    line-height: 1.05;
-
-    color: #ffffff;
-
-}
-
-
-.descricao-presentes {
-
-    max-width: 620px;
-
-    margin:
-        22px auto
-        40px;
-
-    font-size:
-        clamp(15px, 2.5vw, 18px);
-
-    line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.90);
-
-}
-
-
-/* =========================================================
-   LISTA DE PRESENTES
-========================================================= */
-
-.lista-presentes {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-
-}
-
-
-.presente-card {
-
-    padding: 24px;
-
-    border-radius: 28px;
-
-    background:
-        rgba(255,255,255,0.14);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.22);
-
-    backdrop-filter:
-        blur(10px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(4, 57, 77, 0.15);
-
-    transition:
-        transform 0.3s ease;
-
-}
-
-
-.presente-card:hover {
-
-    transform:
-        translateY(-7px);
-
-}
-
-
-.presente-imagem {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 100px;
-
-    height: 100px;
-
-    margin:
-        0 auto
-        18px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,0.20);
-
-    font-size: 55px;
-
-}
-
-
-.presente-info h3 {
-
-    margin-bottom: 8px;
-
-    font-size: 23px;
-
-    color: #ffffff;
-
-}
-
-
-.presente-info p {
-
-    min-height: 50px;
-
-    margin-bottom: 18px;
-
-    line-height: 1.5;
-
-    color:
-        rgba(255,255,255,0.86);
-
-}
-
-
-.botao-presente {
-
-    display: inline-block;
-
-    padding:
-        11px
-        18px;
-
-    border-radius: 999px;
-
-    background:
-        var(--rosa);
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    font-weight: 800;
-
-    font-size: 14px;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-
-}
-
-
-.botao-presente:hover {
-
-    transform:
-        translateY(-2px);
-
-    background:
-        var(--rosa-escuro);
-
-}
-
-
-.aviso-presente {
-
-    margin-top: 30px;
-
-    color:
-        rgba(255,255,255,0.82);
-
-    font-size: 14px;
-
-}
-
-
-/* =========================================================
-   FUNDO DO MAR
-========================================================= */
-
-.fundo-mar {
-
-    min-height: 120vh;
-
-    background:
-        linear-gradient(
-            180deg,
-            #176a88 0%,
-            #155f7d 30%,
-            #12546f 65%,
-            #10475f 100%
-        );
-
-}
-
-
-.ambiente-profundo {
-
-    position: relative;
-
-    min-height: 120vh;
-
-    overflow: hidden;
-
-}
-
-
-.luz-profunda {
-
-    position: absolute;
-
-    top: -10%;
-
-    left: 50%;
-
-    width: 70%;
-
-    height: 70%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(120,235,244,0.28),
-            rgba(120,235,244,0) 70%
-        );
-
-    filter: blur(10px);
-
-}
-
-
-/* =========================================================
-   ELEMENTOS DO FUNDO DO MAR
-========================================================= */
-
-.elementos-fundo-mar {
-
-    position: absolute;
-
-    inset: 0;
-
-}
-
-
-.concha,
-.coral-profundo,
-.alga-profunda,
-.peixe-profundo {
-
-    position: absolute;
-
-    filter:
-        drop-shadow(
-            0 8px 8px
-            rgba(0,0,0,0.15)
-        );
-
-}
-
-
-.concha {
-
-    font-size:
-        clamp(45px, 8vw, 85px);
-
-}
-
-
-.concha-1 {
-
-    left: 8%;
-
-    bottom: 15%;
-
-}
-
-
-.concha-2 {
-
-    right: 10%;
-
-    top: 30%;
-
-}
-
-
-.coral-profundo {
-
-    font-size:
-        clamp(60px, 10vw, 110px);
-
-}
-
-
-.coral-profundo-1 {
-
-    left: 2%;
-
-    bottom: -5%;
-
-}
-
-
-.coral-profundo-2 {
-
-    right: 4%;
-
-    bottom: -8%;
-
-}
-
-
-.alga-profunda {
-
-    font-size:
-        clamp(45px, 7vw, 75px);
-
-}
-
-
-.alga-profunda-1 {
-
-    left: 22%;
-
-    bottom: 0;
-
-}
-
-
-.alga-profunda-2 {
-
-    right: 23%;
-
-    bottom: 0;
-
-}
-
-
-.peixe-profundo {
-
-    font-size:
-        clamp(28px, 5vw, 50px);
-
-    left: -10%;
-
-    animation:
-        peixe-profundo-nadar
-        20s
-        linear
-        infinite;
-
-}
-
-
-.peixe-profundo-1 {
-    top: 25%;
-}
-
-
-.peixe-profundo-2 {
-    top: 55%;
-    animation-delay: -7s;
-}
-
-
-.peixe-profundo-3 {
-    top: 75%;
-    animation-delay: -14s;
-}
-
-
-@keyframes peixe-profundo-nadar {
-
-    from {
-        left: -10%;
-    }
-
-    to {
-        left: 115%;
-    }
-
-}
-
-
-/* =========================================================
-   CONTEÚDO FUNDO DO MAR
-========================================================= */
-
-.conteudo-fundo-mar {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: min(700px, 100%);
-
-    margin: 0 auto;
-
-    padding:
-        150px
-        20px
-        100px;
-
-    text-align: center;
-
-}
-
-
-.texto-profundezas {
-
-    color: #ffd6e9;
-
-    font-weight: 800;
-
-}
-
-
-.conteudo-fundo-mar h2 {
-
-    margin:
-        15px
-        0;
-
-    font-size:
-        clamp(35px, 6vw, 60px);
-
-    line-height: 1.05;
-
-    color: #ffffff;
-
-}
-
-
-.conteudo-fundo-mar > p:last-child {
-
-    max-width: 500px;
-
-    margin: 0 auto;
-
-    font-size:
-        clamp(16px, 2.5vw, 19px);
-
-    line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.86);
-
-}
-
-
-/* =========================================================
-   PARTE FINAL
-========================================================= */
-
-.concha-final {
-
-    min-height: 100vh;
-
-    background:
-        linear-gradient(
-            180deg,
-            #145a76 0%,
-            #124e68 40%,
-            #0f4359 72%,
-            #0d3a4e 100%
-        );
-
-}
-
-
-.fundo-final {
-
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-
-}
-
-
-.luz-final {
-
-    position: absolute;
-
-    top: -10%;
-
-    left: 50%;
-
-    width: 80%;
-
-    height: 65%;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(105,220,235,0.25),
-            rgba(105,220,235,0) 70%
-        );
-
-}
-
-
-/* =========================================================
-   CONTEÚDO FINAL
-========================================================= */
-
-.conteudo-final {
-
-    position: relative;
-
-    z-index: 5;
-
-    width: min(750px, 100%);
-
-    margin: 0 auto;
-
-    padding:
-        100px
-        20px
-        70px;
-
-    text-align: center;
-
-}
-
-
-.final-pequeno-titulo {
-
-    color: #ffd7e9;
-
-    font-weight: 800;
-
-}
-
-
-.concha-convite {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width:
-        clamp(130px, 25vw, 190px);
-
-    height:
-        clamp(130px, 25vw, 190px);
-
-    margin:
-        35px
-        auto
-        20px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff4fa,
-            #ffc4df 45%,
-            #f784b9 100%
-        );
-
-    font-size:
-        clamp(70px, 13vw, 115px);
-
-    cursor: pointer;
-
-    box-shadow:
-        0 18px 40px
-        rgba(0,0,0,0.25);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-
-    animation:
-        concha-flutuar
-        3.5s
-        ease-in-out
-        infinite;
-
-}
-
-
-.concha-convite:hover {
-
-    transform:
-        scale(1.08);
-
-    box-shadow:
-        0 25px 50px
-        rgba(0,0,0,0.30);
-
-}
-
-
-.concha-convite:active {
-
-    transform:
-        scale(0.94);
-
-}
-
-
-@keyframes concha-flutuar {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-}
-
-
-.conteudo-final h2 {
-
-    font-size:
-        clamp(35px, 7vw, 65px);
-
-    color: #ffffff;
-
-    text-shadow:
-        0 6px 15px
-        rgba(0,0,0,0.20);
-
-}
-
-
-.texto-final {
-
-    max-width: 520px;
-
-    margin:
-        18px auto
-        25px;
-
-    font-size:
-        clamp(15px, 2.5vw, 19px);
-
-    line-height: 1.6;
-
-    color:
-        rgba(255,255,255,0.86);
-
-}
-
-
-/* =========================================================
-   DADOS DO CONVITE
-========================================================= */
-
-.dados-convite {
-
-    position: absolute;
-
-    width: 1px;
-
-    height: 1px;
-
-    overflow: hidden;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-}
-
-
-/* =========================================================
-   MENSAGEM DOWNLOAD
-========================================================= */
-
-.mensagem-download {
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    margin:
-        20px auto;
-
-    padding:
-        12px
-        18px;
-
-    max-width: 360px;
-
-    border-radius: 999px;
-
-    background:
-        rgba(255,255,255,0.12);
-
-    color: #ffffff;
-
-}
-
-
-.mensagem-download.ativa {
-
-    display: flex;
-
-}
-
-
-/* =========================================================
-   VOLTAR AO INÍCIO
-========================================================= */
-
-.botao-voltar-inicio {
-
-    margin-top: 30px;
-
-    padding:
-        12px
-        22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.35);
-
-    border-radius: 999px;
-
-    background:
-        rgba(255,255,255,0.10);
-
-    color: #ffffff;
-
-    font-size: 15px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    backdrop-filter:
-        blur(8px);
-
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
-
-}
-
-
-.botao-voltar-inicio:hover {
-
-    background:
-        rgba(255,105,180,0.28);
-
-    transform:
-        translateY(-2px);
-
-}
-
-
-/* =========================================================
-   RODAPÉ
-========================================================= */
-
-.rodape {
-
-    margin-top: 60px;
-
-    padding-top: 25px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,0.18);
-
-    color:
-        rgba(255,255,255,0.65);
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-}
-
-
-.rodape p:first-child {
-
-    color:
-        #ffd5e7;
-
-    font-weight: 700;
-
-}
-
-
-/* =========================================================
-   MODAIS
-========================================================= */
-
-.modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-}
-
-
-.modal.ativo {
-
-    display: flex;
-
-}
-
-
-.modal-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(5, 37, 50, 0.72);
-
-    backdrop-filter:
-        blur(7px);
-
-}
-
-
-.modal-conteudo {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: min(700px, 100%);
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 30px;
-
-    border-radius: 28px;
-
-    background:
-        #ffffff;
-
-    color: var(--texto-escuro);
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.30);
-
-}
-
-
-.fechar-modal {
-
-    position: absolute;
-
-    top: 12px;
-
-    right: 15px;
-
-    width: 42px;
-
-    height: 42px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,105,180,0.10);
-
-    color:
-        var(--rosa);
-
-    font-size: 28px;
-
-    cursor: pointer;
-
-}
-
-
-/* =========================================================
-   DOWNLOAD
-========================================================= */
-
-.modal-download-conteudo {
-
-    text-align: center;
-
 }
-
-
-.icone-download {
-
-    font-size: 65px;
-
-    margin-bottom: 15px;
-
-}
-
-
-.modal-download-conteudo h2 {
-
-    color:
-        var(--rosa);
-
-    font-size:
-        clamp(26px, 5vw, 40px);
-
-}
-
-
-.modal-download-conteudo p {
-
-    margin:
-        15px
-        auto
-        25px;
-
-    max-width: 450px;
-
-    line-height: 1.6;
-
-}
-
-
-.botao-download {
-
-    padding:
-        14px
-        24px;
-
-    border: none;
-
-    border-radius: 999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--rosa),
-            var(--rosa-escuro)
-        );
-
-    color: #ffffff;
-
-    font-size: 16px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-}
-
-
-/* =========================================================
-   BOLHAS DE FUNDOS
-========================================================= */
 
+.bolha,
+.bolhas-oceano span,
 .bolhas-bau span,
 .bolhas-carta span,
 .bolhas-presentes span,
 .bolhas-profundas span,
 .bolhas-final span {
 
-    position: absolute;
+```
+position: absolute;
 
-    width: 12px;
+width: 13px;
+height: 13px;
 
-    height: 12px;
+border:
+    2px solid
+    rgba(255,255,255,.45);
 
-    border:
-        2px solid
-        rgba(255,255,255,0.30);
+border-radius: 50%;
 
-    border-radius: 50%;
+background:
+    rgba(255,255,255,.08);
 
-    bottom: -20px;
-
-    animation:
-        bolha-generica
-        10s
-        linear
-        infinite;
-
-}
-
-
-.bolhas-bau span:nth-child(1),
-.bolhas-carta span:nth-child(1),
-.bolhas-presentes span:nth-child(1),
-.bolhas-profundas span:nth-child(1),
-.bolhas-final span:nth-child(1) {
-    left: 8%;
-}
-
-
-.bolhas-bau span:nth-child(2),
-.bolhas-carta span:nth-child(2),
-.bolhas-presentes span:nth-child(2),
-.bolhas-profundas span:nth-child(2),
-.bolhas-final span:nth-child(2) {
-    left: 27%;
-    animation-delay: -3s;
-}
-
-
-.bolhas-bau span:nth-child(3),
-.bolhas-carta span:nth-child(3),
-.bolhas-presentes span:nth-child(3),
-.bolhas-profundas span:nth-child(3),
-.bolhas-final span:nth-child(3) {
-    left: 48%;
-    animation-delay: -6s;
-}
-
-
-.bolhas-bau span:nth-child(4),
-.bolhas-carta span:nth-child(4),
-.bolhas-presentes span:nth-child(4),
-.bolhas-profundas span:nth-child(4),
-.bolhas-final span:nth-child(4) {
-    left: 70%;
-    animation-delay: -2s;
-}
-
-
-.bolhas-bau span:nth-child(5),
-.bolhas-presentes span:nth-child(5),
-.bolhas-profundas span:nth-child(5),
-.bolhas-final span:nth-child(5) {
-    left: 90%;
-    animation-delay: -8s;
-}
-
-
-.bolhas-profundas span:nth-child(6) {
-    left: 35%;
-    animation-delay: -4s;
-}
-
-
-.bolhas-profundas span:nth-child(7) {
-    left: 58%;
-    animation-delay: -7s;
-}
-
-
-.bolhas-profundas span:nth-child(8) {
-    left: 82%;
-    animation-delay: -1s;
-}
-
-
-@keyframes bolha-generica {
-
-    from {
-
-        transform:
-            translateY(0)
-            scale(0.6);
-
-        opacity: 0;
-
-    }
-
-    15% {
-
-        opacity: 0.7;
-
-    }
-
-    to {
-
-        transform:
-            translateY(-120vh)
-            scale(1.25);
-
-        opacity: 0;
-
-    }
+animation:
+    bolhaSubindo
+    8s linear infinite;
+```
 
 }
 
+.bolha:nth-child(1),
+.bolhas-oceano span:nth-child(1) {
+left: 8%;
+bottom: -30px;
+animation-delay: 0s;
+}
+
+.bolha:nth-child(2),
+.bolhas-oceano span:nth-child(2) {
+left: 23%;
+bottom: -50px;
+animation-delay: 2s;
+}
+
+.bolha:nth-child(3),
+.bolhas-oceano span:nth-child(3) {
+left: 41%;
+bottom: -20px;
+animation-delay: 4s;
+}
+
+.bolha:nth-child(4),
+.bolhas-oceano span:nth-child(4) {
+left: 60%;
+bottom: -60px;
+animation-delay: 1s;
+}
+
+.bolha:nth-child(5),
+.bolhas-oceano span:nth-child(5) {
+left: 77%;
+bottom: -30px;
+animation-delay: 3s;
+}
+
+.bolha:nth-child(6),
+.bolhas-oceano span:nth-child(6) {
+left: 91%;
+bottom: -70px;
+animation-delay: 5s;
+}
+
+@keyframes bolhaSubindo {
+
+```
+0% {
+    transform:
+        translateY(0)
+        scale(.7);
+
+    opacity: 0;
+}
+
+15% {
+    opacity: .8;
+}
+
+100% {
+    transform:
+        translateY(-110vh)
+        translateX(30px)
+        scale(1.3);
+
+    opacity: 0;
+}
+```
+
+}
 
 /* =========================================================
-   BRILHOS
+CONTEÚDO ENTRADA
 ========================================================= */
 
-.brilhos-presentes span {
+.conteudo-entrada {
 
-    position: absolute;
+```
+position: relative;
 
-    color:
-        rgba(255,225,240,0.75);
+width: min(900px, 92%);
 
-    font-size: 25px;
+padding:
+    60px 20px 110px;
 
-    animation:
-        brilho-piscar
-        2.5s
-        ease-in-out
-        infinite
-        alternate;
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+z-index: 2;
+```
 
 }
-
-
-.brilhos-presentes span:nth-child(1) {
-    left: 10%;
-    top: 20%;
-}
-
-
-.brilhos-presentes span:nth-child(2) {
-    left: 30%;
-    bottom: 20%;
-    animation-delay: -1s;
-}
-
-
-.brilhos-presentes span:nth-child(3) {
-    right: 20%;
-    top: 15%;
-    animation-delay: -2s;
-}
-
-
-.brilhos-presentes span:nth-child(4) {
-    right: 8%;
-    bottom: 25%;
-    animation-delay: -1.5s;
-}
-
 
 /* =========================================================
-   RESPONSIVIDADE — TABLET
+PEQUENO TÍTULO
+========================================================= */
+
+.pequeno-titulo {
+
+```
+margin-bottom: 15px;
+
+color: #fff;
+
+font-size:
+    clamp(.8rem, 2vw, 1rem);
+
+letter-spacing: 2px;
+
+text-shadow:
+    0 3px 12px rgba(0,0,0,.25);
+```
+
+}
+
+/* =========================================================
+TÍTULO
+========================================================= */
+
+.titulo-entrada {
+
+```
+font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+font-size:
+    clamp(2.6rem, 8vw, 6rem);
+
+line-height: .92;
+
+color: #fff;
+
+text-shadow:
+    0 5px 20px rgba(0,0,0,.3);
+
+margin-bottom: 10px;
+
+animation:
+    tituloEntrada 1s ease both;
+```
+
+}
+
+.titulo-entrada span {
+color: #ffe2f0;
+
+```
+font-style: italic;
+
+text-shadow:
+    0 0 25px rgba(255,255,255,.4);
+```
+
+}
+
+@keyframes tituloEntrada {
+
+```
+from {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+```
+
+}
+
+/* =========================================================
+SEREIA PRINCIPAL
+========================================================= */
+
+.sereia-principal-container {
+
+```
+position: relative;
+
+width:
+    clamp(180px, 35vw, 300px);
+
+margin:
+    5px auto 15px;
+
+z-index: 3;
+```
+
+}
+
+.sereia-principal {
+
+```
+width: 100%;
+
+max-height: 330px;
+
+object-fit: contain;
+
+filter:
+    drop-shadow(
+        0 18px 25px rgba(0,0,0,.25)
+    );
+
+animation:
+    sereiaPrincipal 4s ease-in-out infinite;
+```
+
+}
+
+@keyframes sereiaPrincipal {
+
+```
+0%,
+100% {
+    transform:
+        translateY(0)
+        rotate(-1deg);
+}
+
+50% {
+    transform:
+        translateY(-12px)
+        rotate(1deg);
+}
+```
+
+}
+
+/* =========================================================
+INFORMAÇÕES PRINCIPAIS
+========================================================= */
+
+.informacoes-principais {
+
+```
+display: flex;
+
+flex-wrap: wrap;
+
+justify-content: center;
+
+gap: 10px;
+
+margin: 5px 0 15px;
+```
+
+}
+
+.informacoes-principais p {
+
+```
+padding:
+    10px 18px;
+
+border-radius: 999px;
+
+background:
+    rgba(255,255,255,.22);
+
+border:
+    1px solid
+    rgba(255,255,255,.35);
+
+backdrop-filter:
+    blur(8px);
+
+box-shadow:
+    0 8px 20px rgba(0,0,0,.12);
+```
+
+}
+
+/* =========================================================
+TEXTO CONVITE
+========================================================= */
+
+.convite-texto {
+
+```
+max-width: 600px;
+
+font-size:
+    clamp(1rem, 2.5vw, 1.25rem);
+
+line-height: 1.7;
+
+color: #fff;
+
+text-shadow:
+    0 2px 10px rgba(0,0,0,.25);
+```
+
+}
+
+/* =========================================================
+INDICADORES
+========================================================= */
+
+.entrada-continuar,
+.indicador-entrada,
+.indicador-rolagem {
+
+```
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 5px;
+
+font-size: .85rem;
+
+letter-spacing: 1px;
+
+opacity: .85;
+```
+
+}
+
+.entrada-continuar {
+margin-top: 20px;
+}
+
+.indicador-entrada {
+
+```
+position: absolute;
+
+bottom: 20px;
+left: 50%;
+
+transform:
+    translateX(-50%);
+
+z-index: 4;
+```
+
+}
+
+.seta-baixo {
+font-size: 1.5rem;
+
+```
+animation:
+    setaPulando 1.5s ease-in-out infinite;
+```
+
+}
+
+@keyframes setaPulando {
+
+```
+0%,
+100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(8px);
+}
+```
+
+}
+
+/* =========================================================
+OCEANO
+========================================================= */
+
+.oceano {
+
+```
+min-height: 100vh;
+
+background:
+    linear-gradient(
+        180deg,
+        #0a9bc0 0%,
+        #056d9b 35%,
+        #034d78 70%,
+        #022c50 100%
+    );
+```
+
+}
+
+.oceano-fundo,
+.fundo-bau,
+.fundo-carta,
+.fundo-presentes,
+.ambiente-profundo,
+.fundo-final {
+
+```
+position: absolute;
+
+inset: 0;
+
+z-index: -1;
+
+overflow: hidden;
+```
+
+}
+
+.luz-oceano,
+.luz-profunda,
+.luz-final {
+
+```
+position: absolute;
+
+top: -30%;
+left: 50%;
+
+width: 70vw;
+height: 100vh;
+
+transform:
+    translateX(-50%);
+
+background:
+    radial-gradient(
+        ellipse,
+        rgba(255,255,255,.22),
+        transparent 65%
+    );
+
+filter: blur(15px);
+```
+
+}
+
+/* =========================================================
+CONTEÚDO OCEANO
+========================================================= */
+
+.conteudo-oceano {
+
+```
+position: relative;
+
+width: min(1000px, 92%);
+
+min-height: 100vh;
+
+margin: auto;
+
+padding:
+    90px 20px 80px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+text-align: center;
+```
+
+}
+
+/* =========================================================
+TÍTULO OCEANO
+========================================================= */
+
+.titulo-oceano {
+
+```
+animation:
+    aparecer 1s ease both;
+```
+
+}
+
+.titulo-oceano > span {
+
+```
+display: block;
+
+font-size:
+    clamp(2rem, 5vw, 4rem);
+
+margin-bottom: 5px;
+```
+
+}
+
+.titulo-oceano h2 {
+
+```
+font-family:
+    Georgia,
+    serif;
+
+font-size:
+    clamp(2rem, 5vw, 3.8rem);
+
+line-height: 1.1;
+
+color: #fff;
+
+text-shadow:
+    0 5px 20px rgba(0,0,0,.25);
+```
+
+}
+
+.titulo-oceano p {
+
+```
+margin-top: 12px;
+
+color: #d9f7ff;
+
+font-size: 1.1rem;
+```
+
+}
+
+/* =========================================================
+ÁREA EXPLORAÇÃO
+========================================================= */
+
+.area-exploracao {
+
+```
+position: relative;
+
+width: min(800px, 100%);
+
+min-height: 400px;
+
+margin:
+    50px auto 30px;
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+```
+
+}
+
+/* =========================================================
+MENSAGEM EXPLORAÇÃO
+========================================================= */
+
+.mensagem-exploracao {
+
+```
+width: min(650px, 95%);
+
+padding:
+    35px 30px;
+
+border-radius: 30px;
+
+background:
+    rgba(255,255,255,.13);
+
+border:
+    1px solid
+    rgba(255,255,255,.25);
+
+backdrop-filter:
+    blur(15px);
+
+box-shadow:
+    0 20px 50px rgba(0,0,0,.2);
+
+display: flex;
+
+gap: 25px;
+
+align-items: center;
+
+text-align: left;
+
+animation:
+    flutuarCard 5s ease-in-out infinite;
+```
+
+}
+
+@keyframes flutuarCard {
+
+```
+0%,
+100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-8px);
+}
+```
+
+}
+
+.icone-exploracao {
+
+```
+min-width: 75px;
+
+width: 75px;
+height: 75px;
+
+border-radius: 50%;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+background:
+    rgba(255,255,255,.18);
+
+font-size: 2.5rem;
+```
+
+}
+
+.texto-exploracao {
+flex: 1;
+}
+
+.titulo-exploracao {
+
+```
+display: block;
+
+margin-bottom: 8px;
+
+font-size: 1.4rem;
+
+font-weight: bold;
+
+color: #fff;
+```
+
+}
+
+.texto-exploracao p {
+
+```
+margin-bottom: 10px;
+
+line-height: 1.6;
+
+color: #e4f9ff;
+```
+
+}
+
+.pista-exploracao {
+
+```
+display: block;
+
+margin-top: 15px;
+
+padding-top: 15px;
+
+border-top:
+    1px solid
+    rgba(255,255,255,.2);
+
+color: #ffdff0;
+
+line-height: 1.5;
+```
+
+}
+
+/* =========================================================
+ELEMENTOS EXPLORAÇÃO
+========================================================= */
+
+.exploracao-bolha {
+
+```
+position: absolute;
+
+font-size: 3rem;
+
+opacity: .5;
+
+animation:
+    bolhaDecorativa 4s ease-in-out infinite;
+```
+
+}
+
+.bolha-1 {
+left: 4%;
+top: 15%;
+}
+
+.bolha-2 {
+right: 5%;
+bottom: 15%;
+animation-delay: -2s;
+}
+
+.exploracao-brilho {
+
+```
+position: absolute;
+
+color: #fff;
+
+font-size: 2rem;
+
+animation:
+    brilho 2s ease-in-out infinite alternate;
+```
+
+}
+
+.brilho-1 {
+top: 10%;
+right: 20%;
+}
+
+.brilho-2 {
+bottom: 15%;
+left: 18%;
+animation-delay: -1s;
+}
+
+@keyframes bolhaDecorativa {
+
+```
+0%,
+100% {
+    transform: translateY(0);
+}
+
+50% {
+    transform: translateY(-20px);
+}
+```
+
+}
+
+@keyframes brilho {
+
+```
+from {
+    opacity: .3;
+    transform: scale(.8);
+}
+
+to {
+    opacity: 1;
+    transform: scale(1.2);
+}
+```
+
+}
+
+/* =========================================================
+PEIXES OCEANO
+========================================================= */
+
+.peixe {
+
+```
+position: absolute;
+
+font-size:
+    clamp(1.5rem, 4vw, 3rem);
+
+animation:
+    peixeHorizontal
+    14s linear infinite;
+```
+
+}
+
+.peixe-1 {
+top: 20%;
+left: -10%;
+}
+
+.peixe-2 {
+top: 32%;
+right: -10%;
+animation-delay: -4s;
+}
+
+.peixe-3 {
+top: 50%;
+left: -10%;
+animation-delay: -8s;
+}
+
+.peixe-4 {
+top: 65%;
+right: -10%;
+animation-delay: -2s;
+}
+
+.peixe-5 {
+top: 75%;
+left: -10%;
+animation-delay: -6s;
+}
+
+.peixe-6 {
+top: 43%;
+right: -10%;
+animation-delay: -10s;
+}
+
+@keyframes peixeHorizontal {
+
+```
+0% {
+    transform: translateX(0);
+}
+
+100% {
+    transform: translateX(120vw);
+}
+```
+
+}
+
+.golfinho {
+
+```
+position: absolute;
+
+top: 18%;
+left: 50%;
+
+font-size:
+    clamp(3rem, 7vw, 6rem);
+
+transform:
+    translateX(-50%);
+
+animation:
+    golfinho 5s ease-in-out infinite;
+```
+
+}
+
+@keyframes golfinho {
+
+```
+0%,
+100% {
+    transform:
+        translateX(-50%)
+        translateY(0)
+        rotate(-5deg);
+}
+
+50% {
+    transform:
+        translateX(-50%)
+        translateY(-20px)
+        rotate(5deg);
+}
+```
+
+}
+
+/* =========================================================
+CORAIS OCEANO
+========================================================= */
+
+.corais-oceano {
+
+```
+position: absolute;
+
+bottom: 0;
+
+left: 0;
+right: 0;
+
+height: 180px;
+```
+
+}
+
+.coral-oceano {
+
+```
+position: absolute;
+
+bottom: 0;
+
+width: 100px;
+height: 130px;
+
+border-radius:
+    50% 50% 0 0;
+
+background:
+    linear-gradient(
+        90deg,
+        #ee70b1,
+        #ffb4d7
+    );
+```
+
+}
+
+.coral-oceano::before,
+.coral-oceano::after {
+
+```
+content: "";
+
+position: absolute;
+
+bottom: 0;
+
+width: 30px;
+height: 110px;
+
+border-radius:
+    50px 50px 0 0;
+
+background: inherit;
+```
+
+}
+
+.coral-oceano::before {
+left: 10px;
+}
+
+.coral-oceano::after {
+right: 10px;
+}
+
+.coral-oceano-1 {
+left: 5%;
+}
+
+.coral-oceano-2 {
+left: 45%;
+transform: scale(.8);
+}
+
+.coral-oceano-3 {
+right: 5%;
+transform: scale(1.1);
+}
+
+/* =========================================================
+ALGAS OCEANO
+========================================================= */
+
+.algas-oceano {
+
+```
+position: absolute;
+
+bottom: 0;
+
+width: 100%;
+
+height: 180px;
+```
+
+}
+
+.alga-oceano {
+
+```
+position: absolute;
+
+bottom: 0;
+
+width: 18px;
+
+height: 160px;
+
+border-radius:
+    100%;
+
+background:
+    #238f76;
+
+transform-origin: bottom;
+
+animation:
+    algaBalanço
+    4s ease-in-out infinite alternate;
+```
+
+}
+
+.alga-oceano:nth-child(1) {
+left: 12%;
+}
+
+.alga-oceano:nth-child(2) {
+left: 22%;
+height: 120px;
+animation-delay: -1s;
+}
+
+.alga-oceano:nth-child(3) {
+right: 20%;
+height: 145px;
+animation-delay: -2s;
+}
+
+.alga-oceano:nth-child(4) {
+right: 10%;
+height: 180px;
+animation-delay: -3s;
+}
+
+/* =========================================================
+BAÚ
+========================================================= */
+
+.bau-secao {
+
+```
+background:
+    radial-gradient(
+        circle at 50% 30%,
+        #1689a9,
+        #075579 55%,
+        #022c4d 100%
+    );
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+text-align: center;
+```
+
+}
+
+.conteudo-bau {
+
+```
+width: min(700px, 92%);
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+padding: 60px 20px;
+```
+
+}
+
+.texto-descoberta {
+
+```
+font-size:
+    clamp(1rem, 3vw, 1.4rem);
+
+margin-bottom: 30px;
+
+color: #dffaff;
+```
+
+}
+
+/* =========================================================
+BAÚ VISUAL
+========================================================= */
+
+.bau-tesouro {
+
+```
+position: relative;
+
+width: 230px;
+height: 190px;
+
+cursor: pointer;
+
+background: transparent;
+
+border-radius: 25px;
+
+transition:
+    transform .3s ease,
+    filter .3s ease;
+
+filter:
+    drop-shadow(
+        0 20px 20px rgba(0,0,0,.3)
+    );
+```
+
+}
+
+.bau-tesouro:hover {
+
+```
+transform:
+    translateY(-8px)
+    scale(1.04);
+```
+
+}
+
+.bau-tampa {
+
+```
+position: absolute;
+
+top: 0;
+left: 10%;
+
+width: 80%;
+height: 90px;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+font-size: 5rem;
+
+background:
+    linear-gradient(
+        180deg,
+        #b9793c,
+        #75451f
+    );
+
+border:
+    6px solid
+    #5b3419;
+
+border-radius:
+    35px 35px 8px 8px;
+
+transform-origin: bottom center;
+
+transition:
+    transform .7s ease;
+```
+
+}
+
+.bau-corpo {
+
+```
+position: absolute;
+
+left: 10%;
+bottom: 0;
+
+width: 80%;
+height: 105px;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+font-size: 4rem;
+
+background:
+    linear-gradient(
+        180deg,
+        #9a5c29,
+        #5c3418
+    );
+
+border:
+    6px solid
+    #4b2b15;
+
+border-radius:
+    10px 10px 28px 28px;
+```
+
+}
+
+.bau-fechadura {
+
+```
+position: absolute;
+
+z-index: 5;
+
+left: 50%;
+top: 80px;
+
+transform:
+    translateX(-50%);
+
+font-size: 2rem;
+
+transition: .4s ease;
+```
+
+}
+
+.bau-aberto .bau-tampa {
+
+```
+transform:
+    rotateX(55deg)
+    translateY(-12px);
+```
+
+}
+
+.texto-bau {
+
+```
+margin-top: 30px;
+
+line-height: 1.7;
+
+color: #e1faff;
+```
+
+}
+
+/* =========================================================
+PARTÍCULAS BAÚ
+========================================================= */
+
+.particulas-bau {
+
+```
+position: absolute;
+
+inset: 0;
+
+pointer-events: none;
+```
+
+}
+
+.particulas-bau span {
+
+```
+position: absolute;
+
+font-size: 1.5rem;
+
+color: #ffe6a7;
+
+animation:
+    brilho
+    2.5s ease-in-out infinite alternate;
+```
+
+}
+
+.particulas-bau span:nth-child(1) {
+top: 20%;
+left: 15%;
+}
+
+.particulas-bau span:nth-child(2) {
+top: 35%;
+right: 20%;
+animation-delay: -1s;
+}
+
+.particulas-bau span:nth-child(3) {
+bottom: 20%;
+left: 25%;
+animation-delay: -2s;
+}
+
+.particulas-bau span:nth-child(4) {
+bottom: 30%;
+right: 12%;
+}
+
+.particulas-bau span:nth-child(5) {
+top: 50%;
+left: 50%;
+}
+
+/* =========================================================
+CARTA
+========================================================= */
+
+.carta-secao {
+
+```
+background:
+    linear-gradient(
+        180deg,
+        #07577a,
+        #063b5e
+    );
+
+min-height: 100vh;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+```
+
+}
+
+.carta-escondida {
+display: none;
+}
+
+.carta-container {
+
+```
+width: min(850px, 92%);
+
+padding: 60px 0;
+```
+
+}
+
+/* =========================================================
+CARTA INTERNA
+========================================================= */
+
+.carta {
+
+```
+position: relative;
+
+width: 100%;
+
+padding: 45px 35px;
+
+border-radius: 25px;
+
+color: var(--texto);
+
+background:
+    linear-gradient(
+        135deg,
+        #fffdf8,
+        #fff3df
+    );
+
+box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
+
+border:
+    2px solid
+    rgba(255,255,255,.6);
+
+animation:
+    cartaEntrada .8s ease both;
+```
+
+}
+
+@keyframes cartaEntrada {
+
+```
+from {
+    opacity: 0;
+    transform:
+        translateY(30px)
+        scale(.96);
+}
+
+to {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+}
+```
+
+}
+
+.carta-decoracao {
+
+```
+text-align: center;
+
+font-size: 3rem;
+
+margin-bottom: 10px;
+```
+
+}
+
+.carta-conteudo {
+text-align: center;
+}
+
+.carta-pequeno-titulo {
+
+```
+color: var(--rosa-escuro);
+
+font-size: .9rem;
+
+font-weight: bold;
+
+letter-spacing: 1px;
+
+text-transform: uppercase;
+```
+
+}
+
+.carta h2 {
+
+```
+margin-top: 8px;
+
+font-family: Georgia, serif;
+
+font-size:
+    clamp(2rem, 5vw, 3rem);
+
+color:
+    #8e3c68;
+```
+
+}
+
+.linha-decorativa {
+
+```
+margin: 15px 0 25px;
+
+color: var(--rosa);
+
+letter-spacing: 10px;
+```
+
+}
+
+/* =========================================================
+TEXTO CARTA
+========================================================= */
+
+.texto-carta {
+
+```
+max-width: 650px;
+
+margin: auto;
+
+line-height: 1.8;
+
+font-size: 1.05rem;
+```
+
+}
+
+.texto-carta p {
+margin-bottom: 15px;
+}
+
+/* =========================================================
+DADOS FESTA
+========================================================= */
+
+.dados-festa {
+
+```
+display: grid;
+
+grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+gap: 14px;
+
+margin-top: 30px;
+
+text-align: left;
+```
+
+}
+
+.dado-festa {
+
+```
+display: flex;
+
+align-items: center;
+
+gap: 12px;
+
+padding: 15px;
+
+border-radius: 15px;
+
+background:
+    rgba(255,105,180,.08);
+
+border:
+    1px solid
+    rgba(255,105,180,.15);
+```
+
+}
+
+.icone-dado {
+
+```
+font-size: 1.6rem;
+
+min-width: 35px;
+
+text-align: center;
+```
+
+}
+
+.dado-festa strong {
+
+```
+display: block;
+
+margin-bottom: 3px;
+
+font-size: .72rem;
+
+color: #8e3c68;
+
+letter-spacing: 1px;
+```
+
+}
+
+.dado-festa span:not(.icone-dado),
+.dado-festa a {
+
+```
+display: block;
+
+color: #374151;
+
+font-size: .95rem;
+```
+
+}
+
+.dado-festa a {
+
+```
+color:
+    #d94c91;
+
+font-weight: bold;
+```
+
+}
+
+.dado-festa a:hover {
+text-decoration: underline;
+}
+
+/* =========================================================
+ASSINATURA
+========================================================= */
+
+.assinatura {
+
+```
+margin-top: 30px;
+
+font-family: Georgia, serif;
+
+color: #725067;
+```
+
+}
+
+.assinatura strong {
+
+```
+display: block;
+
+margin-top: 3px;
+
+font-size: 1.5rem;
+
+color: var(--rosa-escuro);
+```
+
+}
+
+/* =========================================================
+BOTÕES
+========================================================= */
+
+.botao-fechar-carta,
+.botao-download {
+
+```
+margin-top: 25px;
+
+padding:
+    13px 25px;
+
+border-radius: 999px;
+
+cursor: pointer;
+
+color: #fff;
+
+background:
+    linear-gradient(
+        135deg,
+        #ff69b4,
+        #d94c91
+    );
+
+box-shadow:
+    0 10px 25px
+    rgba(217,76,145,.3);
+
+transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+```
+
+}
+
+.botao-fechar-carta:hover,
+.botao-download:hover {
+
+```
+transform:
+    translateY(-3px);
+
+box-shadow:
+    0 15px 30px
+    rgba(217,76,145,.4);
+```
+
+}
+
+/* =========================================================
+PRESENTES
+========================================================= */
+
+.presentes {
+
+```
+background:
+    linear-gradient(
+        180deg,
+        #ffb5d6,
+        #ff8fc1 30%,
+        #1687a8 80%,
+        #07506f
+    );
+
+min-height: 100vh;
+```
+
+}
+
+.conteudo-presentes {
+
+```
+position: relative;
+
+width: min(1050px, 92%);
+
+margin: auto;
+
+padding:
+    80px 0;
+
+text-align: center;
+```
+
+}
+
+.titulo-pequeno {
+
+```
+color: #fff;
+
+font-weight: bold;
+
+letter-spacing: 1px;
+```
+
+}
+
+.conteudo-presentes > h2 {
+
+```
+margin-top: 10px;
+
+font-family: Georgia, serif;
+
+font-size:
+    clamp(2rem, 5vw, 3.5rem);
+
+line-height: 1.1;
+
+color: #fff;
+
+text-shadow:
+    0 5px 20px rgba(0,0,0,.2);
+```
+
+}
+
+.descricao-presentes {
+
+```
+max-width: 650px;
+
+margin:
+    20px auto 40px;
+
+line-height: 1.7;
+
+color: #fff;
+```
+
+}
+
+/* =========================================================
+LISTA PRESENTES
+========================================================= */
+
+.lista-presentes {
+
+```
+display: grid;
+
+grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+gap: 20px;
+
+text-align: left;
+```
+
+}
+
+.presente-card {
+
+```
+display: flex;
+
+align-items: center;
+
+gap: 18px;
+
+padding: 20px;
+
+border-radius: 22px;
+
+background:
+    rgba(255,255,255,.9);
+
+color: var(--texto);
+
+box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.18);
+
+border:
+    1px solid
+    rgba(255,255,255,.7);
+
+opacity: 0;
+
+transform:
+    translateY(25px);
+
+transition:
+    opacity .6s ease,
+    transform .6s ease,
+    box-shadow .3s ease;
+```
+
+}
+
+.presente-card.visivel {
+
+```
+opacity: 1;
+
+transform:
+    translateY(0);
+```
+
+}
+
+.presente-card:hover {
+
+```
+transform:
+    translateY(-5px);
+
+box-shadow:
+    0 20px 45px
+    rgba(0,0,0,.23);
+```
+
+}
+
+.presente-imagem {
+
+```
+min-width: 75px;
+
+width: 75px;
+height: 75px;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+border-radius: 20px;
+
+background:
+    linear-gradient(
+        135deg,
+        #ffe1ef,
+        #ffc2df
+    );
+
+font-size: 2.5rem;
+```
+
+}
+
+.presente-info {
+flex: 1;
+}
+
+.presente-info h3 {
+
+```
+margin-bottom: 5px;
+
+color: #8e3c68;
+
+font-size: 1.15rem;
+```
+
+}
+
+.presente-info p {
+
+```
+margin-bottom: 12px;
+
+color: #667085;
+
+font-size: .9rem;
+
+line-height: 1.5;
+```
+
+}
+
+.botao-presente {
+
+```
+display: inline-block;
+
+padding:
+    9px 15px;
+
+border-radius: 999px;
+
+color: #fff;
+
+background:
+    linear-gradient(
+        135deg,
+        #ff69b4,
+        #d94c91
+    );
+
+font-size: .85rem;
+
+font-weight: bold;
+
+transition:
+    transform .2s ease;
+```
+
+}
+
+.botao-presente:hover {
+transform:
+translateY(-2px);
+}
+
+.aviso-presente {
+
+```
+margin-top: 35px;
+
+color: #fff;
+
+font-size: .95rem;
+
+opacity: .9;
+```
+
+}
+
+/* =========================================================
+FUNDO DO MAR PROFUNDO
+========================================================= */
+
+.fundo-mar {
+
+```
+background:
+    linear-gradient(
+        180deg,
+        #064c70,
+        #032d4c 45%,
+        #01182e 100%
+    );
+```
+
+}
+
+.luz-profunda {
+
+```
+opacity: .35;
+```
+
+}
+
+.conteudo-fundo-mar {
+
+```
+position: relative;
+
+min-height: 100vh;
+
+width: min(750px, 92%);
+
+margin: auto;
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+
+align-items: center;
+
+text-align: center;
+
+padding: 60px 0;
+```
+
+}
+
+.texto-profundezas {
+
+```
+color: #9fe8ff;
+
+margin-bottom: 15px;
+
+letter-spacing: 1px;
+```
+
+}
+
+.conteudo-fundo-mar h2 {
+
+```
+font-family: Georgia, serif;
+
+font-size:
+    clamp(2.4rem, 6vw, 4.5rem);
+
+line-height: 1.05;
+
+color: #fff;
+
+text-shadow:
+    0 5px 25px rgba(0,0,0,.4);
+```
+
+}
+
+.conteudo-fundo-mar > p:last-child {
+
+```
+max-width: 600px;
+
+margin-top: 20px;
+
+color: #c8edfa;
+
+line-height: 1.7;
+
+font-size: 1.1rem;
+```
+
+}
+
+/* =========================================================
+PEIXES PROFUNDOS
+========================================================= */
+
+.peixe-profundo {
+
+```
+position: absolute;
+
+font-size:
+    clamp(1.4rem, 4vw, 2.5rem);
+
+opacity: .65;
+
+animation:
+    peixeProfundo
+    18s linear infinite;
+```
+
+}
+
+.peixe-profundo-1 {
+top: 15%;
+left: -10%;
+}
+
+.peixe-profundo-2 {
+top: 35%;
+right: -10%;
+animation-delay: -5s;
+}
+
+.peixe-profundo-3 {
+top: 55%;
+left: -10%;
+animation-delay: -9s;
+}
+
+.peixe-profundo-4 {
+top: 70%;
+right: -10%;
+animation-delay: -13s;
+}
+
+.peixe-profundo-5 {
+top: 45%;
+left: -10%;
+animation-delay: -16s;
+}
+
+@keyframes peixeProfundo {
+
+```
+from {
+    transform:
+        translateX(0);
+}
+
+to {
+    transform:
+        translateX(120vw);
+}
+```
+
+}
+
+/* =========================================================
+CONCHAS / CORAIS PROFUNDOS
+========================================================= */
+
+.concha,
+.coral-profundo,
+.alga-profunda {
+
+```
+position: absolute;
+
+opacity: .7;
+
+transition:
+    transform .3s ease;
+```
+
+}
+
+.concha {
+font-size: 4rem;
+
+```
+animation:
+    flutuarDecoracao
+    5s ease-in-out infinite;
+```
+
+}
+
+.concha-1 {
+left: 7%;
+bottom: 18%;
+}
+
+.concha-2 {
+right: 8%;
+top: 25%;
+
+```
+animation-delay: -2s;
+```
+
+}
+
+.coral-profundo {
+font-size: 5rem;
+}
+
+.coral-profundo-1 {
+left: 4%;
+bottom: 0;
+}
+
+.coral-profundo-2 {
+right: 4%;
+bottom: 0;
+}
+
+.alga-profunda {
+font-size: 5rem;
+bottom: -10px;
+}
+
+.alga-profunda-1 {
+left: 20%;
+}
+
+.alga-profunda-2 {
+right: 20%;
+}
+
+@keyframes flutuarDecoracao {
+
+```
+0%,
+100% {
+    transform: translateY(0) rotate(-4deg);
+}
+
+50% {
+    transform: translateY(-15px) rotate(4deg);
+}
+```
+
+}
+
+/* =========================================================
+PARTÍCULAS PROFUNDAS
+========================================================= */
+
+.particulas-profundas {
+
+```
+position: absolute;
+
+inset: 0;
+
+pointer-events: none;
+```
+
+}
+
+.particulas-profundas span {
+
+```
+position: absolute;
+
+color: #a8edff;
+
+opacity: .6;
+
+animation:
+    brilho 3s ease-in-out infinite alternate;
+```
+
+}
+
+.particulas-profundas span:nth-child(1) {
+left: 15%;
+top: 20%;
+}
+
+.particulas-profundas span:nth-child(2) {
+right: 20%;
+top: 25%;
+animation-delay: -1s;
+}
+
+.particulas-profundas span:nth-child(3) {
+left: 35%;
+bottom: 20%;
+}
+
+.particulas-profundas span:nth-child(4) {
+right: 12%;
+bottom: 30%;
+}
+
+.particulas-profundas span:nth-child(5) {
+left: 25%;
+top: 55%;
+}
+
+.particulas-profundas span:nth-child(6) {
+right: 35%;
+top: 60%;
+}
+
+.particulas-profundas span:nth-child(7) {
+left: 50%;
+top: 20%;
+}
+
+/* =========================================================
+CONCHA FINAL
+========================================================= */
+
+.concha-final {
+
+```
+min-height: 100vh;
+
+background:
+    radial-gradient(
+        circle at 50% 35%,
+        #147f9e,
+        #063f60 50%,
+        #021b35 100%
+    );
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+text-align: center;
+```
+
+}
+
+.conteudo-final {
+
+```
+position: relative;
+
+width: min(800px, 92%);
+
+padding:
+    70px 20px;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+```
+
+}
+
+.final-pequeno-titulo {
+
+```
+color: #ffe6f2;
+
+font-size:
+    clamp(.9rem, 2.5vw, 1.1rem);
+
+letter-spacing: 1px;
+
+margin-bottom: 25px;
+```
+
+}
+
+/* =========================================================
+CONCHA MÁGICA
+========================================================= */
+
+.concha-convite {
+
+```
+position: relative;
+
+width:
+    clamp(150px, 30vw, 230px);
+
+height:
+    clamp(150px, 30vw, 230px);
+
+border-radius: 50%;
+
+cursor: pointer;
+
+display: flex;
+
+justify-content: center;
+align-items: center;
+
+font-size:
+    clamp(5rem, 12vw, 8rem);
+
+background:
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.22),
+        rgba(255,105,180,.2),
+        transparent 70%
+    );
+
+box-shadow:
+    0 0 50px
+    rgba(255,182,217,.35);
+
+transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+animation:
+    conchaMagica
+    4s ease-in-out infinite;
+```
+
+}
+
+.concha-convite:hover {
+
+```
+transform:
+    scale(1.08);
+
+box-shadow:
+    0 0 80px
+    rgba(255,182,217,.6);
+```
+
+}
+
+@keyframes conchaMagica {
+
+```
+0%,
+100% {
+    transform:
+        translateY(0)
+        rotate(-3deg);
+}
+
+50% {
+    transform:
+        translateY(-12px)
+        rotate(3deg);
+}
+```
+
+}
+
+.conteudo-final h2 {
+
+```
+margin-top: 25px;
+
+font-family: Georgia, serif;
+
+font-size:
+    clamp(2.3rem, 6vw, 4rem);
+
+color: #fff;
+
+text-shadow:
+    0 5px 25px rgba(0,0,0,.3);
+```
+
+}
+
+.texto-final {
+
+```
+max-width: 550px;
+
+margin-top: 15px;
+
+color: #d5f4fc;
+
+line-height: 1.7;
+```
+
+}
+
+/* =========================================================
+DADOS INVISÍVEIS DO CONVITE
+========================================================= */
+
+.dados-convite {
+
+```
+position: absolute;
+
+width: 1px;
+height: 1px;
+
+overflow: hidden;
+
+opacity: 0;
+
+pointer-events: none;
+```
+
+}
+
+/* =========================================================
+MENSAGEM DOWNLOAD
+========================================================= */
+
+.mensagem-download {
+
+```
+display: none;
+
+margin-top: 25px;
+
+padding:
+    12px 18px;
+
+border-radius: 999px;
+
+background:
+    rgba(255,255,255,.12);
+
+border:
+    1px solid
+    rgba(255,255,255,.2);
+
+backdrop-filter:
+    blur(10px);
+```
+
+}
+
+.mensagem-download.ativa,
+.mensagem-download.ativo {
+
+```
+display: flex;
+
+align-items: center;
+
+gap: 8px;
+```
+
+}
+
+.mensagem-download p {
+color: #fff;
+}
+
+/* =========================================================
+RODAPÉ
+========================================================= */
+
+.rodape {
+
+```
+margin-top: 60px;
+
+padding-top: 25px;
+
+width: 100%;
+
+border-top:
+    1px solid
+    rgba(255,255,255,.15);
+
+color: #bdeaf5;
+
+line-height: 1.7;
+
+font-size: .85rem;
+```
+
+}
+
+/* =========================================================
+MODAIS
+========================================================= */
+
+.modal {
+
+```
+position: fixed;
+
+inset: 0;
+
+z-index: 9999;
+
+display: flex;
+
+align-items: center;
+justify-content: center;
+
+padding: 20px;
+
+opacity: 0;
+
+visibility: hidden;
+
+pointer-events: none;
+
+transition:
+    opacity .3s ease,
+    visibility .3s ease;
+```
+
+}
+
+.modal.ativo {
+
+```
+opacity: 1;
+
+visibility: visible;
+
+pointer-events: auto;
+```
+
+}
+
+.modal-overlay {
+
+```
+position: absolute;
+
+inset: 0;
+
+background:
+    rgba(1,15,30,.75);
+
+backdrop-filter:
+    blur(8px);
+```
+
+}
+
+.modal-conteudo {
+
+```
+position: relative;
+
+z-index: 2;
+
+width:
+    min(850px, 100%);
+
+max-height:
+    90vh;
+
+overflow-y: auto;
+
+border-radius: 25px;
+
+animation:
+    modalEntrada .35s ease both;
+```
+
+}
+
+.modal-conteudo > .carta {
+
+```
+width: 100%;
+
+margin: 0;
+```
+
+}
+
+@keyframes modalEntrada {
+
+```
+from {
+    opacity: 0;
+
+    transform:
+        translateY(30px)
+        scale(.95);
+}
+
+to {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+```
+
+}
+
+/* =========================================================
+FECHAR MODAL
+========================================================= */
+
+.fechar-modal {
+
+```
+position: absolute;
+
+top: 12px;
+right: 12px;
+
+z-index: 20;
+
+width: 42px;
+height: 42px;
+
+border-radius: 50%;
+
+cursor: pointer;
+
+font-size: 1.8rem;
+
+line-height: 1;
+
+color: #fff;
+
+background:
+    rgba(0,0,0,.25);
+
+transition:
+    background .2s ease,
+    transform .2s ease;
+```
+
+}
+
+.fechar-modal:hover {
+
+```
+background:
+    rgba(0,0,0,.45);
+
+transform:
+    rotate(90deg);
+```
+
+}
+
+/* =========================================================
+MODAL DOWNLOAD
+========================================================= */
+
+.modal-download-conteudo {
+
+```
+width:
+    min(500px, 100%);
+
+padding:
+    50px 30px;
+
+text-align: center;
+
+border-radius: 28px;
+
+color: #374151;
+
+background:
+    linear-gradient(
+        135deg,
+        #fff,
+        #fff2f8
+    );
+
+box-shadow:
+    0 30px 80px rgba(0,0,0,.4);
+```
+
+}
+
+.modal-download-conteudo .fechar-modal {
+
+```
+color: #8e3c68;
+
+background:
+    rgba(255,105,180,.1);
+```
+
+}
+
+.icone-download {
+
+```
+font-size: 4rem;
+
+margin-bottom: 10px;
+
+animation:
+    flutuarDecoracao
+    3s ease-in-out infinite;
+```
+
+}
+
+.modal-download-conteudo h2 {
+
+```
+font-family: Georgia, serif;
+
+color: #8e3c68;
+
+font-size:
+    clamp(1.7rem, 5vw, 2.5rem);
+```
+
+}
+
+.modal-download-conteudo p {
+
+```
+margin-top: 12px;
+
+line-height: 1.6;
+
+color: #667085;
+```
+
+}
+
+.modal-download-conteudo .botao-download {
+
+```
+margin-top: 25px;
+```
+
+}
+
+/* =========================================================
+ANIMAÇÕES DE OBSERVAÇÃO
+========================================================= */
+
+.carta,
+.concha,
+.coral-profundo,
+.peixe-profundo {
+
+```
+opacity: 0;
+
+transform:
+    translateY(25px);
+
+transition:
+    opacity .7s ease,
+    transform .7s ease;
+```
+
+}
+
+.carta.visivel,
+.concha.visivel,
+.coral-profundo.visivel,
+.peixe-profundo.visivel {
+
+```
+opacity: 1;
+
+transform:
+    translateY(0);
+```
+
+}
+
+.secao-visivel {
+animation:
+secaoEntrada .7s ease both;
+}
+
+@keyframes secaoEntrada {
+
+```
+from {
+    opacity: .7;
+}
+
+to {
+    opacity: 1;
+}
+```
+
+}
+
+@keyframes aparecer {
+
+```
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+```
+
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+width: 9px;
+}
+
+::-webkit-scrollbar-track {
+background: #03182d;
+}
+
+::-webkit-scrollbar-thumb {
+
+```
+background:
+    linear-gradient(
+        180deg,
+        #ff69b4,
+        #1687a8
+    );
+
+border-radius: 999px;
+```
+
+}
+
+/* =========================================================
+SELEÇÃO
+========================================================= */
+
+::selection {
+
+```
+background: #ff69b4;
+
+color: #fff;
+```
+
+}
+
+/* =========================================================
+RESPONSIVIDADE — TABLET
 ========================================================= */
 
 @media (max-width: 800px) {
 
+```
+.lista-presentes {
 
-    .entrada {
+    grid-template-columns:
+        1fr;
+}
 
-        padding-top: 55px;
+.mensagem-exploracao {
 
-    }
+    flex-direction: column;
 
+    text-align: center;
+}
 
-    .conteudo-entrada h1 {
+.dados-festa {
 
-        letter-spacing: -1px;
+    grid-template-columns:
+        1fr;
+}
 
-    }
+.area-exploracao {
 
-
-    .informacoes-principais {
-
-        max-width: 600px;
-
-    }
-
-
-    .mensagem-exploracao {
-
-        padding:
-            28px
-            22px;
-
-    }
-
-
-    .icone-exploracao {
-
-        width: 90px;
-
-        height: 90px;
-
-        font-size: 55px;
-
-    }
-
-
-    .lista-presentes {
-
-        grid-template-columns:
-            1fr;
-
-        max-width: 500px;
-
-        margin: 0 auto;
-
-    }
-
-
-    .presente-card {
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 20px;
-
-        text-align: left;
-
-    }
-
-
-    .presente-imagem {
-
-        flex:
-            0 0 90px;
-
-        width: 90px;
-
-        height: 90px;
-
-        margin: 0;
-
-    }
-
-
-    .presente-info p {
-
-        min-height: auto;
-
-    }
-
+    min-height: 360px;
+}
+```
 
 }
 
-
 /* =========================================================
-   RESPONSIVIDADE — CELULAR
+RESPONSIVIDADE — CELULAR
 ========================================================= */
 
 @media (max-width: 600px) {
 
-
-    .tela {
-
-        min-height: 100svh;
-
-    }
-
-
-    .entrada {
-
-        padding:
-            50px
-            16px
-            75px;
-
-    }
-
-
-    .pequeno-titulo {
-
-        font-size: 13px;
-
-        margin-bottom: 15px;
-
-    }
-
-
-    .conteudo-entrada h1 {
-
-        font-size:
-            clamp(42px, 13vw, 65px);
-
-        line-height: 0.98;
-
-    }
-
-
-    .informacoes-principais {
-
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 7px;
-
-        margin:
-            22px
-            auto;
-
-    }
-
-
-    .informacoes-principais p {
-
-        width: fit-content;
-
-        max-width: 95%;
-
-        font-size: 13px;
-
-        padding:
-            9px
-            13px;
-
-    }
-
-
-    .convite-texto {
-
-        font-size: 15px;
-
-        line-height: 1.5;
-
-        max-width: 330px;
-
-    }
-
-
-    .sereia-silhueta {
-
-        right: -20px;
-
-        top: 15%;
-
-        opacity: 0.12;
-
-    }
-
-
-    .cardume span {
-
-        font-size: 28px;
-
-    }
-
-
-    /* OCEANO */
-
-    .oceano {
-
-        min-height: 125svh;
-
-    }
-
-
-    .conteudo-oceano {
-
-        min-height: 125svh;
-
-        padding:
-            70px
-            15px
-            90px;
-
-    }
-
-
-    .titulo-oceano span {
-
-        font-size: 45px;
-
-    }
-
-
-    .titulo-oceano h2 {
-
-        font-size:
-            clamp(32px, 10vw, 48px);
-
-    }
-
-
-    .area-exploracao {
-
-        min-height: 390px;
-
-        margin:
-            65px
-            auto
-            50px;
-
-    }
-
-
-    .mensagem-exploracao {
-
-        flex-direction: column;
-
-        text-align: center;
-
-        padding:
-            25px
-            18px;
-
-        border-radius: 30px;
-
-    }
-
-
-    .icone-exploracao {
-
-        width: 85px;
-
-        height: 85px;
-
-        font-size: 50px;
-
-    }
-
-
-    .titulo-exploracao {
-
-        font-size: 24px;
-
-    }
-
-
-    .texto-exploracao p {
-
-        font-size: 15px;
-
-    }
-
-
-    .pista-exploracao {
-
-        font-size: 14px;
-
-    }
-
-
-    /* BAÚ */
-
-    .bau-secao {
-
-        padding:
-            80px
-            15px;
-
-    }
-
-
-    .bau-tesouro {
-
-        width: 170px;
-
-        height: 160px;
-
-    }
-
-
-    .bau-tampa {
-
-        font-size: 85px;
-
-    }
-
-
-    .bau-corpo {
-
-        font-size: 78px;
-
-    }
-
-
-    /* CARTA */
-
-    .carta-secao {
-
-        padding:
-            60px
-            12px;
-
-    }
-
-
-    .carta {
-
-        padding:
-            38px
-            17px
-            25px;
-
-        border-radius: 24px;
-
-    }
-
-
-    .carta h2 {
-
-        font-size:
-            clamp(28px, 9vw, 42px);
-
-    }
-
-
-    .texto-carta {
-
-        font-size: 15px;
-
-    }
-
-
-    .dados-festa {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .dado-festa {
-
-        padding: 12px;
-
-    }
-
-
-    /* PRESENTES */
-
-    .presentes {
-
-        padding:
-            80px
-            15px;
-
-    }
-
-
-    .conteudo-presentes h2 {
-
-        font-size:
-            clamp(31px, 9vw, 45px);
-
-    }
-
-
-    .descricao-presentes {
-
-        font-size: 15px;
-
-    }
-
-
-    .presente-card {
-
-        padding: 18px;
-
-    }
-
-
-    .presente-imagem {
-
-        flex-basis: 75px;
-
-        width: 75px;
-
-        height: 75px;
-
-        font-size: 45px;
-
-    }
-
-
-    .presente-info h3 {
-
-        font-size: 20px;
-
-    }
-
-
-    .presente-info p {
-
-        font-size: 14px;
-
-    }
-
-
-    .botao-presente {
-
-        font-size: 13px;
-
-        padding:
-            9px
-            14px;
-
-    }
-
-
-    /* FUNDO DO MAR */
-
-    .conteudo-fundo-mar {
-
-        padding:
-            110px
-            15px
-            80px;
-
-    }
-
-
-    .conteudo-fundo-mar h2 {
-
-        font-size:
-            clamp(34px, 10vw, 48px);
-
-    }
-
-
-    /* FINAL */
-
-    .conteudo-final {
-
-        padding:
-            80px
-            15px
-            50px;
-
-    }
-
-
-    .conteudo-final h2 {
-
-        font-size:
-            clamp(34px, 10vw, 50px);
-
-    }
-
-
-    .texto-final {
-
-        font-size: 15px;
-
-    }
-
-
-    .rodape {
-
-        margin-top: 45px;
-
-    }
-
-
+```
+.tela {
+    min-height: 100svh;
 }
 
 
+/* ENTRADA */
+
+.conteudo-entrada {
+
+    width: 94%;
+
+    padding:
+        35px 12px 90px;
+}
+
+.pequeno-titulo {
+
+    font-size: .75rem;
+
+    letter-spacing: 1px;
+}
+
+.titulo-entrada {
+
+    font-size:
+        clamp(2.35rem, 12vw, 4rem);
+}
+
+.sereia-principal-container {
+
+    width:
+        clamp(155px, 52vw, 230px);
+
+    margin-top: 0;
+}
+
+.sereia-principal {
+
+    max-height: 245px;
+}
+
+.informacoes-principais {
+
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 7px;
+}
+
+.informacoes-principais p {
+
+    padding:
+        8px 15px;
+
+    font-size: .9rem;
+}
+
+.convite-texto {
+
+    font-size: .95rem;
+
+    line-height: 1.55;
+
+    max-width: 340px;
+}
+
+.sereia-silhueta {
+
+    right: -15px;
+
+    top: 8%;
+
+    font-size: 3rem;
+}
+
+.cardume span {
+
+    font-size: 1.4rem;
+
+    margin: 0 6px;
+}
+
+
+/* OCEANO */
+
+.conteudo-oceano {
+
+    padding:
+        65px 10px 60px;
+}
+
+.titulo-oceano h2 {
+
+    font-size:
+        clamp(1.8rem, 9vw, 3rem);
+}
+
+.titulo-oceano p {
+
+    font-size: .95rem;
+}
+
+.area-exploracao {
+
+    min-height: 350px;
+
+    margin-top: 25px;
+}
+
+.mensagem-exploracao {
+
+    padding:
+        25px 18px;
+
+    border-radius: 22px;
+}
+
+.icone-exploracao {
+
+    width: 60px;
+    height: 60px;
+
+    min-width: 60px;
+
+    font-size: 2rem;
+}
+
+.titulo-exploracao {
+
+    font-size: 1.15rem;
+}
+
+.texto-exploracao p,
+.pista-exploracao {
+
+    font-size: .9rem;
+}
+
+.golfinho {
+
+    top: 8%;
+
+    font-size: 3.5rem;
+}
+
+
+/* BAÚ */
+
+.conteudo-bau {
+
+    padding:
+        40px 10px;
+}
+
+.bau-tesouro {
+
+    width: 190px;
+    height: 165px;
+}
+
+.bau-tampa {
+
+    height: 75px;
+
+    font-size: 4rem;
+}
+
+.bau-corpo {
+
+    height: 90px;
+
+    font-size: 3rem;
+}
+
+.bau-fechadura {
+
+    top: 65px;
+
+    font-size: 1.7rem;
+}
+
+
+/* CARTA */
+
+.carta-container {
+
+    width: 94%;
+
+    padding:
+        25px 0;
+}
+
+.carta {
+
+    padding:
+        35px 18px;
+}
+
+.carta h2 {
+
+    font-size:
+        clamp(1.8rem, 8vw, 2.5rem);
+}
+
+.texto-carta {
+
+    font-size: .92rem;
+
+    line-height: 1.7;
+}
+
+.dados-festa {
+
+    gap: 10px;
+}
+
+.dado-festa {
+
+    padding: 12px;
+
+    font-size: .9rem;
+}
+
+.icone-dado {
+
+    font-size: 1.35rem;
+
+    min-width: 28px;
+}
+
+
+/* PRESENTES */
+
+.conteudo-presentes {
+
+    padding:
+        60px 0;
+}
+
+.conteudo-presentes > h2 {
+
+    font-size:
+        clamp(1.9rem, 9vw, 3rem);
+}
+
+.descricao-presentes {
+
+    font-size: .92rem;
+
+    line-height: 1.6;
+}
+
+.presente-card {
+
+    padding: 15px;
+
+    gap: 12px;
+}
+
+.presente-imagem {
+
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+
+    font-size: 2rem;
+}
+
+.presente-info h3 {
+
+    font-size: 1rem;
+}
+
+.presente-info p {
+
+    font-size: .82rem;
+}
+
+.botao-presente {
+
+    padding:
+        8px 12px;
+
+    font-size: .78rem;
+}
+
+
+/* FUNDO PROFUNDO */
+
+.conteudo-fundo-mar {
+
+    padding:
+        45px 15px;
+}
+
+.conteudo-fundo-mar h2 {
+
+    font-size:
+        clamp(2.2rem, 11vw, 3.5rem);
+}
+
+.conteudo-fundo-mar > p:last-child {
+
+    font-size: .95rem;
+}
+
+.concha {
+
+    font-size: 2.7rem;
+}
+
+.coral-profundo {
+
+    font-size: 3rem;
+}
+
+
+/* FINAL */
+
+.conteudo-final {
+
+    padding:
+        45px 10px;
+}
+
+.concha-convite {
+
+    width:
+        clamp(135px, 45vw, 190px);
+
+    height:
+        clamp(135px, 45vw, 190px);
+
+    font-size:
+        clamp(4.5rem, 18vw, 7rem);
+}
+
+.conteudo-final h2 {
+
+    font-size:
+        clamp(2.1rem, 10vw, 3.3rem);
+}
+
+.texto-final {
+
+    font-size: .92rem;
+}
+
+.rodape {
+
+    margin-top: 40px;
+}
+
+
+/* MODAIS */
+
+.modal {
+
+    padding:
+        10px;
+}
+
+.modal-conteudo {
+
+    max-height:
+        94vh;
+
+    border-radius: 20px;
+}
+
+.modal-download-conteudo {
+
+    padding:
+        45px 20px;
+}
+
+.fechar-modal {
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.5rem;
+}
+```
+
+}
+
 /* =========================================================
-   CELULARES MUITO PEQUENOS
+CELULARES MUITO PEQUENOS
 ========================================================= */
 
 @media (max-width: 380px) {
 
+```
+.titulo-entrada {
 
-    .conteudo-entrada h1 {
+    font-size:
+        2.15rem;
+}
 
-        font-size: 40px;
+.sereia-principal-container {
 
-    }
+    width: 145px;
+}
 
+.sereia-principal {
 
-    .informacoes-principais p {
+    max-height: 210px;
+}
 
-        font-size: 12px;
+.conteudo-oceano {
 
-    }
+    padding-top: 50px;
+}
 
+.mensagem-exploracao {
 
-    .mensagem-exploracao {
+    padding:
+        20px 14px;
+}
 
-        padding:
-            20px
-            14px;
+.presente-card {
 
-    }
+    align-items: flex-start;
+}
 
+.presente-imagem {
 
-    .area-exploracao {
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
 
-        min-height: 410px;
-
-    }
-
-
-    .presente-card {
-
-        flex-direction: column;
-
-        text-align: center;
-
-    }
-
-
-    .presente-imagem {
-
-        margin: 0 auto;
-
-    }
-
+    font-size: 1.7rem;
+}
+```
 
 }
 
-
 /* =========================================================
-   ACESSIBILIDADE
-========================================================= */
-
-button:focus-visible,
-a:focus-visible {
-
-    outline:
-        3px solid
-        #ffffff;
-
-    outline-offset: 4px;
-
-}
-
-
-/* =========================================================
-   REDUZIR ANIMAÇÕES
-   Para aparelhos/configurações que solicitam
-   menos movimento.
+ACESSIBILIDADE — REDUZIR MOVIMENTO
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    *,
-    *::before,
-    *::after {
+```
+*,
+*::before,
+*::after {
 
-        animation-duration: 0.01ms !important;
+    animation-duration:
+        .01ms !important;
 
-        animation-iteration-count: 1 !important;
+    animation-iteration-count:
+        1 !important;
 
-        scroll-behavior: auto !important;
+    scroll-behavior:
+        auto !important;
 
-        transition-duration: 0.01ms !important;
-
-    }
+    transition-duration:
+        .01ms !important;
+}
+```
 
 }
 
 /* =========================================================
-   COMPATIBILIDADE COM O HTML ATUAL — SOPHIA
-   Estas regras complementam o CSS existente sem alterar o HTML.
+FIM
 ========================================================= */
-
-/* TÍTULO PRINCIPAL DA ENTRADA */
-.titulo-entrada {
-    margin: 0 auto;
-    max-width: 760px;
-    font-size: clamp(42px, 8vw, 78px);
-    line-height: 0.98;
-    font-weight: 900;
-    letter-spacing: -1.5px;
-    color: #ffffff;
-    text-shadow: 0 7px 18px rgba(21, 91, 115, 0.30);
-}
-
-.titulo-entrada span {
-    color: var(--rosa);
-    text-shadow: 0 5px 14px rgba(214, 57, 130, 0.32);
-}
-
-/* SEREIA PRINCIPAL — 734.png */
-.sereia-principal-container {
-    position: relative;
-    z-index: 2;
-    width: min(540px, 88vw);
-    margin: 22px auto 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: sereia-principal-flutuar 5s ease-in-out infinite;
-}
-
-.sereia-principal {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 18px 22px rgba(21, 91, 115, 0.18));
-}
-
-@keyframes sereia-principal-flutuar {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-8px) rotate(0.5deg);
-    }
-}
-
-/* CONTAINER DAS BOLHAS DA ENTRADA */
-.bolhas {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-/* CARDUME DA ÁREA DE PRESENTES */
-.cardume-presentes {
-    top: 18%;
-    animation-duration: 24s;
-    opacity: 0.85;
-}
-
-/* PEIXES PROFUNDOS EXTRAS */
-.peixes-profundos {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.peixe-profundo-4 {
-    top: 40%;
-    animation-delay: -4s;
-}
-
-.peixe-profundo-5 {
-    top: 88%;
-    animation-delay: -11s;
-}
-
-/* PARTÍCULAS DO FUNDO */
-.particulas-profundas,
-.particulas-final {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.particulas-profundas span,
-.particulas-final span {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.72);
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
-    animation: particula-flutuar 5s ease-in-out infinite alternate;
-}
-
-.particulas-profundas span:nth-child(1),
-.particulas-final span:nth-child(1) {
-    left: 12%;
-    top: 18%;
-}
-
-.particulas-profundas span:nth-child(2),
-.particulas-final span:nth-child(2) {
-    left: 28%;
-    top: 42%;
-    animation-delay: -1s;
-}
-
-.particulas-profundas span:nth-child(3),
-.particulas-final span:nth-child(3) {
-    left: 50%;
-    top: 24%;
-    animation-delay: -2s;
-}
-
-.particulas-profundas span:nth-child(4),
-.particulas-final span:nth-child(4) {
-    right: 20%;
-    top: 52%;
-    animation-delay: -3s;
-}
-
-.particulas-profundas span:nth-child(5) {
-    right: 10%;
-    top: 20%;
-    animation-delay: -1.5s;
-}
-
-.particulas-profundas span:nth-child(6) {
-    left: 70%;
-    top: 72%;
-    animation-delay: -2.5s;
-}
-
-.particulas-profundas span:nth-child(7) {
-    left: 6%;
-    top: 70%;
-    animation-delay: -4s;
-}
-
-@keyframes particula-flutuar {
-    from {
-        transform: translateY(0) scale(0.9);
-        opacity: 0.35;
-    }
-    to {
-        transform: translateY(-14px) scale(1.12);
-        opacity: 0.95;
-    }
-}
-
-/* MENSAGEM DE DOWNLOAD: aceita os dois estados */
-.mensagem-download.ativo,
-.mensagem-download.ativa {
-    display: flex;
-}
-
-/* EVITA QUE O CONTEÚDO DOS DADOS INVISÍVEIS INTERFIRA NA PÁGINA */
-#dados-convite {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* MODAIS DO HTML ATUAL */
-#modal-carta .modal-conteudo,
-#modal-download .modal-conteudo {
-    max-height: min(90vh, 900px);
-    -webkit-overflow-scrolling: touch;
-}
-
-#modal-carta .carta-modal-interna {
-    margin: 0;
-}
-
-#fechar-carta-modal,
-#fechar-carta,
-#fechar-download {
-    touch-action: manipulation;
-}
-
-/* ANIMAÇÃO DO BAÚ E DA CONCHA */
-.bau-aberto .bau-tampa {
-    transform: translateX(-50%) translateY(-18px) rotate(-4deg);
-}
-
-.concha-processando {
-    animation: conchaProcessando 0.7s ease-in-out infinite alternate !important;
-}
-
-@keyframes conchaProcessando {
-    from {
-        transform: scale(0.95) rotate(-5deg);
-    }
-    to {
-        transform: scale(1.08) rotate(5deg);
-    }
-}
-
-/* =========================================================
-   RESPONSIVIDADE DAS NOVAS CLASSES
-========================================================= */
-
-@media (max-width: 800px) {
-    .sereia-principal-container {
-        width: min(470px, 88vw);
-        margin-top: 18px;
-    }
-
-    .titulo-entrada {
-        font-size: clamp(40px, 9vw, 68px);
-    }
-}
-
-@media (max-width: 600px) {
-    .titulo-entrada {
-        font-size: clamp(36px, 11vw, 58px);
-        line-height: 0.99;
-        letter-spacing: -1px;
-    }
-
-    .sereia-principal-container {
-        width: min(410px, 92vw);
-        margin: 15px auto 12px;
-    }
-
-    .sereia-principal {
-        filter: drop-shadow(0 12px 16px rgba(21, 91, 115, 0.18));
-    }
-}
-
-@media (max-width: 380px) {
-    .titulo-entrada {
-        font-size: 34px;
-    }
-
-    .sereia-principal-container {
-        width: 94vw;
-    }
-}
