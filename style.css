@@ -1,4 +1,10 @@
 /* =========================================================
+   O OCEANO COR-DE-ROSA DA SOPHIA
+   STYLE.CSS — VERSÃO ATUALIZADA
+========================================================= */
+
+
+/* =========================================================
    RESET
 ========================================================= */
 
@@ -8,1767 +14,4520 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    font-family: "DM Sans", sans-serif;
-    background: #f8f7f4;
-    color: #202020;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+    margin: 0;
+    padding: 0;
 
-body.modal-open {
-    overflow: hidden;
-}
-
-img {
     width: 100%;
-    display: block;
-    object-fit: cover;
+
+    min-height: 100%;
+
+    overflow-x: hidden;
+
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        #bdeff5;
+
+    color: #ffffff;
 }
 
+
+button,
 a {
-    color: inherit;
-    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
+
 
 button {
     font-family: inherit;
 }
 
-.container {
-    width: min(1180px, 90%);
-    margin: 0 auto;
-}
 
-.section {
-    padding: 110px 0;
+img {
+    max-width: 100%;
+    display: block;
 }
 
 
 /* =========================================================
-   TIPOGRAFIA
+   VARIÁVEIS
 ========================================================= */
 
-h1,
-h2,
-h3 {
-    font-family: "Playfair Display", serif;
-    line-height: 1.15;
-}
+:root {
 
-h2 {
-    font-size: clamp(2.4rem, 5vw, 4rem);
-}
+    --azul-superficie: #c8f6f7;
 
-h2 span {
-    color: #a67c32;
-}
+    --azul-claro: #9ce8ef;
 
-.section-label {
-    display: inline-block;
-    margin-bottom: 18px;
+    --azul-medio: #63d2e2;
 
-    font-size: 0.75rem;
-    font-weight: 700;
+    --azul-oceano: #3bb5d0;
 
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    --azul-profundo: #248eaf;
 
-    color: #a67c32;
-}
+    --azul-fundo: #176d91;
 
-.section-heading {
-    margin-bottom: 55px;
-}
+    --azul-final: #145878;
 
-.section-heading.center {
-    text-align: center;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
+    --rosa: #ff69b4;
 
-.section-heading p {
-    max-width: 600px;
-    margin-top: 20px;
+    --rosa-claro: #ff9dce;
 
-    color: #777;
+    --rosa-suave: #ffd5e8;
+
+    --rosa-escuro: #e94f9b;
+
+    --branco: #ffffff;
+
+    --texto-escuro: #164c67;
+
+    --sombra:
+        0 12px 35px rgba(15, 92, 120, 0.22);
+
+    --sombra-forte:
+        0 20px 50px rgba(7, 65, 90, 0.30);
+
 }
 
 
 /* =========================================================
-   BOTÕES
+   CONFIGURAÇÃO GERAL DAS TELAS
 ========================================================= */
 
-.button {
-    display: inline-flex;
+.tela {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    overflow: hidden;
+
+}
+
+
+#app {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PARTE 1 — ENTRADA
+========================================================= */
+
+.entrada {
+
+    position: relative;
+
+    display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    min-height: 52px;
-    padding: 0 28px;
-
-    border-radius: 3px;
-
-    font-size: 0.85rem;
-    font-weight: 700;
-
-    letter-spacing: 0.04em;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
-
-    cursor: pointer;
-}
-
-.button:hover {
-    transform: translateY(-3px);
-}
-
-.button-primary {
-    background: #a67c32;
-    color: #fff;
-}
-
-.button-primary:hover {
-    background: #8e6828;
-}
-
-.button-outline {
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    color: #fff;
-}
-
-.button-outline:hover {
-    background: #fff;
-    color: #222;
-}
-
-.button-dark {
-    background: #202020;
-    color: #fff;
-}
-
-.button-dark:hover {
-    background: #a67c32;
-}
-
-.button-light {
-    background: #fff;
-    color: #202020;
-}
-
-.text-button {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: #a67c32;
-
-    font-weight: 700;
-
-    transition: transform 0.3s ease;
-}
-
-.text-button:hover {
-    transform: translateX(5px);
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    z-index: 1000;
-
-    background: rgba(255, 255, 255, 0.96);
-
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-
-    backdrop-filter: blur(15px);
-}
-
-.header-container {
-    min-height: 82px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    flex-shrink: 0;
-}
-
-.logo img {
-    width: 48px;
-    height: 48px;
-
-    object-fit: contain;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-
-    line-height: 1.1;
-}
-
-.logo-text span {
-    font-size: 0.72rem;
-    font-weight: 700;
-
-    letter-spacing: 0.08em;
-}
-
-.logo-text strong {
-    margin-top: 4px;
-
-    color: #a67c32;
-
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav a {
-    position: relative;
-
-    font-size: 0.78rem;
-    font-weight: 600;
-
-    color: #555;
-
-    transition: color 0.3s ease;
-}
-
-.nav a::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 2px;
-
-    background: #a67c32;
-
-    transition: width 0.3s ease;
-}
-
-.nav a:hover {
-    color: #a67c32;
-}
-
-.nav a:hover::after {
-    width: 100%;
-}
-
-.header-button {
-    padding: 11px 18px;
-
-    background: #202020;
-    color: #fff;
-
-    border-radius: 3px;
-
-    font-size: 0.75rem;
-    font-weight: 700;
-
-    transition: 0.3s ease;
-}
-
-.header-button:hover {
-    background: #a67c32;
-}
-
-.menu-button {
-    display: none;
-
-    border: 0;
-    background: none;
-
-    font-size: 1.7rem;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
     min-height: 100vh;
+    min-height: 100svh;
 
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(15, 15, 15, 0.88),
-            rgba(15, 15, 15, 0.55),
-            rgba(15, 15, 15, 0.25)
-        ),
-        url("assets/img/hero.jpg") center/cover no-repeat;
-
-    color: #fff;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
+    padding:
+        70px
+        20px
+        90px;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.15),
-            rgba(0, 0, 0, 0.4)
+            #bff7f8 0%,
+            #9debf0 22%,
+            #71d9e6 48%,
+            #4bc2d8 72%,
+            #35acc8 100%
         );
+
 }
 
-.hero-content {
+
+/* =========================================================
+   FUNDO DA ENTRADA
+========================================================= */
+
+.fundo-oceano {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   RAIOS DE LUZ
+========================================================= */
+
+.raio {
+
+    position: absolute;
+
+    top: -12%;
+
+    width: 20%;
+
+    height: 75%;
+
+    opacity: 0.18;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.8),
+            rgba(255,255,255,0)
+        );
+
+    filter: blur(4px);
+
+    transform-origin: top center;
+
+    animation:
+        movimento-raio
+        8s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.raio-1 {
+
+    left: 8%;
+
+    transform:
+        rotate(14deg);
+
+}
+
+
+.raio-2 {
+
+    left: 42%;
+
+    width: 24%;
+
+    transform:
+        rotate(-5deg);
+
+    animation-delay: -3s;
+
+}
+
+
+.raio-3 {
+
+    right: 6%;
+
+    transform:
+        rotate(-16deg);
+
+    animation-delay: -5s;
+
+}
+
+
+@keyframes movimento-raio {
+
+    from {
+        opacity: 0.10;
+        transform: rotate(-8deg) scale(0.95);
+    }
+
+    to {
+        opacity: 0.24;
+        transform: rotate(8deg) scale(1.05);
+    }
+
+}
+
+
+/* =========================================================
+   CORAIS
+========================================================= */
+
+.coral {
+
+    position: absolute;
+
+    bottom: -15px;
+
+    width: 90px;
+
+    height: 145px;
+
+    border-radius:
+        55% 45% 0 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff8b9e,
+            #ffb15f,
+            #ff729f
+        );
+
+    opacity: 0.85;
+
+}
+
+
+.coral::before,
+.coral::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 38px;
+
+    height: 105px;
+
+    border-radius: 50px;
+
+    background:
+        inherit;
+
+}
+
+
+.coral::before {
+    left: -20px;
+    transform: rotate(-22deg);
+}
+
+
+.coral::after {
+    right: -20px;
+    transform: rotate(22deg);
+}
+
+
+.coral-1 {
+    left: 3%;
+    transform: scale(0.85);
+}
+
+
+.coral-2 {
+    right: 5%;
+    transform: scale(1.1);
+}
+
+
+.coral-3 {
+
+    left: 45%;
+
+    bottom: -30px;
+
+    transform:
+        scale(0.65);
+
+    opacity: 0.55;
+
+}
+
+
+/* =========================================================
+   ALGAS
+========================================================= */
+
+.alga {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 15px;
+
+    height: 145px;
+
+    border-radius: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #43ad74,
+            #78d77c
+        );
+
+    transform-origin: bottom;
+
+    animation:
+        balanco-alga
+        4s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.alga::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+
+    bottom: 0;
+
+    width: 13px;
+
+    height: 110px;
+
+    border-radius: 100%;
+
+    background:
+        #4fbd77;
+
+}
+
+
+.alga-1 {
+    left: 15%;
+}
+
+
+.alga-2 {
+
+    left: 24%;
+
+    height: 190px;
+
+    animation-delay: -1s;
+
+}
+
+
+.alga-3 {
+
+    right: 20%;
+
+    height: 165px;
+
+    animation-delay: -2s;
+
+}
+
+
+@keyframes balanco-alga {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(7deg);
+    }
+
+}
+
+
+/* =========================================================
+   ANÊMONAS
+========================================================= */
+
+.anemona {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 75px;
+
+    height: 85px;
+
+    border-radius:
+        50% 50% 20% 20%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff9bc9 0 22%,
+            #ff6ca9 23% 52%,
+            #e955a0 53% 100%
+        );
+
+    opacity: 0.85;
+
+}
+
+
+.anemona-1 {
+    left: 31%;
+}
+
+
+.anemona-2 {
+    right: 31%;
+    transform: scale(0.8);
+}
+
+
+/* =========================================================
+   CARDUME DA ENTRADA
+========================================================= */
+
+.cardume {
+
+    position: absolute;
+
+    left: -25%;
+
+    display: flex;
+
+    gap: 18px;
+
+    white-space: nowrap;
+
+    animation:
+        cardume-direita
+        18s
+        linear
+        infinite;
+
+}
+
+
+.cardume span {
+
+    display: inline-block;
+
+    font-size: clamp(26px, 4vw, 48px);
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(0,0,0,0.12)
+        );
+
+}
+
+
+.cardume-entrada {
+
+    top: 28%;
+
+}
+
+
+@keyframes cardume-direita {
+
+    from {
+        transform: translateX(-10vw);
+    }
+
+    to {
+        transform: translateX(145vw);
+    }
+
+}
+
+
+/* =========================================================
+   SEREIA
+========================================================= */
+
+.sereia-silhueta {
+
+    position: absolute;
+
+    right: 7%;
+
+    top: 19%;
+
+    font-size:
+        clamp(60px, 10vw, 125px);
+
+    opacity: 0.20;
+
+    filter:
+        blur(0.5px)
+        drop-shadow(
+            0 10px 12px rgba(0,0,0,0.08)
+        );
+
+    animation:
+        sereia-flutuar
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes sereia-flutuar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+    }
+
+}
+
+
+/* =========================================================
+   BOLHAS DA ENTRADA
+========================================================= */
+
+.bolha {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    width: 12px;
+
+    height: 12px;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.75);
+
+    border-radius: 50%;
+
+    animation:
+        bolha-subindo
+        7s
+        linear
+        infinite;
+
+}
+
+
+.bolha:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+
+.bolha:nth-child(2) {
+    left: 27%;
+    animation-delay: -2s;
+}
+
+
+.bolha:nth-child(3) {
+    left: 45%;
+    animation-delay: -4s;
+}
+
+
+.bolha:nth-child(4) {
+    left: 63%;
+    animation-delay: -1s;
+}
+
+
+.bolha:nth-child(5) {
+    left: 78%;
+    animation-delay: -3s;
+}
+
+
+.bolha:nth-child(6) {
+    left: 91%;
+    animation-delay: -5s;
+}
+
+
+@keyframes bolha-subindo {
+
+    from {
+        transform:
+            translateY(0)
+            scale(0.6);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    to {
+
+        transform:
+            translateY(-115vh)
+            scale(1.25);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTEÚDO DA ENTRADA
+========================================================= */
+
+.conteudo-entrada {
+
     position: relative;
-    z-index: 2;
 
-    padding-top: 80px;
+    z-index: 10;
+
+    width: min(760px, 100%);
+
+    text-align: center;
+
 }
 
-.hero-label {
-    display: block;
+
+.pequeno-titulo {
 
     margin-bottom: 20px;
 
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size:
+        clamp(14px, 2vw, 19px);
 
-    letter-spacing: 0.25em;
+    font-weight: 600;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 8px rgba(20, 80, 100, 0.18);
+
 }
 
-.hero h1 {
-    max-width: 800px;
 
-    font-size: clamp(3.5rem, 8vw, 7rem);
+.conteudo-entrada h1 {
 
-    font-weight: 500;
+    margin: 0;
+
+    font-size:
+        clamp(45px, 9vw, 92px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 7px 18px rgba(21, 91, 115, 0.25);
+
 }
 
-.hero h1 strong {
-    color: #d6ad65;
-    font-weight: 500;
+
+.conteudo-entrada h1 span {
+
+    color: var(--rosa);
+
+    text-shadow:
+        0 4px 12px rgba(214, 57, 130, 0.25);
+
 }
 
-.hero p {
-    max-width: 580px;
 
-    margin: 25px 0 35px;
+/* =========================================================
+   INFORMAÇÕES PRINCIPAIS
+========================================================= */
 
-    color: rgba(255, 255, 255, 0.82);
+.informacoes-principais {
 
-    font-size: 1.15rem;
-}
-
-.hero-buttons {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 14px;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin:
+        28px
+        auto
+        22px;
+
+    max-width: 720px;
+
 }
 
-.hero-scroll {
-    position: absolute;
 
-    bottom: 30px;
-    left: 50%;
+.informacoes-principais p {
 
-    transform: translateX(-50%);
+    margin: 0;
+
+    padding:
+        10px
+        16px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.26);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.40);
+
+    backdrop-filter:
+        blur(8px);
+
+    color: #ffffff;
+
+    font-size:
+        clamp(13px, 2vw, 16px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(23, 111, 139, 0.10);
+
+}
+
+
+.informacoes-principais strong {
+
+    color: #ffffff;
+
+}
+
+
+.informacao-especial {
+
+    background:
+        rgba(255,255,255,0.34) !important;
+
+}
+
+
+/* =========================================================
+   TEXTO DO CONVITE
+========================================================= */
+
+.convite-texto {
+
+    max-width: 590px;
+
+    margin:
+        0 auto
+        25px;
+
+    font-size:
+        clamp(15px, 2.3vw, 19px);
+
+    line-height: 1.6;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 8px rgba(25, 91, 111, 0.15);
+
+}
+
+
+/* =========================================================
+   INDICAÇÃO DE CONTINUAÇÃO
+========================================================= */
+
+.entrada-continuar {
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     gap: 5px;
 
-    font-size: 0.7rem;
+    color: #ffffff;
 
-    opacity: 0.75;
+    font-size: 15px;
+
+    font-weight: 700;
+
+    animation:
+        indicador-flutuar
+        2.2s
+        ease-in-out
+        infinite;
+
 }
 
-.scroll-arrow {
-    font-size: 1.3rem;
 
-    animation: scrollDown 1.8s infinite;
+.seta-baixo {
+
+    font-size: 28px;
+
 }
 
-@keyframes scrollDown {
+
+@keyframes indicador-flutuar {
+
     0%,
     100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(7px);
+        transform: translateY(8px);
     }
+
 }
 
 
-/* =========================================================
-   WELCOME
-========================================================= */
+.indicador-entrada {
 
-.welcome {
-    background: #fff;
-}
-
-.welcome-grid {
-    display: grid;
-
-    grid-template-columns: 0.9fr 1.1fr;
-
-    align-items: center;
-
-    gap: 90px;
-}
-
-.welcome-content p {
-    margin-top: 22px;
-
-    color: #6d6d6d;
-}
-
-.welcome-image {
-    position: relative;
-}
-
-.welcome-image img {
-    height: 570px;
-
-    position: relative;
-    z-index: 2;
-}
-
-.image-decoration {
     position: absolute;
 
-    right: -22px;
-    bottom: -22px;
+    bottom: 25px;
 
-    width: 80%;
-    height: 80%;
+    left: 50%;
 
-    border: 1px solid #a67c32;
-}
+    transform:
+        translateX(-50%);
 
-
-/* =========================================================
-   CULTOS
-========================================================= */
-
-.services {
-    background: #f3f1ec;
-}
-
-.services-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 18px;
-}
-
-.service-card {
-    min-height: 350px;
-
-    padding: 35px 28px;
+    z-index: 20;
 
     display: flex;
+
     flex-direction: column;
-
-    background: #fff;
-
-    border: 1px solid rgba(0, 0, 0, 0.05);
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
-}
-
-.service-card.featured {
-    background: #202020;
-    color: #fff;
-}
-
-.service-icon {
-    font-size: 2rem;
-
-    margin-bottom: 25px;
-}
-
-.service-day {
-    font-size: 0.7rem;
-    font-weight: 700;
-
-    letter-spacing: 0.16em;
-
-    color: #a67c32;
-}
-
-.service-card h3 {
-    margin-top: 12px;
-
-    font-size: 1.5rem;
-}
-
-.service-time {
-    margin-top: 22px;
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 2.3rem;
-
-    color: #a67c32;
-}
-
-.service-card p {
-    margin-top: auto;
-
-    padding-top: 20px;
-
-    font-size: 0.9rem;
-
-    color: #777;
-}
-
-.service-card.featured p {
-    color: #aaa;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about {
-    background: #fff;
-}
-
-.about-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
 
     align-items: center;
 
-    gap: 90px;
-}
+    gap: 2px;
 
-.about-image img {
-    height: 580px;
-}
+    font-size: 12px;
 
-.about-content p {
-    margin-top: 22px;
+    color: rgba(255,255,255,0.9);
 
-    color: #6e6e6e;
 }
 
 
 /* =========================================================
-   DEPARTAMENTOS
+   PARTE 2 — OCEANO
 ========================================================= */
 
-.departments {
-    background: #202020;
+.oceano {
 
-    color: #fff;
-}
-
-.departments .section-heading p {
-    color: #aaa;
-}
-
-.departments-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.department-card {
-    overflow: hidden;
-
-    background: #292929;
-
-    transition:
-        transform 0.35s ease,
-        background 0.35s ease;
-}
-
-.department-card:hover {
-    transform: translateY(-7px);
-
-    background: #303030;
-}
-
-.department-image {
-    height: 230px;
-
-    overflow: hidden;
-}
-
-.department-image img {
-    height: 100%;
-
-    transition: transform 0.6s ease;
-}
-
-.department-card:hover img {
-    transform: scale(1.06);
-}
-
-.department-content {
-    padding: 27px;
-}
-
-.department-content > span {
-    color: #a67c32;
-
-    font-size: 0.75rem;
-    font-weight: 700;
-}
-
-.department-content h3 {
-    margin: 10px 0;
-
-    font-size: 1.55rem;
-}
-
-.department-content p {
-    color: #aaa;
-
-    font-size: 0.9rem;
-}
-
-
-/* =========================================================
-   EVENTOS
-========================================================= */
-
-.events {
-    background: #fff;
-}
-
-.events-empty {
-    max-width: 720px;
-
-    margin: 0 auto;
-
-    padding: 70px 40px;
-
-    text-align: center;
-
-    border: 1px solid #e6e3dc;
-}
-
-.events-icon {
-    margin-bottom: 20px;
-
-    font-size: 3rem;
-}
-
-.events-empty h3 {
-    font-size: 1.8rem;
-}
-
-.events-empty p {
-    max-width: 520px;
-
-    margin: 15px auto 30px;
-
-    color: #777;
-}
-
-
-/* =========================================================
-   VERSÍCULO
-========================================================= */
-
-.verse {
-    position: relative;
+    min-height: 120vh;
 
     background:
         linear-gradient(
-            rgba(20, 20, 20, 0.78),
-            rgba(20, 20, 20, 0.78)
-        ),
-        url("assets/img/verse.jpg") center/cover no-repeat;
+            180deg,
+            #bdf5f6 0%,
+            #a0e9ef 14%,
+            #79dce8 30%,
+            #5bc9dd 48%,
+            #43b8d2 66%,
+            #329fbe 82%,
+            #2588aa 100%
+        );
 
-    color: #fff;
-}
-
-.verse-container {
-    display: flex;
-
-    justify-content: center;
-
-    text-align: center;
-}
-
-.verse-content {
-    max-width: 900px;
-}
-
-.verse blockquote {
-    margin: 15px 0 20px;
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(2rem, 4vw, 3.6rem);
-
-    line-height: 1.3;
-}
-
-.verse cite {
-    color: #d6ad65;
-
-    font-style: normal;
-
-    font-weight: 700;
 }
 
 
 /* =========================================================
-   INSTAGRAM
+   FUNDO DO OCEANO
 ========================================================= */
 
-.instagram {
-    background: #f5f3ef;
+.oceano-fundo {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
 }
 
-.instagram-header {
-    display: flex;
 
-    align-items: end;
-    justify-content: space-between;
+.luz-oceano {
 
-    gap: 30px;
+    position: absolute;
 
-    margin-bottom: 45px;
-}
+    top: -5%;
 
-.instagram-header p {
-    max-width: 600px;
+    left: 50%;
 
-    margin-top: 18px;
+    width: 65%;
 
-    color: #777;
-}
+    height: 70%;
 
-.instagram-button {
-    flex-shrink: 0;
+    transform:
+        translateX(-50%);
 
-    padding: 14px 20px;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,255,255,0.45),
+            rgba(255,255,255,0) 68%
+        );
 
-    border: 1px solid #202020;
+    filter: blur(5px);
 
-    font-weight: 700;
-
-    transition: 0.3s ease;
-}
-
-.instagram-button:hover {
-    background: #202020;
-    color: #fff;
-}
-
-.instagram-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 18px;
-}
-
-.instagram-placeholder {
-    min-height: 300px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-
-    text-align: center;
-
-    background: #fff;
-
-    border: 1px solid #e5e2dc;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.instagram-placeholder:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-}
-
-.instagram-placeholder span {
-    font-size: 2.5rem;
-}
-
-.instagram-placeholder strong {
-    font-family: "Playfair Display", serif;
-
-    font-size: 1.3rem;
-}
-
-.instagram-placeholder small {
-    color: #888;
 }
 
 
 /* =========================================================
-   PASTOR
+   BOLHAS DO OCEANO
 ========================================================= */
 
-.pastor {
-    background: #fff;
-}
+.bolhas-oceano span {
 
-.pastor-grid {
-    display: grid;
+    position: absolute;
 
-    grid-template-columns: 1fr 0.75fr;
+    bottom: -30px;
 
-    align-items: center;
+    width: 14px;
 
-    gap: 100px;
+    height: 14px;
 
-    max-width: 1000px;
-}
-
-.pastor-content h3 {
-    margin-top: 12px;
-
-    color: #a67c32;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 1.15rem;
-}
-
-.pastor-content p {
-    max-width: 500px;
-
-    margin-top: 20px;
-
-    color: #777;
-}
-
-.pastor-image img {
-    height: 480px;
-}
-
-
-/* =========================================================
-   PRIMEIRA VEZ
-========================================================= */
-
-.first-time {
-    background: #a67c32;
-
-    color: #fff;
-
-    text-align: center;
-}
-
-.first-time-container {
-    max-width: 850px;
-}
-
-.first-time .section-label {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.first-time h2 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-}
-
-.first-time h2 span {
-    color: #fff;
-}
-
-.first-time p {
-    max-width: 650px;
-
-    margin: 25px auto 30px;
-
-    color: rgba(255, 255, 255, 0.86);
-}
-
-
-/* =========================================================
-   IA BÍBLICA
-========================================================= */
-
-.bible-ai {
-    background: #f3f1ec;
-}
-
-.bible-ai-container {
-    min-height: 320px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 50px;
-
-    padding: 60px 70px;
-
-    background: #fff;
-
-    border: 1px solid #e4e0d8;
-}
-
-.bible-ai-content {
-    max-width: 700px;
-}
-
-.bible-ai-content p {
-    margin: 20px 0 28px;
-
-    color: #777;
-}
-
-.bible-ai-icon {
-    width: 170px;
-    height: 170px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border:
+        2px solid
+        rgba(255,255,255,0.65);
 
     border-radius: 50%;
 
-    background: #f3f1ec;
+    animation:
+        bolhas-oceano-subir
+        9s
+        linear
+        infinite;
 
-    font-size: 4rem;
+}
+
+
+.bolhas-oceano span:nth-child(1) {
+    left: 8%;
+    animation-delay: -1s;
+}
+
+
+.bolhas-oceano span:nth-child(2) {
+    left: 19%;
+    animation-delay: -5s;
+}
+
+
+.bolhas-oceano span:nth-child(3) {
+    left: 34%;
+    animation-delay: -3s;
+}
+
+
+.bolhas-oceano span:nth-child(4) {
+    left: 48%;
+    animation-delay: -7s;
+}
+
+
+.bolhas-oceano span:nth-child(5) {
+    left: 61%;
+    animation-delay: -2s;
+}
+
+
+.bolhas-oceano span:nth-child(6) {
+    left: 74%;
+    animation-delay: -6s;
+}
+
+
+.bolhas-oceano span:nth-child(7) {
+    left: 86%;
+    animation-delay: -4s;
+}
+
+
+.bolhas-oceano span:nth-child(8) {
+    left: 94%;
+    animation-delay: -8s;
+}
+
+
+@keyframes bolhas-oceano-subir {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(0.5);
+
+        opacity: 0;
+
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    to {
+
+        transform:
+            translateY(-130vh)
+            scale(1.2);
+
+        opacity: 0;
+
+    }
+
 }
 
 
 /* =========================================================
-   MODAL IA
+   PEIXES — TODOS ESQUERDA → DIREITA
 ========================================================= */
 
-.bible-modal {
-    position: fixed;
+.peixes {
 
-    inset: 0;
-
-    z-index: 2000;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-}
-
-.bible-modal.active {
-    display: flex;
-}
-
-.bible-modal-overlay {
     position: absolute;
 
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.72);
+    overflow: hidden;
 
-    backdrop-filter: blur(5px);
 }
 
-.bible-modal-content {
+
+.peixe {
+
+    position: absolute;
+
+    left: -15%;
+
+    font-size:
+        clamp(28px, 5vw, 55px);
+
+    white-space: nowrap;
+
+    animation:
+        peixe-nadando
+        18s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 5px 7px
+            rgba(0,0,0,0.12)
+        );
+
+}
+
+
+/*
+   scaleX(-1) espelha o emoji.
+   Assim os peixes ficam voltados para
+   o sentido da viagem: ESQUERDA → DIREITA.
+*/
+
+.peixe-1 {
+    top: 18%;
+    animation-delay: -1s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-2 {
+    top: 31%;
+    animation-delay: -7s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-3 {
+    top: 45%;
+    animation-delay: -12s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-4 {
+    top: 59%;
+    animation-delay: -4s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-5 {
+    top: 72%;
+    animation-delay: -9s;
+    transform: scaleX(-1);
+}
+
+
+.peixe-6 {
+    top: 84%;
+    animation-delay: -15s;
+    transform: scaleX(-1);
+}
+
+
+@keyframes peixe-nadando {
+
+    from {
+
+        left: -15%;
+
+    }
+
+    to {
+
+        left: 115%;
+
+    }
+
+}
+
+
+/* =========================================================
+   GOLFINHO
+========================================================= */
+
+.golfinho {
+
+    position: absolute;
+
+    top: 18%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 3;
+
+    font-size:
+        clamp(80px, 14vw, 150px);
+
+    filter:
+        drop-shadow(
+            0 12px 15px
+            rgba(22, 98, 125, 0.20)
+        );
+
+    animation:
+        golfinho-flutuar
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes golfinho-flutuar {
+
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-15px)
+            rotate(3deg);
+    }
+
+}
+
+
+/* =========================================================
+   CORAIS DO OCEANO
+========================================================= */
+
+.corais-oceano {
+
+    position: absolute;
+
+    inset: auto 0 0;
+
+    height: 190px;
+
+}
+
+
+.coral-oceano {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 80px;
+
+    height: 150px;
+
+    border-radius:
+        50px 50px 10px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff809d,
+            #ffb15e,
+            #ff6fa5
+        );
+
+}
+
+
+.coral-oceano::before,
+.coral-oceano::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 35px;
+
+    height: 105px;
+
+    border-radius: 40px;
+
+    background:
+        inherit;
+
+}
+
+
+.coral-oceano::before {
+
+    left: -20px;
+
+    transform:
+        rotate(-20deg);
+
+}
+
+
+.coral-oceano::after {
+
+    right: -20px;
+
+    transform:
+        rotate(20deg);
+
+}
+
+
+.coral-oceano-1 {
+    left: 3%;
+}
+
+
+.coral-oceano-2 {
+    left: 47%;
+    transform: scale(0.75);
+}
+
+
+.coral-oceano-3 {
+    right: 5%;
+    transform: scale(1.15);
+}
+
+
+/* =========================================================
+   ALGAS DO OCEANO
+========================================================= */
+
+.algas-oceano {
+
+    position: absolute;
+
+    inset: auto 0 0;
+
+    height: 190px;
+
+}
+
+
+.alga-oceano {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 14px;
+
+    height: 150px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3ba66d,
+            #75d37d
+        );
+
+    animation:
+        algas-movimento
+        4s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.alga-oceano:nth-child(1) {
+    left: 14%;
+}
+
+
+.alga-oceano:nth-child(2) {
+    left: 27%;
+    height: 180px;
+    animation-delay: -1s;
+}
+
+
+.alga-oceano:nth-child(3) {
+    right: 27%;
+    height: 170px;
+    animation-delay: -2s;
+}
+
+
+.alga-oceano:nth-child(4) {
+    right: 12%;
+    height: 135px;
+    animation-delay: -3s;
+}
+
+
+@keyframes algas-movimento {
+
+    from {
+        transform: rotate(-6deg);
+    }
+
+    to {
+        transform: rotate(7deg);
+    }
+
+}
+
+
+/* =========================================================
+   CONTEÚDO DO OCEANO
+========================================================= */
+
+.conteudo-oceano {
+
     position: relative;
-    z-index: 2;
 
-    width: min(650px, 100%);
+    z-index: 10;
 
-    padding: 50px;
+    width: min(850px, 100%);
 
-    background: #fff;
+    min-height: 120vh;
+
+    margin: 0 auto;
+
+    padding:
+        90px
+        20px
+        100px;
 
     text-align: center;
-}
 
-.bible-modal-icon {
-    margin-bottom: 15px;
-
-    font-size: 3rem;
-}
-
-.bible-modal-content h2 {
-    font-size: 2.4rem;
-}
-
-.bible-modal-content p {
-    margin: 18px auto 25px;
-
-    color: #777;
-}
-
-.bible-modal-close {
-    position: absolute;
-
-    top: 15px;
-    right: 20px;
-
-    border: 0;
-    background: none;
-
-    font-size: 2rem;
-
-    cursor: pointer;
-}
-
-.ai-suggestions {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 10px;
-}
-
-.ai-suggestions button {
-    padding: 15px;
-
-    border: 1px solid #e5e2dc;
-
-    background: #f8f7f4;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-}
-
-.ai-suggestions button:hover {
-    border-color: #a67c32;
-
-    background: #fff;
-}
-
-.ai-coming-soon {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    padding: 7px 15px;
-
-    border-radius: 20px;
-
-    background: #202020;
-
-    color: #fff;
-
-    font-size: 0.7rem;
-    font-weight: 700;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.12em;
 }
 
 
-/* =========================================================
-   LOCALIZAÇÃO
-========================================================= */
+.titulo-oceano span {
 
-.location {
-    background: #fff;
-}
-
-.location-grid {
-    display: grid;
-
-    grid-template-columns: 0.8fr 1.2fr;
-
-    align-items: stretch;
-
-    gap: 60px;
-}
-
-.location-content {
-    padding: 20px 0;
-}
-
-.location-content p {
-    margin-top: 18px;
-
-    color: #777;
-}
-
-.address {
-    margin: 30px 0;
-}
-
-.address strong {
     display: block;
+
+    font-size:
+        clamp(45px, 8vw, 80px);
 
     margin-bottom: 8px;
 
-    color: #202020;
-}
-
-.address p {
-    margin: 0;
-
-    color: #555;
-}
-
-.map-container {
-    min-height: 450px;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-
-    min-height: 450px;
-
-    border: 0;
-
-    filter: grayscale(0.15);
 }
 
 
-/* =========================================================
-   CENTRAL
-========================================================= */
+.titulo-oceano h2 {
 
-.central {
-    background: #202020;
-
-    color: #fff;
-
-    text-align: center;
-}
-
-.central-container {
-    max-width: 750px;
-}
-
-.central .section-label {
-    color: #d6ad65;
-}
-
-.central p {
     max-width: 650px;
 
-    margin: 25px auto;
+    margin: 0 auto;
 
-    color: #aaa;
+    font-size:
+        clamp(34px, 6vw, 64px);
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 7px 15px
+        rgba(23, 92, 117, 0.25);
+
 }
 
 
-/* =========================================================
-   CONTRIBUA
-========================================================= */
+.titulo-oceano p {
 
-.contribute {
-    background: #f3f1ec;
-}
-
-.contribute-container {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 50px;
-}
-
-.contribute-container > div {
-    max-width: 700px;
-}
-
-.contribute-container p {
     margin-top: 18px;
 
-    color: #777;
+    font-size:
+        clamp(16px, 2.5vw, 20px);
+
+    color: rgba(255,255,255,0.92);
+
 }
 
 
 /* =========================================================
-   CONTATO
+   ÁREA DE EXPLORAÇÃO
 ========================================================= */
 
-.contact {
-    background: #fff;
-}
+.area-exploracao {
 
-.contact-grid {
-    display: grid;
+    position: relative;
 
-    grid-template-columns: repeat(3, 1fr);
+    width: min(720px, 100%);
 
-    gap: 18px;
-}
+    min-height: 360px;
 
-.contact-card {
-    padding: 40px 30px;
-
-    text-align: center;
-
-    border: 1px solid #e6e3dc;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-6px);
-
-    background: #f8f7f4;
-}
-
-.contact-card span {
-    display: block;
-
-    margin-bottom: 18px;
-
-    font-size: 2rem;
-}
-
-.contact-card h3 {
-    font-size: 1.35rem;
-}
-
-.contact-card p {
-    margin-top: 7px;
-
-    color: #888;
-
-    font-size: 0.9rem;
-}
-
-
-/* =========================================================
-   BOTÃO FLUTUANTE
-========================================================= */
-
-.floating-contact {
-    position: fixed;
-
-    right: 25px;
-    bottom: 25px;
-
-    z-index: 900;
-
-    width: 58px;
-    height: 58px;
+    margin:
+        90px
+        auto
+        70px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
+}
+
+
+/* =========================================================
+   MENSAGEM DE EXPLORAÇÃO
+========================================================= */
+
+.mensagem-exploracao {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    width: min(680px, 100%);
+
+    padding:
+        35px
+        30px;
+
+    border-radius: 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.30),
+            rgba(255,255,255,0.13)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.40);
+
+    box-shadow:
+        0 20px 45px
+        rgba(23, 93, 117, 0.16);
+
+    backdrop-filter:
+        blur(12px);
+
+    text-align: left;
+
+}
+
+
+.icone-exploracao {
+
+    flex:
+        0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 110px;
+
+    height: 110px;
 
     border-radius: 50%;
 
-    background: #a67c32;
+    background:
+        rgba(255,255,255,0.28);
 
-    color: #fff;
+    font-size: 70px;
 
-    font-size: 1.4rem;
+    animation:
+        golfinho-mini
+        3.5s
+        ease-in-out
+        infinite;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-}
-
-.floating-contact:hover {
-    transform: translateY(-5px) scale(1.05);
-
-    background: #202020;
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+@keyframes golfinho-mini {
 
-.footer {
-    background: #151515;
+    0%,
+    100% {
+        transform: translateY(0);
+    }
 
-    color: #fff;
+    50% {
+        transform: translateY(-9px);
+    }
+
 }
 
-.footer-grid {
-    display: grid;
 
-    grid-template-columns: 1.5fr 1fr 1fr;
+.texto-exploracao {
 
-    gap: 70px;
+    flex: 1;
 
-    padding: 75px 0;
 }
 
-.footer-logo {
-    font-size: 0.85rem;
-    font-weight: 700;
 
-    letter-spacing: 0.08em;
-}
+.titulo-exploracao {
 
-.footer-brand > strong {
     display: block;
 
-    margin-top: 5px;
+    margin-bottom: 10px;
 
-    color: #d6ad65;
+    font-size:
+        clamp(23px, 4vw, 32px);
 
-    font-size: 0.8rem;
+    font-weight: 900;
 
-    letter-spacing: 0.08em;
+    color: #ffffff;
+
 }
 
-.footer-brand p {
-    max-width: 300px;
+
+.texto-exploracao p {
+
+    margin-bottom: 10px;
+
+    font-size:
+        clamp(15px, 2.3vw, 18px);
+
+    line-height: 1.55;
+
+    color: rgba(255,255,255,0.94);
+
+}
+
+
+.pista-exploracao {
+
+    display: block;
 
     margin-top: 18px;
 
-    color: #777;
-}
+    font-size:
+        clamp(14px, 2vw, 17px);
 
-.footer-links {
-    display: flex;
+    font-weight: 700;
 
-    flex-direction: column;
+    color: #ffe0ee;
 
-    gap: 10px;
-}
-
-.footer-links h3 {
-    margin-bottom: 10px;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 0.9rem;
-
-    color: #d6ad65;
-}
-
-.footer-links a {
-    width: fit-content;
-
-    color: #888;
-
-    font-size: 0.85rem;
-
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-
-    padding: 22px 0;
-}
-
-.footer-bottom p {
-    color: #666;
-
-    font-size: 0.75rem;
-
-    text-align: center;
 }
 
 
 /* =========================================================
-   ANIMAÇÕES
+   ELEMENTOS DA EXPLORAÇÃO
 ========================================================= */
 
-@keyframes fadeUp {
+.exploracao-bolha,
+.exploracao-brilho {
+
+    position: absolute;
+
+    pointer-events: none;
+
+}
+
+
+.exploracao-bolha {
+
+    font-size: 35px;
+
+    animation:
+        mini-bolha
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.bolha-1 {
+
+    left: 5%;
+
+    top: 15%;
+
+}
+
+
+.bolha-2 {
+
+    right: 5%;
+
+    bottom: 15%;
+
+    animation-delay: -2s;
+
+}
+
+
+.exploracao-brilho {
+
+    font-size: 32px;
+
+    opacity: 0.8;
+
+    animation:
+        brilho-piscar
+        2s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.brilho-1 {
+
+    top: 5%;
+
+    right: 18%;
+
+}
+
+
+.brilho-2 {
+
+    bottom: 5%;
+
+    left: 15%;
+
+    animation-delay: -1s;
+
+}
+
+
+@keyframes mini-bolha {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: translateY(-15px);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes brilho-piscar {
+
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        opacity: 0.35;
+        transform: scale(0.8);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1.15);
     }
-}
 
-.hero-content {
-    animation: fadeUp 1s ease forwards;
 }
 
 
 /* =========================================================
-   TABLET
+   INDICADOR
 ========================================================= */
 
-@media (max-width: 1050px) {
+.indicador-rolagem {
 
-    .nav {
-        gap: 16px;
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-weight: 700;
+
+    color: rgba(255,255,255,0.90);
+
+    animation:
+        indicador-flutuar
+        2.3s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* =========================================================
+   PARTE 3 — BAÚ
+========================================================= */
+
+.bau-secao {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        90px
+        20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #2c9fbd 0%,
+            #218cac 35%,
+            #197997 70%,
+            #166883 100%
+        );
+
+}
+
+
+.fundo-bau {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.conteudo-bau {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+}
+
+
+.texto-descoberta {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(18px, 3vw, 25px);
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+}
+
+
+.bau-tesouro {
+
+    position: relative;
+
+    display: block;
+
+    width: 190px;
+
+    height: 170px;
+
+    margin: 0 auto;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 75px;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.bau-tesouro:hover {
+
+    transform:
+        scale(1.08)
+        translateY(-5px);
+
+}
+
+
+.bau-tesouro:active {
+
+    transform:
+        scale(0.94);
+
+}
+
+
+.bau-tampa {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 100px;
+
+    transition:
+        transform 0.6s ease;
+
+}
+
+
+.bau-corpo {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 90px;
+
+}
+
+
+.bau-fechadura {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 27px;
+
+}
+
+
+.texto-bau {
+
+    max-width: 400px;
+
+    margin:
+        30px auto
+        0;
+
+    font-size:
+        clamp(15px, 2.5vw, 19px);
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,0.92);
+
+}
+
+
+/* =========================================================
+   PARTÍCULAS DO BAÚ
+========================================================= */
+
+.particulas-bau span {
+
+    position: absolute;
+
+    color: #ffe4f1;
+
+    font-size: 25px;
+
+    animation:
+        particula-flutuar
+        5s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+.particulas-bau span:nth-child(1) {
+    left: 12%;
+    top: 20%;
+}
+
+
+.particulas-bau span:nth-child(2) {
+    left: 30%;
+    top: 65%;
+    animation-delay: -1s;
+}
+
+
+.particulas-bau span:nth-child(3) {
+    right: 15%;
+    top: 25%;
+    animation-delay: -2s;
+}
+
+
+.particulas-bau span:nth-child(4) {
+    right: 30%;
+    bottom: 20%;
+    animation-delay: -3s;
+}
+
+
+.particulas-bau span:nth-child(5) {
+    left: 50%;
+    top: 12%;
+    animation-delay: -4s;
+}
+
+
+@keyframes particula-flutuar {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.45;
     }
 
-    .nav a {
-        font-size: 0.7rem;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .departments-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .welcome-grid,
-    .about-grid {
-        gap: 50px;
+    to {
+        transform: translateY(-20px) rotate(25deg);
+        opacity: 1;
     }
 
 }
 
 
 /* =========================================================
-   MOBILE
+   CARTA — ESCONDIDA
+========================================================= */
+
+.carta-escondida {
+
+    display: none !important;
+
+}
+
+
+/*
+   Quando o JavaScript adicionar a classe
+   .carta-visivel, a carta poderá aparecer.
+*/
+
+.carta-secao.carta-visivel {
+
+    display: flex !important;
+
+}
+
+
+/* =========================================================
+   PARTE DA CARTA
+========================================================= */
+
+.carta-secao {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        70px
+        20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #51c9dc 0%,
+            #35abc7 35%,
+            #248dac 70%,
+            #1c7695 100%
+        );
+
+}
+
+
+.fundo-carta {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+
+.carta-container {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(720px, 100%);
+
+}
+
+
+.carta {
+
+    position: relative;
+
+    padding:
+        45px
+        30px
+        35px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdfb,
+            #fff3f7
+        );
+
+    color: var(--texto-escuro);
+
+    box-shadow:
+        0 25px 60px
+        rgba(10, 69, 92, 0.30);
+
+    border:
+        3px solid
+        rgba(255,105,180,0.20);
+
+}
+
+
+.carta-decoracao {
+
+    position: absolute;
+
+    top: -32px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.12);
+
+    font-size: 38px;
+
+}
+
+
+.carta-conteudo {
+
+    text-align: center;
+
+}
+
+
+.carta-pequeno-titulo {
+
+    color: var(--rosa);
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+
+}
+
+
+.carta h2 {
+
+    font-size:
+        clamp(30px, 6vw, 50px);
+
+    line-height: 1.05;
+
+    color: var(--rosa);
+
+}
+
+
+.linha-decorativa {
+
+    margin:
+        18px
+        0
+        25px;
+
+    color: var(--rosa);
+
+    font-size: 20px;
+
+}
+
+
+.texto-carta {
+
+    max-width: 550px;
+
+    margin:
+        0 auto
+        30px;
+
+    font-size:
+        clamp(16px, 2.5vw, 19px);
+
+    line-height: 1.7;
+
+}
+
+
+.texto-carta p {
+
+    margin-bottom: 14px;
+
+}
+
+
+/* =========================================================
+   DADOS DA FESTA
+========================================================= */
+
+.dados-festa {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.dado-festa {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,105,180,0.07);
+
+    text-align: left;
+
+}
+
+
+.icone-dado {
+
+    font-size: 27px;
+
+}
+
+
+.dado-festa strong {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--rosa);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.dado-festa span,
+.dado-festa a {
+
+    font-size: 14px;
+
+    color: var(--texto-escuro);
+
+}
+
+
+.dado-festa a {
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+}
+
+
+.dado-festa a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   ASSINATURA
+========================================================= */
+
+.assinatura {
+
+    margin-top: 30px;
+
+}
+
+
+.assinatura p {
+
+    margin-bottom: 4px;
+
+}
+
+
+.assinatura strong {
+
+    color: var(--rosa);
+
+    font-size: 24px;
+
+}
+
+
+/* =========================================================
+   BOTÃO FECHAR CARTA
+========================================================= */
+
+.botao-fechar-carta {
+
+    margin-top: 30px;
+
+    padding:
+        13px
+        22px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rosa),
+            var(--rosa-escuro)
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(233,79,155,0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.botao-fechar-carta:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(233,79,155,0.35);
+
+}
+
+
+/* =========================================================
+   PARTE — PRESENTES
+========================================================= */
+
+.presentes {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        100px
+        20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1d829e 0%,
+            #1b7592 45%,
+            #17627d 100%
+        );
+
+}
+
+
+.fundo-presentes {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+
+.conteudo-presentes {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1000px, 100%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+
+.titulo-pequeno {
+
+    color: #ffe3f0;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+
+}
+
+
+.conteudo-presentes h2 {
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    font-size:
+        clamp(32px, 6vw, 58px);
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+}
+
+
+.descricao-presentes {
+
+    max-width: 620px;
+
+    margin:
+        22px auto
+        40px;
+
+    font-size:
+        clamp(15px, 2.5vw, 18px);
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.90);
+
+}
+
+
+/* =========================================================
+   LISTA DE PRESENTES
+========================================================= */
+
+.lista-presentes {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.presente-card {
+
+    padding: 24px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(255,255,255,0.14);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.22);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(4, 57, 77, 0.15);
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.presente-card:hover {
+
+    transform:
+        translateY(-7px);
+
+}
+
+
+.presente-imagem {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100px;
+
+    height: 100px;
+
+    margin:
+        0 auto
+        18px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.20);
+
+    font-size: 55px;
+
+}
+
+
+.presente-info h3 {
+
+    margin-bottom: 8px;
+
+    font-size: 23px;
+
+    color: #ffffff;
+
+}
+
+
+.presente-info p {
+
+    min-height: 50px;
+
+    margin-bottom: 18px;
+
+    line-height: 1.5;
+
+    color:
+        rgba(255,255,255,0.86);
+
+}
+
+
+.botao-presente {
+
+    display: inline-block;
+
+    padding:
+        11px
+        18px;
+
+    border-radius: 999px;
+
+    background:
+        var(--rosa);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+.botao-presente:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        var(--rosa-escuro);
+
+}
+
+
+.aviso-presente {
+
+    margin-top: 30px;
+
+    color:
+        rgba(255,255,255,0.82);
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   FUNDO DO MAR
+========================================================= */
+
+.fundo-mar {
+
+    min-height: 120vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #176a88 0%,
+            #155f7d 30%,
+            #12546f 65%,
+            #10475f 100%
+        );
+
+}
+
+
+.ambiente-profundo {
+
+    position: relative;
+
+    min-height: 120vh;
+
+    overflow: hidden;
+
+}
+
+
+.luz-profunda {
+
+    position: absolute;
+
+    top: -10%;
+
+    left: 50%;
+
+    width: 70%;
+
+    height: 70%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(120,235,244,0.28),
+            rgba(120,235,244,0) 70%
+        );
+
+    filter: blur(10px);
+
+}
+
+
+/* =========================================================
+   ELEMENTOS DO FUNDO DO MAR
+========================================================= */
+
+.elementos-fundo-mar {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+
+.concha,
+.coral-profundo,
+.alga-profunda,
+.peixe-profundo {
+
+    position: absolute;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(0,0,0,0.15)
+        );
+
+}
+
+
+.concha {
+
+    font-size:
+        clamp(45px, 8vw, 85px);
+
+}
+
+
+.concha-1 {
+
+    left: 8%;
+
+    bottom: 15%;
+
+}
+
+
+.concha-2 {
+
+    right: 10%;
+
+    top: 30%;
+
+}
+
+
+.coral-profundo {
+
+    font-size:
+        clamp(60px, 10vw, 110px);
+
+}
+
+
+.coral-profundo-1 {
+
+    left: 2%;
+
+    bottom: -5%;
+
+}
+
+
+.coral-profundo-2 {
+
+    right: 4%;
+
+    bottom: -8%;
+
+}
+
+
+.alga-profunda {
+
+    font-size:
+        clamp(45px, 7vw, 75px);
+
+}
+
+
+.alga-profunda-1 {
+
+    left: 22%;
+
+    bottom: 0;
+
+}
+
+
+.alga-profunda-2 {
+
+    right: 23%;
+
+    bottom: 0;
+
+}
+
+
+.peixe-profundo {
+
+    font-size:
+        clamp(28px, 5vw, 50px);
+
+    left: -10%;
+
+    animation:
+        peixe-profundo-nadar
+        20s
+        linear
+        infinite;
+
+}
+
+
+.peixe-profundo-1 {
+    top: 25%;
+}
+
+
+.peixe-profundo-2 {
+    top: 55%;
+    animation-delay: -7s;
+}
+
+
+.peixe-profundo-3 {
+    top: 75%;
+    animation-delay: -14s;
+}
+
+
+@keyframes peixe-profundo-nadar {
+
+    from {
+        left: -10%;
+    }
+
+    to {
+        left: 115%;
+    }
+
+}
+
+
+/* =========================================================
+   CONTEÚDO FUNDO DO MAR
+========================================================= */
+
+.conteudo-fundo-mar {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(700px, 100%);
+
+    margin: 0 auto;
+
+    padding:
+        150px
+        20px
+        100px;
+
+    text-align: center;
+
+}
+
+
+.texto-profundezas {
+
+    color: #ffd6e9;
+
+    font-weight: 800;
+
+}
+
+
+.conteudo-fundo-mar h2 {
+
+    margin:
+        15px
+        0;
+
+    font-size:
+        clamp(35px, 6vw, 60px);
+
+    line-height: 1.05;
+
+    color: #ffffff;
+
+}
+
+
+.conteudo-fundo-mar > p:last-child {
+
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    font-size:
+        clamp(16px, 2.5vw, 19px);
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.86);
+
+}
+
+
+/* =========================================================
+   PARTE FINAL
+========================================================= */
+
+.concha-final {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #145a76 0%,
+            #124e68 40%,
+            #0f4359 72%,
+            #0d3a4e 100%
+        );
+
+}
+
+
+.fundo-final {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+}
+
+
+.luz-final {
+
+    position: absolute;
+
+    top: -10%;
+
+    left: 50%;
+
+    width: 80%;
+
+    height: 65%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(105,220,235,0.25),
+            rgba(105,220,235,0) 70%
+        );
+
+}
+
+
+/* =========================================================
+   CONTEÚDO FINAL
+========================================================= */
+
+.conteudo-final {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(750px, 100%);
+
+    margin: 0 auto;
+
+    padding:
+        100px
+        20px
+        70px;
+
+    text-align: center;
+
+}
+
+
+.final-pequeno-titulo {
+
+    color: #ffd7e9;
+
+    font-weight: 800;
+
+}
+
+
+.concha-convite {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        clamp(130px, 25vw, 190px);
+
+    height:
+        clamp(130px, 25vw, 190px);
+
+    margin:
+        35px
+        auto
+        20px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff4fa,
+            #ffc4df 45%,
+            #f784b9 100%
+        );
+
+    font-size:
+        clamp(70px, 13vw, 115px);
+
+    cursor: pointer;
+
+    box-shadow:
+        0 18px 40px
+        rgba(0,0,0,0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation:
+        concha-flutuar
+        3.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+.concha-convite:hover {
+
+    transform:
+        scale(1.08);
+
+    box-shadow:
+        0 25px 50px
+        rgba(0,0,0,0.30);
+
+}
+
+
+.concha-convite:active {
+
+    transform:
+        scale(0.94);
+
+}
+
+
+@keyframes concha-flutuar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+.conteudo-final h2 {
+
+    font-size:
+        clamp(35px, 7vw, 65px);
+
+    color: #ffffff;
+
+    text-shadow:
+        0 6px 15px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.texto-final {
+
+    max-width: 520px;
+
+    margin:
+        18px auto
+        25px;
+
+    font-size:
+        clamp(15px, 2.5vw, 19px);
+
+    line-height: 1.6;
+
+    color:
+        rgba(255,255,255,0.86);
+
+}
+
+
+/* =========================================================
+   DADOS DO CONVITE
+========================================================= */
+
+.dados-convite {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   MENSAGEM DOWNLOAD
+========================================================= */
+
+.mensagem-download {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin:
+        20px auto;
+
+    padding:
+        12px
+        18px;
+
+    max-width: 360px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    color: #ffffff;
+
+}
+
+
+.mensagem-download.ativa {
+
+    display: flex;
+
+}
+
+
+/* =========================================================
+   VOLTAR AO INÍCIO
+========================================================= */
+
+.botao-voltar-inicio {
+
+    margin-top: 30px;
+
+    padding:
+        12px
+        22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.botao-voltar-inicio:hover {
+
+    background:
+        rgba(255,105,180,0.28);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+
+    margin-top: 60px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+.rodape p:first-child {
+
+    color:
+        #ffd5e7;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   MODAIS
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+.modal.ativo {
+
+    display: flex;
+
+}
+
+
+.modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(5, 37, 50, 0.72);
+
+    backdrop-filter:
+        blur(7px);
+
+}
+
+
+.modal-conteudo {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(700px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    border-radius: 28px;
+
+    background:
+        #ffffff;
+
+    color: var(--texto-escuro);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.30);
+
+}
+
+
+.fechar-modal {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,105,180,0.10);
+
+    color:
+        var(--rosa);
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+.modal-download-conteudo {
+
+    text-align: center;
+
+}
+
+
+.icone-download {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.modal-download-conteudo h2 {
+
+    color:
+        var(--rosa);
+
+    font-size:
+        clamp(26px, 5vw, 40px);
+
+}
+
+
+.modal-download-conteudo p {
+
+    margin:
+        15px
+        auto
+        25px;
+
+    max-width: 450px;
+
+    line-height: 1.6;
+
+}
+
+
+.botao-download {
+
+    padding:
+        14px
+        24px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rosa),
+            var(--rosa-escuro)
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   BOLHAS DE FUNDOS
+========================================================= */
+
+.bolhas-bau span,
+.bolhas-carta span,
+.bolhas-presentes span,
+.bolhas-profundas span,
+.bolhas-final span {
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.30);
+
+    border-radius: 50%;
+
+    bottom: -20px;
+
+    animation:
+        bolha-generica
+        10s
+        linear
+        infinite;
+
+}
+
+
+.bolhas-bau span:nth-child(1),
+.bolhas-carta span:nth-child(1),
+.bolhas-presentes span:nth-child(1),
+.bolhas-profundas span:nth-child(1),
+.bolhas-final span:nth-child(1) {
+    left: 8%;
+}
+
+
+.bolhas-bau span:nth-child(2),
+.bolhas-carta span:nth-child(2),
+.bolhas-presentes span:nth-child(2),
+.bolhas-profundas span:nth-child(2),
+.bolhas-final span:nth-child(2) {
+    left: 27%;
+    animation-delay: -3s;
+}
+
+
+.bolhas-bau span:nth-child(3),
+.bolhas-carta span:nth-child(3),
+.bolhas-presentes span:nth-child(3),
+.bolhas-profundas span:nth-child(3),
+.bolhas-final span:nth-child(3) {
+    left: 48%;
+    animation-delay: -6s;
+}
+
+
+.bolhas-bau span:nth-child(4),
+.bolhas-carta span:nth-child(4),
+.bolhas-presentes span:nth-child(4),
+.bolhas-profundas span:nth-child(4),
+.bolhas-final span:nth-child(4) {
+    left: 70%;
+    animation-delay: -2s;
+}
+
+
+.bolhas-bau span:nth-child(5),
+.bolhas-presentes span:nth-child(5),
+.bolhas-profundas span:nth-child(5),
+.bolhas-final span:nth-child(5) {
+    left: 90%;
+    animation-delay: -8s;
+}
+
+
+.bolhas-profundas span:nth-child(6) {
+    left: 35%;
+    animation-delay: -4s;
+}
+
+
+.bolhas-profundas span:nth-child(7) {
+    left: 58%;
+    animation-delay: -7s;
+}
+
+
+.bolhas-profundas span:nth-child(8) {
+    left: 82%;
+    animation-delay: -1s;
+}
+
+
+@keyframes bolha-generica {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(0.6);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 0.7;
+
+    }
+
+    to {
+
+        transform:
+            translateY(-120vh)
+            scale(1.25);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   BRILHOS
+========================================================= */
+
+.brilhos-presentes span {
+
+    position: absolute;
+
+    color:
+        rgba(255,225,240,0.75);
+
+    font-size: 25px;
+
+    animation:
+        brilho-piscar
+        2.5s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+.brilhos-presentes span:nth-child(1) {
+    left: 10%;
+    top: 20%;
+}
+
+
+.brilhos-presentes span:nth-child(2) {
+    left: 30%;
+    bottom: 20%;
+    animation-delay: -1s;
+}
+
+
+.brilhos-presentes span:nth-child(3) {
+    right: 20%;
+    top: 15%;
+    animation-delay: -2s;
+}
+
+
+.brilhos-presentes span:nth-child(4) {
+    right: 8%;
+    bottom: 25%;
+    animation-delay: -1.5s;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
 ========================================================= */
 
 @media (max-width: 800px) {
 
-    .section {
-        padding: 80px 0;
+
+    .entrada {
+
+        padding-top: 55px;
+
     }
 
-    /* HEADER */
 
-    .header-container {
-        min-height: 72px;
+    .conteudo-entrada h1 {
+
+        letter-spacing: -1px;
+
     }
 
-    .nav {
-        position: fixed;
 
-        top: 72px;
-        left: 0;
+    .informacoes-principais {
 
-        width: 100%;
+        max-width: 600px;
 
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 25px;
-
-        background: #fff;
-
-        border-bottom: 1px solid #eee;
-
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .nav.active {
+
+    .mensagem-exploracao {
+
+        padding:
+            28px
+            22px;
+
+    }
+
+
+    .icone-exploracao {
+
+        width: 90px;
+
+        height: 90px;
+
+        font-size: 55px;
+
+    }
+
+
+    .lista-presentes {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 500px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .presente-card {
+
         display: flex;
-    }
 
-    .nav a {
-        padding: 12px 0;
+        align-items: center;
 
-        font-size: 0.85rem;
-    }
+        gap: 20px;
 
-    .nav a::after {
-        display: none;
-    }
+        text-align: left;
 
-    .header-button {
-        display: none;
-    }
-
-    .menu-button {
-        display: block;
     }
 
 
-    /* HERO */
+    .presente-imagem {
 
-    .hero {
-        min-height: 90vh;
-    }
+        flex:
+            0 0 90px;
 
-    .hero h1 {
-        font-size: clamp(3rem, 15vw, 5rem);
-    }
+        width: 90px;
 
-    .hero p {
-        font-size: 1rem;
-    }
+        height: 90px;
 
-    .hero-buttons {
-        flex-direction: column;
+        margin: 0;
 
-        align-items: stretch;
-
-        max-width: 330px;
-    }
-
-    .hero-scroll {
-        display: none;
     }
 
 
-    /* WELCOME */
+    .presente-info p {
 
-    .welcome-grid {
-        grid-template-columns: 1fr;
+        min-height: auto;
 
-        gap: 50px;
     }
 
-    .welcome-image img {
-        height: 400px;
-    }
-
-
-    /* CULTOS */
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .service-card {
-        min-height: 300px;
-    }
-
-
-    /* ABOUT */
-
-    .about-grid {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
-    }
-
-    .about-image img {
-        height: 400px;
-    }
-
-
-    /* DEPARTAMENTOS */
-
-    .departments-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* INSTAGRAM */
-
-    .instagram-header {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-    .instagram-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* PASTOR */
-
-    .pastor-grid {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
-    }
-
-    .pastor-image {
-        order: -1;
-    }
-
-    .pastor-image img {
-        height: 400px;
-    }
-
-
-    /* IA */
-
-    .bible-ai-container {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 40px 25px;
-    }
-
-    .bible-ai-icon {
-        width: 110px;
-        height: 110px;
-
-        font-size: 2.7rem;
-    }
-
-    .ai-suggestions {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* LOCALIZAÇÃO */
-
-    .location-grid {
-        grid-template-columns: 1fr;
-
-        gap: 40px;
-    }
-
-    .map-container,
-    .map-container iframe {
-        min-height: 350px;
-    }
-
-
-    /* CONTRIBUIÇÃO */
-
-    .contribute-container {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
-
-    /* CONTATO */
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    /* FOOTER */
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
-
-        padding: 60px 0;
-    }
 
 }
 
 
 /* =========================================================
-   CELULARES PEQUENOS
+   RESPONSIVIDADE — CELULAR
 ========================================================= */
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
 
-    .container {
-        width: min(92%, 1180px);
+
+    .tela {
+
+        min-height: 100svh;
+
     }
 
-    .logo-text span {
-        font-size: 0.6rem;
+
+    .entrada {
+
+        padding:
+            50px
+            16px
+            75px;
+
     }
 
-    .logo-text strong {
-        font-size: 0.58rem;
+
+    .pequeno-titulo {
+
+        font-size: 13px;
+
+        margin-bottom: 15px;
+
     }
 
-    .logo img {
-        width: 42px;
-        height: 42px;
+
+    .conteudo-entrada h1 {
+
+        font-size:
+            clamp(42px, 13vw, 65px);
+
+        line-height: 0.98;
+
     }
 
-    .hero h1 {
-        font-size: 3.1rem;
+
+    .informacoes-principais {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 7px;
+
+        margin:
+            22px
+            auto;
+
     }
 
-    .hero-content {
-        padding-top: 100px;
+
+    .informacoes-principais p {
+
+        width: fit-content;
+
+        max-width: 95%;
+
+        font-size: 13px;
+
+        padding:
+            9px
+            13px;
+
     }
 
-    .section {
-        padding: 65px 0;
+
+    .convite-texto {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+
+        max-width: 330px;
+
     }
 
-    h2 {
-        font-size: 2.5rem;
+
+    .sereia-silhueta {
+
+        right: -20px;
+
+        top: 15%;
+
+        opacity: 0.12;
+
     }
 
-    .welcome-image img,
-    .about-image img,
-    .pastor-image img {
-        height: 330px;
+
+    .cardume span {
+
+        font-size: 28px;
+
     }
 
-    .bible-modal-content {
-        padding: 35px 20px;
+
+    /* OCEANO */
+
+    .oceano {
+
+        min-height: 125svh;
+
     }
 
-    .floating-contact {
-        right: 18px;
-        bottom: 18px;
 
-        width: 52px;
-        height: 52px;
+    .conteudo-oceano {
+
+        min-height: 125svh;
+
+        padding:
+            70px
+            15px
+            90px;
+
     }
 
+
+    .titulo-oceano span {
+
+        font-size: 45px;
+
+    }
+
+
+    .titulo-oceano h2 {
+
+        font-size:
+            clamp(32px, 10vw, 48px);
+
+    }
+
+
+    .area-exploracao {
+
+        min-height: 390px;
+
+        margin:
+            65px
+            auto
+            50px;
+
+    }
+
+
+    .mensagem-exploracao {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding:
+            25px
+            18px;
+
+        border-radius: 30px;
+
+    }
+
+
+    .icone-exploracao {
+
+        width: 85px;
+
+        height: 85px;
+
+        font-size: 50px;
+
+    }
+
+
+    .titulo-exploracao {
+
+        font-size: 24px;
+
+    }
+
+
+    .texto-exploracao p {
+
+        font-size: 15px;
+
+    }
+
+
+    .pista-exploracao {
+
+        font-size: 14px;
+
+    }
+
+
+    /* BAÚ */
+
+    .bau-secao {
+
+        padding:
+            80px
+            15px;
+
+    }
+
+
+    .bau-tesouro {
+
+        width: 170px;
+
+        height: 160px;
+
+    }
+
+
+    .bau-tampa {
+
+        font-size: 85px;
+
+    }
+
+
+    .bau-corpo {
+
+        font-size: 78px;
+
+    }
+
+
+    /* CARTA */
+
+    .carta-secao {
+
+        padding:
+            60px
+            12px;
+
+    }
+
+
+    .carta {
+
+        padding:
+            38px
+            17px
+            25px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .carta h2 {
+
+        font-size:
+            clamp(28px, 9vw, 42px);
+
+    }
+
+
+    .texto-carta {
+
+        font-size: 15px;
+
+    }
+
+
+    .dados-festa {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .dado-festa {
+
+        padding: 12px;
+
+    }
+
+
+    /* PRESENTES */
+
+    .presentes {
+
+        padding:
+            80px
+            15px;
+
+    }
+
+
+    .conteudo-presentes h2 {
+
+        font-size:
+            clamp(31px, 9vw, 45px);
+
+    }
+
+
+    .descricao-presentes {
+
+        font-size: 15px;
+
+    }
+
+
+    .presente-card {
+
+        padding: 18px;
+
+    }
+
+
+    .presente-imagem {
+
+        flex-basis: 75px;
+
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 45px;
+
+    }
+
+
+    .presente-info h3 {
+
+        font-size: 20px;
+
+    }
+
+
+    .presente-info p {
+
+        font-size: 14px;
+
+    }
+
+
+    .botao-presente {
+
+        font-size: 13px;
+
+        padding:
+            9px
+            14px;
+
+    }
+
+
+    /* FUNDO DO MAR */
+
+    .conteudo-fundo-mar {
+
+        padding:
+            110px
+            15px
+            80px;
+
+    }
+
+
+    .conteudo-fundo-mar h2 {
+
+        font-size:
+            clamp(34px, 10vw, 48px);
+
+    }
+
+
+    /* FINAL */
+
+    .conteudo-final {
+
+        padding:
+            80px
+            15px
+            50px;
+
+    }
+
+
+    .conteudo-final h2 {
+
+        font-size:
+            clamp(34px, 10vw, 50px);
+
+    }
+
+
+    .texto-final {
+
+        font-size: 15px;
+
+    }
+
+
+    .rodape {
+
+        margin-top: 45px;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+
+    .conteudo-entrada h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .informacoes-principais p {
+
+        font-size: 12px;
+
+    }
+
+
+    .mensagem-exploracao {
+
+        padding:
+            20px
+            14px;
+
+    }
+
+
+    .area-exploracao {
+
+        min-height: 410px;
+
+    }
+
+
+    .presente-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .presente-imagem {
+
+        margin: 0 auto;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+
+    outline:
+        3px solid
+        #ffffff;
+
+    outline-offset: 4px;
+
+}
+
+
+/* =========================================================
+   REDUZIR ANIMAÇÕES
+   Para aparelhos/configurações que solicitam
+   menos movimento.
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+/* =========================================================
+   COMPATIBILIDADE COM O HTML ATUAL — SOPHIA
+   Estas regras complementam o CSS existente sem alterar o HTML.
+========================================================= */
+
+/* TÍTULO PRINCIPAL DA ENTRADA */
+.titulo-entrada {
+    margin: 0 auto;
+    max-width: 760px;
+    font-size: clamp(42px, 8vw, 78px);
+    line-height: 0.98;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    text-shadow: 0 7px 18px rgba(21, 91, 115, 0.30);
+}
+
+.titulo-entrada span {
+    color: var(--rosa);
+    text-shadow: 0 5px 14px rgba(214, 57, 130, 0.32);
+}
+
+/* SEREIA PRINCIPAL — 734.png */
+.sereia-principal-container {
+    position: relative;
+    z-index: 2;
+    width: min(540px, 88vw);
+    margin: 22px auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: sereia-principal-flutuar 5s ease-in-out infinite;
+}
+
+.sereia-principal {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 22px rgba(21, 91, 115, 0.18));
+}
+
+@keyframes sereia-principal-flutuar {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+}
+
+/* CONTAINER DAS BOLHAS DA ENTRADA */
+.bolhas {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* CARDUME DA ÁREA DE PRESENTES */
+.cardume-presentes {
+    top: 18%;
+    animation-duration: 24s;
+    opacity: 0.85;
+}
+
+/* PEIXES PROFUNDOS EXTRAS */
+.peixes-profundos {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.peixe-profundo-4 {
+    top: 40%;
+    animation-delay: -4s;
+}
+
+.peixe-profundo-5 {
+    top: 88%;
+    animation-delay: -11s;
+}
+
+/* PARTÍCULAS DO FUNDO */
+.particulas-profundas,
+.particulas-final {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particulas-profundas span,
+.particulas-final span {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.72);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+    animation: particula-flutuar 5s ease-in-out infinite alternate;
+}
+
+.particulas-profundas span:nth-child(1),
+.particulas-final span:nth-child(1) {
+    left: 12%;
+    top: 18%;
+}
+
+.particulas-profundas span:nth-child(2),
+.particulas-final span:nth-child(2) {
+    left: 28%;
+    top: 42%;
+    animation-delay: -1s;
+}
+
+.particulas-profundas span:nth-child(3),
+.particulas-final span:nth-child(3) {
+    left: 50%;
+    top: 24%;
+    animation-delay: -2s;
+}
+
+.particulas-profundas span:nth-child(4),
+.particulas-final span:nth-child(4) {
+    right: 20%;
+    top: 52%;
+    animation-delay: -3s;
+}
+
+.particulas-profundas span:nth-child(5) {
+    right: 10%;
+    top: 20%;
+    animation-delay: -1.5s;
+}
+
+.particulas-profundas span:nth-child(6) {
+    left: 70%;
+    top: 72%;
+    animation-delay: -2.5s;
+}
+
+.particulas-profundas span:nth-child(7) {
+    left: 6%;
+    top: 70%;
+    animation-delay: -4s;
+}
+
+@keyframes particula-flutuar {
+    from {
+        transform: translateY(0) scale(0.9);
+        opacity: 0.35;
+    }
+    to {
+        transform: translateY(-14px) scale(1.12);
+        opacity: 0.95;
+    }
+}
+
+/* MENSAGEM DE DOWNLOAD: aceita os dois estados */
+.mensagem-download.ativo,
+.mensagem-download.ativa {
+    display: flex;
+}
+
+/* EVITA QUE O CONTEÚDO DOS DADOS INVISÍVEIS INTERFIRA NA PÁGINA */
+#dados-convite {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* MODAIS DO HTML ATUAL */
+#modal-carta .modal-conteudo,
+#modal-download .modal-conteudo {
+    max-height: min(90vh, 900px);
+    -webkit-overflow-scrolling: touch;
+}
+
+#modal-carta .carta-modal-interna {
+    margin: 0;
+}
+
+#fechar-carta-modal,
+#fechar-carta,
+#fechar-download {
+    touch-action: manipulation;
+}
+
+/* ANIMAÇÃO DO BAÚ E DA CONCHA */
+.bau-aberto .bau-tampa {
+    transform: translateX(-50%) translateY(-18px) rotate(-4deg);
+}
+
+.concha-processando {
+    animation: conchaProcessando 0.7s ease-in-out infinite alternate !important;
+}
+
+@keyframes conchaProcessando {
+    from {
+        transform: scale(0.95) rotate(-5deg);
+    }
+    to {
+        transform: scale(1.08) rotate(5deg);
+    }
+}
+
+/* =========================================================
+   RESPONSIVIDADE DAS NOVAS CLASSES
+========================================================= */
+
+@media (max-width: 800px) {
+    .sereia-principal-container {
+        width: min(470px, 88vw);
+        margin-top: 18px;
+    }
+
+    .titulo-entrada {
+        font-size: clamp(40px, 9vw, 68px);
+    }
+}
+
+@media (max-width: 600px) {
+    .titulo-entrada {
+        font-size: clamp(36px, 11vw, 58px);
+        line-height: 0.99;
+        letter-spacing: -1px;
+    }
+
+    .sereia-principal-container {
+        width: min(410px, 92vw);
+        margin: 15px auto 12px;
+    }
+
+    .sereia-principal {
+        filter: drop-shadow(0 12px 16px rgba(21, 91, 115, 0.18));
+    }
+}
+
+@media (max-width: 380px) {
+    .titulo-entrada {
+        font-size: 34px;
+    }
+
+    .sereia-principal-container {
+        width: 94vw;
+    }
 }
