@@ -17,7 +17,26 @@ const CONFIG = {
     horario: "13:00",
     local: "Local da Festa",
     link: "https://maps.app.goo.gl/SGfxecVLVifhaA4a7",
-    assinatura: "Com carinho, Sophia 💕"
+    assinatura: "Com carinho, Sophia 💕",
+
+    /* =====================================================
+       LINKS DOS PRESENTES
+       A ordem aqui corresponde à ordem dos cards no HTML.
+    ===================================================== */
+
+    presentes: [
+        "https://s.shopee.com.br/W6BwhXRuZ",
+        "https://s.shopee.com.br/7fZMQhfXaS",
+        "https://s.shopee.com.br/3B6x4Kz600",
+
+        "https://s.shopee.com.br/1gI9HRD33H",
+        "https://s.shopee.com.br/AKa7bDsHar",
+        "https://s.shopee.com.br/8AVd14IAnp",
+
+        "https://s.shopee.com.br/3B6x2OHNih",
+        "https://s.shopee.com.br/AKa7ZT1JyX",
+        "https://s.shopee.com.br/1Vyj2y6Hdp"
+    ]
 };
 
 /* =========================================================
@@ -870,27 +889,86 @@ async function baixarConvite() {
 
 function configurarPresentes() {
 
-    document
-        .querySelectorAll(
+    const botoes =
+        document.querySelectorAll(
             ".botao-presente"
-        )
-        .forEach(
-            link => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        console.log(
-                            "Abrindo sugestão de presente:",
-                            link.textContent.trim()
-                        );
-
-                    }
-                );
-
-            }
         );
+
+
+    /*
+       Os links são aplicados pela posição dos cards.
+
+       1 → Vestido
+       2 → Vestido
+       3 → Pijama
+
+       4 → Boia
+       5 → Boia
+       6 → Boia
+
+       7 → Barbie Sereia
+       8 → Boneca Sereia
+       9 → Sereia + Filhinha
+    */
+
+    botoes.forEach(
+        (link, indice) => {
+
+            const url =
+                CONFIG.presentes[indice];
+
+
+            if (!url) {
+                return;
+            }
+
+
+            /*
+               Garante que o botão tenha
+               exatamente o link correto.
+            */
+
+            link.href =
+                url;
+
+
+            /*
+               Abre a Shopee em nova aba.
+            */
+
+            link.target =
+                "_blank";
+
+
+            link.rel =
+                "noopener noreferrer";
+
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    console.log(
+                        "Abrindo sugestão de presente:",
+                        indice + 1,
+                        url
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    console.log(
+        `🎁 ${botoes.length} botão(ões) de presente encontrado(s).`
+    );
+
+
+    console.log(
+        "🛍️ Links da Shopee configurados."
+    );
 
 }
 
@@ -1412,6 +1490,12 @@ function prepararPagina() {
 
     console.log(
         `📍 ${CONFIG.local}`
+    );
+
+
+    console.log(
+        "🎁 Presentes:",
+        CONFIG.presentes
     );
 
 }
