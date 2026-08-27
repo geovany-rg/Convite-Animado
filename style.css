@@ -4531,3 +4531,30 @@ a:focus-visible {
         width: 94vw;
     }
 }
+
+/* Container dos botões menores */
+.lista-botoes {
+  display: flex;
+  flex-wrap: wrap;       /* Permite que os botões pulem de linha no celular */
+  gap: 8px;              /* Espaço entre um botão e outro */
+  justify-content: center;/* Centraliza os botões dentro do card */
+  margin-top: 10px;
+}
+
+/* Botão individual compacto */
+.botao-presente-pequeno {
+  display: inline-block;
+  padding: 6px 12px;     /* Espaçamento interno menor */
+  font-size: 0.85rem;    /* Texto um pouco menor */
+  border-radius: 20px;   /* Cantos arredondados finos */
+  background-color: #008080; /* Mantém a cor principal do seu tema */
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.botao-presente-pequeno:hover {
+  transform: scale(1.05); /* Efeito de leve toque ao passar o mouse */
+  background-color: #005959;
+}
